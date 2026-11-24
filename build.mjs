@@ -34,7 +34,7 @@ const plugins = [
         name: 'Strawberry / sisi (si.skaz.tv)',
         src: 'src/sisi.js',
         out: 'plugins/sisi.js',
-        registers: 'компоненты sisi_lampac и sisi_view_lampac, раздел настроек sisi_settings, источник поиска, кнопка в левом меню',
+        registers: 'раздел настроек sisi_settings (по умолчанию выключен); при включении — компоненты sisi_lampac и sisi_view_lampac, источник поиска, кнопка в левом меню',
         note: 'тянет данные с si.skaz.tv по HTTP и содержит канал удалённого управления (eval)'
     }
 ];

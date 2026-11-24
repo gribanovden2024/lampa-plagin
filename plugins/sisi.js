@@ -1,7 +1,7 @@
 /* ========================================================================
  * Strawberry / sisi (si.skaz.tv)
  * файл-источник: src/sisi.js
- * регистрирует: компоненты sisi_lampac и sisi_view_lampac, раздел настроек sisi_settings, источник поиска, кнопка в левом меню
+ * регистрирует: раздел настроек sisi_settings (по умолчанию выключен); при включении — компоненты sisi_lampac и sisi_view_lampac, источник поиска, кнопка в левом меню
  * примечание: тянет данные с si.skaz.tv по HTTP и содержит канал удалённого управления (eval)
  * ======================================================================== */
 
@@ -15,6 +15,8 @@ try {
     framework: ''
   };
 
+  var PLUGIN_NAME = 'Strawberry 18+';
+
   var luid = Lampa.Storage.get('lampac_unic_id', '');
   if (!luid) {
     luid = Lampa.Utils.uid(8).toLowerCase();
@@ -23,10 +25,10 @@ try {
 
   Lampa.Lang.add({
     lampac_sisiname: {
-      ru: 'Клубничка',
-      en: 'Strawberry',
-      uk: 'Полуничка',
-      zh: '草莓'
+      ru: PLUGIN_NAME,
+      en: PLUGIN_NAME,
+      uk: PLUGIN_NAME,
+      zh: PLUGIN_NAME
     }
   });
 
@@ -1088,7 +1090,7 @@ window.rch_nws[hostkey].Registry = function RchRegistry(client, startConnection)
   }
   
     var Search = {
-      title: 'Клубничка',
+      title: PLUGIN_NAME,
       search: function search(params, oncomplite) {
         network.silent('http://si.skaz.tv/rch/check/connected', function(json) {
           if (json.rch) {
@@ -1143,7 +1145,27 @@ window.rch_nws[hostkey].Registry = function RchRegistry(client, startConnection)
     Lampa.Component.add('sisi_' + Defined.use_api, Sisi);
     Lampa.Component.add('sisi_view_' + Defined.use_api, View); 
 	//addSourceSearch();
-	Lampa.Search.addSource(Search);
+
+    var menu_button = null;
+    var app_menu_buttons = [];
+    var app_menu_added = false;
+    var search_added = false;
+
+    function isEnabled() {
+      return String(Lampa.Storage.get('sisi_enabled', false)) === 'true';
+    }
+
+    function addSearch() {
+      if (search_added) return;
+      search_added = true;
+      if (Lampa.Search && Lampa.Search.addSource) Lampa.Search.addSource(Search);
+    }
+
+    function removeSearch() {
+      if (!search_added) return;
+      search_added = false;
+      if (Lampa.Search && Lampa.Search.removeSource) Lampa.Search.removeSource(Search);
+    }
 
     function addFilter() {
       var activi;
@@ -1175,15 +1197,35 @@ window.rch_nws[hostkey].Registry = function RchRegistry(client, startConnection)
       });
     }
 
-    function addSettings() {
-      if (window.sisi_settings_ready) return;
-      window.sisi_settings_ready = true;
-      // собственный пункт настроек плагина
-      Lampa.SettingsApi.addComponent({
+    function buildSettingsParams() {
+      Lampa.SettingsApi.removeParams('sisi_settings');
+
+      Lampa.SettingsApi.addParam({
         component: 'sisi_settings',
-        icon: '<svg width="200" height="243" viewBox="0 0 200 243" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M187.714 130.727C206.862 90.1515 158.991 64.2019 100.983 64.2019C42.9759 64.2019 -4.33044 91.5669 10.875 130.727C26.0805 169.888 63.2501 235.469 100.983 234.997C138.716 234.526 168.566 171.303 187.714 130.727Z" stroke="currentColor" stroke-width="15"/><path d="M102.11 62.3146C109.995 39.6677 127.46 28.816 169.692 24.0979C172.514 56.1811 135.338 64.2018 102.11 62.3146Z" stroke="currentColor" stroke-width="15"/><path d="M90.8467 62.7863C90.2285 34.5178 66.0667 25.0419 31.7127 33.063C28.8904 65.1461 68.8826 62.7863 90.8467 62.7863Z" stroke="currentColor" stroke-width="15"/><path d="M100.421 58.5402C115.627 39.6677 127.447 13.7181 85.2149 9C82.3926 41.0832 83.5258 35.4214 100.421 58.5402Z" stroke="currentColor" stroke-width="15"/><rect x="39.0341" y="98.644" width="19.1481" height="30.1959" rx="9.57407" fill="currentColor"/><rect x="90.8467" y="92.0388" width="19.1481" height="30.1959" rx="9.57407" fill="currentColor"/><rect x="140.407" y="98.644" width="19.1481" height="30.1959" rx="9.57407" fill="currentColor"/><rect x="116.753" y="139.22" width="19.1481" height="30.1959" rx="9.57407" fill="currentColor"/><rect x="64.9404" y="139.22" width="19.1481" height="30.1959" rx="9.57407" fill="currentColor"/><rect x="93.0994" y="176.021" width="19.1481" height="30.1959" rx="9.57407" fill="currentColor"/></svg>',
-        name: Lampa.Lang.translate('lampac_sisiname')
+        param: {
+          name: 'sisi_enabled',
+          type: 'trigger',
+          values: '',
+          "default": false
+        },
+        field: {
+          name: 'Включить',
+          description: 'Показывает настройки плагина и пункт в левом меню'
+        },
+        onChange: function onChange() {
+          setTimeout(function() {
+            buildSettingsParams();
+            syncPluginState();
+
+            if (Lampa.Settings && typeof Lampa.Settings.update === 'function' && Lampa.Controller.enabled().name === 'settings_component') {
+              Lampa.Settings.update();
+            }
+          }, 50);
+        }
       });
+
+      if (!isEnabled()) return;
+
       Lampa.SettingsApi.addParam({
         component: 'sisi_settings',
         param: {
@@ -1214,8 +1256,23 @@ window.rch_nws[hostkey].Registry = function RchRegistry(client, startConnection)
       });
     }
 
+    function addSettings() {
+      if (window.sisi_settings_ready) return;
+      window.sisi_settings_ready = true;
+      // собственный пункт настроек плагина
+      Lampa.SettingsApi.addComponent({
+        component: 'sisi_settings',
+        icon: '<svg width="200" height="243" viewBox="0 0 200 243" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M187.714 130.727C206.862 90.1515 158.991 64.2019 100.983 64.2019C42.9759 64.2019 -4.33044 91.5669 10.875 130.727C26.0805 169.888 63.2501 235.469 100.983 234.997C138.716 234.526 168.566 171.303 187.714 130.727Z" stroke="currentColor" stroke-width="15"/><path d="M102.11 62.3146C109.995 39.6677 127.46 28.816 169.692 24.0979C172.514 56.1811 135.338 64.2018 102.11 62.3146Z" stroke="currentColor" stroke-width="15"/><path d="M90.8467 62.7863C90.2285 34.5178 66.0667 25.0419 31.7127 33.063C28.8904 65.1461 68.8826 62.7863 90.8467 62.7863Z" stroke="currentColor" stroke-width="15"/><path d="M100.421 58.5402C115.627 39.6677 127.447 13.7181 85.2149 9C82.3926 41.0832 83.5258 35.4214 100.421 58.5402Z" stroke="currentColor" stroke-width="15"/><rect x="39.0341" y="98.644" width="19.1481" height="30.1959" rx="9.57407" fill="currentColor"/><rect x="90.8467" y="92.0388" width="19.1481" height="30.1959" rx="9.57407" fill="currentColor"/><rect x="140.407" y="98.644" width="19.1481" height="30.1959" rx="9.57407" fill="currentColor"/><rect x="116.753" y="139.22" width="19.1481" height="30.1959" rx="9.57407" fill="currentColor"/><rect x="64.9404" y="139.22" width="19.1481" height="30.1959" rx="9.57407" fill="currentColor"/><rect x="93.0994" y="176.021" width="19.1481" height="30.1959" rx="9.57407" fill="currentColor"/></svg>',
+        name: PLUGIN_NAME
+      });
+
+      buildSettingsParams();
+    }
+
     function add() {
-      var button = $("<li class=\"menu__item selector\" data-action=\"sisi\">\n            <div class=\"menu__ico\">\n                <svg width=\"200\" height=\"243\" viewBox=\"0 0 200 243\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M187.714 130.727C206.862 90.1515 158.991 64.2019 100.983 64.2019C42.9759 64.2019 -4.33044 91.5669 10.875 130.727C26.0805 169.888 63.2501 235.469 100.983 234.997C138.716 234.526 168.566 171.303 187.714 130.727Z\" stroke=\"currentColor\" stroke-width=\"15\"/><path d=\"M102.11 62.3146C109.995 39.6677 127.46 28.816 169.692 24.0979C172.514 56.1811 135.338 64.2018 102.11 62.3146Z\" stroke=\"currentColor\" stroke-width=\"15\"/><path d=\"M90.8467 62.7863C90.2285 34.5178 66.0667 25.0419 31.7127 33.063C28.8904 65.1461 68.8826 62.7863 90.8467 62.7863Z\" stroke=\"currentColor\" stroke-width=\"15\"/><path d=\"M100.421 58.5402C115.627 39.6677 127.447 13.7181 85.2149 9C82.3926 41.0832 83.5258 35.4214 100.421 58.5402Z\" stroke=\"currentColor\" stroke-width=\"15\"/><rect x=\"39.0341\" y=\"98.644\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/><rect x=\"90.8467\" y=\"92.0388\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/><rect x=\"140.407\" y=\"98.644\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/><rect x=\"116.753\" y=\"139.22\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/><rect x=\"64.9404\" y=\"139.22\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/><rect x=\"93.0994\" y=\"176.021\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/></svg>\n            </div>\n            <div class=\"menu__text\">" + Lampa.Lang.translate('lampac_sisiname') + "</div>\n        </li>");
+      if (menu_button) return;
+
+      var button = $("<li class=\"menu__item selector\" data-action=\"sisi\">\n            <div class=\"menu__ico\">\n                <svg width=\"200\" height=\"243\" viewBox=\"0 0 200 243\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M187.714 130.727C206.862 90.1515 158.991 64.2019 100.983 64.2019C42.9759 64.2019 -4.33044 91.5669 10.875 130.727C26.0805 169.888 63.2501 235.469 100.983 234.997C138.716 234.526 168.566 171.303 187.714 130.727Z\" stroke=\"currentColor\" stroke-width=\"15\"/><path d=\"M102.11 62.3146C109.995 39.6677 127.46 28.816 169.692 24.0979C172.514 56.1811 135.338 64.2018 102.11 62.3146Z\" stroke=\"currentColor\" stroke-width=\"15\"/><path d=\"M90.8467 62.7863C90.2285 34.5178 66.0667 25.0419 31.7127 33.063C28.8904 65.1461 68.8826 62.7863 90.8467 62.7863Z\" stroke=\"currentColor\" stroke-width=\"15\"/><path d=\"M100.421 58.5402C115.627 39.6677 127.447 13.7181 85.2149 9C82.3926 41.0832 83.5258 35.4214 100.421 58.5402Z\" stroke=\"currentColor\" stroke-width=\"15\"/><rect x=\"39.0341\" y=\"98.644\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/><rect x=\"90.8467\" y=\"92.0388\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/><rect x=\"140.407\" y=\"98.644\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/><rect x=\"116.753\" y=\"139.22\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/><rect x=\"64.9404\" y=\"139.22\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/><rect x=\"93.0994\" y=\"176.021\" width=\"19.1481\" height=\"30.1959\" rx=\"9.57407\" fill=\"currentColor\"/></svg>\n            </div>\n            <div class=\"menu__text\">" + PLUGIN_NAME + "</div>\n        </li>");
 
       if (true) {
         var pw = $('<div>s</div>');
@@ -1275,7 +1332,7 @@ window.rch_nws[hostkey].Registry = function RchRegistry(client, startConnection)
                 } else {
                   Lampa.Activity.push({
                     url: '',
-                    title: Lampa.Lang.translate('lampac_sisiname'),
+                    title: PLUGIN_NAME,
                     component: 'sisi_' + Defined.use_api,
                     page: 1
                   });
@@ -1291,39 +1348,72 @@ window.rch_nws[hostkey].Registry = function RchRegistry(client, startConnection)
         }, function() {});
       });
       $('.menu .menu__list').eq(0).append(button);
-      
+      menu_button = button;
+    }
+
+    function addMenu() {
+      if (window.lampa_settings.sisi_app) {
+        if (app_menu_added) return;
+        app_menu_added = true;
+
+        Api.menu(function(data) {
+          data.forEach(function(a) {
+            a.title = Utils.sourceTitle(a.title);
+
+            var button = Lampa.Menu.addButton('<img src="./img/icons/settings/more.svg">', a.title, function() {
+              if (a.playlist_url) {
+                Lampa.Activity.push({
+                  url: a.playlist_url,
+                  title: a.title,
+                  component: 'sisi_view_' + Defined.use_api,
+                  page: 1
+                });
+              } else {
+                Lampa.Activity.push({
+                  url: '',
+                  title: PLUGIN_NAME,
+                  component: 'sisi_' + Defined.use_api,
+                  page: 1
+                });
+              }
+            });
+
+            app_menu_buttons.push(button);
+
+            if (!isEnabled()) button.remove();
+          });
+        });
+      } else {
+        add();
+      }
+    }
+
+    function removeMenu() {
+      app_menu_added = false;
+
+      while (app_menu_buttons.length) {
+        var button = app_menu_buttons.pop();
+        if (button && button.remove) button.remove();
+      }
+
+      if (menu_button) {
+        menu_button.remove();
+        menu_button = null;
+      }
+    }
+
+    function syncPluginState() {
+      if (isEnabled()) {
+        addMenu();
+        addSearch();
+      } else {
+        removeMenu();
+        removeSearch();
+      }
     }
 	
 	function init(){
-		if(window.lampa_settings.sisi_app){
-			Api.menu(function(data) {
-				data.forEach(function(a) {
-				  a.title = Utils.sourceTitle(a.title);
-				  
-				  Lampa.Menu.addButton('<img src="./img/icons/settings/more.svg">', a.title, function(){
-					  if (a.playlist_url) {
-						  Lampa.Activity.push({
-							url: a.playlist_url,
-							title: a.title,
-							component: 'sisi_view_' + Defined.use_api,
-							page: 1
-						  });
-						} else {
-						  Lampa.Activity.push({
-							url: '',
-							title: Lampa.Lang.translate('lampac_sisiname'),
-							component: 'sisi_' + Defined.use_api,
-							page: 1
-						  });
-						}
-				  })
-				});
-			})
-		}
-		else{
-			add()
-		}
-		
+		syncPluginState();
 		addFilter();
 		addSettings();
 	}
