@@ -1,43 +1,79 @@
 /**
  * Сборка объединённого плагина: src/kinopoisk.js + src/sisi.js -> lampa-plagin.js
  *
- * Оба исходника - самодостаточные IIFE, поэтому склеиваются как есть.
+ * Каждый исходник - самодостаточный IIFE, поэтому склеиваются как есть,
+ * но каждый оборачивается в свой блок с заголовком и в try/catch:
+ * если один плагин упадёт при загрузке, второй продолжит работать.
+ *
  * Запуск: node build.mjs
  */
 import { readFileSync, writeFileSync } from 'node:fs';
 
-const parts = [
-    ['Кинопоиск "Буду смотреть" (свой CORS-прокси)', 'src/kinopoisk.js'],
-    ['Strawberry / sisi (si.skaz.tv)', 'src/sisi.js']
+const plugins = [
+    {
+        num: 1,
+        name: 'Кинопоиск — «Буду смотреть»',
+        file: 'src/kinopoisk.js',
+        registers: 'компонент kinopoisk, раздел настроек kinopoisk, кнопка в левом меню',
+        note: 'работает через собственный Cloudflare Worker, OAuth-токен третьим лицам не уходит'
+    },
+    {
+        num: 2,
+        name: 'Strawberry / sisi (si.skaz.tv)',
+        file: 'src/sisi.js',
+        registers: 'компоненты sisi_lampac и sisi_view_lampac, раздел настроек sisi, источник поиска, кнопка в левом меню',
+        note: 'тянет данные с si.skaz.tv по HTTP и содержит канал удалённого управления (eval)'
+    }
 ];
 
-const banner = `/*
- * lampa-plagin - объединённый плагин для приложения Лампа.
- * Установка: Настройки - Расширения - Добавить плагин - указать адрес этого файла.
+const header = `/*
+ * lampa-plagin — объединённый плагин для приложения Лампа.
  *
- * Состав:
- *   1. Кинопоиск "Буду смотреть" (работает через свой Cloudflare Worker,
- *      OAuth-токен третьим лицам не передаётся).
- *   2. Strawberry / sisi (si.skaz.tv) - контент-плагин, тянет данные и
- *      канал удалённого управления с сервера si.skaz.tv по HTTP.
+ * Установка: Настройки -> Расширения -> Добавить плагин -> указать адрес этого файла.
  *
- * Собрано из src/kinopoisk.js и src/sisi.js. Правьте исходники, затем: node build.mjs
+ * В файле ${plugins.length} независимых плагина:
+${plugins.map((p) => ` *   ${p.num}) ${p.name}`).join('\n')}
+ *
+ * Исходники: src/, сборка: node build.mjs
  */
-
 `;
 
-let out = banner;
+let out = header;
+let total = 0;
 
-for (const [title, path] of parts) {
-    let code = readFileSync(path, 'utf8').replace(/^\uFEFF/, '').trim();
+plugins.forEach((plugin, index) => {
+    let code = readFileSync(plugin.file, 'utf8').replace(/^\uFEFF/, '').trim();
 
     if (!code.endsWith(';')) {
         code += ';';
     }
 
-    out += `\n/* ===================== ${title} ===================== */\n\n${code}\n\n`;
+    const rule = '='.repeat(72);
+
+    out += `
+/* ${rule}
+ * ПЛАГИН ${plugin.num} из ${plugins.length} — ${plugin.name}
+ * файл: ${plugin.file}
+ * регистрирует: ${plugin.registers}
+ * примечание: ${plugin.note}
+ * ${rule} */
+
+try {
+${code}
+} catch (e) {
+    console.error('[lampa-plagin] плагин ${plugin.num} (${plugin.name}) не загрузился:', e);
 }
+`;
+
+    total++;
+});
+
+out += `
+/* ${'='.repeat(72)}
+ * Итого плагинов в файле: ${total}
+ * ${'='.repeat(72)} */
+`;
 
 writeFileSync('lampa-plagin.js', out, 'utf8');
 
-console.log('lampa-plagin.js:', out.length, 'bytes');
+console.log(`lampa-plagin.js: ${out.length} bytes, плагинов: ${total}`);
