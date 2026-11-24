@@ -58,6 +58,19 @@ plugins/sisi.js            ← плагин 2
 Реклама перед видео (`bid.ctv.house`) отключена на уровне Private DNS телевизора,
 к плагинам отношения не имеет.
 
+### 3. LGBT — выключение раздела
+
+Крошечный плагин-флаг (111 байт), копия `cubnotrip.top/plugin/lgbt`
+(оригинальный адрес `cub.rip/plugin/lgbt` больше не существует — домен не резолвится):
+
+```js
+window.lampa_settings.disable_features.lgbt = true;
+```
+
+Ничего не регистрирует, никуда не ходит, `eval` и DOM не трогает — просто выставляет
+флаг, по которому Лампа скрывает соответствующий раздел. Загружается первым, чтобы
+флаг успел до построения меню.
+
 ## Сборка
 
 ```
@@ -74,8 +87,10 @@ src/sisi.js       ─┴─ node build.mjs ─> plugins/*.js + lampa-plagin.js (
 
 ```
 lampa-plagin.js              установщик (добавляется в Лампу)
+plugins/lgbt.js              флаг disable_features.lgbt
 plugins/kinopoisk.js         собранный плагин Кинопоиска
 plugins/sisi.js              собранный плагин sisi
+src/lgbt.js                  исходник флага
 src/kinopoisk.js             исходник Кинопоиска
 src/sisi.js                  исходник sisi
 build.mjs                    сборка

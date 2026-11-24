@@ -15,6 +15,14 @@ const version = new Date().toISOString().replace(/[-:TZ.]/g, '').slice(0, 14);
 const plugins = [
     {
         num: 1,
+        name: 'LGBT — выключение раздела',
+        src: 'src/lgbt.js',
+        out: 'plugins/lgbt.js',
+        registers: 'ничего не регистрирует, только ставит флаг window.lampa_settings.disable_features.lgbt = true',
+        note: 'загружается первым: флаг должен успеть до построения меню'
+    },
+    {
+        num: 2,
         name: 'Кинопоиск — «Буду смотреть»',
         src: 'src/kinopoisk.js',
         out: 'plugins/kinopoisk.js',
@@ -22,7 +30,7 @@ const plugins = [
         note: 'работает через собственный Cloudflare Worker, OAuth-токен третьим лицам не уходит'
     },
     {
-        num: 2,
+        num: 3,
         name: 'Strawberry / sisi (si.skaz.tv)',
         src: 'src/sisi.js',
         out: 'plugins/sisi.js',
