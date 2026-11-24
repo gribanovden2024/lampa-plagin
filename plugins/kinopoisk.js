@@ -259,43 +259,124 @@ try {
         return comp;
     }
     // getting/refreshing oauth kinopoisk token
-    function getToken(device_code, refresh) {
-        var client_id = 'b8b9c7a09b79452094e12f6990009934';
-        if(!refresh) {
-            var token_data = {
+    var KINOPOISK_CLIENT_ID = 'b8b9c7a09b79452094e12f6990009934';
+    var KINOPOISK_CLIENT_SECRET = '0e7001e272944c05ae5a0df16e3ea8bd';
+
+    var auth_poll_timer = null;
+    var auth_poll_stopped = true;
+
+    function stopAuthPolling() {
+        auth_poll_stopped = true;
+
+        if (auth_poll_timer) {
+            clearTimeout(auth_poll_timer);
+            auth_poll_timer = null;
+        }
+    }
+
+    function requestToken(device_code, refresh, callbacks) {
+        callbacks = callbacks || {};
+
+        var token_data;
+
+        if (!refresh) {
+            token_data = {
                 'grant_type': 'device_code',
                 'code': device_code,
-                'client_id': client_id,
-                'client_secret': '0e7001e272944c05ae5a0df16e3ea8bd'
-            }
+                'client_id': KINOPOISK_CLIENT_ID,
+                'client_secret': KINOPOISK_CLIENT_SECRET
+            };
         } else { // refresh token
-            var token_data = {
+            token_data = {
                 'grant_type': 'refresh_token',
-                'refresh_token': device_code, // pass refresh token as device_code
-                'client_id': client_id,
-                'client_secret': '0e7001e272944c05ae5a0df16e3ea8bd'
-            }
+                'refresh_token': device_code,
+                'client_id': KINOPOISK_CLIENT_ID,
+                'client_secret': KINOPOISK_CLIENT_SECRET
+            };
         }
+
         network.silent('https://oauth.yandex.ru/token', function(data) { // on token success
-            if(data.access_token) {
+            if (data.access_token) {
                 Lampa.Storage.set('kinopoisk_access_token', data.access_token);
                 Lampa.Storage.set('kinopoisk_refresh_token', data.refresh_token);
                 Lampa.Storage.set('kinopoisk_token_expires', data.expires_in * 1000 + Date.now());
                 Lampa.Modal.close();
                 getUserEmail();
                 getKinopoiskData();
+
+                if (callbacks.success) callbacks.success(data);
+            } else if (callbacks.error) {
+                callbacks.error(null, data);
             } else {
                 Lampa.Noty.show('Не удалось получить token');
                 console.log('Kinopoisk', 'Error during OAuth', data.error);
             }
         }, function(data) { // on token error
-            Lampa.Noty.show(data.responseJSON.error_description);
-            console.log('Kinopoisk', 'Token error', data);
+            var error = data && data.responseJSON && data.responseJSON.error;
+
+            if (callbacks.error) {
+                callbacks.error(error, data);
+            } else {
+                Lampa.Noty.show((data && data.responseJSON && data.responseJSON.error_description) || 'Не удалось получить token');
+                console.log('Kinopoisk', 'Token error', data);
+            }
         }, token_data);
     }
+
+    function getToken(device_code, refresh) {
+        requestToken(device_code, refresh);
+    }
+
+    function startAuthPolling(device_code, interval, expires_in, onStatus) {
+        stopAuthPolling();
+        auth_poll_stopped = false;
+
+        var delay = Math.max(2, Number(interval) || 5);
+        var deadline = Date.now() + (Number(expires_in) || 300) * 1000;
+
+        function schedule() {
+            if (auth_poll_stopped) return;
+            auth_poll_timer = setTimeout(poll, delay * 1000);
+        }
+
+        function poll() {
+            if (auth_poll_stopped) return;
+
+            if (Date.now() > deadline) {
+                stopAuthPolling();
+                if (onStatus) onStatus('expired');
+                return;
+            }
+
+            requestToken(device_code, false, {
+                success: function() {
+                    stopAuthPolling();
+                },
+                error: function(error) {
+                    if (error === 'authorization_pending') {
+                        schedule();
+                    } else if (error === 'slow_down') {
+                        delay += 5;
+                        schedule();
+                    } else if (error === 'expired_token' || error === 'invalid_grant') {
+                        stopAuthPolling();
+                        if (onStatus) onStatus('expired');
+                    } else {
+                        stopAuthPolling();
+                        if (onStatus) onStatus('error', error);
+                    }
+                }
+            });
+        }
+
+        schedule();
+    }
+
     // getting oauth user_code
     // https://yandex.ru/dev/id/doc/ru/codes/screen-code-oauth
     function getDeviceCode() {
+        stopAuthPolling();
+
         // generating unique device id
         const uuid4 = () => {
             const ho = (n, p) => n.toString(16).padStart(p, 0);
@@ -306,33 +387,106 @@ try {
             return `${ho(view.getUint32(0), 8)}${ho(view.getUint16(4), 4)}${ho(view.getUint16(6), 4)}${ho(view.getUint16(8), 4)}${ho(view.getUint32(10), 8)}${ho(view.getUint16(14), 4)}`; /// Compile the canonical textual form from the array data
         };
         Lampa.Storage.set('kinopoisk_deviceid', uuid4());
-        var client_id = 'b8b9c7a09b79452094e12f6990009934';
         var device_code_data = {
-            'client_id': client_id,
-            'device_id': Lampa.Storage.get('kinopoisk_deviceid', '')
+            'client_id': KINOPOISK_CLIENT_ID,
+            'device_id': Lampa.Storage.get('kinopoisk_deviceid', ''),
+            'device_name': Lampa.Storage.get('device_name', 'Lampa')
         }
         network.silent('https://oauth.yandex.ru/device/code', function(data) { // on device code success
             if(data.user_code && data.device_code) {
-                // Lampa.Utils.copyTextToClipboard(data.user_code, ()=>{});
-                // ask user to authorize
-                let modal = $('<div><div class="about">Перейдите по ссылке https://ya.ru/device на любом устройстве и введите код<br><br><b>' + data.user_code + '</b><br><br></div><br><div class="broadcast__device selector" style="textalign: center">Готово</div></div>')
+                var verify_url = data.verification_url || 'https://oauth.yandex.ru/device';
+
+                var modal = $(
+                    '<div class="kinopoisk-auth">' +
+                        '<div class="about kinopoisk-auth__hint"></div>' +
+                        '<div class="kinopoisk-auth__qr"></div>' +
+                        '<div class="kinopoisk-auth__code"><b>' + data.user_code + '</b></div>' +
+                        '<div class="kinopoisk-auth__status about">Ожидание подтверждения…</div>' +
+                        '<div class="broadcast__device selector kinopoisk-auth__done">Готово</div>' +
+                    '</div>'
+                );
+
+                var qr = modal.find('.kinopoisk-auth__qr');
+                var status = modal.find('.kinopoisk-auth__status');
+                var hint = modal.find('.kinopoisk-auth__hint');
+                var link = '<a href="' + verify_url + '" target="_blank" rel="noopener">' + verify_url + '</a>';
+                var show_qr = Lampa.Utils && Lampa.Utils.qrcode && (Lampa.Platform.tv() || Lampa.Platform.desktop() || Lampa.Platform.mouse());
+
+                if (show_qr) {
+                    hint.html('Отсканируйте QR-код или откройте ' + link + ' и введите код');
+                    Lampa.Utils.qrcode(verify_url, qr, function() {
+                        qr.remove();
+                    });
+                } else {
+                    hint.html('Откройте ' + link + ' и введите код');
+                    qr.remove();
+                }
+
+                qr.find('svg').css({ width: '100%', height: 'auto', display: 'block' });
+                qr.css({
+                    display: 'inline-block',
+                    background: '#fff',
+                    padding: '10px',
+                    borderRadius: '10px',
+                    width: '260px',
+                    maxWidth: '70vw',
+                    margin: '16px auto'
+                });
+                modal.find('.kinopoisk-auth__code').css({
+                    fontSize: '2em',
+                    letterSpacing: '0.12em',
+                    textAlign: 'center',
+                    margin: '8px 0'
+                });
+                modal.find('.kinopoisk-auth__status').css('textAlign', 'center');
+                modal.find('.kinopoisk-auth__done').css('textAlign', 'center');
+
+                function showStatus(type) {
+                    if (type === 'expired') {
+                        status.text('Код истёк. Закройте окно и попробуйте снова.');
+                    } else if (type === 'error') {
+                        status.text('Не удалось проверить код. Попробуйте ещё раз.');
+                    }
+                }
+
                 Lampa.Modal.open({
-                    title: 'Авторизация',
+                    title: 'Авторизация Кинопоиска',
                     html: modal,
                     align: 'center',
                     onBack: () => {
-                        Lampa.Modal.close()
+                        stopAuthPolling();
+                        Lampa.Modal.close();
                     },
-                    onSelect: () => { // on button click
-                        getToken(data.device_code, false);
+                    onSelect: () => { // manual check, then continue waiting if pending
+                        stopAuthPolling();
+                        status.text('Проверяем…');
+
+                        requestToken(data.device_code, false, {
+                            error: function(error) {
+                                if (error === 'authorization_pending') {
+                                    status.text('Ещё не подтверждено, ждём…');
+                                    startAuthPolling(data.device_code, data.interval, data.expires_in, showStatus);
+                                } else if (error === 'slow_down') {
+                                    status.text('Ещё не подтверждено, ждём…');
+                                    startAuthPolling(data.device_code, (Number(data.interval) || 5) + 5, data.expires_in, showStatus);
+                                } else if (error === 'expired_token' || error === 'invalid_grant') {
+                                    status.text('Код истёк. Закройте окно и попробуйте снова.');
+                                } else {
+                                    status.text('Не удалось проверить код. Попробуйте ещё раз.');
+                                    console.log('Kinopoisk', 'Token check error', error);
+                                }
+                            }
+                        });
                     }
-                })
+                });
+
+                startAuthPolling(data.device_code, data.interval, data.expires_in, showStatus);
             } else {
                 Lampa.Noty.show('Не удалось получить user_code');
                 console.log('Kinopoisk', 'Failed to get user_code', data.error);
             }
         }, function(data) { // on device code error
-            Lampa.Noty.show(data.responseJSON.error_description);
+            Lampa.Noty.show((data && data.responseJSON && data.responseJSON.error_description) || 'Не удалось получить код');
             console.log('Kinopoisk', 'Failed to get device code', data);
         }, device_code_data);
     }
