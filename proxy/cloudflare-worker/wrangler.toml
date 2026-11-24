@@ -1,0 +1,13 @@
+name = "kp-proxy"
+main = "worker.js"
+compatibility_date = "2025-06-01"
+
+# Переменные удобнее задавать в панели Cloudflare:
+#   Workers & Pages -> kp-proxy -> Settings -> Variables and Secrets
+#
+# PROXY_KEY - Secret. Длинная случайная строка. Тот же ключ указывается
+#             в настройках плагина в Лампе. Необязательна, но без нее
+#             прокси открыт всем, кто знает адрес.
+#
+# [vars]
+# PROXY_KEY = "замените-на-случайную-строку"
