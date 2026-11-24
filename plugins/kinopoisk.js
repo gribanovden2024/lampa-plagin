@@ -409,12 +409,13 @@ try {
                 var qr = modal.find('.kinopoisk-auth__qr');
                 var status = modal.find('.kinopoisk-auth__status');
                 var hint = modal.find('.kinopoisk-auth__hint');
-                var link = '<a href="' + verify_url + '" target="_blank" rel="noopener">' + verify_url + '</a>';
+                var code_url = Lampa.Utils.addUrlComponent(verify_url, 'user_code=' + encodeURIComponent(data.user_code));
+                var link = '<a href="' + code_url + '" target="_blank" rel="noopener">' + verify_url + '</a>';
                 var show_qr = Lampa.Utils && Lampa.Utils.qrcode && (Lampa.Platform.tv() || Lampa.Platform.desktop() || Lampa.Platform.mouse());
 
                 if (show_qr) {
                     hint.html('Отсканируйте QR-код или откройте ' + link + ' и введите код');
-                    Lampa.Utils.qrcode(verify_url, qr, function() {
+                    Lampa.Utils.qrcode(code_url, qr, function() {
                         qr.remove();
                     });
                 } else {

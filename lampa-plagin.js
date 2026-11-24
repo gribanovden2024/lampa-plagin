@@ -9,7 +9,7 @@
  *   2) Кинопоиск — «Буду смотреть»  ->  plugins/kinopoisk.js
  *   3) Strawberry / sisi (si.skaz.tv)  ->  plugins/sisi.js
  *
- * Собрано: 20261124222042
+ * Собрано: 20261124222550
  */
 
 (function () {
@@ -29,7 +29,7 @@
 
     window.lampa_plagin_installer = true;
 
-    var VERSION = '20261124222042';
+    var VERSION = '20261124222550';
 
     // Папка, из которой загружен этот файл. Нужна, чтобы плагины подхватывались
     // с того же адреса (GitHub Pages, свой сервер, локальная папка).
