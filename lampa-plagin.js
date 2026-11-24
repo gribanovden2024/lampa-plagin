@@ -9,11 +9,18 @@
  *   2) Кинопоиск — «Буду смотреть»  ->  plugins/kinopoisk.js
  *   3) Strawberry / sisi (si.skaz.tv)  ->  plugins/sisi.js
  *
- * Собрано: 20261124212313
+ * Собрано: 20261124214131
  */
 
 (function () {
     'use strict';
+
+    // Встроенная проверка расширений Лампы ищет в файле подстроку "Lampa."
+    // и без неё показывает ошибку 500 «не плагин».
+    if (!window.Lampa) {
+        console.error('[lampa-plagin] не найдено приложение Lampa. Плагин не загружен');
+        return;
+    }
 
     if (window.lampa_plagin_installer) {
         console.log('[lampa-plagin] установщик уже запущен');
@@ -22,7 +29,7 @@
 
     window.lampa_plagin_installer = true;
 
-    var VERSION = '20261124212313';
+    var VERSION = '20261124214131';
 
     // Папка, из которой загружен этот файл. Нужна, чтобы плагины подхватывались
     // с того же адреса (GitHub Pages, свой сервер, локальная папка).

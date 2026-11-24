@@ -26,7 +26,7 @@ const plugins = [
         name: 'Кинопоиск — «Буду смотреть»',
         src: 'src/kinopoisk.js',
         out: 'plugins/kinopoisk.js',
-        registers: 'компонент kinopoisk, раздел настроек kinopoisk, кнопка в левом меню',
+        registers: 'компонент kinopoisk, раздел настроек kinopoisk_settings, кнопка в левом меню',
         note: 'работает через собственный Cloudflare Worker, OAuth-токен третьим лицам не уходит'
     },
     {
@@ -34,7 +34,7 @@ const plugins = [
         name: 'Strawberry / sisi (si.skaz.tv)',
         src: 'src/sisi.js',
         out: 'plugins/sisi.js',
-        registers: 'компоненты sisi_lampac и sisi_view_lampac, раздел настроек sisi, источник поиска, кнопка в левом меню',
+        registers: 'компоненты sisi_lampac и sisi_view_lampac, раздел настроек sisi_settings, источник поиска, кнопка в левом меню',
         note: 'тянет данные с si.skaz.tv по HTTP и содержит канал удалённого управления (eval)'
     }
 ];
@@ -87,6 +87,13 @@ ${plugins.map((p) => ` *   ${p.num}) ${p.name}  ->  ${p.out}`).join('\n')}
 
 (function () {
     'use strict';
+
+    // Встроенная проверка расширений Лампы ищет в файле подстроку "Lampa."
+    // и без неё показывает ошибку 500 «не плагин».
+    if (!window.Lampa) {
+        console.error('[lampa-plagin] не найдено приложение Lampa. Плагин не загружен');
+        return;
+    }
 
     if (window.lampa_plagin_installer) {
         console.log('[lampa-plagin] установщик уже запущен');
