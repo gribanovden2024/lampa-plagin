@@ -10,7 +10,7 @@
  *   3) Strawberry / sisi (si.skaz.tv)  ->  plugins/sisi.js
  *   4) Телевидение — IPTV (M3U + XMLTV)  ->  plugins/tv.js
  *
- * Собрано: 20261125205538
+ * Собрано: 20261125205814
  */
 
 (function () {
@@ -30,7 +30,7 @@
 
     window.lampa_plagin_installer = true;
 
-    var VERSION = '20261125205538';
+    var VERSION = '20261125205814';
 
     // Папка, из которой загружен этот файл. Нужна, чтобы плагины подхватывались
     // с того же адреса (GitHub Pages, свой сервер, локальная папка).

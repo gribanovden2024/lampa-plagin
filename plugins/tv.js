@@ -877,7 +877,7 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
         var renderList = [];
         var renderIndex = 0;
         var moreElement = null;
-        var RENDER_LIMIT = 150;
+        var RENDER_LIMIT = 200;
         var channels = [];
         var groups = [];
         var category = {
