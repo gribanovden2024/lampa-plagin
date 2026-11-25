@@ -1,79 +1,79 @@
 {
-  "updated": "2026-11-25T21:55:33.082Z",
+  "updated": "2026-11-25T21:58:44.921Z",
   "channels": {
     "STS.ru": {
       "variants": {
         "0": {
-          "url": "https://edge08r.mediavitrina.ru/hlsp-livef6/ctc/index.m3u8?token=v2.jGU54CWGEhzlm5GWsVPIRlZKA-qdnqaWNfsVslWPiNA.aDjM97Qre7lw_oxz0s-S4gHjNGF03MpdPkLZ-xg6RZs.1796248532.e89656a0a2397446e563a15533dee535",
-          "quality": "1080p",
+          "url": "https://edge02d.mediavitrina.ru/hls-vod/streams/georestrictions/ctc_ctc_16x9_v2/index.m3u8?token=v2.FqvhrDwOL-sowbCszKyuWXLnNrrWMyfR841T9qJ3Imw.lfTQywC_vW2nYu9OK3Pbp8MJA4-BXFl8hmZQClXXaPw.1796248726.9f7cd36fe8251c50171d500b89d9b005",
+          "quality": "360p",
           "cors": true,
-          "exp": 1796248532
+          "exp": 1796248726
         },
         "2": {
-          "url": "https://edge08r.mediavitrina.ru/hlsp-livef6/ctc2/index.m3u8?token=v2.41RXKjZHYzZX_-W0x3X335lvmQyfWrL1c9o_qBjrimI.nvJQh8z8XnR3NKD6Nk_ErLxkGrwwwTih8216NKRgCsA.1796248532.c96cef40cc8688d78fb03acc431a0b67",
-          "quality": "480p",
+          "url": "https://edge02p.mediavitrina.ru/hls-vod/streams/georestrictions/ctc_ctc_16x9_v2/index.m3u8?token=v2.A4kmQlNdwZdAiL_d-lgPoMs3341IpntwMZWGkPZr0X0.xIn5nMH8qG4zVqaiWgwVUnIBwDLtSofl4e3SaIHoxzk.1796248727.db37698c9918875240ce74ce776bc5df",
+          "quality": "360p",
           "cors": true,
-          "exp": 1796248532
+          "exp": 1796248727
         },
         "4": {
-          "url": "https://edge02r.mediavitrina.ru/hlsp-livef5/ctc4/index.m3u8?token=v2.CeoaUc-go57gZM51opL4ze4bzitYqv1uNSQbq5VEvbE.kB3yty5qbJ0u8yKuJuv4ZFD1OpMid4rM-s1b7P_U-uE.1796248532.fcde2efb862c158bc12e41b07c2caaad",
-          "quality": "480p",
+          "url": "https://edge03p.mediavitrina.ru/hls-vod/streams/georestrictions/ctc_ctc_16x9_v2/index.m3u8?token=v2.dgwolSAQEOoUVK99UiYrYfMZ5LfLEdDkz-DNXYohiWU.vmc7sPz5nbCEzdOqOgNGx-DARSusJa3KwyJSQMcizR0.1796248728.908f254db9a8d919a436b4f6fdd6cdb4",
+          "quality": "360p",
           "cors": true,
-          "exp": 1796248532
+          "exp": 1796248728
         },
         "7": {
-          "url": "https://edge04p.mediavitrina.ru/hlsp-livef5/ctc7/index.m3u8?token=v2.tiPgts_d-YNyGaK9WGwjmc_OZl9-19wx_J-ORDK1UNo.wpCvS3NxhO3PXML2MFxUy4NhNhfLIoIuMrqF7FjhaAE.1796248533.57caafc8a376aed2a55a4534aaac9816",
-          "quality": "480p",
+          "url": "https://edge06r.mediavitrina.ru/hls-vod/streams/georestrictions/ctc_ctc_16x9_v2/index.m3u8?token=v2.SfTEaDupFnnMwCo8emoGq5ePF7vO4UMvB3_CW6Ks58M.cdl-fKCNJLPVIrZu69-uccGl6RyIIkrvbFB0UWMFEMA.1796248730.c4fc15ea4ccf3e3493e105c2fb81364f",
+          "quality": "360p",
           "cors": true,
-          "exp": 1796248533
+          "exp": 1796248730
         }
       }
     },
     "RENTV.ru": {
       "variants": {
         "0": {
-          "url": "https://edge07r.mediavitrina.ru/hlsp-livef5/ren-tv/index.m3u8?token=v2.W8UKMpJLH0065SUcESBLptlTCfcnNuzmJfMd6mLB-mU.4sB6ZQfFN96rgeQHUXgVvoWeKvSOMcet7I6eO55MIOc.1796248533.15a5ca83f67a68e77f4575b7c99a2b66",
-          "quality": "1080p",
+          "url": "https://edge02p.mediavitrina.ru/hls-vod/streams/georestrictions/nmg_ren-tv_16x9_v3/index.m3u8?token=v2.SGvcvMUM0xhwiKi6luvUWNkb0t4ZYzrQAFKTch8Rax4.9BWQ3q1UwyPOBto2FQYvZiV2BGEQ6C3ulFhhmt0pLoU.1796248731.ba45d371a7e58b0ef38e179c083d4545",
+          "quality": "360p",
           "cors": true,
-          "exp": 1796248533
+          "exp": 1796248731
         },
         "2": {
-          "url": "https://edge01d.mediavitrina.ru/hlsp-livef7/ren_2_sd/index.m3u8?token=v2.vRcboprpL9HXBVB_Qsg_6qyYyTPCpAnDjQiyS87XUm4.qOtWspXga9-eDpEQSUr6hLSMxx5lwpR6QvlvOVroC5g.1796248533.6cf9111691ed1655f2d72efd9f368457",
-          "quality": "480p",
+          "url": "https://edge07d.mediavitrina.ru/hls-vod/streams/georestrictions/nmg_ren-tv_16x9_v3/index.m3u8?token=v2.DlZjAhUN5bIl4RwGreKbySSpfLAjwPWllCuHAvfe8ZE.CLeZfWzLZjQRm5FlDafd3AbeThV7z9FBs5Rx-zyzJV4.1796248732.0a68bdbf47804c366bcbed3062daa6ef",
+          "quality": "360p",
           "cors": true,
-          "exp": 1796248533
+          "exp": 1796248732
         },
         "4": {
-          "url": "https://edge01p.mediavitrina.ru/hlsp-livef8/ren_4_sd/index.m3u8?token=v2.5x0XOrXD7R59QRVF08BmnhRvvL9wcyXl19RWVn-EWeQ.0UE2bGE8KaFYUzjMgU1I-8MwLcoImmB052VtbH0GmXU.1796248533.e6651b8c7ba1c4f19001bffae9711c33",
-          "quality": "480p",
+          "url": "https://edge01r.mediavitrina.ru/hls-vod/streams/georestrictions/nmg_ren-tv_16x9_v3/index.m3u8?token=v2.7PEoeBJBgjSEqVxWJQ4kyWmGrqRrHbyQ4BcJinAc1gI.J5UbeiMdYGPm1Wuz9l0-5EbslAWIwCD1Nt2W0MDpNnA.1796248733.a77e9984dbabf66fb8841ee9c711009b",
+          "quality": "360p",
           "cors": true,
-          "exp": 1796248533
+          "exp": 1796248733
         },
         "7": {
-          "url": "https://edge08d.mediavitrina.ru/hlsp-livef7/ren_7_sd/index.m3u8?token=v2.A8Ya8jzshDmLBPXlyZHXHmp55BhuWiV-BIXDJPtcSzc.vElG8Yq9mdyxvLltLoG_8sywZ8dlVa-1yS_R-wsfgZQ.1796248533.1bed94a9bf00ca92871e44fd23a44e06",
-          "quality": "480p",
+          "url": "https://edge08d.mediavitrina.ru/hls-vod/streams/georestrictions/nmg_ren-tv_16x9_v3/index.m3u8?token=v2.0xH8_i-HykX6_u69d6OWBwsKrwq-XUtjHJzWKlUaMp8.2qjcQ9gLdisfkyVqQ7FVQLa9MnXrD1WQNV4-CqNpE-E.1796248734.bfcdf7a9f9f8584aa3b1327ecdec2246",
+          "quality": "360p",
           "cors": true,
-          "exp": 1796248533
+          "exp": 1796248734
         }
       }
     },
     "5Kanal.ru": {
       "variants": {
         "0": {
-          "url": "https://edge02p.mediavitrina.ru/hlsp-livef7/5tv/index.m3u8?token=v2.zCbhqLxIpDBI-3G4KrUjuIiQ2PgODS7Z7e9hanys4EM.jaF-ToqMbWLBlkOYl4JqPTk__GQQnlLRs84H2Aqcry8.1796248533.d856daa6e9dbe4507e9320980bd825a5",
-          "quality": "1080p",
+          "url": "https://edge05p.mediavitrina.ru/hls-vod/streams/georestrictions/nmg_tv-5_16x9_v1/index.m3u8?token=v2.HSBpdtLtyVA1-5Ok_Gyhy-fWlaobX2aWxEfFJewIThQ.VYJvTtvC8ys03C64dgGSJ2S8XBQ_-IsKOWviYDNxwGY.1796248735.65610ed8224765988ac5dbf59a0a3aa9",
+          "quality": "360p",
           "cors": true,
-          "exp": 1796248533
+          "exp": 1796248735
         }
       }
     },
     "MuzTV.ru": {
       "variants": {
         "0": {
-          "url": "https://edge02d.mediavitrina.ru/hlsp-livef1/muztv/index.m3u8?token=v2.wxg139uVIBqxg57hR9YfgNxY5Q_DU74h7qewWphq-R4.CauE4m4yzvmg9q2aV49ylY9yt9vKBDYfXY4BQGubJtg.1796248533.e3c5b9721e570673eb47e76615583680",
-          "quality": "1080p",
+          "url": "https://edge02r.mediavitrina.ru/hls-vod/streams/georestrictions/muztv_16x9_v1/index.m3u8?token=v2.nLCtCnfm5ZNQCElc8DMRw2yS5RzfdSzu3xc-E60HgoI.xp-f3W9cAUWAgmePOY7nH2O6xviTnptDw7VUpofn71I.1796248736.02e9a2a2d53492d5c496c0e7162f1da3",
+          "quality": "360p",
           "cors": true,
-          "exp": 1796248533
+          "exp": 1796248736
         }
       }
     }
