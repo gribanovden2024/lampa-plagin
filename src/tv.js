@@ -19,7 +19,7 @@
     var PLUGIN_NAME = 'Телевидение';
     var MENU_TITLE = 'ТВ';
     var SCREEN_TITLE = 'TV';
-    var PLAYLIST_URL = 'https://gribanovden2024.github.io/lampa-plagin/examples/playlist.m3u';
+    var PLAYLIST_URL = 'https://gribanovden2024.github.io/lampa-plagin/examples/federal20.m3u';
     var CACHE_TTL = 15 * 60 * 1000;
 
     var KEYS = {
