@@ -33,6 +33,8 @@
     var ICONS = {
         tv: '<svg viewBox="0 0 38 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="8" width="34" height="21" rx="3" stroke="currentColor" stroke-width="2.6"/><path d="M9.5 34.5h19" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M13.1 2.4 16.4 6.9M25 2.4l-3.4 4.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>',
         list: '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2.5" y="4.5" width="19" height="4" rx="1.2" stroke="currentColor" stroke-width="1.6"/><rect x="2.5" y="10" width="19" height="4" rx="1.2" stroke="currentColor" stroke-width="1.6"/><rect x="2.5" y="15.5" width="19" height="4" rx="1.2" stroke="currentColor" stroke-width="1.6"/></svg>',
+        guide: '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M7 8h10M7 12h10M7 16h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
+        grid: '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="8" height="8" rx="1.4" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="3" width="8" height="8" rx="1.4" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="13" width="8" height="8" rx="1.4" stroke="currentColor" stroke-width="1.6"/><rect x="13" y="13" width="8" height="8" rx="1.4" stroke="currentColor" stroke-width="1.6"/></svg>',
         star: '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3.2 14.7 9l6.3.8-4.6 4.4 1.2 6.2-5.6-3-5.6 3 1.2-6.2L3 9.8 9.3 9 12 3.2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>',
         search: '<svg viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="9.6" r="7.4" stroke="currentColor" stroke-width="2.2"/><path d="m20.2 20.1-2.5-2.5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/></svg>',
         folder: '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 7.2c0-1 .8-1.7 1.7-1.7h4l1.8 2.3h8.8c1 0 1.7.8 1.7 1.7v8.3c0 1-.8 1.7-1.7 1.7H4.7c-1 0-1.7-.8-1.7-1.7V7.2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>',
@@ -75,6 +77,28 @@
 .tvp-card__bar{height:2px;background:rgba(255,255,255,.14);margin-top:.5em;border-radius:1em;overflow:hidden}
 .tvp-card__bar i{display:block;height:100%;width:0;background:#fff;border-radius:1em;transition:width .3s}
 .tvp-card.focus::after{content:'';position:absolute;left:-.36em;top:-.36em;right:-.36em;bottom:-.36em;border:.2em solid #fff;border-radius:.92em;pointer-events:none;z-index:3}
+.tvp__grid.tvp__list{display:block}
+.tvp-row{position:relative;display:flex;align-items:center;gap:1em;padding:.62em .8em;margin-bottom:.55em;border-radius:.6em;background:rgba(255,255,255,.045);cursor:pointer;line-height:1.3}
+.tvp-row__logo{width:5.3em;height:3em;flex-shrink:0;border-radius:.4em;background:#2c2c2c;display:flex;align-items:center;justify-content:center;padding:.35em;overflow:hidden}
+.tvp-row__logo img{max-width:100%;max-height:100%;object-fit:contain}
+.tvp-row__code{font-size:1.15em;font-weight:900;text-align:center;white-space:nowrap}
+.tvp-row__body{flex:1;min-width:0}
+.tvp-row__head{display:flex;align-items:center;gap:.5em}
+.tvp-row__name{font-size:1.02em;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tvp-row__fav{width:1em;height:1em;flex-shrink:0;visibility:hidden}
+.tvp-row__fav:not(:empty){visibility:visible}
+.tvp-row__fav svg{width:100%;height:100%;display:block}
+.tvp-row__now,.tvp-row__next{display:flex;align-items:baseline;gap:.55em;min-width:0}
+.tvp-row__now{margin-top:.18em;font-size:.98em}
+.tvp-row__next{margin-top:.18em;font-size:.86em;opacity:.55}
+.tvp-row__label{flex-shrink:0;width:3.9em;font-size:.7em;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
+.tvp-row__time{flex-shrink:0;opacity:.7;font-variant-numeric:tabular-nums}
+.tvp-row__title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tvp-row__bar{height:2px;margin-top:.4em;background:rgba(255,255,255,.12);border-radius:1em;overflow:hidden}
+.tvp-row__bar i{display:block;height:100%;width:0;background:#fff;border-radius:1em;transition:width .3s}
+.tvp-row.focus{background:rgba(255,255,255,.16)}
+.tvp-row.focus::after{content:'';position:absolute;left:-.22em;top:-.22em;right:-.22em;bottom:-.22em;border:.18em solid #fff;border-radius:.8em;pointer-events:none;z-index:3}
+.tvp__grid.tvp__list .tvp-more{display:block;width:100%;margin-top:.1em}
 .tvp-more{grid-column:1/-1;text-align:center;padding:.85em 1em;border-radius:.55em;background:rgba(255,255,255,.08);font-size:1.05em;opacity:.8;cursor:pointer}
 .tvp-more.focus{background:#fff;color:#000;opacity:1}
 .tvp-empty{position:absolute;left:0;top:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:2em}
@@ -95,12 +119,20 @@
 .tvp__menu .scroll__content{padding:0}
 .tvp-menu-item{flex-shrink:0;margin:0 .4em 0 0}
 .tvp__grid{grid-template-columns:repeat(auto-fill,minmax(10.5em,1fr));gap:.8em}
+.tvp-row{gap:.7em;padding:.5em .6em}
+.tvp-row__logo{width:4.2em;height:2.4em}
+.tvp-row__label{width:auto;font-size:.64em}
 }
 body.light--version .tvp-card__inner{background:#e6e6e6}
 body.light--version .tvp-card__logo{background:#dcdcdc}
 body.light--version .tvp-card__info{background:#efefef}
 body.light--version .tvp-card__bar{background:rgba(0,0,0,.14)}
 body.light--version .tvp-card__bar i{background:#111}
+body.light--version .tvp-row{background:rgba(0,0,0,.05)}
+body.light--version .tvp-row.focus{background:rgba(0,0,0,.1)}
+body.light--version .tvp-row__logo{background:#dcdcdc}
+body.light--version .tvp-row__bar{background:rgba(0,0,0,.14)}
+body.light--version .tvp-row__bar i{background:#111}
 body.platform--orsay .tvp__grid,body.platform--netcast .tvp__grid{display:block}
 body.platform--orsay .tvp__grid:after,body.platform--netcast .tvp__grid:after{content:'';display:block;clear:both}
 body.platform--orsay .tvp-card,body.platform--netcast .tvp-card{float:left;width:25%;padding:0 .65em .65em}
@@ -851,6 +883,7 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
             type: 'all',
             value: ''
         };
+        var viewMode = 'list';
         var query = '';
         var epgReady = false;
         var loading = false;
@@ -1010,11 +1043,21 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
                 query = '';
 
                 renderMenu();
-                renderGrid();
+                renderContent();
                 focusFirstCard();
             });
 
             return element;
+        }
+
+        function setView(mode) {
+            if (viewMode === mode) return;
+
+            viewMode = mode;
+
+            renderMenu();
+            renderContent();
+            focusFirstCard();
         }
 
         function renderMenu() {
@@ -1022,6 +1065,26 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
             var items = [];
 
             activeMenuItem = null;
+
+            items.push({
+                label: 'Список',
+                icon: ICONS.guide,
+                count: null,
+                active: viewMode === 'list',
+                action: function () {
+                    setView('list');
+                }
+            });
+
+            items.push({
+                label: 'Плитка',
+                icon: ICONS.grid,
+                count: null,
+                active: viewMode === 'grid',
+                action: function () {
+                    setView('grid');
+                }
+            });
 
             items.push({
                 label: 'Все каналы',
@@ -1087,6 +1150,26 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
             }
         }
 
+        function fillLogo(box, channel, codeClass) {
+            function showCode() {
+                box.html('<div class="' + codeClass + '">' + escapeHtml(channelCode(channel.name)) + '</div>');
+            }
+
+            if (channel.logo) {
+                var image = $('<img alt="">');
+
+                image.on('error', function () {
+                    image.remove();
+                    showCode();
+                });
+
+                box.append(image);
+                image.attr('src', channel.logo);
+            } else {
+                showCode();
+            }
+        }
+
         function buildCard(channel) {
             var element = $(
                 '<div class="tvp-card selector">' +
@@ -1101,39 +1184,77 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
             );
 
             var logoBox = element.find('.tvp-card__logo');
-            var favorite = isFavorite(channel);
 
-            if (favorite) {
+            fillLogo(logoBox, channel, 'tvp-card__code');
+
+            if (isFavorite(channel)) {
                 element.find('.tvp-card__inner').append('<div class="tvp-card__fav">' + ICONS.fav + '</div>');
             }
 
-            function showCode() {
-                logoBox.html('<div class="tvp-card__code">' + escapeHtml(channelCode(channel.name)) + '</div>');
-            }
-
-            if (channel.logo) {
-                var image = $('<img alt="">');
-
-                image.on('error', function () {
-                    image.remove();
-                    showCode();
-                });
-
-                logoBox.append(image);
-                image.attr('src', channel.logo);
-            } else {
-                showCode();
-            }
-
             var entry = {
+                kind: 'card',
                 element: element,
                 channel: channel,
                 program: element.find('.tvp-card__prog'),
                 bar: element.find('.tvp-card__bar i')
             };
 
-            updateCard(entry);
+            updateEntry(entry);
+            bindEntry(element, channel);
 
+            return entry;
+        }
+
+        function buildRow(channel) {
+            var element = $(
+                '<div class="tvp-row selector">' +
+                    '<div class="tvp-row__logo"></div>' +
+                    '<div class="tvp-row__body">' +
+                        '<div class="tvp-row__head">' +
+                            '<div class="tvp-row__name"></div>' +
+                            '<div class="tvp-row__fav"></div>' +
+                        '</div>' +
+                        '<div class="tvp-row__now">' +
+                            '<span class="tvp-row__label">Сейчас</span>' +
+                            '<span class="tvp-row__time"></span>' +
+                            '<span class="tvp-row__title"></span>' +
+                        '</div>' +
+                        '<div class="tvp-row__bar"><i></i></div>' +
+                        '<div class="tvp-row__next">' +
+                            '<span class="tvp-row__label">Далее</span>' +
+                            '<span class="tvp-row__time"></span>' +
+                            '<span class="tvp-row__title"></span>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>'
+            );
+
+            element.find('.tvp-row__name').text(channel.name);
+
+            fillLogo(element.find('.tvp-row__logo'), channel, 'tvp-row__code');
+
+            if (isFavorite(channel)) {
+                element.find('.tvp-row__fav').html(ICONS.fav);
+            }
+
+            var entry = {
+                kind: 'row',
+                element: element,
+                channel: channel,
+                nowTime: element.find('.tvp-row__now .tvp-row__time'),
+                nowTitle: element.find('.tvp-row__now .tvp-row__title'),
+                nextTime: element.find('.tvp-row__next .tvp-row__time'),
+                nextTitle: element.find('.tvp-row__next .tvp-row__title'),
+                bar: element.find('.tvp-row__bar i')
+            };
+
+            updateEntry(entry);
+            bindEntry(element, channel);
+
+            return entry;
+        }
+
+        function bindEntry(element, channel) {
             element.on('hover:focus', function () {
                 lastFocus = element[0];
                 gridScroll.update(element);
@@ -1146,12 +1267,60 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
             element.on('hover:long', function () {
                 showChannelMenu(channel);
             });
-
-            return entry;
         }
 
-        function updateCard(entry) {
+        function nextProgramAfter(channel, current) {
+            var programs = programsFor(channel);
+
+            if (!programs || !programs.length) return null;
+
+            if (current) {
+                var index = programs.indexOf(current);
+
+                if (index >= 0) return programs[index + 1] || null;
+            }
+
             var now = Date.now();
+
+            for (var i = 0; i < programs.length; i++) {
+                if (programs[i].start > now) return programs[i];
+            }
+
+            return null;
+        }
+
+        function updateEntry(entry) {
+            var now = Date.now();
+
+            if (entry.kind === 'row') {
+                var current = epgReady ? programAt(entry.channel, now) : null;
+                var next = epgReady ? nextProgramAfter(entry.channel, current) : null;
+
+                if (current) {
+                    entry.nowTime.text(timeHHMM(current.start) + '–' + timeHHMM(current.stop));
+                    entry.nowTitle.text(current.title);
+                    entry.bar.css('width', programPercent(current, now) + '%');
+                } else {
+                    entry.nowTime.text('');
+                    entry.nowTitle.text(entry.channel.name);
+                    entry.bar.css('width', '0%');
+                }
+
+                entry.nowTitle.attr('title', entry.nowTitle.text());
+
+                if (next) {
+                    entry.nextTime.text(timeHHMM(next.start));
+                    entry.nextTitle.text(next.title);
+                } else {
+                    entry.nextTime.text('');
+                    entry.nextTitle.text(epgReady ? 'Нет данных' : 'Загрузка программы…');
+                }
+
+                entry.nextTitle.attr('title', entry.nextTitle.text());
+
+                return;
+            }
+
             var program = epgReady ? programAt(entry.channel, now) : null;
 
             if (program) {
@@ -1166,13 +1335,14 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
         }
 
         function updateCards() {
-            cards.forEach(updateCard);
+            cards.forEach(updateEntry);
         }
 
-        function renderGrid() {
+        function renderContent() {
             var list = visibleChannels();
 
             hideEmpty();
+            grid.toggleClass('tvp__list', viewMode === 'list');
             grid.empty();
             cards = [];
             renderList = list;
@@ -1204,7 +1374,7 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
             var end = Math.min(renderList.length, renderIndex + RENDER_LIMIT);
 
             for (var i = renderIndex; i < end; i++) {
-                var entry = buildCard(renderList[i]);
+                var entry = viewMode === 'list' ? buildRow(renderList[i]) : buildCard(renderList[i]);
 
                 cards.push(entry);
                 grid.append(entry.element);
@@ -1281,7 +1451,7 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
                 Lampa.Controller.toggle('content');
 
                 renderMenu();
-                renderGrid();
+                renderContent();
                 focusFirstCard();
             });
         }
@@ -1303,7 +1473,7 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
                         Lampa.Noty.show(added ? 'Добавлено в избранное' : 'Удалено из избранного');
 
                         renderMenu();
-                        renderGrid();
+                        renderContent();
                         focusFirstCard();
                     }
 
@@ -1495,7 +1665,7 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
                 groups = data.groups;
 
                 renderMenu();
-                renderGrid();
+                renderContent();
                 focusFirstCard();
 
                 if (self.activity) self.activity.loader(false);
