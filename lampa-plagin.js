@@ -8,8 +8,9 @@
  *   1) LGBT — выключение раздела  ->  plugins/lgbt.js
  *   2) Кинопоиск — «Буду смотреть»  ->  plugins/kinopoisk.js
  *   3) Strawberry / sisi (si.skaz.tv)  ->  plugins/sisi.js
+ *   4) Телевидение — IPTV (M3U + XMLTV)  ->  plugins/tv.js
  *
- * Собрано: 20261124222550
+ * Собрано: 20261125192600
  */
 
 (function () {
@@ -29,7 +30,7 @@
 
     window.lampa_plagin_installer = true;
 
-    var VERSION = '20261124222550';
+    var VERSION = '20261125192600';
 
     // Папка, из которой загружен этот файл. Нужна, чтобы плагины подхватывались
     // с того же адреса (GitHub Pages, свой сервер, локальная папка).
@@ -48,7 +49,8 @@
     var PLUGINS = [
         { name: 'LGBT — выключение раздела', file: 'plugins/lgbt.js' },
         { name: 'Кинопоиск — «Буду смотреть»', file: 'plugins/kinopoisk.js' },
-        { name: 'Strawberry / sisi (si.skaz.tv)', file: 'plugins/sisi.js' }
+        { name: 'Strawberry / sisi (si.skaz.tv)', file: 'plugins/sisi.js' },
+        { name: 'Телевидение — IPTV (M3U + XMLTV)', file: 'plugins/tv.js' }
     ];
 
     console.log('[lampa-plagin] установщик, плагинов: ' + PLUGINS.length + ', база: ' + BASE);

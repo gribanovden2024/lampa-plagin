@@ -36,6 +36,14 @@ const plugins = [
         out: 'plugins/sisi.js',
         registers: 'раздел настроек sisi_settings (по умолчанию выключен); при включении — компоненты sisi_lampac и sisi_view_lampac, источник поиска, кнопка в левом меню',
         note: 'тянет данные с si.skaz.tv по HTTP и содержит канал удалённого управления (eval)'
+    },
+    {
+        num: 4,
+        name: 'Телевидение — IPTV (M3U + XMLTV)',
+        src: 'src/tv.js',
+        out: 'plugins/tv.js',
+        registers: 'компонент tv, раздел настроек tv_settings, кнопка «ТВ» в левом меню',
+        note: 'плейлист и программа задаются в настройках; данные кэшируются в памяти на 15 минут'
     }
 ];
 
