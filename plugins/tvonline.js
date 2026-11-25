@@ -143,6 +143,57 @@ try {
         loaded: 0
     };
 
+    var FALLBACK = {
+        'ChannelOne.ru': ['http://31.148.5.241/kanal_1/index.m3u8', '576p'],
+        'Russia1.ru': ['http://31.148.5.241/kanal_2/index.m3u8', '576p'],
+        'Russia24.ru': ['http://31.148.5.241/kanal_7/index.m3u8', '576p'],
+        'RussiaK.ru': ['http://31.148.5.241/kanal_6/index.m3u8', '576p'],
+        '5Kanal.ru': ['http://31.148.5.241/kanal_5/index.m3u8', '576p'],
+        'NTV.ru': ['http://31.148.5.241/kanal_4/index.m3u8', '576p'],
+        'MatchTV.ru': ['http://31.148.5.241/kanal_3/index.m3u8', '1080p'],
+        'Karusel.ru': ['http://31.148.5.241/kanal_8/index.m3u8', '576p'],
+        'OTR.ru': ['http://31.148.5.241/kanal_9/index.m3u8', '576p'],
+        'TVCentr.ru': ['http://31.148.5.241/kanal_10/index.m3u8', '576p'],
+        'RENTV.ru': ['http://31.148.5.241/kanal_11/index.m3u8', '576p'],
+        'Spas.ru': ['http://31.148.5.241/kanal_12/index.m3u8', '576p'],
+        'STS.ru': ['http://31.148.5.241/kanal_13/index.m3u8', '576p'],
+        'Domashniy.ru': ['http://31.148.5.241/kanal_14/index.m3u8', '576p'],
+        'TV3.ru': ['http://31.148.5.241/kanal_15/index.m3u8', '576p'],
+        'Pyatnitsa.ru': ['http://31.148.5.241/kanal_16/index.m3u8', '576p'],
+        'TelekanalZvezda.ru': ['http://31.148.5.241/kanal_17/index.m3u8', '576p'],
+        'Mir.ru': ['http://31.148.5.241/kanal_18/index.m3u8', '576p'],
+        'TNT.ru': ['http://31.148.5.241/kanal_19/index.m3u8', '576p'],
+        'MuzTV.ru': ['http://31.148.5.241/kanal_20/index.m3u8', '576p']
+    };
+
+    CHANNELS.forEach(function (channel) {
+        var fallback = FALLBACK[channel.id];
+        channel.fallback = fallback ? fallback[0] : channel.url;
+        channel.fallbackQuality = fallback ? fallback[1] : channel.quality;
+    });
+
+    CHANNELS.forEach(function (channel) {
+        if (channel.id === 'MatchTV.ru') channel.seek = true;
+    });
+
+    function mode() {
+        return Lampa.Storage.get('tvonline_mode', 'compat') === 'official' ? 'official' : 'compat';
+    }
+
+    function channelUrl(channel) {
+        var url = mode() === 'official' ? channel.url : (channel.fallback || channel.url);
+
+        if (channel.seek && mode() === 'official') {
+            url += (url.indexOf('?') >= 0 ? '&' : '?') + 'seek=' + (Math.floor(Date.now() / 1000) - 30);
+        }
+
+        return url;
+    }
+
+    function channelQuality(channel) {
+        return mode() === 'official' ? channel.quality : channel.fallbackQuality;
+    }
+
     var CSS = `
 .tvo{position:relative;box-sizing:border-box;padding:1.6em 2.2em 1.2em 1.5em;overflow:hidden;line-height:1.3;display:flex;flex-direction:column}
 .tvo *{box-sizing:border-box}
@@ -354,6 +405,7 @@ body.light--version .tvo-row__bar i{background:#111}
         var initialized = false;
         var destroyed = false;
         var timer = null;
+        var lastMode = null;
 
         function build() {
             root.html(
@@ -375,6 +427,7 @@ body.light--version .tvo-row__bar i{background:#111}
         }
 
         function renderRows() {
+            lastMode = mode();
             scroll.clear();
             rows = [];
 
@@ -403,7 +456,7 @@ body.light--version .tvo-row__bar i{background:#111}
                 );
 
                 row.find('.tvo-row__name').text(channel.name);
-                row.find('.tvo-row__quality').text(channel.quality);
+                row.find('.tvo-row__quality').text(channelQuality(channel));
 
                 fillLogo(row.find('.tvo-row__logo'), channel);
 
@@ -485,7 +538,7 @@ body.light--version .tvo-row__bar i{background:#111}
 
             if (!Lampa.Player || typeof Lampa.Player.iptv !== 'function') {
                 if (Lampa.Player && Lampa.Player.play) {
-                    Lampa.Player.play({ title: channel.name, url: channel.url });
+                    Lampa.Player.play({ title: channel.name, url: channelUrl(channel) });
                 }
                 return;
             }
@@ -498,7 +551,7 @@ body.light--version .tvo-row__bar i{background:#111}
                     name: source.name,
                     group: 'ТВ онлайн',
                     logo: source.logo || '',
-                    url: source.url,
+                    url: channelUrl(source),
                     tvgId: source.id,
                     icons: []
                 };
@@ -532,7 +585,7 @@ body.light--version .tvo-row__bar i{background:#111}
             Lampa.Player.iptv({
                 position: index,
                 total: CHANNELS.length,
-                url: channel.url,
+                url: channelUrl(channel),
                 title: channel.name,
                 onGetChannel: prepare,
                 onGetProgram: function (playerChannel, position, container) {
@@ -599,6 +652,12 @@ body.light--version .tvo-row__bar i{background:#111}
             if (destroyed) return;
 
             Lampa.Layer.update(root);
+
+            if (initialized && lastMode !== mode()) {
+                lastFocus = null;
+                renderRows();
+            }
+
             this.initialize();
 
             Lampa.Controller.add('content', {
@@ -699,6 +758,23 @@ body.light--version .tvo-row__bar i{background:#111}
             },
             onChange: function () {
                 syncMenu();
+            }
+        });
+
+        Lampa.SettingsApi.addParam({
+            component: 'tvonline_settings',
+            param: {
+                name: 'tvonline_mode',
+                type: 'select',
+                values: {
+                    compat: 'Совместимые (работают в браузере)',
+                    official: 'Официальные HD (нужен внешний плеер)'
+                },
+                default: 'compat'
+            },
+            field: {
+                name: 'Потоки',
+                description: 'Совместимые отдают CORS и идут в 576p; официальные — HD, но часть без CORS'
             }
         });
 
