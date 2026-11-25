@@ -105,6 +105,10 @@ async function resolve(source, slug) {
 
     if (!url) throw new Error('нет hls/hlsp');
 
+    // GitHub Actions и другие зарубежные IP получают заглушку вместо канала.
+    if (/georestrictions/i.test(url)) throw new Error('гео-заглушка (IP вне РФ)');
+    if (data.country && data.country !== 'RU') throw new Error('страна ' + data.country + ', нужна РФ');
+
     const masterResponse = await fetch(url, { headers: { 'user-agent': UA } });
 
     if (!masterResponse.ok) throw new Error('master: HTTP ' + masterResponse.status);

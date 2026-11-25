@@ -183,9 +183,11 @@ window.lampa_settings.disable_features.lgbt = true;
   не запрашивается.
 
 Официальные ссылки MediaVitrina содержат токен со сроком около 7 дней.
-Их обновляет `node scripts/update-streams.mjs`; в GitHub Actions это делает
-workflow `update-streams` раз в сутки и коммитит
-[`examples/tvonline-streams.json`](examples/tvonline-streams.json).
+Их обновляет `node scripts/update-streams.mjs` с российского IP (домашний
+компьютер или сервер). Workflow `update-streams` запускается по расписанию,
+но раннеры GitHub находятся за пределами РФ и получают гео-заглушку, поэтому
+файл они не меняют. Если ссылки устарели, плагин возвращается к резервному
+источнику.
 
 Ограничения: часть официальных страниц использует DRM (Widevine), поэтому
 их прямой поток не извлекается. Некоторые HTTPS-потоки не отдают CORS — в браузере
