@@ -6,7 +6,7 @@
  * Запуск: node scripts/update-epg.mjs
  *
  * Скрипт читает gzip-поток построчно и оставляет только нужные каналы
- * и передачи в окне «12 часов назад … 48 часов вперёд».
+ * и передачи в окне «12 часов назад … 7 дней вперёд».
  */
 import { createWriteStream } from 'node:fs';
 import { Readable } from 'node:stream';
@@ -44,7 +44,7 @@ const byId = new Map(channels.map((c) => [c.id, c]));
 
 const now = Date.now();
 const from = now - 12 * 60 * 60 * 1000;
-const to = now + 48 * 60 * 60 * 1000;
+const to = now + 7 * 24 * 60 * 60 * 1000;
 
 function parseTime(value) {
     const match = String(value).match(/^(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})?\s*([+-]\d{4})?/);

@@ -171,6 +171,7 @@ src/sisi.js                  исходник sisi
 src/tv.js                    исходник телевидения
 build.mjs                    сборка
 scripts/update-epg.mjs       обновление federal20.xml
+.github/workflows/update-epg.yml  ежедневное обновление EPG
 examples/federal20.m3u       пример плейлиста на 20 каналов
 examples/federal20.xml       программа передач к нему
 proxy/cloudflare-worker/     CORS-прокси для Кинопоиска (Cloudflare Worker)

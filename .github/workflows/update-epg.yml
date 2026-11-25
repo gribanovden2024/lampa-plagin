@@ -1,0 +1,36 @@
+name: update-epg
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Обновить программу передач
+        run: node scripts/update-epg.mjs
+
+      - name: Закоммитить изменения
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add examples/federal20.xml
+          if git diff --cached --quiet; then
+            echo "Программа не изменилась"
+          else
+            git commit -m "epg: обновление программы федеральных каналов"
+            git push
+          fi
