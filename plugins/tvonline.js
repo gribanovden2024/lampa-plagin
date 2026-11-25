@@ -28,6 +28,7 @@ try {
     var MENU_TITLE = 'ТВ онлайн';
     var SCREEN_TITLE = 'ТВ онлайн';
     var EPG_URL = 'https://gribanovden2024.github.io/lampa-plagin/examples/federal20.xml';
+    var STREAMS_URL = 'https://gribanovden2024.github.io/lampa-plagin/examples/tvonline-streams.json';
     var EPG_TTL = 15 * 60 * 1000;
     var STORAGE_ENABLED = 'tvonline_enabled';
 
@@ -140,7 +141,9 @@ try {
 
     var memory = {
         epg: null,
-        loaded: 0
+        loaded: 0,
+        streams: false,
+        streamsLoaded: 0
     };
 
     var FALLBACK = {
@@ -168,8 +171,12 @@ try {
 
     CHANNELS.forEach(function (channel) {
         var fallback = FALLBACK[channel.id];
+
+        channel.urlShift = /31\.148\.5\.241/.test(channel.url) ? 7 : 0;
+
         channel.fallback = fallback ? fallback[0] : channel.url;
         channel.fallbackQuality = fallback ? fallback[1] : channel.quality;
+        channel.fallbackShift = /31\.148\.5\.241/.test(channel.fallback) ? 7 : channel.urlShift;
     });
 
     CHANNELS.forEach(function (channel) {
@@ -180,8 +187,57 @@ try {
         return Lampa.Storage.get('tvonline_mode', 'compat') === 'official' ? 'official' : 'compat';
     }
 
+    // Часовой сдвиг канала относительно Москвы. По умолчанию берём с устройства:
+    // так трансляция совпадает с сайтом вещателя в регионе зрителя.
+    function preferredShift() {
+        var stored = Lampa.Storage.get('tvonline_shift', 'auto');
+
+        if (stored !== 'auto') {
+            var manual = parseInt(stored, 10);
+            return isNaN(manual) ? 0 : Math.max(0, Math.min(7, manual));
+        }
+
+        var offset = -new Date().getTimezoneOffset();
+        var shift = Math.round((offset - 180) / 60);
+
+        return Math.max(0, Math.min(7, shift));
+    }
+
+    function isFresh(stream) {
+        return !stream.exp || stream.exp * 1000 > Date.now() + 60000;
+    }
+
+    function pickVariant(variants, shift) {
+        var best = null;
+        var lowest = null;
+
+        Object.keys(variants).forEach(function (key) {
+            var value = variants[key];
+            var index = parseInt(key, 10);
+
+            if (!value || !value.url || isNaN(index)) return;
+
+            if (!lowest || index < lowest.index) lowest = { index: index, value: value };
+            if (index <= shift && (!best || index > best.index)) best = { index: index, value: value };
+        });
+
+        return best || lowest;
+    }
+
+    function channelShift(channel) {
+        if (channel.mediaUrl) return channel.mediaShift || 0;
+        if (mode() === 'official') return channel.urlShift || 0;
+        return channel.fallbackShift || channel.urlShift || 0;
+    }
+
     function channelUrl(channel) {
-        var url = mode() === 'official' ? channel.url : (channel.fallback || channel.url);
+        var url = channel.mediaUrl;
+
+        if (!url) {
+            url = mode() === 'official'
+                ? (channel.officialUrl || channel.url)
+                : (channel.fallback || channel.officialUrl || channel.url);
+        }
 
         if (channel.seek && mode() === 'official') {
             url += (url.indexOf('?') >= 0 ? '&' : '?') + 'seek=' + (Math.floor(Date.now() / 1000) - 30);
@@ -191,7 +247,11 @@ try {
     }
 
     function channelQuality(channel) {
-        return mode() === 'official' ? channel.quality : channel.fallbackQuality;
+        if (channel.mediaUrl && channel.mediaQuality) return channel.mediaQuality;
+
+        return mode() === 'official'
+            ? (channel.officialQuality || channel.quality)
+            : channel.fallbackQuality;
     }
 
     var CSS = `
@@ -363,6 +423,55 @@ body.light--version .tvo-row__bar i{background:#111}
         }, false, { dataType: 'text' });
     }
 
+    function loadStreams(callback) {
+        if (memory.streams && Date.now() - memory.streamsLoaded < EPG_TTL) {
+            callback();
+            return;
+        }
+
+        var network = new Lampa.Reguest();
+        network.timeout(20000);
+        network.native(STREAMS_URL, function (text) {
+            network.clear();
+
+            var shift = preferredShift();
+
+            try {
+                var data = JSON.parse(text);
+                var map = data.channels || data.streams || {};
+
+                CHANNELS.forEach(function (channel) {
+                    var entry = map[channel.id];
+
+                    channel.mediaUrl = null;
+                    channel.mediaQuality = '';
+                    channel.mediaShift = 0;
+
+                    if (!entry) return;
+
+                    var picked = entry.variants
+                        ? pickVariant(entry.variants, shift)
+                        : (entry.url ? { index: 0, value: entry } : null);
+
+                    if (!picked || !isFresh(picked.value)) return;
+
+                    channel.mediaUrl = picked.value.url;
+                    channel.mediaQuality = picked.value.quality || '';
+                    channel.mediaShift = picked.index;
+                });
+            } catch (e) {}
+
+            memory.streams = true;
+            memory.streamsLoaded = Date.now();
+            callback();
+        }, function () {
+            network.clear();
+            memory.streams = true;
+            memory.streamsLoaded = Date.now();
+            callback();
+        }, false, { dataType: 'text' });
+    }
+
     function programsFor(channel) {
         return memory.epg ? memory.epg[channel.id] || null : null;
     }
@@ -370,8 +479,11 @@ body.light--version .tvo-row__bar i{background:#111}
     function programAt(channel, time) {
         var programs = programsFor(channel);
         if (!programs) return null;
+
+        var local = time - channelShift(channel) * 3600000;
+
         for (var i = 0; i < programs.length; i++) {
-            if (time >= programs[i].start && time < programs[i].stop) return programs[i];
+            if (local >= programs[i].start && local < programs[i].stop) return programs[i];
         }
         return null;
     }
@@ -383,16 +495,17 @@ body.light--version .tvo-row__bar i{background:#111}
             var index = programs.indexOf(current);
             if (index >= 0) return programs[index + 1] || null;
         }
-        var now = Date.now();
+        var now = Date.now() - channelShift(channel) * 3600000;
         for (var i = 0; i < programs.length; i++) {
             if (programs[i].start > now) return programs[i];
         }
         return null;
     }
 
-    function percent(program, time) {
+    function percent(program, time, shift) {
         var total = program.stop - program.start;
-        return total > 0 ? Math.max(0, Math.min(100, (time - program.start) / total * 100)) : 0;
+        var local = time - (shift || 0);
+        return total > 0 ? Math.max(0, Math.min(100, (local - program.start) / total * 100)) : 0;
     }
 
     function Component(object) {
@@ -406,6 +519,7 @@ body.light--version .tvo-row__bar i{background:#111}
         var destroyed = false;
         var timer = null;
         var lastMode = null;
+        var lastShift = null;
 
         function build() {
             root.html(
@@ -428,6 +542,7 @@ body.light--version .tvo-row__bar i{background:#111}
 
         function renderRows() {
             lastMode = mode();
+            lastShift = preferredShift();
             scroll.clear();
             rows = [];
 
@@ -507,13 +622,16 @@ body.light--version .tvo-row__bar i{background:#111}
 
         function updateRow(entry) {
             var now = Date.now();
+            var shift = channelShift(entry.channel) * 3600000;
             var current = programAt(entry.channel, now);
             var next = nextAt(entry.channel, current);
 
+            entry.element.find('.tvo-row__quality').text(channelQuality(entry.channel));
+
             if (current) {
-                entry.nowTime.text(timeHHMM(current.start) + '–' + timeHHMM(current.stop));
+                entry.nowTime.text(timeHHMM(current.start + shift) + '–' + timeHHMM(current.stop + shift));
                 entry.nowTitle.text(current.title);
-                entry.bar.css('width', percent(current, now) + '%');
+                entry.bar.css('width', percent(current, now, shift) + '%');
             } else {
                 entry.nowTime.text('');
                 entry.nowTitle.text(entry.channel.name);
@@ -521,7 +639,7 @@ body.light--version .tvo-row__bar i{background:#111}
             }
 
             if (next) {
-                entry.nextTime.text(timeHHMM(next.start));
+                entry.nextTime.text(timeHHMM(next.start + shift));
                 entry.nextTitle.text(next.title);
             } else {
                 entry.nextTime.text('');
@@ -547,12 +665,15 @@ body.light--version .tvo-row__bar i{background:#111}
                 var source = CHANNELS[position];
                 if (!source) return null;
 
+                var shift = channelShift(source);
+
                 var prepared = {
                     name: source.name,
                     group: 'ТВ онлайн',
                     logo: source.logo || '',
                     url: channelUrl(source),
                     tvgId: source.id,
+                    shift: shift,
                     icons: []
                 };
 
@@ -560,7 +681,7 @@ body.light--version .tvo-row__bar i{background:#111}
                 var programIndex = 0;
 
                 if (programs && programs.length) {
-                    var now = Date.now();
+                    var now = Date.now() - shift * 3600000;
                     for (var i = 0; i < programs.length; i++) {
                         if (now >= programs[i].start && now < programs[i].stop) {
                             programIndex = i;
@@ -600,19 +721,21 @@ body.light--version .tvo-row__bar i{background:#111}
                     }
 
                     var now = Date.now();
+                    var shift = (playerChannel.shift || 0) * 3600000;
+
                     programs.slice(position, position + 3).forEach(function (program) {
-                        var active = now >= program.start && now < program.stop;
+                        var active = now >= program.start + shift && now < program.stop + shift;
                         var item = $('<div class="player-panel-iptv-item__prog-item"><span></span></div>');
 
                         item.find('span').text(
-                            timeHHMM(program.start) + (active ? ' - ' + timeHHMM(program.stop) : '') + '   ' + program.title
+                            timeHHMM(program.start + shift) + (active ? ' - ' + timeHHMM(program.stop + shift) : '') + '   ' + program.title
                         );
 
                         if (active) {
                             item.addClass('watch');
                             item.append(
                                 '<div class="player-panel-iptv-item__prog-timeline">' +
-                                    '<div style="width:' + percent(program, now) + '%"></div>' +
+                                    '<div style="width:' + percent(program, now, shift) + '%"></div>' +
                                 '</div>'
                             );
                         }
@@ -635,6 +758,12 @@ body.light--version .tvo-row__bar i{background:#111}
 
             if (this.activity) this.activity.loader(true);
 
+            loadStreams(function () {
+                if (destroyed) return;
+
+                if (memory.epg) updateRows();
+            });
+
             loadEpg(function () {
                 if (destroyed) return;
 
@@ -653,9 +782,17 @@ body.light--version .tvo-row__bar i{background:#111}
 
             Lampa.Layer.update(root);
 
-            if (initialized && lastMode !== mode()) {
+            if (initialized && (lastMode !== mode() || lastShift !== preferredShift())) {
                 lastFocus = null;
+
+                memory.streams = false;
+                memory.streamsLoaded = 0;
+
                 renderRows();
+
+                loadStreams(function () {
+                    if (!destroyed) updateRows();
+                });
             }
 
             this.initialize();
@@ -774,7 +911,31 @@ body.light--version .tvo-row__bar i{background:#111}
             },
             field: {
                 name: 'Потоки',
-                description: 'Совместимые отдают CORS и идут в 576p; официальные — HD, но часть без CORS'
+                description: 'Совместимые открываются в браузере (CORS); официальные — HD, но часть без CORS'
+            }
+        });
+
+        Lampa.SettingsApi.addParam({
+            component: 'tvonline_settings',
+            param: {
+                name: 'tvonline_shift',
+                type: 'select',
+                values: {
+                    auto: 'Авто (по часовому поясу)',
+                    '0': 'Москва (МСК+0)',
+                    '2': 'МСК+2 (Урал)',
+                    '4': 'МСК+4',
+                    '7': 'МСК+7'
+                },
+                default: 'auto'
+            },
+            field: {
+                name: 'Часовой пояс каналов',
+                description: 'Авто подставляет версию канала для часового пояса устройства — как на сайте вещателя'
+            },
+            onChange: function () {
+                memory.streams = false;
+                memory.streamsLoaded = 0;
             }
         });
 

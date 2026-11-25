@@ -1,0 +1,40 @@
+name: update-streams
+
+on:
+  schedule:
+    - cron: '30 2 * * *'
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/update-streams.yml'
+      - 'scripts/update-streams.mjs'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Обновить официальные ссылки
+        run: node scripts/update-streams.mjs
+
+      - name: Закоммитить изменения
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add examples/tvonline-streams.json
+          if git diff --cached --quiet; then
+            echo "Ссылки не изменились"
+          else
+            git commit -m "streams: обновление официальных ссылок ТВ онлайн"
+            git push
+          fi
