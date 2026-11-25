@@ -167,7 +167,12 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
     }
 
     function channelCode(name) {
-        var words = trim(name).split(/\s+/).filter(Boolean);
+        var clean = trim(name)
+            .replace(/\((hd|fhd|uhd|4k|sd)\)/ig, '')
+            .replace(/\b(hd|fhd|uhd|4k|sd)\b/ig, '')
+            .replace(/\s+/g, ' ')
+            .replace(/^\s+|\s+$/g, '');
+        var words = clean.split(/\s+/).filter(Boolean);
 
         if (words.length > 1) {
             var code = '';
@@ -179,7 +184,7 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
             return code.toUpperCase();
         }
 
-        return trim(name).substr(0, 3).toUpperCase();
+        return clean.substr(0, 3).toUpperCase();
     }
 
     function pad(value) {
@@ -1374,6 +1379,8 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
             Lampa.Player.iptv({
                 position: index,
                 total: list.length,
+                url: channel.url,
+                title: channel.name,
                 onGetChannel: function (position) {
                     return prepare(position, false);
                 },
