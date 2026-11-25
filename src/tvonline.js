@@ -89,9 +89,9 @@
             url: 'http://31.148.5.241/kanal_12/index.m3u8'
         },
         {
-            id: 'STS.ru', name: 'СТС', quality: '576p',
+            id: 'STS.ru', name: 'СТС', quality: '450p',
             logo: 'https://i.imgur.com/ilUzAeb.png',
-            url: 'http://31.148.5.241/kanal_13/index.m3u8'
+            url: 'https://zabava-htlive.cdn.ngenix.net/hls/CH_STS/variant.m3u8'
         },
         {
             id: 'Domashniy.ru', name: 'Домашний', quality: '576p',
@@ -148,7 +148,7 @@
         'TVCentr.ru': ['http://31.148.5.241/kanal_10/index.m3u8', '576p'],
         'RENTV.ru': ['http://185.23.80.23:8080/REN/index.m3u8', '576p'],
         'Spas.ru': ['http://31.148.5.241/kanal_12/index.m3u8', '576p'],
-        'STS.ru': ['http://31.148.5.241/kanal_13/index.m3u8', '576p'],
+        'STS.ru': ['https://zabava-htlive.cdn.ngenix.net/hls/CH_STS/variant.m3u8', '450p'],
         'Domashniy.ru': ['http://31.148.5.241/kanal_14/index.m3u8', '576p'],
         'TV3.ru': ['http://31.148.5.241/kanal_15/index.m3u8', '576p'],
         'Pyatnitsa.ru': ['http://31.148.5.241/kanal_16/index.m3u8', '576p'],
