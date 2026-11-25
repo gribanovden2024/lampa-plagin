@@ -27,12 +27,12 @@ try {
     var PLUGIN_NAME = 'Телевидение';
     var MENU_TITLE = 'ТВ';
     var SCREEN_TITLE = 'TV';
+    var PLAYLIST_URL = 'https://gribanovden2024.github.io/lampa-plagin/examples/playlist.m3u';
     var CACHE_TTL = 15 * 60 * 1000;
 
     var KEYS = {
         enabled: 'tv_enabled',
         name: 'tv_name',
-        playlist: 'tv_playlist',
         epg: 'tv_epg',
         proxy: 'tv_proxy',
         favorites: 'tv_favorites'
@@ -590,14 +590,7 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
     }
 
     function loadPlaylist(callback) {
-        var url = trim(getSetting(KEYS.playlist, ''));
-
-        if (!url) {
-            callback({
-                type: 'no-playlist'
-            });
-            return;
-        }
+        var url = PLAYLIST_URL;
 
         if (memory.channels && memory.playlistUrl === url && Date.now() - memory.loaded < CACHE_TTL) {
             callback(null, memory);
@@ -905,7 +898,7 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
 
         function sourcesKey() {
             return [
-                trim(getSetting(KEYS.playlist, '')),
+                PLAYLIST_URL,
                 trim(getSetting(KEYS.epg, '')),
                 trim(getSetting(KEYS.proxy, ''))
             ].join('\n');
@@ -1643,25 +1636,17 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
                 if (error) {
                     if (self.activity) self.activity.loader(false);
 
-                    if (error.type === 'no-playlist') {
-                        showEmpty(
-                            'Не задан плейлист',
-                            'Откройте <b>Настройки → Телевидение</b> и укажите ссылку на плейлист ' +
-                            '<b>M3U</b>. Программа передач (<b>XMLTV</b>) необязательна: её адрес можно ' +
-                            'взять из заголовка плейлиста или указать отдельно.'
-                        );
-                    } else if (error.type === 'network') {
+                    if (error.type === 'network') {
                         showEmpty(
                             'Не удалось загрузить плейлист',
-                            'Проверьте ссылку и интернет. Если сервер не отдаёт файл из браузера ' +
+                            'Проверьте интернет. Если сервер не отдаёт файл из браузера ' +
                             '(CORS), укажите прокси в настройках плагина.<br><br>' +
                             escapeHtml(error.message || '')
                         );
                     } else {
                         showEmpty(
                             'Плейлист пуст или повреждён',
-                            'В файле не найдено ни одного канала формата M3U. Проверьте ссылку ' +
-                            'в настройках плагина.'
+                            'Встроенный плейлист не содержит каналов формата M3U.'
                         );
                     }
 
@@ -1876,18 +1861,11 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
         Lampa.SettingsApi.addParam({
             component: 'tv_settings',
             param: {
-                name: KEYS.playlist,
-                type: 'input',
-                values: '',
-                placeholder: 'https://example.com/playlist.m3u',
-                default: ''
+                type: 'static'
             },
             field: {
-                name: 'Плейлист (M3U)',
-                description: 'Ссылка на плейлист вашего IPTV-провайдера'
-            },
-            onChange: function () {
-                clearMemory();
+                name: 'Встроенный плейлист',
+                description: '20 федеральных каналов и каналы провайдера; ссылка не настраивается'
             }
         });
 
@@ -1967,7 +1945,7 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
 
             if (!name) return;
 
-            if (name === KEYS.playlist || name === KEYS.epg || name === KEYS.proxy) {
+            if (name === KEYS.epg || name === KEYS.proxy) {
                 instances.forEach(function (instance) {
                     instance.reloadSources();
                 });
@@ -1983,6 +1961,8 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
 
     function init() {
         injectStyle();
+
+        window.tv_clear_cache = clearMemory;
 
         if (!Lampa.Component.get('tv')) {
             Lampa.Component.add('tv', TvComponent);

@@ -1,0 +1,458 @@
+#EXTM3U x-tvg-url="https://gribanovden2024.github.io/lampa-plagin/examples/federal20.xml"
+# Встроенный плейлист: 20 федеральных каналов + каналы провайдера.
+# Каналы провайдера доступны только в сети провайдера / с его токеном.
+
+# --- Федеральные каналы ---
+#EXTINF:-1 tvg-id="ChannelOne.ru" tvg-logo="https://i.imgur.com/RUSX0rX.png" group-title="Федеральные",Первый канал
+http://31.148.5.241/kanal_1/index.m3u8
+
+#EXTINF:-1 tvg-id="Russia1.ru" tvg-logo="https://i.imgur.com/Osd2JHL.png" group-title="Федеральные",Россия 1 HD
+https://live.smotrim.ru/vgtrk/0/russia1-hd/index.m3u8
+
+#EXTINF:-1 tvg-id="MatchTV.ru" group-title="Федеральные",Матч ТВ HD
+http://31.148.5.241/kanal_3/index.m3u8
+
+#EXTINF:-1 tvg-id="NTV.ru" tvg-logo="https://i.imgur.com/9r1BKzK.png" group-title="Федеральные",НТВ
+http://31.148.5.241/kanal_4/index.m3u8
+
+#EXTINF:-1 tvg-id="5Kanal.ru" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/5-tv_logo_%282023%29.svg/250px-5-tv_logo_%282023%29.svg.png" group-title="Федеральные",Пятый канал
+http://31.148.5.241/kanal_5/index.m3u8
+
+#EXTINF:-1 tvg-id="RussiaK.ru" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Russia-Cultura.svg/960px-Russia-Cultura.svg.png" group-title="Федеральные",Россия К HD
+https://live.smotrim.ru/vgtrk/0/kultura-hd/track_105_319a299f/chunklist.m3u8
+
+#EXTINF:-1 tvg-id="Russia24.ru" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Rossiya-24_Logo.svg/960px-Rossiya-24_Logo.svg.png" group-title="Федеральные",Россия 24 HD
+https://live.smotrim.ru/vgtrk/0/russia24-hd/index.m3u8
+
+#EXTINF:-1 tvg-id="Karusel.ru" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Logo_KARUSEL_2023.png/250px-Logo_KARUSEL_2023.png" group-title="Федеральные",Карусель
+http://31.148.5.241/kanal_8/index.m3u8
+
+#EXTINF:-1 tvg-id="OTR.ru" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/9/9c/OTR_2025_logo.svg" group-title="Федеральные",ОТР
+http://31.148.5.241/kanal_9/index.m3u8
+
+#EXTINF:-1 tvg-id="TVCentr.ru" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/7/72/TV_Tsentr_2013_Logo.svg" group-title="Федеральные",ТВ Центр
+http://31.148.5.241/kanal_10/index.m3u8
+
+#EXTINF:-1 tvg-id="RENTV.ru" tvg-logo="https://i.imgur.com/0Tu5lte.png" group-title="Федеральные",РЕН ТВ
+http://31.148.5.241/kanal_11/index.m3u8
+
+#EXTINF:-1 tvg-id="STS.ru" tvg-logo="https://i.imgur.com/ilUzAeb.png" group-title="Федеральные",СТС
+http://31.148.5.241/kanal_13/index.m3u8
+
+#EXTINF:-1 tvg-id="Domashniy.ru" tvg-logo="https://i.imgur.com/WaLwOyt.jpeg" group-title="Федеральные",Домашний
+http://31.148.5.241/kanal_14/index.m3u8
+
+#EXTINF:-1 tvg-id="TV3.ru" tvg-logo="https://i.imgur.com/JLAvq8O.png" group-title="Федеральные",ТВ-3
+http://31.148.5.241/kanal_15/index.m3u8
+
+#EXTINF:-1 tvg-id="Pyatnitsa.ru" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/%D0%9F%D1%8F%D1%82%D0%BD%D0%B8%D1%86%D0%B0_%28%D1%81_2013%29.svg/250px-%D0%9F%D1%8F%D1%82%D0%BD%D0%B8%D1%86%D0%B0_%28%D1%81_2013%29.svg.png" group-title="Федеральные",Пятница!
+http://31.148.5.241/kanal_16/index.m3u8
+
+#EXTINF:-1 tvg-id="TelekanalZvezda.ru" tvg-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Zvezda_logo.svg/250px-Zvezda_logo.svg.png" group-title="Федеральные",Звезда HD
+https://tvchannelstream1.tvzvezda.ru/cdn/tvzvezda/playlist.m3u8
+
+#EXTINF:-1 tvg-id="Mir.ru" tvg-logo="https://i.imgur.com/AqWaJT8.png" group-title="Федеральные",Мир HD
+http://hls.mirtv.cdnvideo.ru/mirtv-parampublish/mirtv_2500/playlist.m3u8
+
+#EXTINF:-1 tvg-id="TNT.ru" tvg-logo="https://i.imgur.com/T4A6rEI.png" group-title="Федеральные",ТНТ
+http://31.148.5.241/kanal_19/index.m3u8
+
+#EXTINF:-1 tvg-id="MuzTV.ru" tvg-logo="https://i.imgur.com/BtqrHmz.png" group-title="Федеральные",Муз-ТВ
+http://31.148.5.241/kanal_20/index.m3u8
+
+#EXTINF:-1 tvg-id="U.ru" tvg-logo="https://i.imgur.com/KDZvt0Q.png" group-title="Федеральные",Ю HD
+https://bl.rutube.ru/livestream/5c9327074e25ca86f3111d4085cbbb65/index.m3u8?e=2066519758&s=9cPc1rCGu6M932eqrifRhQ&scheme=https
+
+# --- Базовый пакет провайдера ---
+#EXTINF:-1 tvg-id="provider-12" tvg-name="spas" tvg-logo="http://tv.ot.net.ru/tv-icon/12.png" group-title="Базовый",Спас
+http://tv.ot.net.ru/channel/12
+
+#EXTINF:-1 tvg-id="provider-21" tvg-name="1-respublik" tvg-logo="http://tv.ot.net.ru/tv-icon/21.png" group-title="Базовый",1 Республиканский
+http://tv.ot.net.ru/channel/21
+
+#EXTINF:-1 tvg-id="provider-22" tvg-name="oplot1" tvg-logo="http://tv.ot.net.ru/tv-icon/22.png" group-title="Базовый",Оплот ТВ
+http://tv.ot.net.ru/channel/22
+
+#EXTINF:-1 tvg-id="provider-24" tvg-name="novorossia" tvg-logo="http://tv.ot.net.ru/tv-icon/24.png" group-title="Базовый",Новороссия
+http://tv.ot.net.ru/channel/24
+
+#EXTINF:-1 tvg-id="provider-25" tvg-name="oplot2" tvg-logo="http://tv.ot.net.ru/tv-icon/25.png" group-title="Базовый",Оплот ТВ 2
+http://tv.ot.net.ru/channel/25
+
+#EXTINF:-1 tvg-id="provider-26" tvg-name="oplot1" tvg-logo="http://tv.ot.net.ru/tv-icon/26.png" group-title="Базовый",Оплот ТВ HD
+http://tv.ot.net.ru/channel/26
+
+#EXTINF:-1 tvg-id="provider-34" tvg-name="hd-life" tvg-logo="http://tv.ot.net.ru/tv-icon/34.png" group-title="Базовый",Точка РФ
+http://tv.ot.net.ru/channel/34
+
+#EXTINF:-1 tvg-id="provider-35" tvg-name="kuxnia-tv" tvg-logo="http://tv.ot.net.ru/tv-icon/35.png" group-title="Базовый",Кухня ТВ
+http://tv.ot.net.ru/channel/35
+
+#EXTINF:-1 tvg-id="provider-36" tvg-name="big-planet" tvg-logo="http://tv.ot.net.ru/tv-icon/36.png" group-title="Базовый",Big planet
+http://tv.ot.net.ru/channel/36
+
+#EXTINF:-1 tvg-id="provider-37" tvg-name="ntv-style" tvg-logo="http://tv.ot.net.ru/tv-icon/37.png" group-title="Базовый",НТВ Стиль
+http://tv.ot.net.ru/channel/37
+
+#EXTINF:-1 tvg-id="provider-38" tvg-name="womens-magazine" tvg-logo="http://tv.ot.net.ru/tv-icon/38.png" group-title="Базовый",Womens Magazine
+http://tv.ot.net.ru/channel/38
+
+#EXTINF:-1 tvg-id="provider-39" tvg-name="zdorovoe-tv" tvg-logo="http://tv.ot.net.ru/tv-icon/39.png" group-title="Базовый",Здоровое ТВ
+http://tv.ot.net.ru/channel/39
+
+#EXTINF:-1 tvg-id="provider-40" tvg-name="voprosy-i-otvety" tvg-logo="http://tv.ot.net.ru/tv-icon/40.png" group-title="Базовый",Вопросы и ответы
+http://tv.ot.net.ru/channel/40
+
+#EXTINF:-1 tvg-id="provider-41" tvg-name="psixologia-21" tvg-logo="http://tv.ot.net.ru/tv-icon/41.png" group-title="Базовый",Психология
+http://tv.ot.net.ru/channel/41
+
+#EXTINF:-1 tvg-id="provider-42" tvg-name="neizvestnaya-rosia" tvg-logo="http://tv.ot.net.ru/tv-icon/42.png" group-title="Базовый",Неизвестная Россия
+http://tv.ot.net.ru/channel/42
+
+#EXTINF:-1 tvg-id="provider-44" tvg-name="drive" tvg-logo="http://tv.ot.net.ru/tv-icon/44.png" group-title="Базовый",Драйв
+http://tv.ot.net.ru/channel/44
+
+#EXTINF:-1 tvg-id="provider-45" tvg-name="domashnie-zhivotnye" tvg-logo="http://tv.ot.net.ru/tv-icon/45.png" group-title="Базовый",Домашние Животные
+http://tv.ot.net.ru/channel/45
+
+#EXTINF:-1 tvg-id="provider-46" tvg-name="nauka-20" tvg-logo="http://tv.ot.net.ru/tv-icon/46.png" group-title="Базовый",Наука
+http://tv.ot.net.ru/channel/46
+
+#EXTINF:-1 tvg-id="provider-47" tvg-name="nauka-20" tvg-logo="http://tv.ot.net.ru/tv-icon/47.png" group-title="Базовый",Наука HD
+http://tv.ot.net.ru/channel/47
+
+#EXTINF:-1 tvg-id="provider-49" tvg-name="zhivaya-planeta" tvg-logo="http://tv.ot.net.ru/tv-icon/49.png" group-title="Базовый",Живая Планета
+http://tv.ot.net.ru/channel/49
+
+#EXTINF:-1 tvg-id="provider-51" tvg-name="pobeda" tvg-logo="http://tv.ot.net.ru/tv-icon/51.png" group-title="Базовый",Победа
+http://tv.ot.net.ru/channel/51
+
+#EXTINF:-1 tvg-id="provider-57" tvg-name="e-tv" tvg-logo="http://tv.ot.net.ru/tv-icon/57.png" group-title="Базовый",E TV
+http://tv.ot.net.ru/channel/57
+
+#EXTINF:-1 tvg-id="provider-62" tvg-name="match-boets" tvg-logo="http://tv.ot.net.ru/tv-icon/62.png" group-title="Базовый",Матч! Боец
+http://tv.ot.net.ru/channel/62
+
+#EXTINF:-1 tvg-id="provider-63" tvg-name="box-tv" tvg-logo="http://tv.ot.net.ru/tv-icon/63.png" group-title="Базовый",Бокс ТВ
+http://tv.ot.net.ru/channel/63
+
+#EXTINF:-1 tvg-id="provider-66" tvg-name="match-premier" tvg-logo="http://tv.ot.net.ru/tv-icon/66.png" group-title="Базовый",Матч Премьер
+http://tv.ot.net.ru/channel/66
+
+#EXTINF:-1 tvg-id="provider-67" tvg-name="match-premier" tvg-logo="http://tv.ot.net.ru/tv-icon/67.png" group-title="Базовый",Матч Премьер HD
+http://tv.ot.net.ru/channel/67
+
+#EXTINF:-1 tvg-id="provider-70" tvg-name="match-arena" tvg-logo="http://tv.ot.net.ru/tv-icon/70.png" group-title="Базовый",Матч! Арена
+http://tv.ot.net.ru/channel/70
+
+#EXTINF:-1 tvg-id="provider-71" tvg-name="match-arena" tvg-logo="http://tv.ot.net.ru/tv-icon/71.png" group-title="Базовый",Матч! Арена HD
+http://tv.ot.net.ru/channel/71
+
+#EXTINF:-1 tvg-id="provider-72" tvg-name="match-igra" tvg-logo="http://tv.ot.net.ru/tv-icon/72.png" group-title="Базовый",Матч! Игра
+http://tv.ot.net.ru/channel/72
+
+#EXTINF:-1 tvg-id="provider-73" tvg-name="match-igra" tvg-logo="http://tv.ot.net.ru/tv-icon/73.png" group-title="Базовый",Матч! Игра HD
+http://tv.ot.net.ru/channel/73
+
+#EXTINF:-1 tvg-id="provider-74" tvg-name="match-nash-sport" tvg-logo="http://tv.ot.net.ru/tv-icon/74.png" group-title="Базовый",Матч! Страна
+http://tv.ot.net.ru/channel/74
+
+#EXTINF:-1 tvg-id="provider-75" tvg-name="match-nash-sport" tvg-logo="http://tv.ot.net.ru/tv-icon/75.png" group-title="Базовый",Матч! Страна HD
+http://tv.ot.net.ru/channel/75
+
+#EXTINF:-1 tvg-id="provider-77" tvg-name="match-football1" tvg-logo="http://tv.ot.net.ru/tv-icon/77.png" group-title="Базовый",Матч! Футбол 1
+http://tv.ot.net.ru/channel/77
+
+#EXTINF:-1 tvg-id="provider-78" tvg-name="match-football1" tvg-logo="http://tv.ot.net.ru/tv-icon/78.png" group-title="Базовый",Матч! Футбол 1 HD
+http://tv.ot.net.ru/channel/78
+
+#EXTINF:-1 tvg-id="provider-79" tvg-name="match-football2" tvg-logo="http://tv.ot.net.ru/tv-icon/79.png" group-title="Базовый",Матч! Футбол 2
+http://tv.ot.net.ru/channel/79
+
+#EXTINF:-1 tvg-id="provider-80" tvg-name="match-football2" tvg-logo="http://tv.ot.net.ru/tv-icon/80.png" group-title="Базовый",Матч! Футбол 2 HD
+http://tv.ot.net.ru/channel/80
+
+#EXTINF:-1 tvg-id="provider-81" tvg-name="match-football3" tvg-logo="http://tv.ot.net.ru/tv-icon/81.png" group-title="Базовый",Матч! Футбол 3
+http://tv.ot.net.ru/channel/81
+
+#EXTINF:-1 tvg-id="provider-82" tvg-name="match-football3" tvg-logo="http://tv.ot.net.ru/tv-icon/82.png" group-title="Базовый",Матч! Футбол 3 HD
+http://tv.ot.net.ru/channel/82
+
+#EXTINF:-1 tvg-id="provider-84" tvg-name="360-podmoskovie" tvg-logo="http://tv.ot.net.ru/tv-icon/84.png" group-title="Базовый",360.ru
+http://tv.ot.net.ru/channel/84
+
+#EXTINF:-1 tvg-id="provider-85" tvg-name="365-dnej" tvg-logo="http://tv.ot.net.ru/tv-icon/85.png" group-title="Базовый",365 Дней
+http://tv.ot.net.ru/channel/85
+
+#EXTINF:-1 tvg-id="provider-86" tvg-name="ratnik" tvg-logo="http://tv.ot.net.ru/tv-icon/86.png" group-title="Базовый",Ратник
+http://tv.ot.net.ru/channel/86
+
+#EXTINF:-1 tvg-id="provider-87" tvg-name="epic" tvg-logo="http://tv.ot.net.ru/tv-icon/87.png" group-title="Базовый",EPIC
+http://tv.ot.net.ru/channel/87
+
+#EXTINF:-1 tvg-id="provider-88" tvg-name="telekafe" tvg-logo="http://tv.ot.net.ru/tv-icon/88.png" group-title="Базовый",Телекафе
+http://tv.ot.net.ru/channel/88
+
+#EXTINF:-1 tvg-id="provider-92" tvg-name="vremia" tvg-logo="http://tv.ot.net.ru/tv-icon/92.png" group-title="Базовый",Время далекое и близкое
+http://tv.ot.net.ru/channel/92
+
+#EXTINF:-1 tvg-id="provider-93" tvg-name="doktor" tvg-logo="http://tv.ot.net.ru/tv-icon/93.png" group-title="Базовый",Доктор
+http://tv.ot.net.ru/channel/93
+
+#EXTINF:-1 tvg-id="provider-94" tvg-name="zoopark" tvg-logo="http://tv.ot.net.ru/tv-icon/94.png" group-title="Базовый",Зоопарк
+http://tv.ot.net.ru/channel/94
+
+#EXTINF:-1 tvg-id="provider-95" tvg-name="istoria" tvg-logo="http://tv.ot.net.ru/tv-icon/95.png" group-title="Базовый",История
+http://tv.ot.net.ru/channel/95
+
+#EXTINF:-1 tvg-id="provider-96" tvg-name="mama" tvg-logo="http://tv.ot.net.ru/tv-icon/96.png" group-title="Базовый",Мама
+http://tv.ot.net.ru/channel/96
+
+#EXTINF:-1 tvg-id="provider-99" tvg-name="ntv-pravo" tvg-logo="http://tv.ot.net.ru/tv-icon/99.png" group-title="Базовый",НТВ Право
+http://tv.ot.net.ru/channel/99
+
+#EXTINF:-1 tvg-id="provider-103" tvg-name="domkino-premium" tvg-logo="http://tv.ot.net.ru/tv-icon/103.png" group-title="Базовый",Дом кино Премиум HD
+http://tv.ot.net.ru/channel/103
+
+#EXTINF:-1 tvg-id="provider-104" tvg-name="kinoliving" tvg-logo="http://tv.ot.net.ru/tv-icon/104.png" group-title="Базовый",Kinoliving
+http://tv.ot.net.ru/channel/104
+
+#EXTINF:-1 tvg-id="provider-105" tvg-name="saga-tv" tvg-logo="http://tv.ot.net.ru/tv-icon/105.png" group-title="Базовый",Saga TV
+http://tv.ot.net.ru/channel/105
+
+#EXTINF:-1 tvg-id="provider-106" tvg-name="retro-tv" tvg-logo="http://tv.ot.net.ru/tv-icon/106.png" group-title="Базовый",Ретро
+http://tv.ot.net.ru/channel/106
+
+#EXTINF:-1 tvg-id="provider-107" tvg-name="romance" tvg-logo="http://tv.ot.net.ru/tv-icon/107.png" group-title="Базовый",Romance
+http://tv.ot.net.ru/channel/107
+
+#EXTINF:-1 tvg-id="provider-108" tvg-name="suspense" tvg-logo="http://tv.ot.net.ru/tv-icon/108.png" group-title="Базовый",Suspence
+http://tv.ot.net.ru/channel/108
+
+#EXTINF:-1 tvg-id="provider-109" tvg-name="fanhd" tvg-logo="http://tv.ot.net.ru/tv-icon/109.png" group-title="Базовый",FAN
+http://tv.ot.net.ru/channel/109
+
+#EXTINF:-1 tvg-id="provider-110" tvg-name="bollywood-hd" tvg-logo="http://tv.ot.net.ru/tv-icon/110.png" group-title="Базовый",Bollywood HD
+http://tv.ot.net.ru/channel/110
+
+#EXTINF:-1 tvg-id="provider-113" tvg-name="hollywood" tvg-logo="http://tv.ot.net.ru/tv-icon/113.png" group-title="Базовый",Hollywood
+http://tv.ot.net.ru/channel/113
+
+#EXTINF:-1 tvg-id="provider-114" tvg-name="hollywood-hd" tvg-logo="http://tv.ot.net.ru/tv-icon/114.png" group-title="Базовый",Hollywood HD
+http://tv.ot.net.ru/channel/114
+
+#EXTINF:-1 tvg-id="provider-116" tvg-name="plan-b" tvg-logo="http://tv.ot.net.ru/tv-icon/116.png" group-title="Базовый",Plan B HD
+http://tv.ot.net.ru/channel/116
+
+#EXTINF:-1 tvg-id="provider-125" tvg-name="domkino" tvg-logo="http://tv.ot.net.ru/tv-icon/125.png" group-title="Базовый",Дом кино
+http://tv.ot.net.ru/channel/125
+
+#EXTINF:-1 tvg-id="provider-126" tvg-name="evrokino" tvg-logo="http://tv.ot.net.ru/tv-icon/126.png" group-title="Базовый",ЕвроКино
+http://tv.ot.net.ru/channel/126
+
+#EXTINF:-1 tvg-id="provider-127" tvg-name="indiyskoe-kino" tvg-logo="http://tv.ot.net.ru/tv-icon/127.png" group-title="Базовый",Индийское Кино
+http://tv.ot.net.ru/channel/127
+
+#EXTINF:-1 tvg-id="provider-128" tvg-name="kino-tv" tvg-logo="http://tv.ot.net.ru/tv-icon/128.png" group-title="Базовый",Кино ТВ HD
+http://tv.ot.net.ru/channel/128
+
+#EXTINF:-1 tvg-id="provider-129" tvg-name="kinokomedia" tvg-logo="http://tv.ot.net.ru/tv-icon/129.png" group-title="Базовый",Кинокомедия
+http://tv.ot.net.ru/channel/129
+
+#EXTINF:-1 tvg-id="provider-130" tvg-name="kinopremiera-hd" tvg-logo="http://tv.ot.net.ru/tv-icon/130.png" group-title="Базовый",Кинопремьера HD
+http://tv.ot.net.ru/channel/130
+
+#EXTINF:-1 tvg-id="provider-131" tvg-name="kinosvidanie" tvg-logo="http://tv.ot.net.ru/tv-icon/131.png" group-title="Базовый",Киносвидание
+http://tv.ot.net.ru/channel/131
+
+#EXTINF:-1 tvg-id="provider-132" tvg-name="kinosemiya" tvg-logo="http://tv.ot.net.ru/tv-icon/132.png" group-title="Базовый",Киносемья
+http://tv.ot.net.ru/channel/132
+
+#EXTINF:-1 tvg-id="provider-133" tvg-name="kinoseria" tvg-logo="http://tv.ot.net.ru/tv-icon/133.png" group-title="Базовый",Киносерия
+http://tv.ot.net.ru/channel/133
+
+#EXTINF:-1 tvg-id="provider-134" tvg-name="kinoxit" tvg-logo="http://tv.ot.net.ru/tv-icon/134.png" group-title="Базовый",Кинохит
+http://tv.ot.net.ru/channel/134
+
+#EXTINF:-1 tvg-id="provider-136" tvg-name="nashe-novoe-kino" tvg-logo="http://tv.ot.net.ru/tv-icon/136.png" group-title="Базовый",Наше Новое Кино
+http://tv.ot.net.ru/channel/136
+
+#EXTINF:-1 tvg-id="provider-137" tvg-name="nst" tvg-logo="http://tv.ot.net.ru/tv-icon/137.png" group-title="Базовый",НСТ
+http://tv.ot.net.ru/channel/137
+
+#EXTINF:-1 tvg-id="provider-138" tvg-name="ntv-serial" tvg-logo="http://tv.ot.net.ru/tv-icon/138.png" group-title="Базовый",НТВ Сериал
+http://tv.ot.net.ru/channel/138
+
+#EXTINF:-1 tvg-id="provider-139" tvg-name="illuzion-plus" tvg-logo="http://tv.ot.net.ru/tv-icon/139.png" group-title="Базовый",Иллюзион
+http://tv.ot.net.ru/channel/139
+
+#EXTINF:-1 tvg-id="provider-140" tvg-name="rodnoe-kino" tvg-logo="http://tv.ot.net.ru/tv-icon/140.png" group-title="Базовый",Родное Кино
+http://tv.ot.net.ru/channel/140
+
+#EXTINF:-1 tvg-id="provider-141" tvg-name="russkaya-komedia" tvg-logo="http://tv.ot.net.ru/tv-icon/141.png" group-title="Базовый",Русская комедия
+http://tv.ot.net.ru/channel/141
+
+#EXTINF:-1 tvg-id="provider-142" tvg-name="russky-bestseller" tvg-logo="http://tv.ot.net.ru/tv-icon/142.png" group-title="Базовый",Русский бестселлер
+http://tv.ot.net.ru/channel/142
+
+#EXTINF:-1 tvg-id="provider-143" tvg-name="russky-roman" tvg-logo="http://tv.ot.net.ru/tv-icon/143.png" group-title="Базовый",Русский роман
+http://tv.ot.net.ru/channel/143
+
+#EXTINF:-1 tvg-id="provider-145" tvg-name="cinema-ru" tvg-logo="http://tv.ot.net.ru/tv-icon/145.png" group-title="Базовый",Cinema
+http://tv.ot.net.ru/channel/145
+
+#EXTINF:-1 tvg-id="provider-146" tvg-name="cinema-ru" tvg-logo="http://tv.ot.net.ru/tv-icon/146.png" group-title="Базовый",Cinema HD
+http://tv.ot.net.ru/channel/146
+
+#EXTINF:-1 tvg-id="provider-147" tvg-name="ntv-xit" tvg-logo="http://tv.ot.net.ru/tv-icon/147.png" group-title="Базовый",НТВ Хит
+http://tv.ot.net.ru/channel/147
+
+#EXTINF:-1 tvg-id="provider-149" tvg-name="russky-detektiv" tvg-logo="http://tv.ot.net.ru/tv-icon/149.png" group-title="Базовый",Русский Детектив
+http://tv.ot.net.ru/channel/149
+
+#EXTINF:-1 tvg-id="provider-157" tvg-name="la-minor" tvg-logo="http://tv.ot.net.ru/tv-icon/157.png" group-title="Базовый",Ля-Минор ТВ
+http://tv.ot.net.ru/channel/157
+
+#EXTINF:-1 tvg-id="provider-158" tvg-name="mcm-top" tvg-logo="http://tv.ot.net.ru/tv-icon/158.png" group-title="Базовый",MCM Top
+http://tv.ot.net.ru/channel/158
+
+#EXTINF:-1 tvg-id="provider-159" tvg-logo="http://tv.ot.net.ru/tv-icon/159.png" group-title="Базовый",Jazz Jazz
+http://tv.ot.net.ru/channel/159
+
+#EXTINF:-1 tvg-id="provider-160" tvg-name="classic-music" tvg-logo="http://tv.ot.net.ru/tv-icon/160.png" group-title="Базовый",Classic Music
+http://tv.ot.net.ru/channel/160
+
+#EXTINF:-1 tvg-id="provider-169" tvg-name="muzyka-pervogo" tvg-logo="http://tv.ot.net.ru/tv-icon/169.png" group-title="Базовый",Музыка Первого
+http://tv.ot.net.ru/channel/169
+
+#EXTINF:-1 tvg-id="provider-172" tvg-name="ani" tvg-logo="http://tv.ot.net.ru/tv-icon/172.png" group-title="Базовый",ani
+http://tv.ot.net.ru/channel/172
+
+#EXTINF:-1 tvg-id="provider-173" tvg-name="malysh" tvg-logo="http://tv.ot.net.ru/tv-icon/173.png" group-title="Базовый",Супергерои
+http://tv.ot.net.ru/channel/173
+
+#EXTINF:-1 tvg-id="provider-174" tvg-name="cartoon-classics" tvg-logo="http://tv.ot.net.ru/tv-icon/174.png" group-title="Базовый",Cartoon Classics
+http://tv.ot.net.ru/channel/174
+
+#EXTINF:-1 tvg-id="provider-175" tvg-name="lapki-live" tvg-logo="http://tv.ot.net.ru/tv-icon/175.png" group-title="Базовый",Лапки LIVE
+http://tv.ot.net.ru/channel/175
+
+#EXTINF:-1 tvg-id="provider-176" tvg-name="gulli-girl" tvg-logo="http://tv.ot.net.ru/tv-icon/176.png" group-title="Базовый",Gulli Girl
+http://tv.ot.net.ru/channel/176
+
+#EXTINF:-1 tvg-id="provider-179" tvg-name="detsky" tvg-logo="http://tv.ot.net.ru/tv-icon/179.png" group-title="Базовый",Уникум
+http://tv.ot.net.ru/channel/179
+
+#EXTINF:-1 tvg-id="provider-180" tvg-name="o_" tvg-logo="http://tv.ot.net.ru/tv-icon/180.png" group-title="Базовый",О!
+http://tv.ot.net.ru/channel/180
+
+#EXTINF:-1 tvg-id="provider-181" tvg-name="tiji" tvg-logo="http://tv.ot.net.ru/tv-icon/181.png" group-title="Базовый",TiJi
+http://tv.ot.net.ru/channel/181
+
+#EXTINF:-1 tvg-id="provider-182" tvg-name="kinomult" tvg-logo="http://tv.ot.net.ru/tv-icon/182.png" group-title="Базовый",КиноМульт
+http://tv.ot.net.ru/channel/182
+
+#EXTINF:-1 tvg-id="provider-183" tvg-name="mult" tvg-logo="http://tv.ot.net.ru/tv-icon/183.png" group-title="Базовый",Мульт
+http://tv.ot.net.ru/channel/183
+
+#EXTINF:-1 tvg-id="provider-184" tvg-name="mult" tvg-logo="http://tv.ot.net.ru/tv-icon/184.png" group-title="Базовый",Мульт HD
+http://tv.ot.net.ru/channel/184
+
+#EXTINF:-1 tvg-id="provider-185" tvg-name="multimuzyka" tvg-logo="http://tv.ot.net.ru/tv-icon/185.png" group-title="Базовый",Мультимузыка
+http://tv.ot.net.ru/channel/185
+
+#EXTINF:-1 tvg-id="provider-186" tvg-name="v-gostiax-u-skazki" tvg-logo="http://tv.ot.net.ru/tv-icon/186.png" group-title="Базовый",В гостях у сказки
+http://tv.ot.net.ru/channel/186
+
+#EXTINF:-1 tvg-id="provider-187" tvg-name="v-gostiax-u-skazki" tvg-logo="http://tv.ot.net.ru/tv-icon/187.png" group-title="Базовый",В гостях у сказки HD
+http://tv.ot.net.ru/channel/187
+
+#EXTINF:-1 tvg-id="provider-190" tvg-name="nostalgia" tvg-logo="http://tv.ot.net.ru/tv-icon/190.png" group-title="Базовый",Ностальгия
+http://tv.ot.net.ru/channel/190
+
+#EXTINF:-1 tvg-id="provider-195" tvg-name="dikaya-oxota-hd" tvg-logo="http://tv.ot.net.ru/tv-icon/195.png" group-title="Базовый",Дикая охота HD
+http://tv.ot.net.ru/channel/195
+
+#EXTINF:-1 tvg-id="provider-196" tvg-name="dikaya-rybalka-hd" tvg-logo="http://tv.ot.net.ru/tv-icon/196.png" group-title="Базовый",Дикая рыбалка HD
+http://tv.ot.net.ru/channel/196
+
+#EXTINF:-1 tvg-id="provider-197" tvg-name="dikiy" tvg-logo="http://tv.ot.net.ru/tv-icon/197.png" group-title="Базовый",Дикий
+http://tv.ot.net.ru/channel/197
+
+#EXTINF:-1 tvg-id="provider-198" tvg-name="oxota-i-rybalka" tvg-logo="http://tv.ot.net.ru/tv-icon/198.png" group-title="Базовый",Охота и Рыбалка
+http://tv.ot.net.ru/channel/198
+
+#EXTINF:-1 tvg-id="provider-199" tvg-name="kto-est-kto" tvg-logo="http://tv.ot.net.ru/tv-icon/199.png" group-title="Базовый",Кто есть кто
+http://tv.ot.net.ru/channel/199
+
+#EXTINF:-1 tvg-id="provider-202" tvg-name="poexali" tvg-logo="http://tv.ot.net.ru/tv-icon/202.png" group-title="Базовый",ПOЕХАЛИ!
+http://tv.ot.net.ru/channel/202
+
+#EXTINF:-1 tvg-id="provider-206" tvg-name="tochka-otryva" tvg-logo="http://tv.ot.net.ru/tv-icon/206.png" group-title="Базовый",Точка отрыва
+http://tv.ot.net.ru/channel/206
+
+#EXTINF:-1 tvg-id="provider-207" tvg-name="usadba" tvg-logo="http://tv.ot.net.ru/tv-icon/207.png" group-title="Базовый",Усадьба-ТВ
+http://tv.ot.net.ru/channel/207
+
+#EXTINF:-1 tvg-id="provider-211" tvg-name="texno-24" tvg-logo="http://tv.ot.net.ru/tv-icon/211.png" group-title="Базовый",Техно 24
+http://tv.ot.net.ru/channel/211
+
+#EXTINF:-1 tvg-id="provider-222" tvg-name="avto24" tvg-logo="http://tv.ot.net.ru/tv-icon/222.png" group-title="Базовый",АВТО24
+http://tv.ot.net.ru/channel/222
+
+#EXTINF:-1 tvg-id="provider-223" tvg-name="avto-plus" tvg-logo="http://tv.ot.net.ru/tv-icon/223.png" group-title="Базовый",Авто Плюс
+http://tv.ot.net.ru/channel/223
+
+#EXTINF:-1 tvg-id="provider-224" tvg-name="bobior" tvg-logo="http://tv.ot.net.ru/tv-icon/224.png" group-title="Базовый",Бобер
+http://tv.ot.net.ru/channel/224
+
+#EXTINF:-1 tvg-id="provider-228" tvg-name="zhivi" tvg-logo="http://tv.ot.net.ru/tv-icon/228.png" group-title="Базовый",Живи
+http://tv.ot.net.ru/channel/228
+
+#EXTINF:-1 tvg-id="provider-231" tvg-name="kvn-tv" tvg-logo="http://tv.ot.net.ru/tv-icon/231.png" group-title="Базовый",КВН ТВ
+http://tv.ot.net.ru/channel/231
+
+#EXTINF:-1 tvg-id="provider-232" tvg-name="sarafan" tvg-logo="http://tv.ot.net.ru/tv-icon/232.png" group-title="Базовый",Сарафан ТВ
+http://tv.ot.net.ru/channel/232
+
+#EXTINF:-1 tvg-id="provider-235" tvg-name="russky-illuzion" tvg-logo="http://tv.ot.net.ru/tv-icon/235.png" group-title="Базовый",Русский Иллюзион
+http://tv.ot.net.ru/channel/235
+
+#EXTINF:-1 tvg-id="provider-237" tvg-name="moya-planeta" tvg-logo="http://tv.ot.net.ru/tv-icon/237.png" group-title="Базовый",Моя Планета
+http://tv.ot.net.ru/channel/237
+
+#EXTINF:-1 tvg-id="provider-238" tvg-name="muzhskoe-kino" tvg-logo="http://tv.ot.net.ru/tv-icon/238.png" group-title="Базовый",Мужское кино
+http://tv.ot.net.ru/channel/238
+
+#EXTINF:-1 tvg-id="provider-239" tvg-name="muzhskoe-kino" tvg-logo="http://tv.ot.net.ru/tv-icon/239.png" group-title="Базовый",Мужское кино HD
+http://tv.ot.net.ru/channel/239
+
+#EXTINF:-1 tvg-id="provider-249" tvg-name="start-air" tvg-logo="http://tv.ot.net.ru/tv-icon/249.png" group-title="Базовый",START Air
+http://tv.ot.net.ru/channel/249
+
+#EXTINF:-1 tvg-id="provider-250" tvg-name="start-world" tvg-logo="http://tv.ot.net.ru/tv-icon/250.png" group-title="Базовый",START World
+http://tv.ot.net.ru/channel/250
+
+#EXTINF:-1 tvg-id="provider-251" tvg-name="kinoxit" tvg-logo="http://tv.ot.net.ru/tv-icon/251.png" group-title="Базовый",Кинохит HD
+http://tv.ot.net.ru/channel/251
+
+#EXTINF:-1 tvg-id="provider-252" tvg-name="kinomiks" tvg-logo="http://tv.ot.net.ru/tv-icon/252.png" group-title="Базовый",Киномикс
+http://tv.ot.net.ru/channel/252
+
+#EXTINF:-1 tvg-id="provider-253" tvg-name="kinouzhas" tvg-logo="http://tv.ot.net.ru/tv-icon/253.png" group-title="Базовый",Киноужас
+http://tv.ot.net.ru/channel/253
+
+#EXTINF:-1 tvg-id="provider-254" tvg-name="mosfilm" tvg-logo="http://tv.ot.net.ru/tv-icon/254.png" group-title="Базовый",Мосфильм. Золотая Коллекция
+http://tv.ot.net.ru/channel/254
+
+#EXTINF:-1 tvg-id="provider-256" tvg-name="zee-tv" tvg-logo="http://tv.ot.net.ru/tv-icon/256.png" group-title="Базовый",Индия
+http://tv.ot.net.ru/channel/256
+
+#EXTINF:-1 tvg-id="provider-257" tvg-name="dorama" tvg-logo="http://tv.ot.net.ru/tv-icon/257.png" group-title="Базовый",Дорама
+http://tv.ot.net.ru/channel/257
+
+#EXTINF:-1 tvg-id="provider-262" tvg-name="360-news" tvg-logo="http://tv.ot.net.ru/tv-icon/262.png" group-title="Базовый",360° Новости
+http://tv.ot.net.ru/channel/262
+
+#EXTINF:-1 tvg-id="provider-286" tvg-name="m1global" tvg-logo="http://tv.ot.net.ru/tv-icon/286.png" group-title="Базовый",MMA-TV.com / М-1 Global
+http://tv.ot.net.ru/channel/286
