@@ -30,6 +30,8 @@ https://gribanovden2024.github.io/lampa-plagin/lampa-plagin.js
 │   ├── Встроенный плейлист (ссылка не настраивается)
 │   ├── Программа (XMLTV)
 │   └── Прокси для M3U/XMLTV
+├── ТВ онлайн
+│   └── Включить (по умолчанию «Да»)
 └── Strawberry 18+
     └── Включить — по умолчанию «Нет»
 ```
@@ -38,8 +40,8 @@ https://gribanovden2024.github.io/lampa-plagin/lampa-plagin.js
 меню — пункт плагина. Пока выключен, в настройках виден только переключатель.
 
 Вложенных разделов в настройках Лампы нет, поэтому пункты плоские: каждый плагин
-регистрирует свой компонент (`kinopoisk_settings`, `tv_settings`, `sisi_settings`)
-через `Lampa.SettingsApi.addComponent`.
+регистрирует свой компонент (`kinopoisk_settings`, `tv_settings`, `sisi_settings`,
+`tvonline_settings`) через `Lampa.SettingsApi.addComponent`.
 
 ## Как это устроено
 
@@ -49,6 +51,7 @@ plugins/lgbt.js            ← флаг выключения раздела
 plugins/kinopoisk.js       ← Кинопоиск
 plugins/sisi.js            ← Strawberry 18+
 plugins/tv.js              ← Телевидение (IPTV)
+plugins/tvonline.js        ← ТВ онлайн (20 каналов)
 ```
 
 Установщик берёт папку, из которой загружен сам, и по очереди подключает все
@@ -146,12 +149,33 @@ window.lampa_settings.disable_features.lgbt = true;
 Программа передач: [`examples/federal20.xml`](examples/federal20.xml).
 Обновление программы — `node scripts/update-epg.mjs`.
 
+### 5. ТВ онлайн — 20 федеральных каналов
+
+Отдельный плагин по странице
+[Мегион-Линк «IPTV 20 федеральных каналов»](https://www.megion.biz/clients/iptv-20-federalnykh-kanalov-.php).
+Открывается отдельным пунктом «ТВ онлайн» и **не связан** с плагином «Телевидение».
+
+- 20 каналов: Первый, Россия 1, Россия 24, Россия К, Пятый, НТВ, Матч ТВ,
+  Карусель, ОТР, ТВ Центр, РЕН ТВ, Спас, СТС, Домашний, ТВ-3, Пятница,
+  Звезда, Мир, ТНТ, Муз-ТВ.
+- Для каналов, где вещатель отдаёт прямой поток, используется он:
+  1ТВ (DASH), ВГТРК/Smotrim, Матч ТВ, Звезда, ТНТ и Пятница (Rutube), Мир.
+- Для каналов с DRM/закрытым плеером (5-й, РЕН, СТС, Домашний, Муз-ТВ,
+  ТВ Центр, Спас) оставлен резервный прямой поток — канал всё равно открывается.
+- Программа передач «Сейчас/Далее» — из `examples/federal20.xml`.
+- Настройки: только «Включить». Ссылка на плейлист не запрашивается.
+
+Ограничения: часть официальных страниц использует DRM (Widevine), поэтому
+их прямой поток не извлекается; резервные потоки могут быть в 576p. Некоторые
+HTTPS-потоки не отдают CORS — в браузере может понадобиться внешний плеер.
+
 ## Сборка
 
 ```
 src/kinopoisk.js  ─┐
 src/sisi.js       ─┼─ node build.mjs ─> plugins/*.js + lampa-plagin.js (установщик)
-src/tv.js         ─┘
+src/tv.js         ─┤
+src/tvonline.js   ─┘
 ```
 
 Правьте `src/`, затем `node build.mjs`, затем коммит.
@@ -167,10 +191,12 @@ plugins/lgbt.js              флаг disable_features.lgbt
 plugins/kinopoisk.js         собранный плагин Кинопоиска
 plugins/sisi.js              собранный плагин sisi
 plugins/tv.js                собранный плагин телевидения
+plugins/tvonline.js          собранный плагин «ТВ онлайн»
 src/lgbt.js                  исходник флага
 src/kinopoisk.js             исходник Кинопоиска
 src/sisi.js                  исходник sisi
 src/tv.js                    исходник телевидения
+src/tvonline.js              исходник «ТВ онлайн»
 build.mjs                    сборка
 scripts/update-epg.mjs       обновление federal20.xml
 .github/workflows/update-epg.yml  ежедневное обновление EPG

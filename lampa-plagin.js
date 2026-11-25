@@ -9,8 +9,9 @@
  *   2) Кинопоиск — «Буду смотреть»  ->  plugins/kinopoisk.js
  *   3) Strawberry / sisi (si.skaz.tv)  ->  plugins/sisi.js
  *   4) Телевидение — IPTV (M3U + XMLTV)  ->  plugins/tv.js
+ *   5) ТВ онлайн — 20 федеральных каналов  ->  plugins/tvonline.js
  *
- * Собрано: 20261125205814
+ * Собрано: 20261125211953
  */
 
 (function () {
@@ -30,7 +31,7 @@
 
     window.lampa_plagin_installer = true;
 
-    var VERSION = '20261125205814';
+    var VERSION = '20261125211953';
 
     // Папка, из которой загружен этот файл. Нужна, чтобы плагины подхватывались
     // с того же адреса (GitHub Pages, свой сервер, локальная папка).
@@ -50,7 +51,8 @@
         { name: 'LGBT — выключение раздела', file: 'plugins/lgbt.js' },
         { name: 'Кинопоиск — «Буду смотреть»', file: 'plugins/kinopoisk.js' },
         { name: 'Strawberry / sisi (si.skaz.tv)', file: 'plugins/sisi.js' },
-        { name: 'Телевидение — IPTV (M3U + XMLTV)', file: 'plugins/tv.js' }
+        { name: 'Телевидение — IPTV (M3U + XMLTV)', file: 'plugins/tv.js' },
+        { name: 'ТВ онлайн — 20 федеральных каналов', file: 'plugins/tvonline.js' }
     ];
 
     console.log('[lampa-plagin] установщик, плагинов: ' + PLUGINS.length + ', база: ' + BASE);
