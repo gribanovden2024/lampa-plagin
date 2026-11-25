@@ -64,3 +64,28 @@ http://31.148.5.241/kanal_20/index.m3u8
 
 #EXTINF:-1 tvg-id="U.ru" tvg-logo="https://i.imgur.com/KDZvt0Q.png" group-title="Федеральные",Ю HD
 https://bl.rutube.ru/livestream/5c9327074e25ca86f3111d4085cbbb65/index.m3u8?e=2066519758&s=9cPc1rCGu6M932eqrifRhQ&scheme=https
+
+#EXTINF:-1 tvg-logo="http://tv.ot.net.ru/tv-icon/1.png" tvg-name="pervy",Первый Канал
+http://tv.ot.net.ru/channel/1
+#EXTINF:-1 tvg-logo="http://tv.ot.net.ru/tv-icon/2.png" tvg-name="rossia1",Россия 1
+http://tv.ot.net.ru/channel/2
+#EXTINF:-1 tvg-logo="http://tv.ot.net.ru/tv-icon/3.png" tvg-name="match-tv",МАТЧ!
+http://tv.ot.net.ru/channel/3
+#EXTINF:-1 tvg-logo="http://tv.ot.net.ru/tv-icon/4.png" tvg-name="ntv",НТВ
+http://tv.ot.net.ru/channel/4
+#EXTINF:-1 tvg-logo="http://tv.ot.net.ru/tv-icon/5.png" tvg-name="5kanal-ru",5 канал
+http://tv.ot.net.ru/channel/5
+#EXTINF:-1 tvg-logo="http://tv.ot.net.ru/tv-icon/6.png" tvg-name="kultura",Россия К
+http://tv.ot.net.ru/channel/6
+#EXTINF:-1 tvg-logo="http://tv.ot.net.ru/tv-icon/7.png" tvg-name="rossia-24",Россия 24
+http://tv.ot.net.ru/channel/7
+#EXTINF:-1 tvg-logo="http://tv.ot.net.ru/tv-icon/8.png" tvg-name="karusel",Карусель
+http://tv.ot.net.ru/channel/8
+#EXTINF:-1 tvg-logo="http://tv.ot.net.ru/tv-icon/9.png" tvg-name="otr",ОТР
+http://tv.ot.net.ru/channel/9
+#EXTINF:-1 tvg-logo="http://tv.ot.net.ru/tv-icon/10.png" tvg-name="tvcentr",ТВЦ
+http://tv.ot.net.ru/channel/10
+#EXTINF:-1 tvg-logo="http://tv.ot.net.ru/tv-icon/11.png" tvg-name="rentv",РЕН ТВ
+http://tv.ot.net.ru/channel/11
+#EXTINF:-1 tvg-logo="http://tv.ot.net.ru/tv-icon/12.png" tvg-name="spas",Спас
+http://tv.ot.net.ru/channel/12
