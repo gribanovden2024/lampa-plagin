@@ -260,6 +260,13 @@
             timeout: mode === 'quick' ? PAGE_TIMEOUT : 120000
         };
 
+        var handled = jsonRequest('POST', proxy, payload, params.timeout, function (request_error, data) {
+            if (request_error) callback(request_error, null);
+            else callback(null, data || {});
+        });
+
+        if (handled) return;
+
         // quiet не копит ссылки на десятки страниц в памяти
         if (network.quiet) {
             network.quiet(proxy, function (data) {
@@ -461,7 +468,64 @@
         }
     }
 
+    function jsonRequest(method, url, body, timeout, callback) {
+        var fetch_fn = typeof fetch === 'function' ? fetch : (window.fetch || null);
+        var Abort = typeof AbortController === 'function' ? AbortController : (window.AbortController || null);
+
+        if (!fetch_fn || !Abort) return false;
+
+        var controller = new Abort();
+        var timer = setTimeout(function () {
+            controller.abort();
+        }, timeout || REQUEST_TIMEOUT);
+        var options = {
+            method: method,
+            headers: {
+                accept: 'application/json'
+            },
+            signal: controller.signal
+        };
+
+        if (body) {
+            options.headers['content-type'] = 'application/json';
+            options.body = JSON.stringify(body);
+        }
+
+        fetch_fn(url, options).then(function (response) {
+            return response.text().then(function (text) {
+                var data = null;
+
+                try {
+                    data = text ? JSON.parse(text) : null;
+                } catch (e) {}
+
+                return {
+                    status: response.status,
+                    ok: response.ok,
+                    data: data
+                };
+            });
+        }).then(function (result) {
+            clearTimeout(timer);
+
+            if (!result.ok) callback({ status: result.status, data: result.data }, result.data);
+            else callback(null, result.data);
+        }).catch(function (error) {
+            clearTimeout(timer);
+            callback({ status: 0, error: error }, null);
+        });
+
+        return true;
+    }
+
     function requestGet(url, success, error) {
+        var handled = jsonRequest('GET', url, null, REQUEST_TIMEOUT, function (request_error, data) {
+            if (request_error) error(request_error);
+            else success(data);
+        });
+
+        if (handled) return;
+
         var params = {
             type: 'get',
             timeout: REQUEST_TIMEOUT
@@ -489,6 +553,7 @@
         var proxy_key = Lampa.Storage.get('kinopoisk_proxy_key', '');
         var params = { type: 'post', timeout: 20000 };
         var finished = false;
+        var attempts = 0;
 
         if (proxy_key) payload.key = proxy_key;
 
@@ -512,14 +577,32 @@
             }
         }
 
-        function failed() {
+        function retry() {
             if (finished) return;
+
+            if (attempts < 1) {
+                attempts++;
+                setTimeout(send, 300);
+                return;
+            }
+
             finished = true;
             callback(undefined);
         }
 
-        if (network.quiet) network.quiet(proxy, done, failed, payload, params);
-        else network.silent(proxy, done, failed, payload, params);
+        function send() {
+            var handled = jsonRequest('POST', proxy, payload, 12000, function (request_error, data) {
+                if (request_error) retry();
+                else done(data);
+            });
+
+            if (handled) return;
+
+            if (network.quiet) network.quiet(proxy, done, retry, payload, params);
+            else network.silent(proxy, done, retry, payload, params);
+        }
+
+        send();
     }
 
     function requestAllohaDirect(kp, callback) {
@@ -1531,7 +1614,7 @@
     function startPlugin() {
         var manifest = {
             type: 'video',
-            version: '0.6.3',
+            version: '0.6.4',
             name: 'Кинопоиск',
             description: 'Список "Буду смотреть" через собственный CORS-прокси',
             component: 'kinopoisk'
