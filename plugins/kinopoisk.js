@@ -46,7 +46,9 @@ try {
     var LAST_SYNC_KEY = 'kinopoisk_last_sync';
     var LAST_ATTEMPT_KEY = 'kinopoisk_last_attempt';
     var QUICK_SIZE = 20;
-    var SYNC_INTERVAL = 5 * 60 * 1000;
+    // Полную проверку списка делаем редко: ручная кнопка обновляет
+    // список принудительно, а обычное открытие пользуется кэшем.
+    var SYNC_INTERVAL = 30 * 60 * 1000;
     var RETRY_INTERVAL = 60 * 1000;
     var PARTIAL_RETRY = 15 * 1000;
     var ENRICH_LIMIT = 2;
@@ -95,6 +97,27 @@ try {
 
     function kpKey(item) {
         return item && item.kinopoisk_id ? String(item.kinopoisk_id) : '';
+    }
+
+    // Сверяем первую страницу с кэшем: если состав и количество совпали,
+    // остальные 34 страницы можно не запрашивать.
+    function samePrefix(items, cached) {
+        var length;
+        var movie;
+        var id;
+
+        if (!items || !items.length || !cached || !cached.length) return false;
+
+        length = Math.min(items.length, cached.length);
+
+        for (var i = 0; i < length; i++) {
+            movie = items[i] && items[i].movie;
+            id = movie && movie.id;
+
+            if (id == null || String(id) !== kpKey(cached[i])) return false;
+        }
+
+        return true;
     }
 
     // Карточке хватает 300x450: на телевизоре это ~22 КБ вместо ~85 КБ.
@@ -273,7 +296,7 @@ try {
         return userData && userData.plannedToWatch && userData.plannedToWatch.movies;
     }
 
-    function requestList(mode, offset, callback) {
+    function requestList(mode, offset, callback, fresh) {
         var oauth = Lampa.Storage.get('kinopoisk_access_token');
         var proxy = getProxyUrl();
         var payload;
@@ -308,6 +331,8 @@ try {
         if (mode === 'quick') {
             payload.offset = Number(offset) || 0;
             payload.limit = QUICK_SIZE;
+
+            if (fresh) payload.fresh = true;
         }
 
         log('Request list', mode, offset);
@@ -852,13 +877,16 @@ try {
         options = options || {};
 
         var cold = !!options.cold;
+        var force = !!options.force;
+        var check = !!options.check && !force;
+        var manual = !!options.manual;
 
         if (sync_state.running) {
             if (cold && typeof options.onFirst === 'function') sync_state.waiters.push(options.onFirst);
             return;
         }
 
-        if (!cold) {
+        if (!cold && !force) {
             var last = Number(Lampa.Storage.get(LAST_SYNC_KEY, 0)) || 0;
             var attempt = Number(Lampa.Storage.get(LAST_ATTEMPT_KEY, 0)) || 0;
 
@@ -869,13 +897,15 @@ try {
 
             // неполный список (получили первую страницу, а полную — нет)
             // пробуем добрать быстрее, чем после обычной ошибки
-            var retry = !last && getCachedMovies().length ? PARTIAL_RETRY : RETRY_INTERVAL;
+            var retry = getCachedMovies().length ? PARTIAL_RETRY : RETRY_INTERVAL;
 
             if (attempt && Date.now() - attempt < retry) {
                 startEnrichment();
                 return;
             }
         }
+
+        if (manual) updateRefreshState(true);
 
         sync_state.running = true;
         sync_state.waiters = cold && typeof options.onFirst === 'function' ? [options.onFirst] : [];
@@ -909,7 +939,7 @@ try {
         function fail(error, message) {
             log('Sync failed', error);
 
-            if (!(error && error.silent) && (cold || message)) {
+            if (!(error && error.silent) && (cold || message || manual)) {
                 notify(message || proxyMessage(error));
             } else if (error && error.status === 403) {
                 notify(proxyMessage(error));
@@ -917,8 +947,11 @@ try {
 
             getWaiters();
             sync_state.running = false;
+            updateRefreshState(false);
+            updateRefreshLabel();
         }
 
+        var cached_at_start = getCachedMovies();
         var accumulated = [];
         var pending = {};
         var next_request = QUICK_SIZE;
@@ -930,6 +963,9 @@ try {
         var total = 0;
         var done = false;
         var pages = 0;
+        var force_rest = force;
+        var checked_no_change = false;
+        var failure_message = '';
 
         function parsePage(data) {
             var movies = getWatchlist(data);
@@ -967,27 +1003,75 @@ try {
             };
         }
 
+        function listStructureChanged() {
+            var seen = {};
+            var i;
+
+            if (cached_at_start.length !== accumulated.length) return true;
+
+            for (i = 0; i < accumulated.length; i++) {
+                var movie = accumulated[i] && accumulated[i].movie;
+
+                if (movie && movie.id != null) seen[String(movie.id)] = true;
+            }
+
+            for (i = 0; i < cached_at_start.length; i++) {
+                var key = kpKey(cached_at_start[i]);
+
+                if (key && !seen[key]) return true;
+            }
+
+            return false;
+        }
+
         function finish(is_complete) {
+            var structure_changed = false;
+            var refresh_after = false;
+
             if (done) return;
 
             done = true;
 
             if (is_complete) {
                 auto_resume_count = 0;
-                mergeList(accumulated, true);
+
+                if (checked_no_change) {
+                    // Проверка не нашла изменений: не трогаем остальные
+                    // страницы, только обновляем метаданные первой.
+                    if (accumulated.length) mergeList(accumulated, false);
+                } else {
+                    structure_changed = listStructureChanged();
+                    mergeList(accumulated, true);
+                }
+
                 Lampa.Storage.set(LAST_SYNC_KEY, Date.now());
-            } else if (accumulated.length && auto_resume_count < MAX_AUTO_RESUMES) {
+            } else if (!manual && accumulated.length && auto_resume_count < MAX_AUTO_RESUMES) {
                 // Повторяем частичную синхронизацию, чтобы временный сбой
                 // страницы не оставлял список навсегда неполным.
                 auto_resume_count++;
 
                 setTimeout(function () {
-                    if (!sync_state.running) syncList({});
+                    if (!sync_state.running) syncList(check ? { check: true } : {});
                 }, PARTIAL_RETRY + 1000);
             }
 
             getWaiters();
+            updateRefreshState(false);
+            updateRefreshLabel();
+
+            if (manual) {
+                if (is_complete) {
+                    notify(checked_no_change || !structure_changed ?
+                        'Список Кинопоиска актуален' : 'Список Кинопоиска обновлён');
+                    refresh_after = structure_changed && !checked_no_change;
+                } else {
+                    notify(failure_message || 'Не удалось обновить список полностью');
+                }
+            }
+
             stop();
+
+            if (refresh_after) setTimeout(refreshActive, 80);
         }
 
         function settleFailedPages() {
@@ -1019,6 +1103,8 @@ try {
             }
 
             if (error && error.status === 403) notify(proxyMessage(error));
+
+            if (manual) failure_message = message || proxyMessage(error);
 
             if (failed_offset === null || offset < failed_offset) failed_offset = offset;
 
@@ -1067,7 +1153,7 @@ try {
             settleFailedPages();
         }
 
-        function requestPage(offset) {
+        function requestPage(offset, fresh) {
             var attempts = 0;
             var retry_pending = false;
 
@@ -1090,6 +1176,8 @@ try {
                 requestList('quick', offset, function (error, data) {
                     var page;
                     var retryable;
+                    var prefix_matches;
+                    var total_matches;
 
                     if (done) {
                         active--;
@@ -1127,13 +1215,27 @@ try {
 
                     if (page.total) total = page.total;
 
+                    if (check && offset === 0) {
+                        prefix_matches = samePrefix(page.items, cached_at_start);
+                        total_matches = !page.total || Number(page.total) === cached_at_start.length;
+
+                        if (cached_at_start.length && prefix_matches && total_matches) {
+                            accumulated = page.items.slice(0);
+                            checked_no_change = true;
+                            finish(true);
+                            return;
+                        }
+
+                        force_rest = true;
+                    }
+
                     pending[offset] = page;
 
                     mergePending();
                     settleFailedPages();
 
                     if (!done && failed_offset === null) pump();
-                });
+                }, fresh);
             }
 
             send();
@@ -1141,7 +1243,7 @@ try {
 
         function pump() {
             while (!done && failed_offset === null && retrying_pages === 0 && active < PAGE_CONCURRENCY && (!total || next_request < total) && next_request < MAX_SYNC_PAGES * QUICK_SIZE) {
-                requestPage(next_request);
+                requestPage(next_request, force || (check && force_rest));
                 next_request += QUICK_SIZE;
             }
 
@@ -1150,7 +1252,7 @@ try {
 
         // первая страница отдельно: она нужна для первого экрана и не должна
         // конкурировать за Кинопоиск с остальными
-        requestPage(0);
+        requestPage(0, force || check);
     }
 
     function full(params, oncomplete, onerror) {
@@ -1162,7 +1264,12 @@ try {
 
         if (cached.length) {
             oncomplete(apiResponse(cached));
-            syncList({});
+
+            // Если список уже полный, после открытия проверяем только
+            // первую страницу. Остальные 34 не трогаем без изменений.
+            if (Number(Lampa.Storage.get(LAST_SYNC_KEY, 0))) syncList({ check: true });
+            else syncList({});
+
             startEnrichment();
             return;
         }
@@ -1197,7 +1304,10 @@ try {
     }
     var Api = {
         full: full,
-        clear: clear
+        clear: clear,
+        refresh: function () {
+            manualRefresh();
+        }
     };
 
     // ---------------------------------------------------------------------
@@ -1205,6 +1315,133 @@ try {
     // ---------------------------------------------------------------------
 
     var active_comp = null;
+    var refresh_button = null;
+    var refresh_click_at = 0;
+
+    function pad2(value) {
+        return value < 10 ? '0' + value : String(value);
+    }
+
+    function lastSyncText() {
+        var last = Number(Lampa.Storage.get(LAST_SYNC_KEY, 0)) || 0;
+        var date;
+        var now;
+
+        if (!last) return '—';
+
+        date = new Date(last);
+        if (!isFinite(date.getTime())) return '—';
+
+        now = new Date();
+
+        if (date.getFullYear() === now.getFullYear() &&
+            date.getMonth() === now.getMonth() &&
+            date.getDate() === now.getDate()) {
+            return pad2(date.getHours()) + ':' + pad2(date.getMinutes());
+        }
+
+        return pad2(date.getDate()) + '.' + pad2(date.getMonth() + 1) + ' ' +
+            pad2(date.getHours()) + ':' + pad2(date.getMinutes());
+    }
+
+    function updateRefreshLabel() {
+        var time;
+
+        if (!refresh_button) return;
+
+        time = refresh_button.find('.kp-refresh__time');
+        if (time && time.text) time.text(lastSyncText());
+    }
+
+    function updateRefreshState(busy) {
+        var time;
+
+        if (!refresh_button) return;
+
+        time = refresh_button.find('.kp-refresh__time');
+
+        if (busy) {
+            if (time && time.text) time.text('обновление');
+            if (refresh_button.css) refresh_button.css('opacity', 0.65);
+        } else {
+            if (refresh_button.css) refresh_button.css('opacity', 1);
+            updateRefreshLabel();
+        }
+    }
+
+    function mountRefreshButton() {
+        var button;
+        var actions;
+
+        unmountRefreshButton();
+
+        button = $(
+            '<div class="head__action selector kp-refresh" title="Последнее обновление списка Кинопоиска">' +
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" ' +
+                    'stroke-linecap="round" stroke-linejoin="round">' +
+                    '<path d="M21 12a9 9 0 1 1-2.6-6.4"></path>' +
+                    '<polyline points="21 3 21 9 15 9"></polyline>' +
+                '</svg>' +
+                '<span class="kp-refresh__time"></span>' +
+            '</div>'
+        );
+
+        button.css({
+            width: 'auto',
+            padding: '0 1.2em',
+            borderRadius: '2em'
+        });
+
+        button.find('svg').css({
+            width: '1.4em',
+            height: '1.4em',
+            flexShrink: 0
+        });
+
+        button.find('.kp-refresh__time').css({
+            marginLeft: '0.6em',
+            fontSize: '0.9em',
+            whiteSpace: 'nowrap',
+            opacity: 0.85
+        });
+
+        function action(event) {
+            if (event && event.preventDefault) event.preventDefault();
+
+            // head__action может получить и click, и hover:enter
+            if (Date.now() - refresh_click_at < 350) return;
+            refresh_click_at = Date.now();
+
+            manualRefresh();
+        }
+
+        button.on('hover:enter click', action);
+
+        if (Lampa.Head && typeof Lampa.Head.addElement === 'function') {
+            Lampa.Head.addElement(button);
+        } else {
+            actions = $('.head__actions');
+            if (actions && typeof actions.prepend === 'function') actions.prepend(button);
+        }
+
+        refresh_button = button;
+        updateRefreshLabel();
+    }
+
+    function unmountRefreshButton() {
+        if (refresh_button && refresh_button.remove) refresh_button.remove();
+        refresh_button = null;
+    }
+
+    function manualRefresh() {
+        if (sync_state.running) {
+            notify('Кинопоиск: обновление уже идёт');
+            return;
+        }
+
+        updateRefreshState(true);
+        syncList({ force: true, manual: true });
+    }
 
     function prepareRender(items) {
         if (!Lampa.Card) return items;
@@ -1322,11 +1559,14 @@ try {
             comp._kp_built = has;
             comp._kp_empty = !has;
 
+            updateRefreshLabel();
+
             return original_build.call(comp, data);
         };
 
         comp.empty = function (status) {
             comp._kp_empty = true;
+            updateRefreshLabel();
 
             return original_empty.call(comp, status);
         };
@@ -1335,6 +1575,8 @@ try {
             active_comp = comp;
             comp._kp_built = false;
             comp._kp_empty = false;
+
+            mountRefreshButton();
 
             Api.full(object, function (data) {
                 var results;
@@ -1359,10 +1601,14 @@ try {
             resolve(apiResponse(getCachedMovies()));
         };
 
+        comp.refreshList = manualRefresh;
+
         comp.destroy = function () {
             comp._kp_destroyed = true;
 
             if (active_comp === comp) active_comp = null;
+
+            unmountRefreshButton();
 
             if (original_destroy) original_destroy.call(comp);
         };
@@ -1724,7 +1970,7 @@ try {
 
         var manifest = {
             type: 'video',
-            version: '0.6.7',
+            version: '0.7.0',
             name: 'Кинопоиск',
             description: 'Список "Буду смотреть" через собственный CORS-прокси',
             component: 'kinopoisk'

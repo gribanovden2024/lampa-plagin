@@ -625,6 +625,9 @@ export default {
         const key = request.headers.get('x-proxy-key') || String(body.key || '');
         const limit = Math.min(Math.max(parseInt(body.limit, 10) || 0, 0), PAGE_SIZE);
         const offset = Math.min(Math.max(parseInt(body.offset, 10) || 0, 0), MAX_ITEMS);
+        // fresh обходит кэш Worker: ручное обновление должно видеть
+        // актуальный список, а не страницы тридцатиминутной давности.
+        const fresh = body.fresh === true;
 
         if (env.PROXY_KEY && key !== env.PROXY_KEY) {
             return fail('forbidden', 403);
@@ -666,17 +669,20 @@ export default {
             const kpId = resolved.kpId;
 
             if (limit > 0) {
-                // полный список свежее быстрого кэша: если он есть, отдаем срез из него
-                const fullKey = await cacheKey(['full', tokenHash, kpId]);
-                const cachedFull = await cacheGet(fullKey);
-                const sliced = cachedFull ? slicePluginResponse(cachedFull, offset, limit) : null;
-
-                if (sliced) return reply(sliced, 200);
-
                 const quickKey = await cacheKey(['quick', tokenHash, kpId, offset, limit]);
-                const cachedQuick = await cacheGet(quickKey);
 
-                if (cachedQuick) return reply(cachedQuick, 200);
+                if (!fresh) {
+                    // полный список свежее быстрого кэша: если он есть, отдаем срез из него
+                    const fullKey = await cacheKey(['full', tokenHash, kpId]);
+                    const cachedFull = await cacheGet(fullKey);
+                    const sliced = cachedFull ? slicePluginResponse(cachedFull, offset, limit) : null;
+
+                    if (sliced) return reply(sliced, 200);
+
+                    const cachedQuick = await cacheGet(quickKey);
+
+                    if (cachedQuick) return reply(cachedQuick, 200);
+                }
 
                 const quick = await fetchQuick(kpId, oauth, offset, limit);
 
@@ -686,9 +692,12 @@ export default {
             }
 
             const fullKey = await cacheKey(['full', tokenHash, kpId]);
-            const cached = await cacheGet(fullKey);
 
-            if (cached) return reply(cached, 200);
+            if (!fresh) {
+                const cached = await cacheGet(fullKey);
+
+                if (cached) return reply(cached, 200);
+            }
 
             const full = await fetchWatchlist(kpId, oauth);
 
