@@ -51,7 +51,7 @@ try {
     var PARTIAL_RETRY = 15 * 1000;
     var ENRICH_LIMIT = 5;
     var REQUEST_TIMEOUT = 15000;
-    var PAGE_TIMEOUT = 75000;
+    var PAGE_TIMEOUT = 100000;
     var PAGE_CONCURRENCY = 2;
     var MAX_SYNC_PAGES = 60;
     var COLD_TIMEOUT = 12000;
@@ -1047,12 +1047,16 @@ try {
             function send() {
                 if (done) return;
 
+                var started = Date.now();
+
                 requestList('quick', offset, function (error, data) {
                     var page;
 
                     if (done) return;
 
-                    if (error && attempts < 1) {
+                    // быстрый обрыв сети имеет смысл повторить; после долгого
+                    // таймаута повтор только удвоит ожидание
+                    if (error && attempts < 1 && Date.now() - started < 10000) {
                         attempts++;
                         setTimeout(send, 1000);
                         return;
@@ -1672,7 +1676,7 @@ try {
 
         var manifest = {
             type: 'video',
-            version: '0.6.5',
+            version: '0.6.6',
             name: 'Кинопоиск',
             description: 'Список "Буду смотреть" через собственный CORS-прокси',
             component: 'kinopoisk'

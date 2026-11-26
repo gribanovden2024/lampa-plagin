@@ -198,7 +198,7 @@ async function kinopoisk(operationName, query, variables, oauth) {
                 query: query,
                 variables: variables
             }),
-            signal: AbortSignal.timeout(30000)
+            signal: AbortSignal.timeout(45000)
         }
     );
 
