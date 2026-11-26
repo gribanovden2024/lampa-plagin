@@ -51,6 +51,9 @@ try {
     var PARTIAL_RETRY = 15 * 1000;
     var ENRICH_LIMIT = 5;
     var REQUEST_TIMEOUT = 15000;
+    var PAGE_TIMEOUT = 60000;
+    var PAGE_CONCURRENCY = 2;
+    var MAX_SYNC_PAGES = 60;
     var COLD_TIMEOUT = 12000;
     var ALLOHA_TOKEN = '04941a9a3ca3ac16e2b4327347bbc1';
     var TMDB_API_KEY = '4ef0d7355d9ffb5151e987764708ce96';
@@ -219,34 +222,16 @@ try {
         return userData && userData.plannedToWatch && userData.plannedToWatch.movies;
     }
 
-    function applyListResponse(data, mode) {
-        var movies = getWatchlist(data);
-        var meta = (data && data.meta) || {};
-        var complete;
-
-        if (!movies || !Array.isArray(movies.items)) return null;
-
-        if (mode === 'quick') {
-            if (typeof meta.complete === 'boolean') {
-                complete = meta.complete;
-            } else if (!data.meta && movies.items.length > QUICK_SIZE) {
-                // старый Worker без limit/offset вернул сразу весь список
-                complete = true;
-            } else {
-                complete = movies.items.length < QUICK_SIZE;
-            }
-        } else {
-            complete = typeof meta.complete === 'boolean' ? meta.complete : true;
-        }
-
-        return mergeList(movies.items, complete);
-    }
-
-    function requestList(mode, callback) {
+    function requestList(mode, offset, callback) {
         var oauth = Lampa.Storage.get('kinopoisk_access_token');
         var proxy = getProxyUrl();
         var payload;
         var proxy_key;
+
+        if (typeof offset === 'function') {
+            callback = offset;
+            offset = 0;
+        }
 
         if (!oauth) {
             log('No access token, remote list is disabled');
@@ -270,20 +255,31 @@ try {
         if (proxy_key) payload.key = proxy_key;
 
         if (mode === 'quick') {
-            payload.offset = 0;
+            payload.offset = Number(offset) || 0;
             payload.limit = QUICK_SIZE;
         }
 
-        log('Request list', mode);
+        log('Request list', mode, offset);
 
-        network.silent(proxy, function (data) {
-            callback(null, data || {});
-        }, function (error) {
-            callback(error || { status: 0 });
-        }, payload, {
+        var params = {
             type: 'post',
-            timeout: 120000
-        });
+            timeout: mode === 'quick' ? PAGE_TIMEOUT : 120000
+        };
+
+        // quiet не копит ссылки на десятки страниц в памяти
+        if (network.quiet) {
+            network.quiet(proxy, function (data) {
+                callback(null, data || {});
+            }, function (error) {
+                callback(error || { status: 0 });
+            }, payload, params);
+        } else {
+            network.silent(proxy, function (data) {
+                callback(null, data || {});
+            }, function (error) {
+                callback(error || { status: 0 });
+            }, payload, params);
+        }
     }
 
     var last_notify_at = 0;
@@ -658,8 +654,7 @@ try {
 
     var sync_state = {
         running: false,
-        waiters: [],
-        quick_served: false
+        waiters: []
     };
 
     function syncList(options) {
@@ -692,7 +687,6 @@ try {
         }
 
         sync_state.running = true;
-        sync_state.quick_served = false;
         sync_state.waiters = cold && typeof options.onFirst === 'function' ? [options.onFirst] : [];
 
         Lampa.Storage.set(LAST_ATTEMPT_KEY, Date.now());
@@ -734,79 +728,163 @@ try {
             sync_state.running = false;
         }
 
-        function applyResponse(data, mode) {
-            var result = applyListResponse(data, mode);
+        var accumulated = [];
+        var pending = {};
+        var next_request = QUICK_SIZE;
+        var next_merge = 0;
+        var active = 0;
+        var total = 0;
+        var done = false;
+        var pages = 0;
 
-            if (!result) log('No watchlist in response');
+        function parsePage(data) {
+            var movies = getWatchlist(data);
+            var meta;
+            var items;
+            var is_old;
+            var page_total;
+            var has_more;
+            var page_complete;
 
-            return result;
+            if (!movies || !Array.isArray(movies.items)) return null;
+
+            meta = (data && data.meta) || {};
+            items = movies.items;
+            is_old = !data.meta;
+
+            // meta.total, а не movies.total: у старого Worker там длина страницы
+            page_total = Number(meta.total) || 0;
+
+            if (is_old) {
+                // старый Worker без limit/offset вернул сразу весь список
+                has_more = false;
+                page_complete = true;
+            } else {
+                has_more = typeof meta.hasMore === 'boolean' ? meta.hasMore : items.length >= QUICK_SIZE;
+                page_complete = typeof meta.complete === 'boolean' ? meta.complete : items.length < QUICK_SIZE;
+            }
+
+            return {
+                items: items,
+                total: page_total,
+                hasMore: has_more,
+                complete: page_complete,
+                old: is_old
+            };
         }
 
-        function requestFull() {
-            requestList('full', function (error, data) {
-                var result;
-                var served;
+        function finish(is_complete) {
+            if (done) return;
+
+            done = true;
+
+            if (is_complete) {
+                mergeList(accumulated, true);
+                Lampa.Storage.set(LAST_SYNC_KEY, Date.now());
+            }
+
+            getWaiters();
+            stop();
+        }
+
+        function abortPage(error, message) {
+            log('Page failed', error);
+
+            if (!accumulated.length && cold) {
+                done = true;
+                fail(error, message);
+                return;
+            }
+
+            if (error && error.status === 403) notify(proxyMessage(error));
+
+            finish(false);
+        }
+
+        function mergePending() {
+            var page;
+            var result;
+
+            while (!done && pending[next_merge]) {
+                page = pending[next_merge];
+                delete pending[next_merge];
+
+                for (var i = 0; i < page.items.length; i++) {
+                    accumulated.push(page.items[i]);
+                }
+
+                result = mergeList(accumulated, false);
+
+                startEnrichment();
+
+                // Если пришел новый холодный зритель, он строит экран уже
+                // из текущего кэша — повторно карточки не добавляем.
+                if (getWaiters() === 0) appendNew(result.added);
+
+                next_merge += QUICK_SIZE;
+                pages++;
+
+                if (page.old || page.complete || !page.hasMore || page.items.length < QUICK_SIZE) {
+                    finish(true);
+                    return;
+                }
+
+                if (total && accumulated.length >= total) {
+                    finish(true);
+                    return;
+                }
+
+                if (pages >= MAX_SYNC_PAGES) {
+                    finish(false);
+                    return;
+                }
+            }
+        }
+
+        function requestPage(offset) {
+            active++;
+
+            requestList('quick', offset, function (error, data) {
+                var page;
+
+                active--;
+
+                if (done) return;
 
                 if (error) {
-                    fail(error);
+                    abortPage(error);
                     return;
                 }
 
-                result = applyResponse(data, 'full');
+                page = parsePage(data);
 
-                if (!result) {
-                    fail(data, graphqlMessage(data));
+                if (!page) {
+                    abortPage(data, graphqlMessage(data));
                     return;
                 }
 
-                served = getWaiters() > 0;
+                if (page.total) total = page.total;
 
-                if (result.complete) Lampa.Storage.set(LAST_SYNC_KEY, Date.now());
+                pending[offset] = page;
 
-                var shouldAppend = !served || sync_state.quick_served;
+                mergePending();
 
-                stop();
-
-                if (shouldAppend) appendNew(result.added);
+                if (!done) pump();
             });
         }
 
-        if (!cold) {
-            requestFull();
-            return;
+        function pump() {
+            while (!done && active < PAGE_CONCURRENCY && (!total || next_request < total) && next_request < MAX_SYNC_PAGES * QUICK_SIZE) {
+                requestPage(next_request);
+                next_request += QUICK_SIZE;
+            }
+
+            if (!done && active === 0 && next_request >= MAX_SYNC_PAGES * QUICK_SIZE) finish(false);
         }
 
-        requestList('quick', function (error, data) {
-            var result;
-
-            if (error) {
-                requestFull();
-                return;
-            }
-
-            result = applyResponse(data, 'quick');
-
-            if (!result) {
-                requestFull();
-                return;
-            }
-
-            sync_state.quick_served = getWaiters() > 0;
-
-            startEnrichment();
-
-            if (result.complete) {
-                Lampa.Storage.set(LAST_SYNC_KEY, Date.now());
-
-                var shouldAppend = !sync_state.quick_served;
-
-                stop();
-
-                if (shouldAppend) appendNew(result.added);
-            } else {
-                requestFull();
-            }
-        });
+        // первая страница отдельно: она нужна для первого экрана и не должна
+        // конкурировать за Кинопоиск с остальными
+        requestPage(0);
     }
 
     function full(params, oncomplete, onerror) {
@@ -1376,7 +1454,7 @@ try {
     function startPlugin() {
         var manifest = {
             type: 'video',
-            version: '0.6.1',
+            version: '0.6.2',
             name: 'Кинопоиск',
             description: 'Список "Буду смотреть" через собственный CORS-прокси',
             component: 'kinopoisk'
