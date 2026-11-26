@@ -15,8 +15,12 @@
 
     var PROXY_PATH = '/kp';
 
+    function getStoredProxyUrl() {
+        return String(Lampa.Storage.get('kinopoisk_proxy_url', '') || '').trim().replace(/\/+$/, '');
+    }
+
     function getProxyUrl() {
-        var url = Lampa.Storage.get('kinopoisk_proxy_url', '');
+        var url = getStoredProxyUrl();
         if (!url && SELF_ORIGIN) url = SELF_ORIGIN + PROXY_PATH;
         return String(url || '').trim().replace(/\/+$/, '');
     }
@@ -1029,6 +1033,7 @@
 
     var auth_poll_timer = null;
     var auth_poll_stopped = true;
+    var proxy_setup_pending = false;
 
     function stopAuthPolling() {
         auth_poll_stopped = true;
@@ -1062,6 +1067,8 @@
 
         network.silent('https://oauth.yandex.ru/token', function(data) { // on token success
             if (data.access_token) {
+                stopAuthPolling();
+
                 Lampa.Storage.set('kinopoisk_access_token', data.access_token);
                 Lampa.Storage.set('kinopoisk_refresh_token', data.refresh_token);
                 Lampa.Storage.set('kinopoisk_token_expires', data.expires_in * 1000 + Date.now());
@@ -1070,7 +1077,7 @@
                 // после входа список нужно забрать заново, даже если кэш свежий
                 Lampa.Storage.set(LAST_SYNC_KEY, 0);
                 Lampa.Storage.set(LAST_ATTEMPT_KEY, 0);
-                syncList({});
+                afterAuth(refresh);
 
                 if (callbacks.success) callbacks.success(data);
             } else if (callbacks.error) {
@@ -1282,11 +1289,86 @@
         
     }
 
+    // После первого входа предлагаем сразу настроить прокси: без него список
+    // не загрузится. Два окна ввода Lampa: адрес Worker и ключ PROXY_KEY.
+    function openProxyInput(params, callback, done) {
+        try {
+            Lampa.Input.edit(params, callback);
+        } catch (e) {
+            console.error('Kinopoisk', 'Proxy input error', e);
+            Lampa.Noty.show('Не удалось открыть ввод. Настройте прокси в Настройки - Кинопоиск');
+            done();
+        }
+    }
+
+    function promptProxySetup(done) {
+        done = done || function () {};
+
+        if (!Lampa.Input || !Lampa.Input.edit) {
+            Lampa.Noty.show('Кинопоиск: укажите адрес прокси в Настройки - Кинопоиск');
+            done();
+            return;
+        }
+
+        openProxyInput({
+            title: 'Адрес прокси Cloudflare Worker',
+            value: getStoredProxyUrl(),
+            nosave: true,
+            nomic: true
+        }, function (value) {
+            var url = String(value || '').trim().replace(/\/+$/, '');
+
+            if (url && !/^https?:\/\//i.test(url)) url = 'https://' + url;
+
+            if (!url) {
+                Lampa.Noty.show('Кинопоиск: без прокси список не загрузится. Адрес можно указать позже в Настройки - Кинопоиск');
+                done();
+                return;
+            }
+
+            Lampa.Storage.set('kinopoisk_proxy_url', url);
+
+            openProxyInput({
+                title: 'Ключ прокси (PROXY_KEY), если задан',
+                value: Lampa.Storage.get('kinopoisk_proxy_key', ''),
+                nosave: true,
+                nomic: true
+            }, function (key) {
+                Lampa.Storage.set('kinopoisk_proxy_key', String(key || '').trim());
+                Lampa.Noty.show('Кинопоиск: прокси сохранён');
+
+                done();
+            }, done);
+        }, done);
+    }
+
+    function afterAuth(refresh) {
+        // обновление токена не должно открывать мастер настройки
+        if (refresh || getStoredProxyUrl()) {
+            syncList({});
+            return;
+        }
+
+        if (proxy_setup_pending) return;
+
+        proxy_setup_pending = true;
+
+        // даем модалке авторизации закрыться, затем показываем ввод
+        setTimeout(function () {
+            promptProxySetup(function () {
+                proxy_setup_pending = false;
+
+                // без сохраненного адреса не дергаем прокси: иначе уйдем
+                // на автоопределенный адрес GitHub Pages и получим 404
+                if (getStoredProxyUrl()) syncList({});
+            });
+        }, 500);
+    }
 
     function startPlugin() {
         var manifest = {
             type: 'video',
-            version: '0.6.0',
+            version: '0.6.1',
             name: 'Кинопоиск',
             description: 'Список "Буду смотреть" через собственный CORS-прокси',
             component: 'kinopoisk'
