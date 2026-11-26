@@ -1569,6 +1569,7 @@
             comp._kp_empty = false;
 
             mountRefreshButton();
+            comp._kp_refresh_button = refresh_button;
 
             Api.full(object, function (data) {
                 var results;
@@ -1600,7 +1601,11 @@
 
             if (active_comp === comp) active_comp = null;
 
-            unmountRefreshButton();
+            if (comp._kp_refresh_button && comp._kp_refresh_button === refresh_button) {
+                unmountRefreshButton();
+            }
+
+            comp._kp_refresh_button = null;
 
             if (original_destroy) original_destroy.call(comp);
         };
