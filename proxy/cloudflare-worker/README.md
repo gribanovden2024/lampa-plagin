@@ -39,10 +39,10 @@ Worker → **Settings** → **Variables and Secrets** → **Add**:
 
 ```bash
 curl https://kp-proxy.<ваш-поддомен>.workers.dev/health
-# {"ok":true,"version":5,"has_key":true,"cache":true}
+# {"ok":true,"version":6,"has_key":true,"cache":true}
 ```
 
-Если `version` меньше 5 — вставьте в Worker актуальный `worker.js` из репозитория
+Если `version` меньше 6 — вставьте в Worker актуальный `worker.js` из репозитория
 и нажмите **Deploy**. Старый Worker тоже совместим с новым плагином, но без
 мгновенных постеров/рейтингов и серверного кэша.
 

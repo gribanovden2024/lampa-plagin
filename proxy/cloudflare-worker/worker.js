@@ -11,10 +11,12 @@
  *  - токен нигде не логируется;
  *  - необязательный ключ PROXY_KEY, чтобы прокси не использовали посторонние.
  *
- * Что нового в версии 5:
+ * Что нового в версии 6:
  *  - список отдается плагину вместе с постером, рейтингом и годом Кинопоиска;
  *  - поддерживается быстрый режим { limit, offset } для первой страницы;
  *  - kpId кэшируется на сутки, готовый список - на 15 минут, страницы - на 30 минут;
+ *  - alloha (KP -> TMDB) проксируется и кэшируется на 30 дней: браузерные
+ *    блокировщики рекламы больше не мешают загрузке постеров и id TMDB;
  *  - неполный ответ (ошибка одной из страниц) помечается meta.complete=false,
  *    чтобы плагин не чистил кэш по обрезанному списку.
  *
@@ -49,6 +51,11 @@ const MAX_ITEMS = 700;
 const FULL_TTL = 900;
 const QUICK_TTL = 1800;
 const ID_TTL = 86400;
+const ALLOHA_TTL = 2592000;
+const ALLOHA_MISS_TTL = 3600;
+
+const ALLOHA_URL = 'https://api.alloha.tv/';
+const ALLOHA_TOKEN = '04941a9a3ca3ac16e2b4327347bbc1';
 
 // Служебный адрес для ключей Cache API (в сеть не уходит).
 const CACHE_ORIGIN = 'https://kp-cache.internal';
@@ -222,7 +229,7 @@ function toPluginShape(items, total, extra) {
             }
         },
         meta: {
-            version: 5,
+            version: 6,
             complete: extra.complete !== false,
             hasMore: !!extra.hasMore,
             truncated: !!extra.truncated,
@@ -486,8 +493,7 @@ function slicePluginResponse(payload, offset, limit) {
     });
 }
 
-async function resolveKpId(oauth, tokenHash, ctx) {
-    const key = await cacheKey(['id', tokenHash]);
+async function resolveKpId(oauth, tokenHash, ctx) {    const key = await cacheKey(['id', tokenHash]);
     const cached = await cacheGet(key);
 
     if (cached && cached.kpId) {
@@ -512,6 +518,47 @@ async function resolveKpId(oauth, tokenHash, ctx) {
     return { kpId: value, payload: null };
 }
 
+async function handleAlloha(kp, ctx) {
+    if (!/^\d{1,12}$/.test(kp)) {
+        return fail('invalid kinopoisk id', 400);
+    }
+
+    const lookupKey = await cacheKey(['alloha', kp]);
+    const cached = await cacheGet(lookupKey);
+
+    if (cached) return reply(cached, 200);
+
+    const response = await fetch(
+        ALLOHA_URL + '?token=' + ALLOHA_TOKEN + '&kp=' + encodeURIComponent(kp),
+        {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36'
+            },
+            signal: AbortSignal.timeout(10000)
+        }
+    );
+
+    const text = await response.text();
+    let data;
+
+    try {
+        data = JSON.parse(text);
+    } catch (e) {
+        throw new Error('alloha returned non-JSON response');
+    }
+
+    await cachePut(
+        lookupKey,
+        data,
+        data && data.status === 'success' ? ALLOHA_TTL : ALLOHA_MISS_TTL,
+        ctx
+    );
+
+    return reply(data, 200);
+}
+
 export default {
     async fetch(request, env, ctx) {
         if (request.method === 'OPTIONS') {
@@ -523,7 +570,7 @@ export default {
         if (url.pathname === '/health') {
             return reply({
                 ok: true,
-                version: 5,
+                version: 6,
                 has_key: Boolean(env.PROXY_KEY),
                 cache: CACHE_ENABLED
             });
@@ -549,6 +596,18 @@ export default {
 
         if (env.PROXY_KEY && key !== env.PROXY_KEY) {
             return fail('forbidden', 403);
+        }
+
+        // alloha проксируется через Worker: браузерные блокировщики рекламы
+        // не режут api.alloha.tv, а ответы кэшируются на 30 дней.
+        const allohaKp = String(body.alloha || '').trim();
+
+        if (allohaKp) {
+            try {
+                return await handleAlloha(allohaKp, ctx);
+            } catch (e) {
+                return fail('alloha request failed: ' + (e && e.message ? e.message : 'unknown error'), 502);
+            }
         }
 
         if (!oauth) {

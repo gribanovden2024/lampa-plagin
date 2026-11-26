@@ -57,6 +57,8 @@ try {
     var COLD_TIMEOUT = 12000;
     var ALLOHA_TOKEN = '04941a9a3ca3ac16e2b4327347bbc1';
     var TMDB_API_KEY = '4ef0d7355d9ffb5151e987764708ce96';
+    var TMDB_API_BASE = 'https://api.themoviedb.org';
+    var TMDB_IMAGE_BASE = 'https://image.tmdb.org/t/p/w300';
     var DEBUG = false;
 
     function log() {
@@ -379,14 +381,16 @@ try {
             item.release_date = result.release_date || item.release_date || '';
         }
 
-        if (result.poster_path && !item.poster_path) item.poster_path = result.poster_path;
+        // Абсолютный URL: не зависим от TMDB-прокси Лампы, который может
+        // отдавать 404 на /find и /search.
+        if (result.poster_path && !item.poster) item.poster = TMDB_IMAGE_BASE + result.poster_path;
         if (result.vote_average && !item.vote_average) item.vote_average = result.vote_average;
 
         delete item._kp_pending;
     }
 
     function tmdbBase() {
-        return Lampa.Utils.protocol() + 'tmdb.' + Lampa.Manifest.cub_domain;
+        return TMDB_API_BASE;
     }
 
     function pickTmdbResult(data, series) {
@@ -485,7 +489,48 @@ try {
         });
     }
 
-    function loadAlloha(kp, callback) {
+    // Сначала идем через Worker: браузерные блокировщики рекламы не режут
+    // api.alloha.tv, а Worker кэширует ответ на 30 дней.
+    function requestAllohaProxy(kp, callback) {
+        var proxy = getProxyUrl();
+        var payload = { alloha: String(kp) };
+        var proxy_key = Lampa.Storage.get('kinopoisk_proxy_key', '');
+        var params = { type: 'post', timeout: 20000 };
+        var finished = false;
+
+        if (proxy_key) payload.key = proxy_key;
+
+        if (!proxy) {
+            callback(undefined);
+            return;
+        }
+
+        function done(data) {
+            if (finished) return;
+            finished = true;
+
+            if (data && data.status === 'success' && data.data) {
+                callback(data.data);
+            } else if (data && data.status === 'error') {
+                // alloha ответила "не найдено" — напрямую повторять не нужно
+                callback(null);
+            } else {
+                // старый Worker без alloha-прокси или ошибка прокси
+                callback(undefined);
+            }
+        }
+
+        function failed() {
+            if (finished) return;
+            finished = true;
+            callback(undefined);
+        }
+
+        if (network.quiet) network.quiet(proxy, done, failed, payload, params);
+        else network.silent(proxy, done, failed, payload, params);
+    }
+
+    function requestAllohaDirect(kp, callback) {
         var url = 'https://api.alloha.tv/?token=' + ALLOHA_TOKEN + '&kp=' + encodeURIComponent(kp);
 
         requestAllohaOnce(url, function (data, definitive) {
@@ -500,6 +545,18 @@ try {
                     callback(retry);
                 });
             }, 700);
+        });
+    }
+
+    function loadAlloha(kp, callback) {
+        requestAllohaProxy(kp, function (data) {
+            if (data !== undefined) {
+                callback(data);
+                return;
+            }
+
+            // старый Worker без alloha-прокси или ошибка прокси
+            requestAllohaDirect(kp, callback);
         });
     }
 
@@ -657,6 +714,8 @@ try {
         waiters: []
     };
 
+    var auto_resume_count = 0;
+
     function syncList(options) {
         options = options || {};
 
@@ -779,8 +838,16 @@ try {
             done = true;
 
             if (is_complete) {
+                auto_resume_count = 0;
                 mergeList(accumulated, true);
                 Lampa.Storage.set(LAST_SYNC_KEY, Date.now());
+            } else if (accumulated.length && auto_resume_count < 3) {
+                // добрать страницы в фоне, не заставляя открывать раздел заново
+                auto_resume_count++;
+
+                setTimeout(function () {
+                    if (!sync_state.running) syncList({});
+                }, PARTIAL_RETRY + 1000);
             }
 
             getWaiters();
@@ -842,35 +909,51 @@ try {
         }
 
         function requestPage(offset) {
+            var attempts = 0;
+
             active++;
 
-            requestList('quick', offset, function (error, data) {
-                var page;
-
-                active--;
-
+            function send() {
                 if (done) return;
 
-                if (error) {
-                    abortPage(error);
-                    return;
-                }
+                requestList('quick', offset, function (error, data) {
+                    var page;
 
-                page = parsePage(data);
+                    if (done) return;
 
-                if (!page) {
-                    abortPage(data, graphqlMessage(data));
-                    return;
-                }
+                    if (error && attempts < 1) {
+                        attempts++;
+                        setTimeout(send, 1000);
+                        return;
+                    }
 
-                if (page.total) total = page.total;
+                    active--;
 
-                pending[offset] = page;
+                    if (done) return;
 
-                mergePending();
+                    if (error) {
+                        abortPage(error);
+                        return;
+                    }
 
-                if (!done) pump();
-            });
+                    page = parsePage(data);
+
+                    if (!page) {
+                        abortPage(data, graphqlMessage(data));
+                        return;
+                    }
+
+                    if (page.total) total = page.total;
+
+                    pending[offset] = page;
+
+                    mergePending();
+
+                    if (!done) pump();
+                });
+            }
+
+            send();
         }
 
         function pump() {
@@ -891,6 +974,8 @@ try {
         var cached = getCachedMovies();
         var served = false;
         var timer = null;
+
+        auto_resume_count = 0;
 
         if (cached.length) {
             oncomplete(apiResponse(cached));
@@ -1454,7 +1539,7 @@ try {
     function startPlugin() {
         var manifest = {
             type: 'video',
-            version: '0.6.2',
+            version: '0.6.3',
             name: 'Кинопоиск',
             description: 'Список "Буду смотреть" через собственный CORS-прокси',
             component: 'kinopoisk'
