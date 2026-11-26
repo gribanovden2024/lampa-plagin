@@ -49,11 +49,12 @@ try {
     var SYNC_INTERVAL = 5 * 60 * 1000;
     var RETRY_INTERVAL = 60 * 1000;
     var PARTIAL_RETRY = 15 * 1000;
-    var ENRICH_LIMIT = 5;
+    var ENRICH_LIMIT = 2;
     var REQUEST_TIMEOUT = 15000;
     var PAGE_TIMEOUT = 100000;
     var PAGE_CONCURRENCY = 2;
     var MAX_SYNC_PAGES = 60;
+    var MAX_AUTO_RESUMES = 12;
     var COLD_TIMEOUT = 12000;
     var ALLOHA_TOKEN = '04941a9a3ca3ac16e2b4327347bbc1';
     var TMDB_API_KEY = '4ef0d7355d9ffb5151e987764708ce96';
@@ -923,6 +924,9 @@ try {
         var next_request = QUICK_SIZE;
         var next_merge = 0;
         var active = 0;
+        var retrying_pages = 0;
+        var in_flight = {};
+        var failed_offset = null;
         var total = 0;
         var done = false;
         var pages = 0;
@@ -972,8 +976,9 @@ try {
                 auto_resume_count = 0;
                 mergeList(accumulated, true);
                 Lampa.Storage.set(LAST_SYNC_KEY, Date.now());
-            } else if (accumulated.length && auto_resume_count < 3) {
-                // добрать страницы в фоне, не заставляя открывать раздел заново
+            } else if (accumulated.length && auto_resume_count < MAX_AUTO_RESUMES) {
+                // Повторяем частичную синхронизацию, чтобы временный сбой
+                // страницы не оставлял список навсегда неполным.
                 auto_resume_count++;
 
                 setTimeout(function () {
@@ -985,10 +990,29 @@ try {
             stop();
         }
 
-        function abortPage(error, message) {
+        function settleFailedPages() {
+            var waiting_for_earlier = false;
+
+            if (done || failed_offset === null) return;
+
+            Object.keys(in_flight).some(function (offset) {
+                if (Number(offset) < failed_offset) {
+                    waiting_for_earlier = true;
+                    return true;
+                }
+
+                return false;
+            });
+
+            // Поздняя страница не должна отменять более раннюю, которая
+            // ещё может успешно прийти и быть добавлена в правильном порядке.
+            if (!waiting_for_earlier && next_merge >= failed_offset) finish(false);
+        }
+
+        function abortPage(offset, error, message) {
             log('Page failed', error);
 
-            if (!accumulated.length && cold) {
+            if (!accumulated.length && cold && offset === 0) {
                 done = true;
                 fail(error, message);
                 return;
@@ -996,7 +1020,9 @@ try {
 
             if (error && error.status === 403) notify(proxyMessage(error));
 
-            finish(false);
+            if (failed_offset === null || offset < failed_offset) failed_offset = offset;
+
+            settleFailedPages();
         }
 
         function mergePending() {
@@ -1037,44 +1063,65 @@ try {
                     return;
                 }
             }
+
+            settleFailedPages();
         }
 
         function requestPage(offset) {
             var attempts = 0;
+            var retry_pending = false;
 
             active++;
+            in_flight[offset] = true;
 
             function send() {
-                if (done) return;
+                if (done) {
+                    if (retry_pending) retrying_pages--;
+                    active--;
+                    delete in_flight[offset];
+                    return;
+                }
 
-                var started = Date.now();
+                if (retry_pending) {
+                    retry_pending = false;
+                    retrying_pages--;
+                }
 
                 requestList('quick', offset, function (error, data) {
                     var page;
+                    var retryable;
 
-                    if (done) return;
+                    if (done) {
+                        active--;
+                        delete in_flight[offset];
+                        return;
+                    }
 
-                    // быстрый обрыв сети имеет смысл повторить; после долгого
-                    // таймаута повтор только удвоит ожидание
-                    if (error && attempts < 1 && Date.now() - started < 10000) {
+                    page = error ? null : parsePage(data);
+                    retryable = error
+                        ? (!error.status || error.status >= 500)
+                        : !page;
+
+                    // После сетевого сброса или временного ответа без списка
+                    // повторяем только эту страницу, не начиная синхронизацию с нуля.
+                    if (retryable && attempts < 1) {
                         attempts++;
+                        retry_pending = true;
+                        retrying_pages++;
                         setTimeout(send, 1000);
                         return;
                     }
 
                     active--;
-
-                    if (done) return;
+                    delete in_flight[offset];
 
                     if (error) {
-                        abortPage(error);
+                        abortPage(offset, error);
                         return;
                     }
 
-                    page = parsePage(data);
-
                     if (!page) {
-                        abortPage(data, graphqlMessage(data));
+                        abortPage(offset, data, graphqlMessage(data));
                         return;
                     }
 
@@ -1083,8 +1130,9 @@ try {
                     pending[offset] = page;
 
                     mergePending();
+                    settleFailedPages();
 
-                    if (!done) pump();
+                    if (!done && failed_offset === null) pump();
                 });
             }
 
@@ -1092,12 +1140,12 @@ try {
         }
 
         function pump() {
-            while (!done && active < PAGE_CONCURRENCY && (!total || next_request < total) && next_request < MAX_SYNC_PAGES * QUICK_SIZE) {
+            while (!done && failed_offset === null && retrying_pages === 0 && active < PAGE_CONCURRENCY && (!total || next_request < total) && next_request < MAX_SYNC_PAGES * QUICK_SIZE) {
                 requestPage(next_request);
                 next_request += QUICK_SIZE;
             }
 
-            if (!done && active === 0 && next_request >= MAX_SYNC_PAGES * QUICK_SIZE) finish(false);
+            if (!done && failed_offset === null && active === 0 && next_request >= MAX_SYNC_PAGES * QUICK_SIZE) finish(false);
         }
 
         // первая страница отдельно: она нужна для первого экрана и не должна
@@ -1676,7 +1724,7 @@ try {
 
         var manifest = {
             type: 'video',
-            version: '0.6.6',
+            version: '0.6.7',
             name: 'Кинопоиск',
             description: 'Список "Буду смотреть" через собственный CORS-прокси',
             component: 'kinopoisk'
