@@ -43,7 +43,7 @@
     var PARTIAL_RETRY = 15 * 1000;
     var ENRICH_LIMIT = 5;
     var REQUEST_TIMEOUT = 15000;
-    var PAGE_TIMEOUT = 60000;
+    var PAGE_TIMEOUT = 75000;
     var PAGE_CONCURRENCY = 2;
     var MAX_SYNC_PAGES = 60;
     var COLD_TIMEOUT = 12000;
@@ -89,11 +89,37 @@
     }
 
     // Карточке хватает 300x450: на телевизоре это ~22 КБ вместо ~85 КБ.
+    // Kinopoisk отдает базовый URL без размера, поэтому суффикс добавляем сами.
     function smallPoster(url) {
+        var value;
+        var query = '';
+        var q;
+
         if (!url) return '';
-        return String(url).replace(/\/(\d{2,4})x(\d{2,4})(\?[^#]*)?$/, function (match, width, height, query) {
-            return '/300x450' + (query || '');
-        });
+
+        value = String(url).trim();
+
+        if (/^(data:|blob:)/i.test(value) || value.indexOf('image.tmdb.org') >= 0) {
+            return value;
+        }
+
+        if (/^http:\/\//i.test(value)) value = value.replace(/^http:/i, 'https:');
+
+        q = value.indexOf('?');
+        if (q >= 0) {
+            query = value.slice(q);
+            value = value.slice(0, q);
+        }
+
+        if (/\.(jpe?g|png|webp)$/i.test(value)) return value + query;
+
+        if (/\/(\d{2,4})x(\d{2,4})$/.test(value)) {
+            value = value.replace(/\/(\d{2,4})x(\d{2,4})$/, '/300x450');
+        } else {
+            value = value.replace(/\/+$/, '') + '/300x450';
+        }
+
+        return value + query;
     }
 
     function toRating(value) {
@@ -207,6 +233,26 @@
         Lampa.Storage.set(STORAGE_KEY, merged);
 
         return { movies: merged, added: added, complete: complete };
+    }
+
+    function normalizeCachedPosters() {
+        var movies = getCachedMovies();
+        var changed = false;
+
+        movies.forEach(function (item) {
+            var fixed;
+
+            if (!item || !item.poster) return;
+
+            fixed = smallPoster(item.poster);
+
+            if (fixed !== item.poster) {
+                item.poster = fixed;
+                changed = true;
+            }
+        });
+
+        if (changed) Lampa.Storage.set(STORAGE_KEY, movies);
     }
 
     function getWatchlist(data) {
@@ -1612,9 +1658,11 @@
     }
 
     function startPlugin() {
+        normalizeCachedPosters();
+
         var manifest = {
             type: 'video',
-            version: '0.6.4',
+            version: '0.6.5',
             name: 'Кинопоиск',
             description: 'Список "Буду смотреть" через собственный CORS-прокси',
             component: 'kinopoisk'

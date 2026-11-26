@@ -198,7 +198,7 @@ async function kinopoisk(operationName, query, variables, oauth) {
                 query: query,
                 variables: variables
             }),
-            signal: AbortSignal.timeout(20000)
+            signal: AbortSignal.timeout(30000)
         }
     );
 
@@ -242,6 +242,37 @@ function toPluginShape(items, total, extra) {
 }
 
 /**
+ * Постер Кинопоиска приходит базовым URL без размера. Добавляем 300x450,
+ * переводим на HTTPS: без этого CDN отвечает 400 и карточки без картинок.
+ */
+function normalizePoster(url) {
+    let value = String(url || '').trim();
+    let query = '';
+    let q;
+
+    if (!value) return '';
+    if (/^(data:|blob:)/i.test(value) || value.indexOf('image.tmdb.org') >= 0) return value;
+
+    value = value.replace(/^http:\/\//i, 'https://');
+
+    q = value.indexOf('?');
+    if (q >= 0) {
+        query = value.slice(q);
+        value = value.slice(0, q);
+    }
+
+    if (/\.(jpe?g|png|webp)$/i.test(value)) return value + query;
+
+    if (/\/(\d{2,4})x(\d{2,4})$/.test(value)) {
+        value = value.replace(/\/(\d{2,4})x(\d{2,4})$/, '/300x450');
+    } else {
+        value = value.replace(/\/+$/, '') + '/300x450';
+    }
+
+    return value + query;
+}
+
+/**
  * В ответе Кинопоиска уже есть постер, рейтинг, год и тип.
  * Плагин показывает их сразу, не дожидаясь alloha/TMDB.
  */
@@ -259,7 +290,7 @@ function mapReaction(item) {
                 localized: title.russian || '',
                 original: title.original || ''
             },
-            poster: (movie.poster && movie.poster.avatarsUrl) || '',
+            poster: normalizePoster(movie.poster && movie.poster.avatarsUrl),
             rating: Number.isFinite(Number(kpRating)) ? Number(kpRating) : 0,
             year: Number(year) || 0,
             series: type === 'TvSeries' || type === 'TvShow' || type === 'MiniSeries'
