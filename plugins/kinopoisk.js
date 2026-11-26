@@ -111,7 +111,9 @@ try {
             return value;
         }
 
-        if (/^http:\/\//i.test(value)) value = value.replace(/^http:/i, 'https:');
+        // Kinopoisk отдает протокол-относительный URL (//cdn...)
+        if (/^\/\//.test(value)) value = 'https:' + value;
+        else if (/^http:\/\//i.test(value)) value = value.replace(/^http:/i, 'https:');
 
         q = value.indexOf('?');
         if (q >= 0) {

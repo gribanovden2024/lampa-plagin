@@ -253,7 +253,8 @@ function normalizePoster(url) {
     if (!value) return '';
     if (/^(data:|blob:)/i.test(value) || value.indexOf('image.tmdb.org') >= 0) return value;
 
-    value = value.replace(/^http:\/\//i, 'https://');
+    if (/^\/\//.test(value)) value = 'https:' + value;
+    else value = value.replace(/^http:\/\//i, 'https://');
 
     q = value.indexOf('?');
     if (q >= 0) {
