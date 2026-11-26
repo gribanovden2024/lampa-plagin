@@ -27,7 +27,7 @@ const plugins = [
         src: 'src/kinopoisk.js',
         out: 'plugins/kinopoisk.js',
         registers: 'компонент kinopoisk, раздел настроек kinopoisk_settings, кнопка в левом меню',
-        note: 'работает через собственный Cloudflare Worker, OAuth-токен третьим лицам не уходит'
+        note: 'список показывается из кэша, TMDB-идентификаторы догружаются в фоне; OAuth-токен уходит только в собственный Cloudflare Worker'
     },
     {
         num: 3,

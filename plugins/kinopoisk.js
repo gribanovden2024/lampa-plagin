@@ -2,7 +2,7 @@
  * Кинопоиск — «Буду смотреть»
  * файл-источник: src/kinopoisk.js
  * регистрирует: компонент kinopoisk, раздел настроек kinopoisk_settings, кнопка в левом меню
- * примечание: работает через собственный Cloudflare Worker, OAuth-токен третьим лицам не уходит
+ * примечание: список показывается из кэша, TMDB-идентификаторы догружаются в фоне; OAuth-токен уходит только в собственный Cloudflare Worker
  * ======================================================================== */
 
 try {
@@ -29,8 +29,41 @@ try {
         return String(url || '').trim().replace(/\/+$/, '');
     }
 
+    // ---------------------------------------------------------------------
+    // Список и кэш
+    //
+    // Список "Буду смотреть" отдается из localStorage сразу. Прокси вместе
+    // со списком присылает постер, рейтинг и год Кинопоиска, поэтому карточки
+    // видны до обращения к TMDB. Идентификаторы TMDB догружаются в фоне и
+    // записываются в те же объекты, которые уже отрисованы.
+    // ---------------------------------------------------------------------
+
+    var STORAGE_KEY = 'kinopoisk_movies';
+    var LAST_SYNC_KEY = 'kinopoisk_last_sync';
+    var LAST_ATTEMPT_KEY = 'kinopoisk_last_attempt';
+    var QUICK_SIZE = 20;
+    var SYNC_INTERVAL = 5 * 60 * 1000;
+    var RETRY_INTERVAL = 60 * 1000;
+    var PARTIAL_RETRY = 15 * 1000;
+    var ENRICH_LIMIT = 5;
+    var REQUEST_TIMEOUT = 15000;
+    var COLD_TIMEOUT = 12000;
+    var ALLOHA_TOKEN = '04941a9a3ca3ac16e2b4327347bbc1';
+    var TMDB_API_KEY = '4ef0d7355d9ffb5151e987764708ce96';
+    var DEBUG = false;
+
+    function log() {
+        if (!DEBUG) return;
+
+        var args = Array.prototype.slice.call(arguments);
+
+        args.unshift('Kinopoisk');
+
+        console.log.apply(console, args);
+    }
+
     function getCachedMovies() {
-        var movies = Lampa.Storage.get('kinopoisk_movies', []);
+        var movies = Lampa.Storage.get(STORAGE_KEY, []);
         if (typeof movies === 'string') {
             try {
                 movies = JSON.parse(movies);
@@ -41,203 +74,772 @@ try {
         return Array.isArray(movies) ? movies : [];
     }
 
-    function calculateProgress(total, current) {
-        if(total == current) {
-            Lampa.Noty.show('Обновление списка фильмов Кинопоиска завершено (' + String(total) + ')');
-            if(Lampa.Storage.get('kinopoisk_launched_before', false) == false) {
-                Lampa.Storage.set('kinopoisk_launched_before', true);
-                Lampa.Activity.push({
-                    url: '',
-                    title: 'Кинопоиск',
-                    component: 'kinopoisk',
-                    page: 1
-                });
-            }
-        }
+    function apiResponse(results) {
+        // secuses - опечатка из оригинального плагина, ее читает старый InteractionCategory
+        return {
+            secuses: true,
+            page: 1,
+            results: results || []
+        };
     }
 
-    function processKinopoiskData(data) {
-        // use cache
-        if(data && data.data.userProfile && data.data.userProfile.userData && data.data.userProfile.userData.plannedToWatch) {
-            var kinopoiskMovies = getCachedMovies();
-            var receivedMovies = data.data.userProfile.userData.plannedToWatch.movies.items;
-            var receivedMoviesCount = receivedMovies.length;
-            var moviesCount = data.data.userProfile.userData.plannedToWatch.movies.total;
-            console.log('Kinopoisk', "Total planned to watch movies found: " + String(moviesCount));
-            console.log('Kinopoisk', "Movies received count: " + String(receivedMoviesCount));
-            if(receivedMoviesCount == 0) {
-                Lampa.Noty.show('В списке "Буду смотреть" Кинопоиска нет фильмов');
-            }
-            const receivedMovieIds = new Set(receivedMovies.map(m => String(m.movie.id)));
-            // filter out movies that are no longer present in receivedMovies
-            kinopoiskMovies = kinopoiskMovies.filter(movie => receivedMovieIds.has(String(movie.kinopoisk_id)));
-            Lampa.Storage.set('kinopoisk_movies', kinopoiskMovies);
-            let processedItems = 1;
-            receivedMovies.forEach(m => {
-                const existsInLocalStorage = kinopoiskMovies.some(km => km.kinopoisk_id === String(m.movie.id));
-                if (!existsInLocalStorage) {
-                    // get movie data
-                    var title = m.movie.title.localized || m.movie.title.original;
-                    console.log('Kinopoisk', 'Getting details for movie: ' + String(m.movie.id) + ', movie title: ' + title);
-                    // getting imdb id based on kinopoisk id
-                    // network.silent('https://kinopoiskapiunofficial.tech/api/v2.2/films/' + String(m.movie.id), function(data) {
-                    network.silent('https://api.alloha.tv/?token=04941a9a3ca3ac16e2b4327347bbc1&kp=' + String(m.movie.id), function(data) {
-                        if (data && data.data) {
-                            var movieIMDBid = data.data.id_imdb;
-                            var movieTMDBid = data.data.id_tmdb ? data.data.id_tmdb : null;
-                            var movieTitle = data.data.original_name ? data.data.original_name : data.data.name;
-                            if (data.data.category == 1) {
-                                var movieType = 'movie';
-                            } else { // 2
-                                var movieType = 'tv';
-                            }
-                            var movieYear = data.data.year;
-                            if (movieTMDBid) {
-                                console.log('Kinopoisk', 'TMDB movie id found: ' + String(movieTMDBid) + ' for kinopoisk id: ' + String(m.movie.id));
-                                var url = Lampa.Utils.protocol() + 'tmdb.'+ Lampa.Manifest.cub_domain +'/3/' + movieType + '/' + String(movieTMDBid) + '?api_key=4ef0d7355d9ffb5151e987764708ce96&language=ru';
-                            } else {
-                                if (movieType === 'movie') {
-                                    console.log('Kinopoisk', 'No IMDB movie id found for kinopoisk id: ' + String(m.movie.id) + ', will search by movie title: ' + movieTitle);
-                                    var url = Lampa.Utils.protocol() + 'tmdb.'+ Lampa.Manifest.cub_domain +'/3/search/movie?query=' + encodeURIComponent(movieTitle) + '&api_key=4ef0d7355d9ffb5151e987764708ce96&year=' + String(movieYear) + '&language=ru';
-                                } else { // TV_SERIES
-                                    console.log('Kinopoisk', 'No IMDB movie id found for kinopoisk id: ' + String(m.movie.id) + ', will search by tv series title: ' + movieTitle);
-                                    var url = Lampa.Utils.protocol() + 'tmdb.'+ Lampa.Manifest.cub_domain +'/3/search/tv?query=' + encodeURIComponent(movieTitle) + '&api_key=4ef0d7355d9ffb5151e987764708ce96&year=' + String(movieYear) + '&language=ru';
-                                }
-                            }
-                            // getting movie details
-                            network.silent(url, function(data) {
-                                if(data) {
-                                    if (movieTMDBid) {
-                                        var movieItem = data;
-                                    } else {
-                                        if (data.movie_results && data.movie_results[0]) {
-                                            var movieItem = data.movie_results[0];
-                                        } else if(data.tv_results && data.tv_results[0]) {
-                                            var movieItem = data.tv_results[0];
-                                        } else if(data.results && data.results[0]) {
-                                            var movieItem = data.results[0];
-                                        }
-                                    }
-                                    if(movieItem) {
+    function kpKey(item) {
+        return item && item.kinopoisk_id ? String(item.kinopoisk_id) : '';
+    }
 
-                                        // console.log('Kinopoisk', 'Movie details received: ' + JSON.stringify(movieItem));
-                                        console.log('Kinopoisk', 'TMDB id found: ' + movieItem.id + ' for IMDB movie id: ' + movieIMDBid + ', kinopoisk id: ' + String(m.movie.id));
+    // Карточке хватает 300x450: на телевизоре это ~22 КБ вместо ~85 КБ.
+    function smallPoster(url) {
+        if (!url) return '';
+        return String(url).replace(/\/(\d{2,4})x(\d{2,4})(\?[^#]*)?$/, function (match, width, height, query) {
+            return '/300x450' + (query || '');
+        });
+    }
 
-                                        var movieDateStr = movieItem.release_date || movieItem.first_air_date; // film or tv series
-                                        var movieDate = new Date(movieDateStr);
+    function toRating(value) {
+        if (typeof value === 'number') return isFinite(value) ? value : 0;
 
-                                        if (movieDate <= new Date()) {                                            
-                                            movieItem.kinopoisk_id = String(m.movie.id);
-                                            movieItem.source = "tmdb";
-                                            kinopoiskMovies = getCachedMovies(); // re-read data if another process modified it
-                                            kinopoiskMovies.unshift(movieItem);
-                                            Lampa.Storage.set('kinopoisk_movies', kinopoiskMovies);
-                                        } else {
-                                            console.log('Kinopoisk', 'Movie or TV with kinopoisk id ' + String(m.movie.id) + ' not released yet, release date:', movieDate);    
-                                            if (Lampa.Storage.get('kinopoisk_add_to_favorites', false)) { // add to favorites
-                                                Lampa.Favorite.add('wath', movieItem, 100);
-                                            }
-                                        }
-                                        
-                                    } else {
-                                        console.log('Kinopoisk', 'No result found for ' + movieTitle + ', ' + movieYear, data);
-                                    }
-                                } else {
-                                    console.log('Kinopoisk', 'No movie found by IMDB id: ' + String(movieIMDBid));
-                                }
-                                calculateProgress(receivedMoviesCount, processedItems++);
-                            }, function(data) {
-                                console.log('Kinopoisk', 'apitmdb.cub.red error, data: ' + String(data));
-                                calculateProgress(receivedMoviesCount, processedItems++);
-                            });
-                        } else {
-                            console.log('Kinopoisk', 'No movie found for kinopoisk id: ' + String(m.movie.id) + ', movie: ' + title);
-                            calculateProgress(receivedMoviesCount, processedItems++);
-                        }
-                    }, function(data) {
-                        console.log('Kinopoisk', 'alloha.tv error, data: ' + String(data));
-                        calculateProgress(receivedMoviesCount, processedItems++);
-                    }, false, {
-                        type: 'get'
-                    });
-                } else {
-                    console.log('Kinopoisk', 'Reading data from local storage for movie: ' + String(m.movie.id))
-                    calculateProgress(receivedMoviesCount, processedItems++);
-                }
-            })
+        var number = parseFloat(String(value == null ? '' : value).replace(',', '.'));
+
+        return isFinite(number) ? number : 0;
+    }
+
+    function isFutureDate(value) {
+        if (!value) return false;
+
+        var time = new Date(value).getTime();
+
+        return isFinite(time) && time > Date.now();
+    }
+
+    // Минимальная карточка из данных Кинопоиска: видна сразу, но пока без id TMDB.
+    function createLiteItem(movie) {
+        var title = movie.title || {};
+        var item = {
+            kinopoisk_id: String(movie.id),
+            source: 'tmdb',
+            poster: movie.poster ? smallPoster(movie.poster) : '',
+            vote_average: movie.rating ? toRating(movie.rating) : 0,
+            release_date: movie.year ? String(movie.year) + '-01-01' : '',
+            _kp_pending: true
+        };
+
+        if (movie.series) {
+            item._kp_series = true;
+            item.name = title.localized || title.original || '';
+            item.first_air_date = item.release_date;
         } else {
-            Lampa.Noty.show('Невозможно обработать данные, полученные от Кинопоиска');
-            console.log('Kinopoisk', 'processKinopoiskData - ');
-            console.log('Kinopoisk', data);
+            item.title = title.localized || title.original || '';
+            item.original_title = title.original || '';
+        }
+
+        return item;
+    }
+
+    // Обновляем только недостающие поля, чтобы не затереть данные TMDB.
+    function applyListMeta(item, movie) {
+        var title = movie.title || {};
+        var rating;
+
+        if (!item.poster && !item.poster_path && movie.poster) item.poster = smallPoster(movie.poster);
+
+        if (!item.vote_average && movie.rating) {
+            rating = toRating(movie.rating);
+            if (rating) item.vote_average = rating;
+        }
+
+        if (!item.release_date && movie.year) item.release_date = String(movie.year) + '-01-01';
+
+        if (movie.series) {
+            item._kp_series = true;
+            if (!item.name) item.name = title.localized || title.original || item.title || '';
+            if (!item.first_air_date && item.release_date) item.first_air_date = item.release_date;
+        } else if (!item.title) {
+            item.title = title.localized || title.original || item.name || '';
         }
     }
 
-    function getKinopoiskData() {
-        console.log('Kinopoisk', 'Starting to get Kinopoisk data...');
+    // Пересобираем список в порядке Кинопоиска, переиспользуя объекты:
+    // карточки держат ссылки, поэтому их не нужно перерисовывать.
+    function mergeList(incoming, complete) {
+        var cached = getCachedMovies();
+        var byKp = {};
+        var seen = {};
+        var merged = [];
+        var added = [];
 
+        cached.forEach(function (item) {
+            var key = kpKey(item);
+            if (key) byKp[key] = item;
+        });
+
+        incoming.forEach(function (raw) {
+            var movie = raw && raw.movie;
+            var key;
+            var item;
+
+            if (!movie || movie.id == null) return;
+
+            key = String(movie.id);
+            if (seen[key]) return;
+            seen[key] = true;
+
+            item = byKp[key];
+
+            if (item) {
+                applyListMeta(item, movie);
+            } else {
+                item = createLiteItem(movie);
+                added.push(item);
+            }
+
+            merged.push(item);
+        });
+
+        // Неполный ответ (ошибка одной из страниц) не должен чистить кэш.
+        if (!complete) {
+            cached.forEach(function (item) {
+                var key = kpKey(item);
+                if (key && !seen[key]) merged.push(item);
+            });
+        }
+
+        Lampa.Storage.set(STORAGE_KEY, merged);
+
+        return { movies: merged, added: added, complete: complete };
+    }
+
+    function getWatchlist(data) {
+        var profile = data && data.data && data.data.userProfile;
+        var userData = profile && profile.userData;
+
+        return userData && userData.plannedToWatch && userData.plannedToWatch.movies;
+    }
+
+    function applyListResponse(data, mode) {
+        var movies = getWatchlist(data);
+        var meta = (data && data.meta) || {};
+        var complete;
+
+        if (!movies || !Array.isArray(movies.items)) return null;
+
+        if (mode === 'quick') {
+            if (typeof meta.complete === 'boolean') {
+                complete = meta.complete;
+            } else if (!data.meta && movies.items.length > QUICK_SIZE) {
+                // старый Worker без limit/offset вернул сразу весь список
+                complete = true;
+            } else {
+                complete = movies.items.length < QUICK_SIZE;
+            }
+        } else {
+            complete = typeof meta.complete === 'boolean' ? meta.complete : true;
+        }
+
+        return mergeList(movies.items, complete);
+    }
+
+    function requestList(mode, callback) {
         var oauth = Lampa.Storage.get('kinopoisk_access_token');
         var proxy = getProxyUrl();
-
-        if (!proxy) {
-            Lampa.Noty.show('Не задан адрес прокси: Настройки - Кинопоиск - Адрес прокси');
-            console.log('Kinopoisk', 'Proxy URL is not configured, remote list is disabled');
-            return;
-        }
+        var payload;
+        var proxy_key;
 
         if (!oauth) {
-            console.log('Kinopoisk', 'No access token, remote list is disabled');
+            log('No access token, remote list is disabled');
+            callback({ status: 0, silent: true });
             return;
         }
 
-        // Токен передается только на собственный прокси (Cloudflare Worker),
-        // в теле POST, чтобы он не попадал в URL и логи.
-        var payload = {
+        if (!proxy) {
+            callback({
+                status: 0,
+                message: 'Не задан адрес прокси: Настройки - Кинопоиск - Адрес прокси'
+            });
+            return;
+        }
+
+        payload = {
             oauth: oauth
         };
 
-        var proxy_key = Lampa.Storage.get('kinopoisk_proxy_key', '');
-        if (proxy_key) {
-            payload.key = proxy_key;
+        proxy_key = Lampa.Storage.get('kinopoisk_proxy_key', '');
+        if (proxy_key) payload.key = proxy_key;
+
+        if (mode === 'quick') {
+            payload.offset = 0;
+            payload.limit = QUICK_SIZE;
         }
 
-        network.silent(proxy, function(data) { // on success
-            if (data && data.errors && data.errors.length) {
-                console.log('Kinopoisk', 'Proxy returned GraphQL errors', data.errors);
-                Lampa.Noty.show('Кинопоиск: ' + (data.errors[0].message || 'ошибка запроса'));
-            }
-            processKinopoiskData(data);
-        }, function(data) { // on error
-            var status = data && data.status ? data.status : 0;
-            var body = data && data.responseText ? String(data.responseText).slice(0, 300) : '';
+        log('Request list', mode);
 
-            console.log('Kinopoisk', 'Proxy error, status:', status, body);
-
-            if (status === 403) {
-                Lampa.Noty.show('Прокси: неверный ключ (Настройки - Кинопоиск)');
-            } else if (!status) {
-                Lampa.Noty.show('Прокси недоступен: проверьте адрес и интернет');
-            } else {
-                Lampa.Noty.show('Прокси ответил ошибкой ' + status);
-            }
+        network.silent(proxy, function (data) {
+            callback(null, data || {});
+        }, function (error) {
+            callback(error || { status: 0 });
         }, payload, {
             type: 'post',
-            // прокси собирает весь список одним вызовом, на больших списках это долго
-            timeout: 180000
+            timeout: 120000
+        });
+    }
+
+    var last_notify_at = 0;
+
+    function notify(message) {
+        if (Date.now() - last_notify_at < 30000) return;
+
+        last_notify_at = Date.now();
+
+        Lampa.Noty.show(message);
+    }
+
+    function proxyMessage(error) {
+        var status = error && error.status ? error.status : 0;
+
+        if (status === 403) return 'Прокси: неверный ключ (Настройки - Кинопоиск)';
+        if (!status) return 'Прокси недоступен: проверьте адрес и интернет';
+        if (status === 200) return 'Кинопоиск вернул ошибку';
+
+        return 'Прокси ответил ошибкой ' + status;
+    }
+
+    function graphqlMessage(data) {
+        var message = data && data.errors && data.errors[0] && data.errors[0].message;
+
+        return message ? 'Кинопоиск: ' + message : '';
+    }
+
+    // ---------------------------------------------------------------------
+    // Фоновая догрузка id TMDB
+    // ---------------------------------------------------------------------
+
+    var save_timer = null;
+    var enrich_queue = [];
+    var enrich_queued = {};
+    var enrich_active = 0;
+
+    function saveSoon() {
+        if (save_timer) return;
+
+        save_timer = setTimeout(function () {
+            save_timer = null;
+
+            Lampa.Storage.set(STORAGE_KEY, getCachedMovies());
+        }, 2500);
+    }
+
+    function applyAlloha(item, data) {
+        var tmdb = Number(data.id_tmdb);
+        var series = Number(data.category) === 2 || (!!item._kp_series && !data.category);
+        var date = data.premiere_ru || data.premiere || '';
+        var poster = data.poster || '';
+        var rating = toRating(data.rating_kp);
+
+        if (!tmdb || !isFinite(tmdb)) return false;
+
+        item.id = tmdb;
+        item.source = 'tmdb';
+
+        if (series) {
+            item._kp_series = true;
+            item.name = data.name || item.name || item.title || '';
+            item.original_name = data.original_name || item.original_name || '';
+
+            if (!item.first_air_date) item.first_air_date = date || item.release_date || '';
+            if (!item.release_date || /-01-01$/.test(item.release_date)) item.release_date = item.first_air_date;
+        } else {
+            item.title = item.title || data.name || '';
+            item.original_title = item.original_title || data.original_name || '';
+
+            if (date && (!item.release_date || /-01-01$/.test(item.release_date))) item.release_date = date;
+        }
+
+        if (!item.poster && !item.poster_path && poster) item.poster = smallPoster(poster);
+        if (!item.vote_average && rating) item.vote_average = rating;
+
+        delete item._kp_pending;
+
+        return true;
+    }
+
+    function applyTmdbResult(item, result) {
+        var series = !!item._kp_series || (!!result.name && !result.title);
+
+        item.id = result.id;
+        item.source = 'tmdb';
+
+        if (series) {
+            item._kp_series = true;
+            item.name = result.name || result.title || item.name || '';
+            item.original_name = result.original_name || result.original_title || item.original_name || '';
+            item.first_air_date = result.first_air_date || item.first_air_date || '';
+            item.release_date = item.release_date || item.first_air_date;
+        } else {
+            item.title = result.title || item.title || '';
+            item.original_title = result.original_title || item.original_title || '';
+            item.release_date = result.release_date || item.release_date || '';
+        }
+
+        if (result.poster_path && !item.poster_path) item.poster_path = result.poster_path;
+        if (result.vote_average && !item.vote_average) item.vote_average = result.vote_average;
+
+        delete item._kp_pending;
+    }
+
+    function tmdbBase() {
+        return Lampa.Utils.protocol() + 'tmdb.' + Lampa.Manifest.cub_domain;
+    }
+
+    function pickTmdbResult(data, series) {
+        var movie = data && data.movie_results && data.movie_results[0];
+        var tv = data && data.tv_results && data.tv_results[0];
+
+        return series ? (tv || movie) : (movie || tv);
+    }
+
+    function findTmdb(item, imdb, done) {
+        if (!imdb) {
+            done(false);
+            return;
+        }
+
+        var url = tmdbBase() + '/3/find/' + encodeURIComponent(imdb) +
+            '?api_key=' + TMDB_API_KEY + '&language=ru&external_source=imdb_id';
+
+        requestGet(url, function (data) {
+            var result = pickTmdbResult(data, !!item._kp_series);
+
+            if (!result || !result.id) {
+                done(false);
+                return;
+            }
+
+            applyTmdbResult(item, result);
+            done(true);
+        }, function () {
+            done(false);
+        });
+    }
+
+    function searchTmdb(item, done) {
+        var query = item.title || item.name || '';
+        var series = !!item._kp_series;
+        var year = String(item.release_date || item.first_air_date || '').slice(0, 4);
+        var url;
+
+        if (!query) {
+            done(false);
+            return;
+        }
+
+        url = tmdbBase() + '/3/search/' + (series ? 'tv' : 'movie') +
+            '?query=' + encodeURIComponent(query) +
+            '&api_key=' + TMDB_API_KEY + '&language=ru';
+
+        if (year) {
+            url += (series ? '&first_air_date_year=' : '&year=') + encodeURIComponent(year);
+        }
+
+        requestGet(url, function (data) {
+            var result = data && data.results && data.results[0];
+
+            if (!result || !result.id) {
+                done(false);
+                return;
+            }
+
+            applyTmdbResult(item, result);
+            done(true);
+        }, function () {
+            done(false);
+        });
+    }
+
+    function maybeFavorite(item) {
+        if (!isFutureDate(item.release_date || item.first_air_date)) return;
+        if (!Lampa.Storage.get('kinopoisk_add_to_favorites', false)) return;
+
+        try {
+            Lampa.Favorite.add('wath', item, 100);
+        } catch (e) {
+            log('Favorite add error', e);
+        }
+    }
+
+    function requestGet(url, success, error) {
+        var params = {
+            type: 'get',
+            timeout: REQUEST_TIMEOUT
+        };
+
+        // quiet не копит ссылки на сотни запросов в памяти, как silent
+        if (network.quiet) network.quiet(url, success, error, false, params);
+        else network.silent(url, success, error, false, params);
+    }
+
+    function requestAllohaOnce(url, callback) {
+        requestGet(url, function (data) {
+            if (data && data.status === 'success' && data.data) callback(data.data, true);
+            else callback(null, true); // ответ получен, повторы не помогут
+        }, function () {
+            callback(null, false); // сеть/таймаут: имеет смысл повторить
+        });
+    }
+
+    function loadAlloha(kp, callback) {
+        var url = 'https://api.alloha.tv/?token=' + ALLOHA_TOKEN + '&kp=' + encodeURIComponent(kp);
+
+        requestAllohaOnce(url, function (data, definitive) {
+            if (data || definitive) {
+                callback(data);
+                return;
+            }
+
+            // один повтор: не теряем фильм из-за короткого обрыва сети
+            setTimeout(function () {
+                requestAllohaOnce(url, function (retry) {
+                    callback(retry);
+                });
+            }, 700);
+        });
+    }
+
+    function enrichOne(item, done) {
+        var finished = false;
+
+        function finish(ok) {
+            if (finished) return;
+            finished = true;
+
+            if (ok) {
+                saveSoon();
+                updateCardVisual(item);
+                maybeFavorite(item);
+                log('Enriched', item.kinopoisk_id, item.id);
+            } else {
+                log('Not enriched', item.kinopoisk_id);
+            }
+
+            done();
+        }
+
+        loadAlloha(String(item.kinopoisk_id), function (data) {
+            if (data && data.id_tmdb && applyAlloha(item, data)) {
+                finish(true);
+                return;
+            }
+
+            if (data && data.id_imdb) {
+                if (Number(data.category) === 2) item._kp_series = true;
+
+                findTmdb(item, data.id_imdb, function (ok) {
+                    if (ok) finish(true);
+                    else searchTmdb(item, finish);
+                });
+                return;
+            }
+
+            searchTmdb(item, finish);
+        });
+    }
+
+    function updateCardVisual(item) {
+        var comp = active_comp;
+        var card = null;
+        var node;
+        var img;
+        var rating;
+        var vote;
+        var view;
+        var age;
+
+        if (!comp || comp._kp_destroyed || !comp.items) return;
+
+        for (var i = 0; i < comp.items.length; i++) {
+            if (comp.items[i] && comp.items[i].data === item) {
+                card = comp.items[i];
+                break;
+            }
+        }
+
+        if (!card) return;
+
+        node = card.card || card.html;
+        if (!node) return;
+
+        img = card.img;
+        if (img && item.poster && img.src && String(img.src).indexOf('img_broken') >= 0) {
+            img.src = item.poster;
+        }
+
+        if (item.vote_average && !node.querySelector('.card__vote')) {
+            view = node.querySelector('.card__view');
+            rating = parseFloat(item.vote_average);
+
+            if (view && isFinite(rating) && rating > 0) {
+                vote = document.createElement('div');
+                vote.className = 'card__vote';
+                vote.innerText = rating >= 10 ? '10' : rating.toFixed(1);
+                view.appendChild(vote);
+            }
+        }
+
+        age = node.querySelector('.card__age');
+        if (age && !age.innerText && item.release_date) {
+            age.innerText = String(item.release_date).slice(0, 4);
+        }
+    }
+
+    function enrichItem(item) {
+        if (!item || !item._kp_pending || item.id) return;
+
+        enqueue(item, true);
+    }
+
+    function enqueue(item, urgent) {
+        var key = kpKey(item);
+
+        if (!key || enrich_queued[key]) return;
+
+        enrich_queued[key] = true;
+
+        if (urgent) enrich_queue.unshift(item);
+        else enrich_queue.push(item);
+
+        pumpEnrichment();
+    }
+
+    function startEnrichment() {
+        var movies = getCachedMovies();
+
+        for (var i = 0; i < movies.length; i++) {
+            if (movies[i] && movies[i]._kp_pending && !movies[i].id) enqueue(movies[i], false);
+        }
+
+        pumpEnrichment();
+    }
+
+    function pumpEnrichment() {
+        while (enrich_active < ENRICH_LIMIT && enrich_queue.length) {
+            var item = enrich_queue.shift();
+            var key = kpKey(item);
+
+            if (!key) continue;
+
+            if (!item._kp_pending || item.id) {
+                delete enrich_queued[key];
+                continue;
+            }
+
+            enrich_active++;
+
+            (function (current, current_key) {
+                try {
+                    enrichOne(current, function () {
+                        enrich_active--;
+                        delete enrich_queued[current_key];
+                        pumpEnrichment();
+                    });
+                } catch (e) {
+                    enrich_active--;
+                    delete enrich_queued[current_key];
+                    console.error('Kinopoisk', 'enrich error', e);
+                }
+            })(item, key);
+        }
+    }
+
+    // ---------------------------------------------------------------------
+    // Синхронизация списка
+    // ---------------------------------------------------------------------
+
+    var sync_state = {
+        running: false,
+        waiters: [],
+        quick_served: false
+    };
+
+    function syncList(options) {
+        options = options || {};
+
+        var cold = !!options.cold;
+
+        if (sync_state.running) {
+            if (cold && typeof options.onFirst === 'function') sync_state.waiters.push(options.onFirst);
+            return;
+        }
+
+        if (!cold) {
+            var last = Number(Lampa.Storage.get(LAST_SYNC_KEY, 0)) || 0;
+            var attempt = Number(Lampa.Storage.get(LAST_ATTEMPT_KEY, 0)) || 0;
+
+            if (last && Date.now() - last < SYNC_INTERVAL) {
+                startEnrichment();
+                return;
+            }
+
+            // неполный список (получили первую страницу, а полную — нет)
+            // пробуем добрать быстрее, чем после обычной ошибки
+            var retry = !last && getCachedMovies().length ? PARTIAL_RETRY : RETRY_INTERVAL;
+
+            if (attempt && Date.now() - attempt < retry) {
+                startEnrichment();
+                return;
+            }
+        }
+
+        sync_state.running = true;
+        sync_state.quick_served = false;
+        sync_state.waiters = cold && typeof options.onFirst === 'function' ? [options.onFirst] : [];
+
+        Lampa.Storage.set(LAST_ATTEMPT_KEY, Date.now());
+
+        function getWaiters() {
+            var waiters = sync_state.waiters;
+            var cache = getCachedMovies();
+            var served = 0;
+
+            sync_state.waiters = [];
+
+            waiters.forEach(function (fn) {
+                try {
+                    // timeout мог уже отдать пустой экран; serve() вернет false
+                    if (fn(apiResponse(cache)) !== false) served++;
+                } catch (e) {
+                    console.error('Kinopoisk', e);
+                }
+            });
+
+            return served;
+        }
+
+        function stop() {
+            sync_state.running = false;
+            startEnrichment();
+        }
+
+        function fail(error, message) {
+            log('Sync failed', error);
+
+            if (!(error && error.silent) && (cold || message)) {
+                notify(message || proxyMessage(error));
+            } else if (error && error.status === 403) {
+                notify(proxyMessage(error));
+            }
+
+            getWaiters();
+            sync_state.running = false;
+        }
+
+        function applyResponse(data, mode) {
+            var result = applyListResponse(data, mode);
+
+            if (!result) log('No watchlist in response');
+
+            return result;
+        }
+
+        function requestFull() {
+            requestList('full', function (error, data) {
+                var result;
+                var served;
+
+                if (error) {
+                    fail(error);
+                    return;
+                }
+
+                result = applyResponse(data, 'full');
+
+                if (!result) {
+                    fail(data, graphqlMessage(data));
+                    return;
+                }
+
+                served = getWaiters() > 0;
+
+                if (result.complete) Lampa.Storage.set(LAST_SYNC_KEY, Date.now());
+
+                var shouldAppend = !served || sync_state.quick_served;
+
+                stop();
+
+                if (shouldAppend) appendNew(result.added);
+            });
+        }
+
+        if (!cold) {
+            requestFull();
+            return;
+        }
+
+        requestList('quick', function (error, data) {
+            var result;
+
+            if (error) {
+                requestFull();
+                return;
+            }
+
+            result = applyResponse(data, 'quick');
+
+            if (!result) {
+                requestFull();
+                return;
+            }
+
+            sync_state.quick_served = getWaiters() > 0;
+
+            startEnrichment();
+
+            if (result.complete) {
+                Lampa.Storage.set(LAST_SYNC_KEY, Date.now());
+
+                var shouldAppend = !sync_state.quick_served;
+
+                stop();
+
+                if (shouldAppend) appendNew(result.added);
+            } else {
+                requestFull();
+            }
         });
     }
 
     function full(params, oncomplete, onerror) {
-        // https://github.com/yumata/lampa-source/blob/main/src/utils/reguest.js
-        // https://github.com/yumata/lampa-source/blob/main/plugins/collections/api.js
-        var oauth = Lampa.Storage.get('kinopoisk_access_token');
-        if(oauth) {
-            getKinopoiskData();
+        var cached = getCachedMovies();
+        var served = false;
+        var timer = null;
+
+        if (cached.length) {
+            oncomplete(apiResponse(cached));
+            syncList({});
+            startEnrichment();
+            return;
         }
-        oncomplete({
-            "secuses": true,
-            "page": 1,
-            "results": getCachedMovies()
-        });
+
+        function serve(data) {
+            if (served) return false;
+
+            served = true;
+
+            if (timer) {
+                clearTimeout(timer);
+                timer = null;
+            }
+
+            oncomplete(data);
+
+            return true;
+        }
+
+        timer = setTimeout(function () {
+            timer = null;
+            log('Cold start timeout');
+            serve(apiResponse(getCachedMovies()));
+        }, COLD_TIMEOUT);
+
+        syncList({ cold: true, onFirst: serve });
+        startEnrichment();
     }
 
     function clear() {
@@ -248,16 +850,187 @@ try {
         clear: clear
     };
 
+    // ---------------------------------------------------------------------
+    // Компонент
+    // ---------------------------------------------------------------------
+
+    var active_comp = null;
+
+    function prepareRender(items) {
+        if (!Lampa.Card) return items;
+
+        items.forEach(function (item) {
+            if (item && item._kp_pending && !item.id && !item.cardClass) {
+                item.cardClass = pendingCardClass;
+            }
+        });
+
+        return items;
+    }
+
+    function appendChunks(comp, items) {
+        if (!items || !items.length) return;
+
+        var index = 0;
+
+        prepareRender(items);
+
+        function step() {
+            var chunk;
+
+            if (!comp || comp._kp_destroyed) return;
+
+            chunk = items.slice(index, index + 30);
+            index += chunk.length;
+
+            if (chunk.length) {
+                try {
+                    comp.append({ results: chunk }, true);
+                } catch (e) {
+                    console.error('Kinopoisk', e);
+                }
+            }
+
+            if (index < items.length) {
+                setTimeout(step, 16);
+            } else {
+                try {
+                    comp.limit();
+                } catch (e) {}
+            }
+        }
+
+        step();
+    }
+
+    function refreshActive() {
+        try {
+            var current = Lampa.Activity.active();
+
+            if (current && current.component === 'kinopoisk') Lampa.Activity.refresh();
+        } catch (e) {}
+    }
+
+    function appendNew(items) {
+        var comp = active_comp;
+
+        if (!items || !items.length) return;
+
+        if (!comp || comp._kp_destroyed) return;
+
+        // не трогаем DOM, если пользователь уже ушел с раздела
+        try {
+            var current = Lampa.Activity.active();
+
+            if (!current || current.component !== 'kinopoisk') return;
+        } catch (e) {}
+
+        if (!comp._kp_built) {
+            if (comp._kp_empty) refreshActive();
+            return;
+        }
+
+        appendChunks(comp, items);
+    }
+
+    function pendingCardClass(element, params) {
+        var card = new Lampa.Card(element, params);
+        var enter = null;
+
+        function pendingEnter() {
+            Lampa.Noty.show('Кинопоиск: фильм ещё загружается, подождите пару секунд');
+            enrichItem(element);
+        }
+
+        try {
+            Object.defineProperty(card, 'onEnter', {
+                configurable: true,
+                get: function () {
+                    if (element._kp_pending && !element.id) return pendingEnter;
+                    return enter;
+                },
+                set: function (fn) {
+                    enter = fn;
+                }
+            });
+        } catch (e) {
+            log('cardClass accessor failed', e);
+        }
+
+        return card;
+    }
+
     function component(object) {
         var comp = new Lampa.InteractionCategory(object);
-        comp.create = function() {
-            Api.full(object, this.build.bind(this), this.empty.bind(this));
+        var original_build = comp.build;
+        var original_empty = comp.empty;
+        var original_destroy = comp.destroy;
+
+        comp.build = function (data) {
+            var has = !!(data && data.results && data.results.length);
+
+            comp._kp_built = has;
+            comp._kp_empty = !has;
+
+            return original_build.call(comp, data);
         };
-        comp.nextPageReuest = function(object, resolve, reject) {
-            Api.full(object, resolve.bind(comp), reject.bind(comp));
+
+        comp.empty = function (status) {
+            comp._kp_empty = true;
+
+            return original_empty.call(comp, status);
         };
+
+        comp.create = function () {
+            active_comp = comp;
+            comp._kp_built = false;
+            comp._kp_empty = false;
+
+            Api.full(object, function (data) {
+                var results;
+                var first;
+
+                if (comp._kp_destroyed) return;
+
+                results = data && data.results ? data.results : [];
+                first = results.slice(0, 60);
+
+                prepareRender(first);
+
+                comp.build(apiResponse(first));
+
+                if (results.length > first.length) appendChunks(comp, results.slice(first.length));
+            }, function () {
+                if (!comp._kp_destroyed) comp.empty();
+            });
+        };
+
+        comp.nextPageReuest = function (object, resolve, reject) {
+            resolve(apiResponse(getCachedMovies()));
+        };
+
+        comp.destroy = function () {
+            comp._kp_destroyed = true;
+
+            if (active_comp === comp) active_comp = null;
+
+            if (original_destroy) original_destroy.call(comp);
+        };
+
         return comp;
     }
+
+    if (window.addEventListener) {
+        window.addEventListener('beforeunload', function () {
+            if (save_timer) {
+                clearTimeout(save_timer);
+                save_timer = null;
+
+                Lampa.Storage.set(STORAGE_KEY, getCachedMovies());
+            }
+        });
+    }
+
     // getting/refreshing oauth kinopoisk token
     var KINOPOISK_CLIENT_ID = 'b8b9c7a09b79452094e12f6990009934';
     var KINOPOISK_CLIENT_SECRET = '0e7001e272944c05ae5a0df16e3ea8bd';
@@ -302,7 +1075,10 @@ try {
                 Lampa.Storage.set('kinopoisk_token_expires', data.expires_in * 1000 + Date.now());
                 Lampa.Modal.close();
                 getUserEmail();
-                getKinopoiskData();
+                // после входа список нужно забрать заново, даже если кэш свежий
+                Lampa.Storage.set(LAST_SYNC_KEY, 0);
+                Lampa.Storage.set(LAST_ATTEMPT_KEY, 0);
+                syncList({});
 
                 if (callbacks.success) callbacks.success(data);
             } else if (callbacks.error) {
@@ -518,7 +1294,7 @@ try {
     function startPlugin() {
         var manifest = {
             type: 'video',
-            version: '0.5.0',
+            version: '0.6.0',
             name: 'Кинопоиск',
             description: 'Список "Буду смотреть" через собственный CORS-прокси',
             component: 'kinopoisk'
@@ -635,8 +1411,13 @@ try {
                                 Lampa.Storage.set('kinopoisk_email', '');
                                 Lampa.Storage.set('kinopoisk_access_token', '');
                                 Lampa.Storage.set('kinopoisk_refresh_token', '');
-                                // Lampa.Storage.set('kinopoisk_movies', []);
                                 Lampa.Storage.set('kinopoisk_token_expires', 0); 
+                                Lampa.Storage.set(LAST_SYNC_KEY, 0);
+                                Lampa.Storage.set(LAST_ATTEMPT_KEY, 0);
+                                // чужой аккаунт не должен показывать старый список
+                                enrich_queue = [];
+                                enrich_queued = {};
+                                Lampa.Storage.set(STORAGE_KEY, []);
                                 $('div[data-name="kinopoisk_auth"]').find('.settings-param__name').text('Авторизоваться');                           
                             }
 
@@ -685,7 +1466,11 @@ try {
                 description: 'Необходимо при возникновении проблем'
             },
             onChange: () => {
-                Lampa.Storage.set('kinopoisk_movies', []);
+                enrich_queue = [];
+                enrich_queued = {};
+                Lampa.Storage.set(STORAGE_KEY, []);
+                Lampa.Storage.set(LAST_SYNC_KEY, 0);
+                Lampa.Storage.set(LAST_ATTEMPT_KEY, 0);
                 Lampa.Noty.show('Кэш Кинопоиска очищен');
             }
         });        
