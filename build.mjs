@@ -185,7 +185,7 @@ ${pluginSettings.map((p) => `        { component: '${p.settings.component}', nam
         console.error('[lampa-plagin] не удалось зарегистрировать «Мои плагины»:', e);
     }
 
-    console.log('[lampa-plagin] установщик, плагинов: ' + PLUGINS.length + ', база: ' + BASE);
+    console.log('[lampa-plagin] установщик ' + VERSION + ', плагинов: ' + PLUGINS.length + ', база: ' + BASE);
 
     function load(item, done) {
         var script = document.createElement('script');

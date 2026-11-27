@@ -151,6 +151,8 @@ function setupMyPluginsSettings(pluginSettings) {
             name: FOLDER_NAME
         });
 
+        console.log('[lampa-plagin] раздел «Мои плагины» зарегистрирован');
+
         Lampa.Settings.listener.follow('open', function (e) {
             if (!e || e.name !== 'main') return;
 

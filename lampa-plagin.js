@@ -11,7 +11,7 @@
  *   4) Телевидение — IPTV (M3U + XMLTV)  ->  plugins/tv.js
  *   5) ТВ онлайн — 20 федеральных каналов  ->  plugins/tvonline.js
  *
- * Собрано: 20261127220220
+ * Собрано: 20261127223737
  */
 
 (function () {
@@ -31,7 +31,7 @@
 
     window.lampa_plagin_installer = true;
 
-    var VERSION = '20261127220220';
+    var VERSION = '20261127223737';
 
     // Папка, из которой загружен этот файл. Нужна, чтобы плагины подхватывались
     // с того же адреса (GitHub Pages, свой сервер, локальная папка).
@@ -217,6 +217,8 @@
                 name: FOLDER_NAME
             });
     
+            console.log('[lampa-plagin] раздел «Мои плагины» зарегистрирован');
+    
             Lampa.Settings.listener.follow('open', function (e) {
                 if (!e || e.name !== 'main') return;
     
@@ -241,7 +243,7 @@
         console.error('[lampa-plagin] не удалось зарегистрировать «Мои плагины»:', e);
     }
 
-    console.log('[lampa-plagin] установщик, плагинов: ' + PLUGINS.length + ', база: ' + BASE);
+    console.log('[lampa-plagin] установщик ' + VERSION + ', плагинов: ' + PLUGINS.length + ', база: ' + BASE);
 
     function load(item, done) {
         var script = document.createElement('script');
