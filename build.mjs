@@ -19,7 +19,8 @@ const plugins = [
         src: 'src/lgbt.js',
         out: 'plugins/lgbt.js',
         registers: 'ничего не регистрирует, только ставит флаг window.lampa_settings.disable_features.lgbt = true',
-        note: 'загружается первым: флаг должен успеть до построения меню'
+        note: 'загружается первым: флаг должен успеть до построения меню',
+        settings: null
     },
     {
         num: 2,
@@ -27,7 +28,12 @@ const plugins = [
         src: 'src/kinopoisk.js',
         out: 'plugins/kinopoisk.js',
         registers: 'компонент kinopoisk, раздел настроек kinopoisk_settings, кнопка в левом меню',
-        note: 'список показывается из кэша, TMDB-идентификаторы догружаются в фоне; OAuth-токен уходит только в собственный Cloudflare Worker'
+        note: 'список показывается из кэша, TMDB-идентификаторы догружаются в фоне; OAuth-токен уходит только в собственный Cloudflare Worker',
+        settings: {
+            order: 10,
+            component: 'kinopoisk_settings',
+            name: 'Кинопоиск'
+        }
     },
     {
         num: 3,
@@ -35,7 +41,12 @@ const plugins = [
         src: 'src/sisi.js',
         out: 'plugins/sisi.js',
         registers: 'раздел настроек sisi_settings (по умолчанию выключен); при включении — компоненты sisi_lampac и sisi_view_lampac, источник поиска, кнопка в левом меню',
-        note: 'тянет данные с si.skaz.tv по HTTP и содержит канал удалённого управления (eval)'
+        note: 'тянет данные с si.skaz.tv по HTTP и содержит канал удалённого управления (eval)',
+        settings: {
+            order: 40,
+            component: 'sisi_settings',
+            name: 'Strawberry 18+'
+        }
     },
     {
         num: 4,
@@ -43,7 +54,12 @@ const plugins = [
         src: 'src/tv.js',
         out: 'plugins/tv.js',
         registers: 'компонент tv, раздел настроек tv_settings, кнопка «ТВ» в левом меню',
-        note: 'встроенный плейлист и программа передач; данные кэшируются в памяти на 15 минут'
+        note: 'встроенный плейлист и программа передач; данные кэшируются в памяти на 15 минут',
+        settings: {
+            order: 20,
+            component: 'tv_settings',
+            name: 'Телевидение'
+        }
     },
     {
         num: 5,
@@ -51,9 +67,26 @@ const plugins = [
         src: 'src/tvonline.js',
         out: 'plugins/tvonline.js',
         registers: 'компонент tvonline, раздел настроек tvonline_settings, кнопка «ТВ онлайн»',
-        note: 'прямые потоки вещателей + резервные; без M3U и без настройки ссылки'
+        note: 'прямые потоки вещателей + резервные; без M3U и без настройки ссылки',
+        settings: {
+            order: 30,
+            component: 'tvonline_settings',
+            name: 'ТВ онлайн'
+        }
     }
 ];
+
+// Компоненты настроек, которые попадут в раздел «Мои плагины».
+// Порядок пунктов задаётся полем settings.order.
+const pluginSettings = plugins
+    .filter((plugin) => plugin.settings)
+    .sort((a, b) => a.settings.order - b.settings.order);
+
+// Исходник раздела «Мои плагины» встраивается в установщик.
+const myPluginsSource = readFileSync('src/my-plugins.js', 'utf8')
+    .replace(/^\uFEFF/, '')
+    .trim()
+    .replace(/\n/g, '\n    ');
 
 const rule = '='.repeat(72);
 
@@ -137,6 +170,20 @@ ${plugins.map((p) => ` *   ${p.num}) ${p.name}  ->  ${p.out}`).join('\n')}
     var PLUGINS = [
 ${plugins.map((p) => `        { name: '${p.name.replace(/'/g, "\\'")}', file: '${p.out}' }`).join(',\n')}
     ];
+
+    // Разделы настроек, которые собираются в «Мои плагины».
+    var PLUGIN_SETTINGS = [
+${pluginSettings.map((p) => `        { component: '${p.settings.component}', name: '${p.settings.name.replace(/'/g, "\\'")}' }`).join(',\n')}
+    ];
+
+    // «Мои плагины»: папка в настройках и переходы в настройки плагинов.
+    ${myPluginsSource}
+
+    try {
+        setupMyPluginsSettings(PLUGIN_SETTINGS);
+    } catch (e) {
+        console.error('[lampa-plagin] не удалось зарегистрировать «Мои плагины»:', e);
+    }
 
     console.log('[lampa-plagin] установщик, плагинов: ' + PLUGINS.length + ', база: ' + BASE);
 
