@@ -2,7 +2,7 @@
  * Кинопоиск — «Буду смотреть»
  * файл-источник: src/kinopoisk.js
  * регистрирует: компонент kinopoisk, раздел настроек kinopoisk_settings, кнопка в левом меню
- * примечание: список показывается из кэша, TMDB-идентификаторы догружаются в фоне; OAuth-токен уходит только в собственный Cloudflare Worker
+ * примечание: по умолчанию выключен; список показывается из кэша, TMDB-идентификаторы догружаются в фоне; OAuth-токен уходит только в собственный Cloudflare Worker
  * ======================================================================== */
 
 try {
@@ -1973,6 +1973,19 @@ try {
     function startPlugin() {
         normalizeCachedPosters();
 
+        function isEnabled() {
+            return String(Lampa.Storage.get('kinopoisk_enabled', false)) === 'true';
+        }
+
+        function refreshTokenIfNeeded() {
+            if (!isEnabled()) return;
+
+            if (Lampa.Storage.get('kinopoisk_access_token', '') !== '' && Lampa.Storage.get('kinopoisk_token_expires', 0) < Date.now()) { // refresh token needed
+                console.log('Kinopoisk', 'Token should be refreshed');
+                getToken(Lampa.Storage.get('kinopoisk_refresh_token', ''), true);
+            }
+        }
+
         var manifest = {
             type: 'video',
             version: '0.7.0',
@@ -1982,12 +1995,12 @@ try {
         };
         Lampa.Manifest.plugins = manifest;
         Lampa.Component.add('kinopoisk', component);
-        if(Lampa.Storage.get('kinopoisk_access_token', '') !== '' && Lampa.Storage.get('kinopoisk_token_expires', 0) < Date.now()) { // refresh token needed
-            console.log('Kinopoisk', 'Token should be refreshed')
-            getToken(Lampa.Storage.get('kinopoisk_refresh_token', ''), true);
-        }
 
-        function add() {
+        var menu_button = null;
+
+        function addMenuButton() {
+            if (menu_button && document.body.contains(menu_button[0])) return;
+
             var button = $("<li class=\"menu__item selector\">\n            <div class=\"menu__ico\">\n                <svg width=\"239\" height=\"239\" viewBox=\"0 0 239 239\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\" xml:space=\"preserve\"><path fill=\"currentColor\" d=\"M215 121.415l-99.297-6.644 90.943 36.334a106.416 106.416 0 0 0 8.354-29.69z\" /><path fill=\"currentColor\" d=\"M194.608 171.609C174.933 197.942 143.441 215 107.948 215 48.33 215 0 166.871 0 107.5 0 48.13 48.33 0 107.948 0c35.559 0 67.102 17.122 86.77 43.539l-90.181 48.07L162.57 32.25h-32.169L90.892 86.862V32.25H64.77v150.5h26.123v-54.524l39.509 54.524h32.169l-56.526-57.493 88.564 46.352z\" /><path d=\"M206.646 63.895l-90.308 36.076L215 93.583a106.396 106.396 0 0 0-8.354-29.688z\" fill=\"currentColor\"/></svg>\n            </div>\n            <div class=\"menu__text\">".concat(manifest.name, "</div>\n        </li>"));
             button.on('hover:enter', function() {
                 if(Lampa.Storage.get('kinopoisk_access_token', '') == '') { // initial authorization needed
@@ -2002,11 +2015,33 @@ try {
             });
             $('.menu .menu__list').eq(0).append(button);
             // $('.head__actions').eq(0).append(button);
+
+            menu_button = button;
+            window.kinopoisk_menu_button = button;
         }
-        if(window.appready) add();
+
+        function removeMenuButton() {
+            if (!menu_button) return;
+
+            menu_button.remove();
+            menu_button = null;
+            window.kinopoisk_menu_button = null;
+        }
+
+        function syncMenu() {
+            if (!isEnabled()) {
+                removeMenuButton();
+                return;
+            }
+
+            addMenuButton();
+            refreshTokenIfNeeded();
+        }
+
+        if(window.appready) syncMenu();
         else {
             Lampa.Listener.follow('app', function(e) {
-                if(e.type == 'ready') add();
+                if(e.type == 'ready') syncMenu();
             });
         }
         // SETTINGS
@@ -2018,6 +2053,22 @@ try {
                 name: 'Кинопоиск'
             });
         }
+        Lampa.SettingsApi.addParam({
+            component: 'kinopoisk_settings',
+            param: {
+                name: 'kinopoisk_enabled',
+                type: 'trigger',
+                values: '',
+                default: false
+            },
+            field: {
+                name: 'Включить',
+                description: 'Показывает раздел «Кинопоиск» в левом меню'
+            },
+            onChange: function () {
+                syncMenu();
+            }
+        });
         Lampa.SettingsApi.addParam({
             component: 'kinopoisk_settings',
             param: {

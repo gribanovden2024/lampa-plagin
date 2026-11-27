@@ -2,7 +2,7 @@
  * ТВ онлайн — 20 федеральных каналов
  * файл-источник: src/tvonline.js
  * регистрирует: компонент tvonline, раздел настроек tvonline_settings, кнопка «ТВ онлайн»
- * примечание: прямые потоки вещателей + резервные; без M3U и без настройки ссылки
+ * примечание: по умолчанию выключен; прямые потоки вещателей + резервные; без M3U и без настройки ссылки
  * ======================================================================== */
 
 try {
@@ -241,7 +241,7 @@ body.light--version .tvo-row__bar i{background:#111}
     }
 
     function isEnabled() {
-        return Lampa.Storage.get(STORAGE_ENABLED, true) !== false;
+        return String(Lampa.Storage.get(STORAGE_ENABLED, false)) === 'true';
     }
 
     function pad(value) {
@@ -750,7 +750,7 @@ body.light--version .tvo-row__bar i{background:#111}
                 name: STORAGE_ENABLED,
                 type: 'trigger',
                 values: '',
-                default: true
+                default: false
             },
             field: {
                 name: 'Включить',

@@ -233,7 +233,7 @@ body.light--version .tvo-row__bar i{background:#111}
     }
 
     function isEnabled() {
-        return Lampa.Storage.get(STORAGE_ENABLED, true) !== false;
+        return String(Lampa.Storage.get(STORAGE_ENABLED, false)) === 'true';
     }
 
     function pad(value) {
@@ -742,7 +742,7 @@ body.light--version .tvo-row__bar i{background:#111}
                 name: STORAGE_ENABLED,
                 type: 'trigger',
                 values: '',
-                default: true
+                default: false
             },
             field: {
                 name: 'Включить',

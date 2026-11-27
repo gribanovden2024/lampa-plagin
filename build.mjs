@@ -28,7 +28,7 @@ const plugins = [
         src: 'src/kinopoisk.js',
         out: 'plugins/kinopoisk.js',
         registers: 'компонент kinopoisk, раздел настроек kinopoisk_settings, кнопка в левом меню',
-        note: 'список показывается из кэша, TMDB-идентификаторы догружаются в фоне; OAuth-токен уходит только в собственный Cloudflare Worker',
+        note: 'по умолчанию выключен; список показывается из кэша, TMDB-идентификаторы догружаются в фоне; OAuth-токен уходит только в собственный Cloudflare Worker',
         settings: {
             order: 10,
             component: 'kinopoisk_settings',
@@ -54,7 +54,7 @@ const plugins = [
         src: 'src/tv.js',
         out: 'plugins/tv.js',
         registers: 'компонент tv, раздел настроек tv_settings, кнопка «ТВ» в левом меню',
-        note: 'встроенный плейлист и программа передач; данные кэшируются в памяти на 15 минут',
+        note: 'по умолчанию выключено; встроенный плейлист и программа передач; данные кэшируются в памяти на 15 минут',
         settings: {
             order: 20,
             component: 'tv_settings',
@@ -67,7 +67,7 @@ const plugins = [
         src: 'src/tvonline.js',
         out: 'plugins/tvonline.js',
         registers: 'компонент tvonline, раздел настроек tvonline_settings, кнопка «ТВ онлайн»',
-        note: 'прямые потоки вещателей + резервные; без M3U и без настройки ссылки',
+        note: 'по умолчанию выключен; прямые потоки вещателей + резервные; без M3U и без настройки ссылки',
         settings: {
             order: 30,
             component: 'tvonline_settings',

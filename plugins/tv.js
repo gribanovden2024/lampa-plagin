@@ -2,7 +2,7 @@
  * Телевидение — IPTV (M3U + XMLTV)
  * файл-источник: src/tv.js
  * регистрирует: компонент tv, раздел настроек tv_settings, кнопка «ТВ» в левом меню
- * примечание: встроенный плейлист и программа передач; данные кэшируются в памяти на 15 минут
+ * примечание: по умолчанию выключено; встроенный плейлист и программа передач; данные кэшируются в памяти на 15 минут
  * ======================================================================== */
 
 try {
@@ -160,7 +160,7 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
     }
 
     function isEnabled() {
-        return Lampa.Storage.get(KEYS.enabled, true) !== false;
+        return String(Lampa.Storage.get(KEYS.enabled, false)) === 'true';
     }
 
     function escapeHtml(value) {
@@ -1822,7 +1822,7 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
                 name: KEYS.enabled,
                 type: 'trigger',
                 values: '',
-                default: true
+                default: false
             },
             field: {
                 name: 'Включить',

@@ -152,7 +152,7 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
     }
 
     function isEnabled() {
-        return Lampa.Storage.get(KEYS.enabled, true) !== false;
+        return String(Lampa.Storage.get(KEYS.enabled, false)) === 'true';
     }
 
     function escapeHtml(value) {
@@ -1814,7 +1814,7 @@ body.platform--orsay .tvp-more,body.platform--netcast .tvp-more{clear:both;margi
                 name: KEYS.enabled,
                 type: 'trigger',
                 values: '',
-                default: true
+                default: false
             },
             field: {
                 name: 'Включить',
