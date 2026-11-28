@@ -20,37 +20,6 @@
 <channel id="TNT.ru"><display-name>ТНТ</display-name></channel>
 <channel id="MuzTV.ru"><display-name>Муз-ТВ</display-name></channel>
 <channel id="U.ru"><display-name>Ю</display-name></channel>
-<programme start="20261127023000 +0300" stop="20261127030500 +0300" channel="5Kanal.ru"><title>т/с Великолепная пятерка (Удар в сердце)</title></programme>
-<programme start="20261127030500 +0300" stop="20261127034500 +0300" channel="5Kanal.ru"><title>т/с Великолепная пятерка (Фитнес-царь)</title></programme>
-<programme start="20261127034500 +0300" stop="20261127042000 +0300" channel="5Kanal.ru"><title>т/с Великолепная пятерка (Из грязи в князи)</title></programme>
-<programme start="20261127042000 +0300" stop="20261127050000 +0300" channel="5Kanal.ru"><title>т/с Великолепная пятерка (Тонкая психология)</title></programme>
-<programme start="20261127050000 +0300" stop="20261127052500 +0300" channel="5Kanal.ru"><title>Известия</title></programme>
-<programme start="20261127052500 +0300" stop="20261127060500 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ</title></programme>
-<programme start="20261127060500 +0300" stop="20261127065000 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ (Кровавый след)</title></programme>
-<programme start="20261127065000 +0300" stop="20261127073500 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ (Война дронов)</title></programme>
-<programme start="20261127073500 +0300" stop="20261127083000 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ (Боевые действия)</title></programme>
-<programme start="20261127083000 +0300" stop="20261127090000 +0300" channel="5Kanal.ru"><title>Ваше здоровье!</title></programme>
-<programme start="20261127090000 +0300" stop="20261127093000 +0300" channel="5Kanal.ru"><title>Известия</title></programme>
-<programme start="20261127093000 +0300" stop="20261127102000 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ</title></programme>
-<programme start="20261127102000 +0300" stop="20261127111500 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ</title></programme>
-<programme start="20261127111500 +0300" stop="20261127120500 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ</title></programme>
-<programme start="20261127120500 +0300" stop="20261127130000 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ (Долгожданный куш)</title></programme>
-<programme start="20261127130000 +0300" stop="20261127133000 +0300" channel="5Kanal.ru"><title>Известия</title></programme>
-<programme start="20261127133000 +0300" stop="20261127142000 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ</title></programme>
-<programme start="20261127142000 +0300" stop="20261127151500 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ</title></programme>
-<programme start="20261127151500 +0300" stop="20261127160500 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ (Охота на СОБР)</title></programme>
-<programme start="20261127160500 +0300" stop="20261127170000 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ (Сыграть на опережение)</title></programme>
-<programme start="20261127170000 +0300" stop="20261127173000 +0300" channel="5Kanal.ru"><title>Известия</title></programme>
-<programme start="20261127173000 +0300" stop="20261127182000 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ</title></programme>
-<programme start="20261127182000 +0300" stop="20261127191500 +0300" channel="5Kanal.ru"><title>т/с След (Прощание с музой)</title></programme>
-<programme start="20261127191500 +0300" stop="20261127195500 +0300" channel="5Kanal.ru"><title>т/с След (Смерть против смерти)</title></programme>
-<programme start="20261127195500 +0300" stop="20261127204000 +0300" channel="5Kanal.ru"><title>т/с След (У озера)</title></programme>
-<programme start="20261127204000 +0300" stop="20261127213000 +0300" channel="5Kanal.ru"><title>т/с След (Терпение и труп)</title></programme>
-<programme start="20261127213000 +0300" stop="20261127222000 +0300" channel="5Kanal.ru"><title>т/с След (Меченый)</title></programme>
-<programme start="20261127222000 +0300" stop="20261127231000 +0300" channel="5Kanal.ru"><title>т/с След</title></programme>
-<programme start="20261127231000 +0300" stop="20261128001000 +0300" channel="5Kanal.ru"><title>Светская хроника</title></programme>
-<programme start="20261128001000 +0300" stop="20261128010000 +0300" channel="5Kanal.ru"><title>д/с Они потрясли мир</title></programme>
-<programme start="20261128010000 +0300" stop="20261128015000 +0300" channel="5Kanal.ru"><title>д/с Они потрясли мир</title></programme>
 <programme start="20261128015000 +0300" stop="20261128023000 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Возвращение)</title></programme>
 <programme start="20261128023000 +0300" stop="20261128030500 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Беспокойный участок)</title></programme>
 <programme start="20261128030500 +0300" stop="20261128034500 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Курьер поневоле)</title></programme>
@@ -58,89 +27,77 @@
 <programme start="20261128042000 +0300" stop="20261128050000 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Криптомания)</title></programme>
 <programme start="20261128050000 +0300" stop="20261128053500 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Цугцванг)</title></programme>
 <programme start="20261128053500 +0300" stop="20261128061500 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Эхо войны)</title></programme>
-<programme start="20261128061500 +0300" stop="20261128065500 +0300" channel="5Kanal.ru"><title>т/с Условный мент (На высоте)</title></programme>
-<programme start="20261128065500 +0300" stop="20261128074000 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Сказка на ночь)</title></programme>
-<programme start="20261128074000 +0300" stop="20261128082500 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Награда для героя)</title></programme>
-<programme start="20261128082500 +0300" stop="20261128090000 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Холодный прием)</title></programme>
+<programme start="20261128061500 +0300" stop="20261128065000 +0300" channel="5Kanal.ru"><title>т/с Условный мент (На высоте)</title></programme>
+<programme start="20261128065000 +0300" stop="20261128074000 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Сказка на ночь)</title></programme>
+<programme start="20261128074000 +0300" stop="20261128082500 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Всего один звонок)</title></programme>
+<programme start="20261128082500 +0300" stop="20261128090000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Гастролеры)</title></programme>
 <programme start="20261128090000 +0300" stop="20261128093000 +0300" channel="5Kanal.ru"><title>Страна советов</title></programme>
 <programme start="20261128093000 +0300" stop="20261128100500 +0300" channel="5Kanal.ru"><title>Стройнадзор</title></programme>
-<programme start="20261128100500 +0300" stop="20261128102500 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Холодный прием)</title></programme>
-<programme start="20261128102500 +0300" stop="20261128112000 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Всего один звонок)</title></programme>
-<programme start="20261128112000 +0300" stop="20261128121500 +0300" channel="5Kanal.ru"><title>т/с Следопыт (Возвращение)</title></programme>
-<programme start="20261128121500 +0300" stop="20261128130500 +0300" channel="5Kanal.ru"><title>т/с Следопыт (Распил по-крупному)</title></programme>
-<programme start="20261128130500 +0300" stop="20261128140500 +0300" channel="5Kanal.ru"><title>т/с Следопыт (Семейная реликвия)</title></programme>
-<programme start="20261128140500 +0300" stop="20261128150000 +0300" channel="5Kanal.ru"><title>т/с Следопыт (Гастролер с Востока)</title></programme>
-<programme start="20261128150000 +0300" stop="20261128155500 +0300" channel="5Kanal.ru"><title>т/с Следопыт (Свадебный переполох)</title></programme>
-<programme start="20261128155500 +0300" stop="20261128164500 +0300" channel="5Kanal.ru"><title>т/с Следопыт (Скандалист)</title></programme>
-<programme start="20261128164500 +0300" stop="20261128174500 +0300" channel="5Kanal.ru"><title>т/с Следопыт (Правдорубы)</title></programme>
-<programme start="20261128174500 +0300" stop="20261128184000 +0300" channel="5Kanal.ru"><title>т/с Следопыт (Охотник за привидениями)</title></programme>
-<programme start="20261128184000 +0300" stop="20261128193500 +0300" channel="5Kanal.ru"><title>т/с Следопыт (Хозяин района)</title></programme>
-<programme start="20261128193500 +0300" stop="20261128202500 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Невольник чести)</title></programme>
-<programme start="20261128202500 +0300" stop="20261128212000 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Последний путь)</title></programme>
-<programme start="20261128212000 +0300" stop="20261128221500 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Снова в погонах)</title></programme>
-<programme start="20261128221500 +0300" stop="20261128230500 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Собачья жизнь)</title></programme>
-<programme start="20261128230500 +0300" stop="20261129000000 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Красота в кредит)</title></programme>
+<programme start="20261128100500 +0300" stop="20261128102500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Гастролеры)</title></programme>
+<programme start="20261128102500 +0300" stop="20261128112000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Привет от Санчеса)</title></programme>
+<programme start="20261128112000 +0300" stop="20261128122000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Школа воров)</title></programme>
+<programme start="20261128122000 +0300" stop="20261128131500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Подстава)</title></programme>
+<programme start="20261128131500 +0300" stop="20261128140500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Отец и дитя)</title></programme>
+<programme start="20261128140500 +0300" stop="20261128150000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Тайник)</title></programme>
+<programme start="20261128150000 +0300" stop="20261128155500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Большой налет)</title></programme>
+<programme start="20261128155500 +0300" stop="20261128164500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Костюмированная вечеринка)</title></programme>
+<programme start="20261128164500 +0300" stop="20261128174000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Ронин)</title></programme>
+<programme start="20261128174000 +0300" stop="20261128183500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Идеальная кража)</title></programme>
+<programme start="20261128183500 +0300" stop="20261128193000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Двойной агент)</title></programme>
+<programme start="20261128193000 +0300" stop="20261128202500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Нулевой риск)</title></programme>
+<programme start="20261128202500 +0300" stop="20261128212000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Всевидящее око)</title></programme>
+<programme start="20261128212000 +0300" stop="20261128221500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Главный по золоту)</title></programme>
+<programme start="20261128221500 +0300" stop="20261128230500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Двойная рокировка)</title></programme>
+<programme start="20261128230500 +0300" stop="20261129000000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Операция Облигация)</title></programme>
 <programme start="20261129000000 +0300" stop="20261129010500 +0300" channel="5Kanal.ru"><title>Известия. Главное</title></programme>
 <programme start="20261129010500 +0300" stop="20261129021000 +0300" channel="5Kanal.ru"><title>Светская хроника</title></programme>
-<programme start="20261129021000 +0300" stop="20261129025000 +0300" channel="5Kanal.ru"><title>т/с Свидетели (Договорщики)</title></programme>
-<programme start="20261129025000 +0300" stop="20261129033500 +0300" channel="5Kanal.ru"><title>т/с Свидетели (Мальчишник)</title></programme>
-<programme start="20261129033500 +0300" stop="20261129041500 +0300" channel="5Kanal.ru"><title>т/с Свидетели (Родители)</title></programme>
-<programme start="20261129041500 +0300" stop="20261129050000 +0300" channel="5Kanal.ru"><title>т/с Свидетели (Золотой ключик)</title></programme>
-<programme start="20261129050000 +0300" stop="20261129050500 +0300" channel="5Kanal.ru"><title>м/ф Маша и Медведь</title></programme>
-<programme start="20261129050500 +0300" stop="20261129055000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Бюро похоронных дел)</title></programme>
-<programme start="20261129055000 +0300" stop="20261129063000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Змеиный клубок)</title></programme>
-<programme start="20261129063000 +0300" stop="20261129071500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Прячь на видном месте)</title></programme>
-<programme start="20261129071500 +0300" stop="20261129080500 +0300" channel="5Kanal.ru"><title>т/с Опасный</title></programme>
-<programme start="20261129080500 +0300" stop="20261129090000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Рев моторов)</title></programme>
+<programme start="20261129021000 +0300" stop="20261129025000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Змеиный клубок)</title></programme>
+<programme start="20261129025000 +0300" stop="20261129033000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Прячь на видном месте)</title></programme>
+<programme start="20261129033000 +0300" stop="20261129041500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Слепое пятно)</title></programme>
+<programme start="20261129041500 +0300" stop="20261129045500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Рев моторов)</title></programme>
+<programme start="20261129045500 +0300" stop="20261129050000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Горячий август)</title></programme>
+<programme start="20261129050000 +0300" stop="20261129054000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Горячий август)</title></programme>
+<programme start="20261129054000 +0300" stop="20261129062000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Все не так, как кажется)</title></programme>
+<programme start="20261129062000 +0300" stop="20261129070500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Гастролеры)</title></programme>
+<programme start="20261129070500 +0300" stop="20261129075500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Привет от Санчеса)</title></programme>
+<programme start="20261129075500 +0300" stop="20261129084500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Чужая война)</title></programme>
+<programme start="20261129084500 +0300" stop="20261129090000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Краш-меню)</title></programme>
 <programme start="20261129090000 +0300" stop="20261129093000 +0300" channel="5Kanal.ru"><title>Фирменный рецепт</title></programme>
-<programme start="20261129093000 +0300" stop="20261129102500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Горячий август)</title></programme>
-<programme start="20261129102500 +0300" stop="20261129112000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Все не так, как кажется)</title></programme>
-<programme start="20261129112000 +0300" stop="20261129121500 +0300" channel="5Kanal.ru"><title>т/с Следопыт</title></programme>
-<programme start="20261129121500 +0300" stop="20261129130500 +0300" channel="5Kanal.ru"><title>т/с Следопыт (Гранатовый браслет)</title></programme>
-<programme start="20261129130500 +0300" stop="20261129140500 +0300" channel="5Kanal.ru"><title>т/с Следопыт (Парфюмер)</title></programme>
-<programme start="20261129140500 +0300" stop="20261129150000 +0300" channel="5Kanal.ru"><title>т/с Следопыт (Депривация жизни)</title></programme>
-<programme start="20261129150000 +0300" stop="20261129155500 +0300" channel="5Kanal.ru"><title>т/с Следопыт</title></programme>
-<programme start="20261129155500 +0300" stop="20261129164500 +0300" channel="5Kanal.ru"><title>т/с Следопыт (Хороший мальчик)</title></programme>
-<programme start="20261129164500 +0300" stop="20261129174000 +0300" channel="5Kanal.ru"><title>т/с Следопыт (Чумовое дело)</title></programme>
-<programme start="20261129174000 +0300" stop="20261129184000 +0300" channel="5Kanal.ru"><title>т/с Следопыт (Большой спорт)</title></programme>
-<programme start="20261129184000 +0300" stop="20261129193500 +0300" channel="5Kanal.ru"><title>т/с Следопыт (Решала)</title></programme>
-<programme start="20261129193500 +0300" stop="20261129202500 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Знакомство по объявлению)</title></programme>
-<programme start="20261129202500 +0300" stop="20261129212500 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Фортуна переменчива)</title></programme>
-<programme start="20261129212500 +0300" stop="20261129222000 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Опасный клад)</title></programme>
-<programme start="20261129222000 +0300" stop="20261129231500 +0300" channel="5Kanal.ru"><title>т/с Условный мент (Любит – не любит)</title></programme>
-<programme start="20261129231500 +0300" stop="20261130001500 +0300" channel="5Kanal.ru"><title>т/с Изгой. Схватка ┊ 1</title></programme>
-<programme start="20261127024000 +0300" stop="20261127032800 +0300" channel="Domashniy.ru"><title>Тест на отцовство ┊ 73</title></programme>
-<programme start="20261127032800 +0300" stop="20261127042000 +0300" channel="Domashniy.ru"><title>Тест на отцовство ┊ 696</title></programme>
-<programme start="20261127042000 +0300" stop="20261127044400 +0300" channel="Domashniy.ru"><title>6 кадров</title></programme>
-<programme start="20261127044400 +0300" stop="20261127045500 +0300" channel="Domashniy.ru"><title>6 кадров</title></programme>
-<programme start="20261127045500 +0300" stop="20261127054500 +0300" channel="Domashniy.ru"><title>Давай рaзвeдемся! ┊ 10</title></programme>
-<programme start="20261127054500 +0300" stop="20261127063000 +0300" channel="Domashniy.ru"><title>По делам несовершеннолетних ┊ 809</title></programme>
-<programme start="20261127063000 +0300" stop="20261127071800 +0300" channel="Domashniy.ru"><title>По делам несовершеннолетних ┊ 809</title></programme>
-<programme start="20261127071800 +0300" stop="20261127074000 +0300" channel="Domashniy.ru"><title>По делам несовершеннолетних ┊ 810</title></programme>
-<programme start="20261127074000 +0300" stop="20261127084000 +0300" channel="Domashniy.ru"><title>Давай рaзвeдемся! ┊ 11</title></programme>
-<programme start="20261127084000 +0300" stop="20261127092700 +0300" channel="Domashniy.ru"><title>Тест на отцовство ┊ 154</title></programme>
-<programme start="20261127092700 +0300" stop="20261127110000 +0300" channel="Domashniy.ru"><title>Тест на отцовство ┊ 697</title></programme>
-<programme start="20261127110000 +0300" stop="20261127112900 +0300" channel="Domashniy.ru"><title>т/с Прости меня… (Семейное дело)</title></programme>
-<programme start="20261127112900 +0300" stop="20261127120000 +0300" channel="Domashniy.ru"><title>т/с Прости меня… (Взрослый мужчина)</title></programme>
-<programme start="20261127120000 +0300" stop="20261127122400 +0300" channel="Domashniy.ru"><title>т/с Беду отведу (Ключ к провалу)</title></programme>
-<programme start="20261127122400 +0300" stop="20261127130500 +0300" channel="Domashniy.ru"><title>т/с Беду отведу (Спящая красавица)</title></programme>
-<programme start="20261127130500 +0300" stop="20261127134000 +0300" channel="Domashniy.ru"><title>д/с Знахарка (Принцесса)</title></programme>
-<programme start="20261127134000 +0300" stop="20261127141500 +0300" channel="Domashniy.ru"><title>Верну любимого (Деньги)</title></programme>
-<programme start="20261127141500 +0300" stop="20261127145000 +0300" channel="Domashniy.ru"><title>д/с Голocа ушедших душ (Долгая разлука)</title></programme>
-<programme start="20261127145000 +0300" stop="20261127153500 +0300" channel="Domashniy.ru"><title>х/ф Уроки счастья ┊ 1</title></programme>
-<programme start="20261127153500 +0300" stop="20261127162000 +0300" channel="Domashniy.ru"><title>х/ф Уроки счастья ┊ 2</title></programme>
-<programme start="20261127162000 +0300" stop="20261127170500 +0300" channel="Domashniy.ru"><title>х/ф Уроки счастья ┊ 3</title></programme>
-<programme start="20261127170500 +0300" stop="20261127190000 +0300" channel="Domashniy.ru"><title>х/ф Уроки счастья ┊ 4</title></programme>
-<programme start="20261127190000 +0300" stop="20261127194800 +0300" channel="Domashniy.ru"><title>т/с Что скрывает прошлое ┊ 1</title></programme>
-<programme start="20261127194800 +0300" stop="20261127203600 +0300" channel="Domashniy.ru"><title>т/с Что скрывает прошлое ┊ 2</title></programme>
-<programme start="20261127203600 +0300" stop="20261127212400 +0300" channel="Domashniy.ru"><title>т/с Что скрывает прошлое ┊ 3</title></programme>
-<programme start="20261127212400 +0300" stop="20261127231500 +0300" channel="Domashniy.ru"><title>т/с Что скрывает прошлое ┊ 4</title></programme>
-<programme start="20261127231500 +0300" stop="20261127235500 +0300" channel="Domashniy.ru"><title>Уютное утро ┊ 80</title></programme>
-<programme start="20261127235500 +0300" stop="20261128001900 +0300" channel="Domashniy.ru"><title>т/с Прости меня… (Семейное дело)</title></programme>
-<programme start="20261128001900 +0300" stop="20261128005500 +0300" channel="Domashniy.ru"><title>т/с Прости меня… (Взрослый мужчина)</title></programme>
-<programme start="20261128005500 +0300" stop="20261128011900 +0300" channel="Domashniy.ru"><title>т/с Беду отведу (Ключ к провалу)</title></programme>
-<programme start="20261128011900 +0300" stop="20261128015500 +0300" channel="Domashniy.ru"><title>т/с Беду отведу (Спящая красавица)</title></programme>
-<programme start="20261128015500 +0300" stop="20261128022000 +0300" channel="Domashniy.ru"><title>д/с Знахарка (Принцесса)</title></programme>
+<programme start="20261129093000 +0300" stop="20261129101500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Краш-меню)</title></programme>
+<programme start="20261129101500 +0300" stop="20261129110500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Потерянный миллиард)</title></programme>
+<programme start="20261129110500 +0300" stop="20261129120000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Копье)</title></programme>
+<programme start="20261129120000 +0300" stop="20261129130000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Наследие)</title></programme>
+<programme start="20261129130000 +0300" stop="20261129135000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Битва за землю)</title></programme>
+<programme start="20261129135000 +0300" stop="20261129144500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Живой товар)</title></programme>
+<programme start="20261129144500 +0300" stop="20261129154000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Мистер Хайд)</title></programme>
+<programme start="20261129154000 +0300" stop="20261129163500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Душа тигра)</title></programme>
+<programme start="20261129163500 +0300" stop="20261129172500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Она любила риск)</title></programme>
+<programme start="20261129172500 +0300" stop="20261129182000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Закрытый турнир)</title></programme>
+<programme start="20261129182000 +0300" stop="20261129191500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Между нами химия)</title></programme>
+<programme start="20261129191500 +0300" stop="20261129201000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Смерть в белом халате)</title></programme>
+<programme start="20261129201000 +0300" stop="20261129210500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Главное правило)</title></programme>
+<programme start="20261129210500 +0300" stop="20261129220000 +0300" channel="5Kanal.ru"><title>т/с Опасный (Бандитский гамбит)</title></programme>
+<programme start="20261129220000 +0300" stop="20261129225500 +0300" channel="5Kanal.ru"><title>т/с Опасный (Большой побег)</title></programme>
+<programme start="20261129225500 +0300" stop="20261129235000 +0300" channel="5Kanal.ru"><title>т/с Изгой. Схватка ┊ 1</title></programme>
+<programme start="20261129235000 +0300" stop="20261130000500 +0300" channel="5Kanal.ru"><title>т/с Изгой. Схватка ┊ 2</title></programme>
+<programme start="20261130000500 +0300" stop="20261130004000 +0300" channel="5Kanal.ru"><title>т/с Изгой. Схватка ┊ 2</title></programme>
+<programme start="20261130004000 +0300" stop="20261130013500 +0300" channel="5Kanal.ru"><title>т/с Изгой. Схватка ┊ 3</title></programme>
+<programme start="20261130013500 +0300" stop="20261130022000 +0300" channel="5Kanal.ru"><title>т/с Изгой-3. Схватка</title></programme>
+<programme start="20261130022000 +0300" stop="20261130030500 +0300" channel="5Kanal.ru"><title>т/с Свидетели (Договорщики)</title></programme>
+<programme start="20261130030500 +0300" stop="20261130035000 +0300" channel="5Kanal.ru"><title>т/с Свидетели (Родители)</title></programme>
+<programme start="20261130035000 +0300" stop="20261130040500 +0300" channel="5Kanal.ru"><title>т/с Свидетели (Не было бы счастья…)</title></programme>
+<programme start="20261130040500 +0300" stop="20261130050000 +0300" channel="5Kanal.ru"><title>т/с Свидетели (Смертельный долг)</title></programme>
+<programme start="20261130050000 +0300" stop="20261130053500 +0300" channel="5Kanal.ru"><title>Известия</title></programme>
+<programme start="20261130053500 +0300" stop="20261130062000 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ (Ангелы ада)</title></programme>
+<programme start="20261130062000 +0300" stop="20261130070500 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ</title></programme>
+<programme start="20261130070500 +0300" stop="20261130075500 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ</title></programme>
+<programme start="20261130075500 +0300" stop="20261130080500 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ (Кровная месть)</title></programme>
+<programme start="20261130080500 +0300" stop="20261130084000 +0300" channel="5Kanal.ru"><title>Фирменный рецепт</title></programme>
+<programme start="20261130084000 +0300" stop="20261130090000 +0300" channel="5Kanal.ru"><title>Давай разберемся!</title></programme>
+<programme start="20261130090000 +0300" stop="20261130093000 +0300" channel="5Kanal.ru"><title>Известия</title></programme>
+<programme start="20261130093000 +0300" stop="20261130101500 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ (Кровная месть)</title></programme>
+<programme start="20261130101500 +0300" stop="20261130110500 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ (По закону возмездия)</title></programme>
+<programme start="20261130110500 +0300" stop="20261130120000 +0300" channel="5Kanal.ru"><title>т/с Наш спецназ (Бизнес на колесах)</title></programme>
 <programme start="20261128022000 +0300" stop="20261128025000 +0300" channel="Domashniy.ru"><title>Верну любимого (Деньги)</title></programme>
 <programme start="20261128025000 +0300" stop="20261128031500 +0300" channel="Domashniy.ru"><title>д/с Голocа ушедших душ (Долгая разлука)</title></programme>
 <programme start="20261128031500 +0300" stop="20261128040200 +0300" channel="Domashniy.ru"><title>Тест на отцовство ┊ 154</title></programme>
@@ -209,45 +166,31 @@
 <programme start="20261130092200 +0300" stop="20261130105000 +0300" channel="Domashniy.ru"><title>Тест на отцовство ┊ 698</title></programme>
 <programme start="20261130105000 +0300" stop="20261130111400 +0300" channel="Domashniy.ru"><title>т/с Прости меня… (Тоска по прошлому)</title></programme>
 <programme start="20261130111400 +0300" stop="20261130120000 +0300" channel="Domashniy.ru"><title>т/с Прости меня… (Другая жизнь)</title></programme>
-<programme start="20261127014000 +0300" stop="20261127035000 +0300" channel="Karusel.ru"><title>м/ф Приключения Пети и Волка</title></programme>
-<programme start="20261127035000 +0300" stop="20261127050000 +0300" channel="Karusel.ru"><title>м/ф Смешарики</title></programme>
-<programme start="20261127050000 +0300" stop="20261127070000 +0300" channel="Karusel.ru"><title>Ранние пташки (Буба)</title></programme>
-<programme start="20261127070000 +0300" stop="20261127073500 +0300" channel="Karusel.ru"><title>С добрым утром, малыши!</title></programme>
-<programme start="20261127073500 +0300" stop="20261127074000 +0300" channel="Karusel.ru"><title>м/ф Буква в деле</title></programme>
-<programme start="20261127074000 +0300" stop="20261127095500 +0300" channel="Karusel.ru"><title>м/ф Ум и Хрум</title></programme>
-<programme start="20261127095500 +0300" stop="20261127111500 +0300" channel="Karusel.ru"><title>м/ф Дракон Диско</title></programme>
-<programme start="20261127111500 +0300" stop="20261127135500 +0300" channel="Karusel.ru"><title>м/ф Команда Флоры. Экопатруль</title></programme>
-<programme start="20261127135500 +0300" stop="20261127143000 +0300" channel="Karusel.ru"><title>м/ф Карбот</title></programme>
-<programme start="20261127143000 +0300" stop="20261127144000 +0300" channel="Karusel.ru"><title>Навигатор. У нас гости!</title></programme>
-<programme start="20261127144000 +0300" stop="20261127165500 +0300" channel="Karusel.ru"><title>м/ф Барбоскины</title></programme>
-<programme start="20261127165500 +0300" stop="20261127193000 +0300" channel="Karusel.ru"><title>м/ф Царевны</title></programme>
-<programme start="20261127193000 +0300" stop="20261127210000 +0300" channel="Karusel.ru"><title>м/ф Тайна магазина игрушек</title></programme>
-<programme start="20261127210000 +0300" stop="20261127211500 +0300" channel="Karusel.ru"><title>Спокойной ночи, малыши!</title></programme>
-<programme start="20261127211500 +0300" stop="20261127220500 +0300" channel="Karusel.ru"><title>м/ф Тюленьки</title></programme>
-<programme start="20261127220500 +0300" stop="20261127223000 +0300" channel="Karusel.ru"><title>м/ф Русалочки: Морская магия</title></programme>
-<programme start="20261127223000 +0300" stop="20261127225500 +0300" channel="Karusel.ru"><title>м/ф Инфинити Надо</title></programme>
-<programme start="20261127225500 +0300" stop="20261127230000 +0300" channel="Karusel.ru"><title>м/ф Правильный выбор</title></programme>
-<programme start="20261127230000 +0300" stop="20261127232500 +0300" channel="Karusel.ru"><title>м/ф Метал Кард Бот</title></programme>
 <programme start="20261127232500 +0300" stop="20261128050000 +0300" channel="Karusel.ru"><title>м/ф Маша и Медведь</title></programme>
-<programme start="20261128050000 +0300" stop="20261128070000 +0300" channel="Karusel.ru"><title>Ранние пташки (Буба)</title></programme>
-<programme start="20261128070000 +0300" stop="20261128073500 +0300" channel="Karusel.ru"><title>С добрым утром, малыши!</title></programme>
-<programme start="20261128073500 +0300" stop="20261128074000 +0300" channel="Karusel.ru"><title>м/ф Край Бебис. Волшебные слезки</title></programme>
-<programme start="20261128074000 +0300" stop="20261128100000 +0300" channel="Karusel.ru"><title>м/ф Маша и Медведь</title></programme>
+<programme start="20261128050000 +0300" stop="20261128070000 +0300" channel="Karusel.ru"><title>м/ф 10 лет приключений. Лео и Тиг (Сборник 909)</title></programme>
+<programme start="20261128070000 +0300" stop="20261128073000 +0300" channel="Karusel.ru"><title>С добрым утром, малыши!</title></programme>
+<programme start="20261128073000 +0300" stop="20261128073500 +0300" channel="Karusel.ru"><title>Погода</title></programme>
+<programme start="20261128073500 +0300" stop="20261128074000 +0300" channel="Karusel.ru"><title>м/ф Край Бебис (Поездка на Тропический остров.: ч. 1)</title></programme>
+<programme start="20261128074000 +0300" stop="20261128100000 +0300" channel="Karusel.ru"><title>м/ф Маша и Медведь (Сборник 2979)</title></programme>
 <programme start="20261128100000 +0300" stop="20261128102000 +0300" channel="Karusel.ru"><title>Съедобное или несъедобное</title></programme>
 <programme start="20261128102000 +0300" stop="20261128120000 +0300" channel="Karusel.ru"><title>м/ф Мастер Витя и Мотор</title></programme>
 <programme start="20261128120000 +0300" stop="20261128122000 +0300" channel="Karusel.ru"><title>Парк Турум-бурум</title></programme>
-<programme start="20261128122000 +0300" stop="20261128124500 +0300" channel="Karusel.ru"><title>м/ф Клуб Винкс: Магия возвращается</title></programme>
+<programme start="20261128122000 +0300" stop="20261128124500 +0300" channel="Karusel.ru"><title>м/ф Клуб Винкс: Магия возвращается (Рок-н-ролл фей)</title></programme>
 <programme start="20261128124500 +0300" stop="20261128140000 +0300" channel="Karusel.ru"><title>м/ф Пин-Код 2.0</title></programme>
 <programme start="20261128140000 +0300" stop="20261128143000 +0300" channel="Karusel.ru"><title>Семья в кадре</title></programme>
-<programme start="20261128143000 +0300" stop="20261128145500 +0300" channel="Karusel.ru"><title>м/ф Лео и Тиг</title></programme>
+<programme start="20261128143000 +0300" stop="20261128145500 +0300" channel="Karusel.ru"><title>м/ф 10 лет приключений. Лео и Тиг (Сборник 902)</title></programme>
 <programme start="20261128145500 +0300" stop="20261128160000 +0300" channel="Karusel.ru"><title>м/ф Лео и Тиг. Дорога на Байкал</title></programme>
 <programme start="20261128160000 +0300" stop="20261128161500 +0300" channel="Karusel.ru"><title>Что, зачем и почему?</title></programme>
 <programme start="20261128161500 +0300" stop="20261128175000 +0300" channel="Karusel.ru"><title>м/ф Тайна магазина игрушек</title></programme>
-<programme start="20261128175000 +0300" stop="20261128194500 +0300" channel="Karusel.ru"><title>м/ф Смешарики</title></programme>
+<programme start="20261128175000 +0300" stop="20261128191000 +0300" channel="Karusel.ru"><title>м/ф Смешарики</title></programme>
+<programme start="20261128191000 +0300" stop="20261128191500 +0300" channel="Karusel.ru"><title>м/ф Смешарики. Финансовая грамотность (Золушка)</title></programme>
+<programme start="20261128191500 +0300" stop="20261128193000 +0300" channel="Karusel.ru"><title>м/ф Смешарики (Сборник 3761)</title></programme>
+<programme start="20261128193000 +0300" stop="20261128193500 +0300" channel="Karusel.ru"><title>м/ф Смешарики. Финансовая грамотность (Черный день)</title></programme>
+<programme start="20261128193500 +0300" stop="20261128194500 +0300" channel="Karusel.ru"><title>м/ф Смешарики (Хрум)</title></programme>
 <programme start="20261128194500 +0300" stop="20261128210000 +0300" channel="Karusel.ru"><title>м/ф Грузовички</title></programme>
 <programme start="20261128210000 +0300" stop="20261128211500 +0300" channel="Karusel.ru"><title>Спокойной ночи, малыши!</title></programme>
-<programme start="20261128211500 +0300" stop="20261128220500 +0300" channel="Karusel.ru"><title>м/ф Приключения Котигорошка и его друзей</title></programme>
-<programme start="20261128220500 +0300" stop="20261128223000 +0300" channel="Karusel.ru"><title>м/ф Русалочки: Морская магия</title></programme>
+<programme start="20261128211500 +0300" stop="20261128220500 +0300" channel="Karusel.ru"><title>м/ф Горошек и компания</title></programme>
+<programme start="20261128220500 +0300" stop="20261128223000 +0300" channel="Karusel.ru"><title>м/ф Русалочки: Морская магия (Хранитель Жемчужин)</title></programme>
 <programme start="20261128223000 +0300" stop="20261128225500 +0300" channel="Karusel.ru"><title>м/ф Инфинити Надо</title></programme>
 <programme start="20261128225500 +0300" stop="20261128230000 +0300" channel="Karusel.ru"><title>м/ф Правильный выбор</title></programme>
 <programme start="20261128230000 +0300" stop="20261128232500 +0300" channel="Karusel.ru"><title>м/ф Метал Кард Бот</title></programme>
@@ -260,62 +203,44 @@
 <programme start="20261129011500 +0300" stop="20261129013000 +0300" channel="Karusel.ru"><title>м/ф Шапокляк</title></programme>
 <programme start="20261129013000 +0300" stop="20261129014000 +0300" channel="Karusel.ru"><title>м/ф Чебурашка идет в школу</title></programme>
 <programme start="20261129014000 +0300" stop="20261129020000 +0300" channel="Karusel.ru"><title>м/ф Петя и Красная Шапочка</title></programme>
-<programme start="20261129020000 +0300" stop="20261129050000 +0300" channel="Karusel.ru"><title>м/ф Малышарики</title></programme>
-<programme start="20261129050000 +0300" stop="20261129070000 +0300" channel="Karusel.ru"><title>м/ф Чик-Чирикино</title></programme>
-<programme start="20261129070000 +0300" stop="20261129073500 +0300" channel="Karusel.ru"><title>С добрым утром, малыши!</title></programme>
-<programme start="20261129073500 +0300" stop="20261129074000 +0300" channel="Karusel.ru"><title>м/ф Край Бебис. Волшебные слезки</title></programme>
-<programme start="20261129074000 +0300" stop="20261129082000 +0300" channel="Karusel.ru"><title>м/ф Лотти Дотти</title></programme>
-<programme start="20261129082000 +0300" stop="20261129100000 +0300" channel="Karusel.ru"><title>м/ф Оранжевая корова</title></programme>
+<programme start="20261129020000 +0300" stop="20261129050000 +0300" channel="Karusel.ru"><title>м/ф Деревяшки (Сборник 550)</title></programme>
+<programme start="20261129050000 +0300" stop="20261129070000 +0300" channel="Karusel.ru"><title>м/ф Чик-Чирикино (Сборник 303)</title></programme>
+<programme start="20261129070000 +0300" stop="20261129073000 +0300" channel="Karusel.ru"><title>С добрым утром, малыши!</title></programme>
+<programme start="20261129073000 +0300" stop="20261129073500 +0300" channel="Karusel.ru"><title>Погода</title></programme>
+<programme start="20261129073500 +0300" stop="20261129074000 +0300" channel="Karusel.ru"><title>м/ф Край Бебис (Поездка на Тропический остров.: ч. 2)</title></programme>
+<programme start="20261129074000 +0300" stop="20261129082000 +0300" channel="Karusel.ru"><title>м/ф Лотти Дотти (Сборник 11)</title></programme>
+<programme start="20261129082000 +0300" stop="20261129100000 +0300" channel="Karusel.ru"><title>м/ф Оранжевая корова (Сборник 2591)</title></programme>
 <programme start="20261129100000 +0300" stop="20261129102000 +0300" channel="Karusel.ru"><title>Вкусные рисунки. Создай и съешь</title></programme>
 <programme start="20261129102000 +0300" stop="20261129120000 +0300" channel="Karusel.ru"><title>м/ф Простоквашино</title></programme>
 <programme start="20261129120000 +0300" stop="20261129122000 +0300" channel="Karusel.ru"><title>Студия красоты</title></programme>
-<programme start="20261129122000 +0300" stop="20261129124500 +0300" channel="Karusel.ru"><title>м/ф Клуб Винкс: Магия возвращается</title></programme>
+<programme start="20261129122000 +0300" stop="20261129124500 +0300" channel="Karusel.ru"><title>м/ф Клуб Винкс: Магия возвращается (Комната симуляций)</title></programme>
 <programme start="20261129124500 +0300" stop="20261129140000 +0300" channel="Karusel.ru"><title>м/ф Фиксики</title></programme>
 <programme start="20261129140000 +0300" stop="20261129142500 +0300" channel="Karusel.ru"><title>У меня лапки</title></programme>
-<programme start="20261129142500 +0300" stop="20261129144500 +0300" channel="Karusel.ru"><title>м/ф Лунтик и его друзья</title></programme>
+<programme start="20261129142500 +0300" stop="20261129144500 +0300" channel="Karusel.ru"><title>м/ф Лунтик и его друзья (Сборник 2907)</title></programme>
 <programme start="20261129144500 +0300" stop="20261129160000 +0300" channel="Karusel.ru"><title>м/ф Лунтик. Возвращение домой</title></programme>
 <programme start="20261129160000 +0300" stop="20261129162000 +0300" channel="Karusel.ru"><title>Это супер!</title></programme>
 <programme start="20261129162000 +0300" stop="20261129173500 +0300" channel="Karusel.ru"><title>м/ф Грузовички</title></programme>
 <programme start="20261129173500 +0300" stop="20261129192000 +0300" channel="Karusel.ru"><title>м/ф Три кота</title></programme>
-<programme start="20261129192000 +0300" stop="20261129204000 +0300" channel="Karusel.ru"><title>м/ф Чик-Чирикино</title></programme>
+<programme start="20261129192000 +0300" stop="20261129204000 +0300" channel="Karusel.ru"><title>м/ф Чик-Чирикино (Сборник 313)</title></programme>
 <programme start="20261129204000 +0300" stop="20261129205000 +0300" channel="Karusel.ru"><title>м/ф Крошка Енот</title></programme>
 <programme start="20261129205000 +0300" stop="20261129210000 +0300" channel="Karusel.ru"><title>м/ф Мама для мамонтенка</title></programme>
 <programme start="20261129210000 +0300" stop="20261129211500 +0300" channel="Karusel.ru"><title>Спокойной ночи, малыши!</title></programme>
 <programme start="20261129211500 +0300" stop="20261129220500 +0300" channel="Karusel.ru"><title>КВН. Дети</title></programme>
-<programme start="20261129220500 +0300" stop="20261129223000 +0300" channel="Karusel.ru"><title>м/ф Русалочки: Морская магия</title></programme>
+<programme start="20261129220500 +0300" stop="20261129223000 +0300" channel="Karusel.ru"><title>м/ф Русалочки: Морская магия (Проклятые топи)</title></programme>
 <programme start="20261129223000 +0300" stop="20261129225500 +0300" channel="Karusel.ru"><title>м/ф Инфинити Надо</title></programme>
 <programme start="20261129225500 +0300" stop="20261129230000 +0300" channel="Karusel.ru"><title>м/ф Правильный выбор</title></programme>
 <programme start="20261129230000 +0300" stop="20261129233000 +0300" channel="Karusel.ru"><title>м/ф Метал Кард Бот</title></programme>
-<programme start="20261129233000 +0300" stop="20261130003000 +0300" channel="Karusel.ru"><title>м/ф Алиса знает, что делать!</title></programme>
-<programme start="20261127024500 +0300" stop="20261127063000 +0300" channel="RussiaK.ru"><title>Кристальные истории (Принцип Агафона Фаберже)</title></programme>
-<programme start="20261127063000 +0300" stop="20261127071500 +0300" channel="RussiaK.ru"><title>Диалоги о животных (Государственный зоологический парк Удмуртии)</title></programme>
-<programme start="20261127071500 +0300" stop="20261127074500 +0300" channel="RussiaK.ru"><title>д/с Почерк эпохи (Софья Гиацинтова. Труд актера)</title></programme>
-<programme start="20261127074500 +0300" stop="20261127085000 +0300" channel="RussiaK.ru"><title>Колонна для Императора</title></programme>
-<programme start="20261127085000 +0300" stop="20261127094500 +0300" channel="RussiaK.ru"><title>т/с Идиот ┊ 10</title></programme>
-<programme start="20261127094500 +0300" stop="20261127100000 +0300" channel="RussiaK.ru"><title>д/с Легенды Большого (Ирина Архипова)</title></programme>
-<programme start="20261127100000 +0300" stop="20261127101500 +0300" channel="RussiaK.ru"><title>Новости культуры</title></programme>
-<programme start="20261127101500 +0300" stop="20261127113000 +0300" channel="RussiaK.ru"><title>х/ф Гость</title></programme>
-<programme start="20261127113000 +0300" stop="20261127121000 +0300" channel="RussiaK.ru"><title>д/с Свидетели времени (Роман Кармен. Мое оружие – киноаппарат)</title></programme>
-<programme start="20261127121000 +0300" stop="20261127123000 +0300" channel="RussiaK.ru"><title>д/с Легенды Большого (Раиса Стручкова)</title></programme>
-<programme start="20261127123000 +0300" stop="20261127124500 +0300" channel="RussiaK.ru"><title>Новости культуры</title></programme>
-<programme start="20261127124500 +0300" stop="20261127130000 +0300" channel="RussiaK.ru"><title>Кристальные истории (Принцип Агафона Фаберже)</title></programme>
-<programme start="20261127130000 +0300" stop="20261127133000 +0300" channel="RussiaK.ru"><title>д/с Всеволод Шиловский. Вспоминая старый МХАТ…</title></programme>
-<programme start="20261127133000 +0300" stop="20261127150000 +0300" channel="RussiaK.ru"><title>х/ф В одном микрорайоне ┊ 5</title></programme>
-<programme start="20261127150000 +0300" stop="20261127154500 +0300" channel="RussiaK.ru"><title>Власть факта (Левые эсеры. Романтики революции)</title></programme>
-<programme start="20261127154500 +0300" stop="20261127163000 +0300" channel="RussiaK.ru"><title>Энигма (Азиза Садыкова)</title></programme>
-<programme start="20261127163000 +0300" stop="20261127170000 +0300" channel="RussiaK.ru"><title>д/с Письма из провинции (Переславль-Залесский)</title></programme>
-<programme start="20261127170000 +0300" stop="20261127171500 +0300" channel="RussiaK.ru"><title>Новости культуры</title></programme>
-<programme start="20261127171500 +0300" stop="20261127174500 +0300" channel="RussiaK.ru"><title>д/с Жизнь замечательных идей (Век полимеров)</title></programme>
-<programme start="20261127174500 +0300" stop="20261127181500 +0300" channel="RussiaK.ru"><title>Музыкальные Усадьбы (Здесь хорошо. Сергей Рахманинов)</title></programme>
-<programme start="20261127181500 +0300" stop="20261127190000 +0300" channel="RussiaK.ru"><title>Семинар (Антон Терентьев. Что происходит в нашем мозге во время сна?)</title></programme>
-<programme start="20261127190000 +0300" stop="20261127193000 +0300" channel="RussiaK.ru"><title>д/с Почерк эпохи (Софья Гиацинтова. Труд актера)</title></programme>
-<programme start="20261127193000 +0300" stop="20261127194500 +0300" channel="RussiaK.ru"><title>Новости культуры</title></programme>
-<programme start="20261127194500 +0300" stop="20261127204000 +0300" channel="RussiaK.ru"><title>т/с Идиот ┊ 10</title></programme>
-<programme start="20261127204000 +0300" stop="20261127214500 +0300" channel="RussiaK.ru"><title>Всероссийский открытый телевизионный конкурс юных талантов Синяя Птица</title></programme>
-<programme start="20261127214500 +0300" stop="20261127230500 +0300" channel="RussiaK.ru"><title>х/ф Невероятное пари, или Истинное происшествие, благополучно завершившееся сто лет назад</title></programme>
-<programme start="20261127230500 +0300" stop="20261128000500 +0300" channel="RussiaK.ru"><title>2 Верник 2</title></programme>
-<programme start="20261128000500 +0300" stop="20261128002000 +0300" channel="RussiaK.ru"><title>Новости культуры</title></programme>
-<programme start="20261128002000 +0300" stop="20261128015000 +0300" channel="RussiaK.ru"><title>х/ф В одном микрорайоне ┊ 5</title></programme>
+<programme start="20261129233000 +0300" stop="20261130021000 +0300" channel="Karusel.ru"><title>м/ф Алиса знает, что делать! (Сборник 22)</title></programme>
+<programme start="20261130021000 +0300" stop="20261130050000 +0300" channel="Karusel.ru"><title>м/ф Смешарики</title></programme>
+<programme start="20261130050000 +0300" stop="20261130070000 +0300" channel="Karusel.ru"><title>м/ф Чик-Чирикино</title></programme>
+<programme start="20261130070000 +0300" stop="20261130073000 +0300" channel="Karusel.ru"><title>С добрым утром, малыши!</title></programme>
+<programme start="20261130073000 +0300" stop="20261130073500 +0300" channel="Karusel.ru"><title>Погода</title></programme>
+<programme start="20261130073500 +0300" stop="20261130101500 +0300" channel="Karusel.ru"><title>м/ф Царевны (Сборник 1466)</title></programme>
+<programme start="20261130101500 +0300" stop="20261130103000 +0300" channel="Karusel.ru"><title>м/ф Супер Крылья. Спасатели мира (Суперкрутая камера Снэпа)</title></programme>
+<programme start="20261130103000 +0300" stop="20261130104500 +0300" channel="Karusel.ru"><title>м/ф Робокар Поли и его друзья (Прими мои извинения)</title></programme>
+<programme start="20261130104500 +0300" stop="20261130110500 +0300" channel="Karusel.ru"><title>Открытия! ┊ 27</title></programme>
+<programme start="20261130110500 +0300" stop="20261130112000 +0300" channel="Karusel.ru"><title>м/ф Диностер (Возвращение Трины)</title></programme>
+<programme start="20261130112000 +0300" stop="20261130135500 +0300" channel="Karusel.ru"><title>м/ф Чик-Чирикино (Сборник 227)</title></programme>
 <programme start="20261128015000 +0300" stop="20261128023500 +0300" channel="RussiaK.ru"><title>д/с Искатели (Куда исчез Морской Глаз?)</title></programme>
 <programme start="20261128023500 +0300" stop="20261128063000 +0300" channel="RussiaK.ru"><title>м/ф Что там под маской?</title></programme>
 <programme start="20261128063000 +0300" stop="20261128070500 +0300" channel="RussiaK.ru"><title>Библейский сюжет (Павел Радимов. Полевые псалмы)</title></programme>
@@ -367,28 +292,6 @@
 <programme start="20261130100000 +0300" stop="20261130101500 +0300" channel="RussiaK.ru"><title>Новости культуры</title></programme>
 <programme start="20261130101500 +0300" stop="20261130111500 +0300" channel="RussiaK.ru"><title>Наблюдатель (Театр Сергея Образцова)</title></programme>
 <programme start="20261130111500 +0300" stop="20261130123000 +0300" channel="RussiaK.ru"><title>ХХ век (Песня-79. Финал. Ведущие С.Жильцова, А.Масляков)</title></programme>
-<programme start="20261127015000 +0300" stop="20261127035500 +0300" channel="MatchTV.ru"><title>Спортивная гимнастика. Кубок Олимпийского чемпиона М.Я. Воронина. Трансляция из Москвы</title></programme>
-<programme start="20261127035500 +0300" stop="20261127040000 +0300" channel="MatchTV.ru"><title>Новости</title></programme>
-<programme start="20261127040000 +0300" stop="20261127060000 +0300" channel="MatchTV.ru"><title>Волейбол. Россия. Суперлига. Женщины. Динамо (Москва) – Динамо-Ак Барс (Казань)</title></programme>
-<programme start="20261127060000 +0300" stop="20261127070000 +0300" channel="MatchTV.ru"><title>Лучшие из лучших</title></programme>
-<programme start="20261127070000 +0300" stop="20261127070500 +0300" channel="MatchTV.ru"><title>Новости</title></programme>
-<programme start="20261127070500 +0300" stop="20261127093000 +0300" channel="MatchTV.ru"><title>⋗ Все на Матч!</title></programme>
-<programme start="20261127093000 +0300" stop="20261127093500 +0300" channel="MatchTV.ru"><title>Новости</title></programme>
-<programme start="20261127093500 +0300" stop="20261127095500 +0300" channel="MatchTV.ru"><title>Небесная грация</title></programme>
-<programme start="20261127095500 +0300" stop="20261127112500 +0300" channel="MatchTV.ru"><title>Смешанные единоборства. Бетсити Fight Nights. Трансляция из Москвы</title></programme>
-<programme start="20261127112500 +0300" stop="20261127115500 +0300" channel="MatchTV.ru"><title>Футбольная нация</title></programme>
-<programme start="20261127115500 +0300" stop="20261127120000 +0300" channel="MatchTV.ru"><title>Новости</title></programme>
-<programme start="20261127120000 +0300" stop="20261127131500 +0300" channel="MatchTV.ru"><title>⋗ Есть тема!</title></programme>
-<programme start="20261127131500 +0300" stop="20261127142000 +0300" channel="MatchTV.ru"><title>Футбол. Кубок России. Обзор</title></programme>
-<programme start="20261127142000 +0300" stop="20261127144000 +0300" channel="MatchTV.ru"><title>д/с Лица страны (Сергей Абрамов)</title></programme>
-<programme start="20261127144000 +0300" stop="20261127144500 +0300" channel="MatchTV.ru"><title>Новости</title></programme>
-<programme start="20261127144500 +0300" stop="20261127153500 +0300" channel="MatchTV.ru"><title>⋗ Все на Матч!</title></programme>
-<programme start="20261127153500 +0300" stop="20261127163000 +0300" channel="MatchTV.ru"><title>Пеле. Король футбола</title></programme>
-<programme start="20261127163000 +0300" stop="20261127193000 +0300" channel="MatchTV.ru"><title>⋗ Смешанные единоборства. One FC. Трансляция из Таиланда</title></programme>
-<programme start="20261127193000 +0300" stop="20261127213000 +0300" channel="MatchTV.ru"><title>⋗ Бокс. Бой за титул чемпиона мира по версии IBF. Артур Субханкулов (Россия) против Энди Круса Гомеса (Куба). Трансляция из Уфы</title></programme>
-<programme start="20261127213000 +0300" stop="20261127223500 +0300" channel="MatchTV.ru"><title>⋗ Все на Матч!</title></programme>
-<programme start="20261127223500 +0300" stop="20261128004500 +0300" channel="MatchTV.ru"><title>⋗ Футбол. Италия. Венеция – Болонья</title></programme>
-<programme start="20261128004500 +0300" stop="20261128015000 +0300" channel="MatchTV.ru"><title>⋗ Все на Матч!</title></programme>
 <programme start="20261128015000 +0300" stop="20261128025500 +0300" channel="MatchTV.ru"><title>Футбол. Кубок России. Обзор</title></programme>
 <programme start="20261128025500 +0300" stop="20261128035500 +0300" channel="MatchTV.ru"><title>Спорт.Док (Владимир Чагин)</title></programme>
 <programme start="20261128035500 +0300" stop="20261128040000 +0300" channel="MatchTV.ru"><title>Новости</title></programme>
@@ -396,11 +299,13 @@
 <programme start="20261128041500 +0300" stop="20261128060000 +0300" channel="MatchTV.ru"><title>Санный спорт. Кубок России. Трансляция из Сочи</title></programme>
 <programme start="20261128060000 +0300" stop="20261128070000 +0300" channel="MatchTV.ru"><title>Смешанные единоборства. UFC. Гилберт Бернс против Майка Мэлотта. Трансляция из Канады</title></programme>
 <programme start="20261128070000 +0300" stop="20261128070500 +0300" channel="MatchTV.ru"><title>Новости</title></programme>
-<programme start="20261128070500 +0300" stop="20261128083000 +0300" channel="MatchTV.ru"><title>⋗ Все на Матч!</title></programme>
-<programme start="20261128083000 +0300" stop="20261128102500 +0300" channel="MatchTV.ru"><title>⋗ Биатлон. Кубок Содружества. Спринт. Мужчины. Трансляция из Ханты-Мансийска</title></programme>
-<programme start="20261128102500 +0300" stop="20261128110000 +0300" channel="MatchTV.ru"><title>⋗ Все на Матч!</title></programme>
-<programme start="20261128110000 +0300" stop="20261128122500 +0300" channel="MatchTV.ru"><title>⋗ Биатлон. Кубок Содружества. Спринт. Женщины. Трансляция из Ханты-Мансийска</title></programme>
+<programme start="20261128070500 +0300" stop="20261128074500 +0300" channel="MatchTV.ru"><title>⋗ Все на Матч!</title></programme>
+<programme start="20261128074500 +0300" stop="20261128101500 +0300" channel="MatchTV.ru"><title>⋗ Биатлон. Кубок Содружества. Спринт. Мужчины. Трансляция из Ханты-Мансийска</title></programme>
+<programme start="20261128101500 +0300" stop="20261128104000 +0300" channel="MatchTV.ru"><title>⋗ Все на Матч!</title></programme>
+<programme start="20261128104000 +0300" stop="20261128122500 +0300" channel="MatchTV.ru"><title>⋗ Биатлон. Кубок Содружества. Спринт. Женщины. Трансляция из Ханты-Мансийска</title></programme>
+<programme start="20261128122500 +0300" stop="20261128134000 +0300" channel="MatchTV.ru"><title>⋗ Теннис. Трофеи Северной Пальмиры. Трансляция из Санкт-Петербурга</title></programme>
 <programme start="20261128134000 +0300" stop="20261128135000 +0300" channel="MatchTV.ru"><title>⋗ Все на Матч!</title></programme>
+<programme start="20261128135000 +0300" stop="20261128151000 +0300" channel="MatchTV.ru"><title>⋗ Теннис. Трофеи Северной Пальмиры. Трансляция из Санкт-Петербурга</title></programme>
 <programme start="20261128151000 +0300" stop="20261128153000 +0300" channel="MatchTV.ru"><title>⋗ Все на Матч!</title></programme>
 <programme start="20261128153000 +0300" stop="20261128190000 +0300" channel="MatchTV.ru"><title>⋗ Футбол. РПЛ. ЦСКА – Зенит (Санкт-Петербург)</title></programme>
 <programme start="20261128190000 +0300" stop="20261128195000 +0300" channel="MatchTV.ru"><title>⋗ Все на Матч!</title></programme>
@@ -417,38 +322,28 @@
 <programme start="20261129083000 +0300" stop="20261129094500 +0300" channel="MatchTV.ru"><title>⋗ Биатлон. Кубок Содружества. Масс-старт. Мужчины. Трансляция из Ханты-Мансийска</title></programme>
 <programme start="20261129094500 +0300" stop="20261129105000 +0300" channel="MatchTV.ru"><title>Биатлон с Дмитрием Губерниевым</title></programme>
 <programme start="20261129105000 +0300" stop="20261129115500 +0300" channel="MatchTV.ru"><title>⋗ Биатлон. Кубок Содружества. Масс-старт. Женщины. Трансляция из Ханты-Мансийска</title></programme>
+<programme start="20261129115500 +0300" stop="20261129131500 +0300" channel="MatchTV.ru"><title>⋗ Теннис. Трофеи Северной Пальмиры. Трансляция из Санкт-Петербурга</title></programme>
 <programme start="20261129131500 +0300" stop="20261129132500 +0300" channel="MatchTV.ru"><title>⋗ Все на Матч!</title></programme>
+<programme start="20261129132500 +0300" stop="20261129144500 +0300" channel="MatchTV.ru"><title>⋗ Теннис. Трофеи Северной Пальмиры. Трансляция из Санкт-Петербурга</title></programme>
 <programme start="20261129144500 +0300" stop="20261129145500 +0300" channel="MatchTV.ru"><title>⋗ Все на Матч!</title></programme>
-<programme start="20261129161500 +0300" stop="20261129171500 +0300" channel="MatchTV.ru"><title>⋗ Все на Матч!</title></programme>
+<programme start="20261129145500 +0300" stop="20261129163500 +0300" channel="MatchTV.ru"><title>⋗ Гандбол. Россия. Суперлига. Мужчины. ЦСКА – Пермские медведи (Пермь)</title></programme>
+<programme start="20261129163500 +0300" stop="20261129171500 +0300" channel="MatchTV.ru"><title>⋗ Все на Матч!</title></programme>
 <programme start="20261129171500 +0300" stop="20261129193000 +0300" channel="MatchTV.ru"><title>⋗ Футбол. РПЛ. Крылья Советов (Самара) – Динамо (Москва)</title></programme>
 <programme start="20261129193000 +0300" stop="20261129202500 +0300" channel="MatchTV.ru"><title>После футбола с Георгием Черданцевым</title></programme>
 <programme start="20261129202500 +0300" stop="20261129223500 +0300" channel="MatchTV.ru"><title>⋗ Футбол. Испания. Сельта – Вильярреал</title></programme>
-<programme start="20261129223500 +0300" stop="20261129233500 +0300" channel="MatchTV.ru"><title>⋗ Футбол. Италия. Комо – Ювентус</title></programme>
-<programme start="20261127023500 +0300" stop="20261127045000 +0300" channel="Mir.ru"><title>х/ф Обыкновенное чудо</title></programme>
-<programme start="20261127045000 +0300" stop="20261127050000 +0300" channel="Mir.ru"><title>т/с Понять. Простить</title></programme>
-<programme start="20261127050000 +0300" stop="20261127054000 +0300" channel="Mir.ru"><title>т/с Понять. Простить</title></programme>
-<programme start="20261127054000 +0300" stop="20261127060000 +0300" channel="Mir.ru"><title>х/ф Сказ про то, как царь Петр арапа женил</title></programme>
-<programme start="20261127060000 +0300" stop="20261127061500 +0300" channel="Mir.ru"><title>Вместе каждый день</title></programme>
-<programme start="20261127061500 +0300" stop="20261127074000 +0300" channel="Mir.ru"><title>х/ф Сказ про то, как царь Петр арапа женил</title></programme>
-<programme start="20261127074000 +0300" stop="20261127100000 +0300" channel="Mir.ru"><title>х/ф Жестокий романс</title></programme>
-<programme start="20261127100000 +0300" stop="20261127101000 +0300" channel="Mir.ru"><title>Вместе каждый день</title></programme>
-<programme start="20261127101000 +0300" stop="20261127104500 +0300" channel="Mir.ru"><title>х/ф Жестокий романс</title></programme>
-<programme start="20261127104500 +0300" stop="20261127113500 +0300" channel="Mir.ru"><title>Помeняться местaми</title></programme>
-<programme start="20261127113500 +0300" stop="20261127122000 +0300" channel="Mir.ru"><title>Игра в кино (Поединок)</title></programme>
-<programme start="20261127122000 +0300" stop="20261127130000 +0300" channel="Mir.ru"><title>Миллион за 5 минут</title></programme>
-<programme start="20261127130000 +0300" stop="20261127131500 +0300" channel="Mir.ru"><title>Вместе каждый день</title></programme>
-<programme start="20261127131500 +0300" stop="20261127141000 +0300" channel="Mir.ru"><title>Мировое соглашение</title></programme>
-<programme start="20261127141000 +0300" stop="20261127150500 +0300" channel="Mir.ru"><title>Дела судебные. Битва за будущее</title></programme>
-<programme start="20261127150500 +0300" stop="20261127160000 +0300" channel="Mir.ru"><title>Дела судебные. Новые истории</title></programme>
-<programme start="20261127160000 +0300" stop="20261127161500 +0300" channel="Mir.ru"><title>Вместе каждый день</title></programme>
-<programme start="20261127161500 +0300" stop="20261127180000 +0300" channel="Mir.ru"><title>Дела судебные. Яблоко раздора</title></programme>
-<programme start="20261127180000 +0300" stop="20261127182000 +0300" channel="Mir.ru"><title>Вместе каждый день</title></programme>
-<programme start="20261127182000 +0300" stop="20261127184000 +0300" channel="Mir.ru"><title>Дела судебные. Яблоко раздора</title></programme>
-<programme start="20261127184000 +0300" stop="20261127193500 +0300" channel="Mir.ru"><title>Дела судебные. Деньги верните!</title></programme>
-<programme start="20261127193500 +0300" stop="20261127212500 +0300" channel="Mir.ru"><title>х/ф Ва-банк</title></programme>
-<programme start="20261127212500 +0300" stop="20261127231000 +0300" channel="Mir.ru"><title>х/ф Ва-банк II, или Ответный удар</title></programme>
-<programme start="20261127231000 +0300" stop="20261128003500 +0300" channel="Mir.ru"><title>х/ф Катала</title></programme>
-<programme start="20261128003500 +0300" stop="20261128020000 +0300" channel="Mir.ru"><title>х/ф Акселератка</title></programme>
+<programme start="20261129223500 +0300" stop="20261130004500 +0300" channel="MatchTV.ru"><title>⋗ Футбол. Италия. Комо – Ювентус</title></programme>
+<programme start="20261130004500 +0300" stop="20261130015000 +0300" channel="MatchTV.ru"><title>⋗ Все на Матч!</title></programme>
+<programme start="20261130015000 +0300" stop="20261130035500 +0300" channel="MatchTV.ru"><title>Бокс. Бой за титул чемпиона мира по версии IBF. Артур Субханкулов (Россия) против Энди Круса Гомеса (Куба). Трансляция из Уфы</title></programme>
+<programme start="20261130035500 +0300" stop="20261130040000 +0300" channel="MatchTV.ru"><title>Новости</title></programme>
+<programme start="20261130040000 +0300" stop="20261130060000 +0300" channel="MatchTV.ru"><title>Волейбол. Россия. Рольф Суперлига. Мужчины. Динамо-Урал (Уфа) – Динамо-ЛО (Ленинградская область)</title></programme>
+<programme start="20261130060000 +0300" stop="20261130070000 +0300" channel="MatchTV.ru"><title>Лучшие из лучших</title></programme>
+<programme start="20261130070000 +0300" stop="20261130070500 +0300" channel="MatchTV.ru"><title>Новости</title></programme>
+<programme start="20261130070500 +0300" stop="20261130093000 +0300" channel="MatchTV.ru"><title>⋗ Все на Матч!</title></programme>
+<programme start="20261130093000 +0300" stop="20261130093500 +0300" channel="MatchTV.ru"><title>Новости</title></programme>
+<programme start="20261130093500 +0300" stop="20261130095500 +0300" channel="MatchTV.ru"><title>д/с Лица страны (Сергей Абрамов)</title></programme>
+<programme start="20261130095500 +0300" stop="20261130112500 +0300" channel="MatchTV.ru"><title>Смешанные единоборства. UFC. Илия Топурия против Макса Холлоуэя. Трансляция из ОАЭ</title></programme>
+<programme start="20261130112500 +0300" stop="20261130115500 +0300" channel="MatchTV.ru"><title>Футбольная нация</title></programme>
+<programme start="20261130115500 +0300" stop="20261130120000 +0300" channel="MatchTV.ru"><title>Новости</title></programme>
 <programme start="20261128020000 +0300" stop="20261128042500 +0300" channel="Mir.ru"><title>д/с Наше кино. История большой любви</title></programme>
 <programme start="20261128042500 +0300" stop="20261128050000 +0300" channel="Mir.ru"><title>х/ф Новая Москва</title></programme>
 <programme start="20261128050000 +0300" stop="20261128054500 +0300" channel="Mir.ru"><title>х/ф Новая Москва</title></programme>
@@ -459,7 +354,7 @@
 <programme start="20261128084500 +0300" stop="20261128093500 +0300" channel="Mir.ru"><title>Помeняться местaми</title></programme>
 <programme start="20261128093500 +0300" stop="20261128100000 +0300" channel="Mir.ru"><title>х/ф Любовь земная</title></programme>
 <programme start="20261128100000 +0300" stop="20261128101000 +0300" channel="Mir.ru"><title>Вместе каждый день</title></programme>
-<programme start="20261128101000 +0300" stop="20261128102000 +0300" channel="Mir.ru"><title>Предварительный диагноз</title></programme>
+<programme start="20261128101000 +0300" stop="20261128102000 +0300" channel="Mir.ru"><title>Прeдваpительный диагноз</title></programme>
 <programme start="20261128102000 +0300" stop="20261128115500 +0300" channel="Mir.ru"><title>х/ф Любовь земная</title></programme>
 <programme start="20261128115500 +0300" stop="20261128130000 +0300" channel="Mir.ru"><title>х/ф Cудьбa</title></programme>
 <programme start="20261128130000 +0300" stop="20261128131500 +0300" channel="Mir.ru"><title>Вместе каждый день</title></programme>
@@ -506,31 +401,22 @@
 <programme start="20261129210600 +0300" stop="20261129220300 +0300" channel="Mir.ru"><title>т/с Апостол ┊ 10</title></programme>
 <programme start="20261129220300 +0300" stop="20261129230000 +0300" channel="Mir.ru"><title>т/с Апостол ┊ 11</title></programme>
 <programme start="20261129230000 +0300" stop="20261130000000 +0300" channel="Mir.ru"><title>т/с Апостол ┊ 12</title></programme>
-<programme start="20261127010000 +0300" stop="20261127030000 +0300" channel="MuzTV.ru"><title>Хиты по-русски</title></programme>
-<programme start="20261127030000 +0300" stop="20261127050000 +0300" channel="MuzTV.ru"><title>Караокинг</title></programme>
-<programme start="20261127050000 +0300" stop="20261127061000 +0300" channel="MuzTV.ru"><title>Музитив</title></programme>
-<programme start="20261127061000 +0300" stop="20261127070000 +0300" channel="MuzTV.ru"><title>Русский чарт</title></programme>
-<programme start="20261127070000 +0300" stop="20261127080500 +0300" channel="MuzTV.ru"><title>#ЯнаМУЗТВ</title></programme>
-<programme start="20261127080500 +0300" stop="20261127084000 +0300" channel="MuzTV.ru"><title>TEEN чарт</title></programme>
-<programme start="20261127084000 +0300" stop="20261127090000 +0300" channel="MuzTV.ru"><title>PRO-Новости</title></programme>
-<programme start="20261127090000 +0300" stop="20261127100000 +0300" channel="MuzTV.ru"><title>Love Radio чат</title></programme>
-<programme start="20261127100000 +0300" stop="20261127110000 +0300" channel="MuzTV.ru"><title>Хиты по-русски</title></programme>
-<programme start="20261127110000 +0300" stop="20261127113000 +0300" channel="MuzTV.ru"><title>Плейлист. Осень</title></programme>
-<programme start="20261127113000 +0300" stop="20261127120000 +0300" channel="MuzTV.ru"><title>Бeз кутюp</title></programme>
-<programme start="20261127120000 +0300" stop="20261127130000 +0300" channel="MuzTV.ru"><title>Топ15 Like FM</title></programme>
-<programme start="20261127130000 +0300" stop="20261127133000 +0300" channel="MuzTV.ru"><title>Приехали!</title></programme>
-<programme start="20261127133000 +0300" stop="20261127140000 +0300" channel="MuzTV.ru"><title>Хиты по-русски</title></programme>
-<programme start="20261127140000 +0300" stop="20261127150000 +0300" channel="MuzTV.ru"><title>Золотая дюжина. 00-е</title></programme>
-<programme start="20261127150000 +0300" stop="20261127152000 +0300" channel="MuzTV.ru"><title>PRO-Новости</title></programme>
-<programme start="20261127152000 +0300" stop="20261127160000 +0300" channel="MuzTV.ru"><title>Хиты по-русски</title></programme>
-<programme start="20261127160000 +0300" stop="20261127170000 +0300" channel="MuzTV.ru"><title>Самый лучший день</title></programme>
-<programme start="20261127170000 +0300" stop="20261127180000 +0300" channel="MuzTV.ru"><title>Новое радио чарт</title></programme>
-<programme start="20261127180000 +0300" stop="20261127182000 +0300" channel="MuzTV.ru"><title>PRO-Новости</title></programme>
-<programme start="20261127182000 +0300" stop="20261127204500 +0300" channel="MuzTV.ru"><title>Супердискотека 90-х. Радио Рекорд</title></programme>
-<programme start="20261127204500 +0300" stop="20261127214500 +0300" channel="MuzTV.ru"><title>Народное диско</title></programme>
-<programme start="20261127214500 +0300" stop="20261127230000 +0300" channel="MuzTV.ru"><title>Танцпол</title></programme>
-<programme start="20261127230000 +0300" stop="20261128000000 +0300" channel="MuzTV.ru"><title>Dance чарт</title></programme>
-<programme start="20261128000000 +0300" stop="20261128020000 +0300" channel="MuzTV.ru"><title>Танцпол</title></programme>
+<programme start="20261130000000 +0300" stop="20261130005000 +0300" channel="Mir.ru"><title>Вместе</title></programme>
+<programme start="20261130005000 +0300" stop="20261130020500 +0300" channel="Mir.ru"><title>х/ф Катала</title></programme>
+<programme start="20261130020500 +0300" stop="20261130034500 +0300" channel="Mir.ru"><title>д/с Наше кино. История большой любви</title></programme>
+<programme start="20261130034500 +0300" stop="20261130050000 +0300" channel="Mir.ru"><title>х/ф Cеpдца четырех</title></programme>
+<programme start="20261130050000 +0300" stop="20261130051500 +0300" channel="Mir.ru"><title>д/с Наше кино. История большой любви</title></programme>
+<programme start="20261130051500 +0300" stop="20261130060000 +0300" channel="Mir.ru"><title>т/с Батюшка ┊ 1</title></programme>
+<programme start="20261130060000 +0300" stop="20261130061500 +0300" channel="Mir.ru"><title>Вместе каждый день</title></programme>
+<programme start="20261130061500 +0300" stop="20261130070000 +0300" channel="Mir.ru"><title>т/с Батюшка ┊ 2</title></programme>
+<programme start="20261130070000 +0300" stop="20261130074500 +0300" channel="Mir.ru"><title>т/с Батюшка ┊ 3</title></programme>
+<programme start="20261130074500 +0300" stop="20261130083000 +0300" channel="Mir.ru"><title>т/с Батюшка ┊ 4</title></programme>
+<programme start="20261130083000 +0300" stop="20261130091500 +0300" channel="Mir.ru"><title>т/с Батюшка ┊ 5</title></programme>
+<programme start="20261130091500 +0300" stop="20261130100000 +0300" channel="Mir.ru"><title>т/с Батюшка ┊ 6</title></programme>
+<programme start="20261130100000 +0300" stop="20261130101000 +0300" channel="Mir.ru"><title>Вместе каждый день</title></programme>
+<programme start="20261130101000 +0300" stop="20261130102000 +0300" channel="Mir.ru"><title>Белорусский стандарт</title></programme>
+<programme start="20261130102000 +0300" stop="20261130111300 +0300" channel="Mir.ru"><title>т/с Батюшка ┊ 6</title></programme>
+<programme start="20261130111300 +0300" stop="20261130120600 +0300" channel="Mir.ru"><title>т/с Батюшка ┊ 7</title></programme>
 <programme start="20261128020000 +0300" stop="20261128030000 +0300" channel="MuzTV.ru"><title>Караоке хит</title></programme>
 <programme start="20261128030000 +0300" stop="20261128044500 +0300" channel="MuzTV.ru"><title>Top 30: Русский Плейлист Недели</title></programme>
 <programme start="20261128044500 +0300" stop="20261128050000 +0300" channel="MuzTV.ru"><title>Музитив</title></programme>
@@ -577,29 +463,20 @@
 <programme start="20261129173000 +0300" stop="20261129183000 +0300" channel="MuzTV.ru"><title>Хиты по-русски</title></programme>
 <programme start="20261129183000 +0300" stop="20261129210000 +0300" channel="MuzTV.ru"><title>Топ-30: Народный хит</title></programme>
 <programme start="20261129210000 +0300" stop="20261129220000 +0300" channel="MuzTV.ru"><title>Народное диско</title></programme>
-<programme start="20261129220000 +0300" stop="20261129230000 +0300" channel="MuzTV.ru"><title>Золотая лихорадка</title></programme>
-<programme start="20261127010000 +0300" stop="20261127042500 +0300" channel="NTV.ru"><title>т/с Статья 105</title></programme>
-<programme start="20261127042500 +0300" stop="20261127060000 +0300" channel="NTV.ru"><title>х/ф Дело чести</title></programme>
-<programme start="20261127060000 +0300" stop="20261127062500 +0300" channel="NTV.ru"><title>Сегодня</title></programme>
-<programme start="20261127062500 +0300" stop="20261127080000 +0300" channel="NTV.ru"><title>Утро. Самое лучшее</title></programme>
-<programme start="20261127080000 +0300" stop="20261127082500 +0300" channel="NTV.ru"><title>Сегодня</title></programme>
-<programme start="20261127082500 +0300" stop="20261127092500 +0300" channel="NTV.ru"><title>Мои университеты. Будущее за настоящим</title></programme>
-<programme start="20261127092500 +0300" stop="20261127100000 +0300" channel="NTV.ru"><title>Человек в праве</title></programme>
-<programme start="20261127100000 +0300" stop="20261127103500 +0300" channel="NTV.ru"><title>Сегодня</title></programme>
-<programme start="20261127103500 +0300" stop="20261127111000 +0300" channel="NTV.ru"><title>Первая передача</title></programme>
-<programme start="20261127111000 +0300" stop="20261127130000 +0300" channel="NTV.ru"><title>т/с Морские дьяволы. Вектор атаки (Чужая война.: ч. 1)</title></programme>
-<programme start="20261127130000 +0300" stop="20261127132500 +0300" channel="NTV.ru"><title>Сегодня</title></programme>
-<programme start="20261127132500 +0300" stop="20261127140000 +0300" channel="NTV.ru"><title>Чрезвычайное происшествие</title></programme>
-<programme start="20261127140000 +0300" stop="20261127160000 +0300" channel="NTV.ru"><title>Место встречи</title></programme>
-<programme start="20261127160000 +0300" stop="20261127165000 +0300" channel="NTV.ru"><title>Сегодня</title></programme>
-<programme start="20261127165000 +0300" stop="20261127175500 +0300" channel="NTV.ru"><title>ДНК</title></programme>
-<programme start="20261127175500 +0300" stop="20261127190000 +0300" channel="NTV.ru"><title>Жди меня</title></programme>
-<programme start="20261127190000 +0300" stop="20261127200000 +0300" channel="NTV.ru"><title>Сегодня</title></programme>
-<programme start="20261127200000 +0300" stop="20261127210500 +0300" channel="NTV.ru"><title>т/с Скорая помощь ┊ 9</title></programme>
-<programme start="20261127210500 +0300" stop="20261127221500 +0300" channel="NTV.ru"><title>т/с Скорая помощь ┊ 10</title></programme>
-<programme start="20261127221500 +0300" stop="20261127231500 +0300" channel="NTV.ru"><title>т/с Хозяин ┊ 9</title></programme>
-<programme start="20261127231500 +0300" stop="20261128002000 +0300" channel="NTV.ru"><title>т/с Хозяин ┊ 10</title></programme>
-<programme start="20261128002000 +0300" stop="20261128021000 +0300" channel="NTV.ru"><title>Своя правда</title></programme>
+<programme start="20261129220000 +0300" stop="20261130000000 +0300" channel="MuzTV.ru"><title>Золотая лихорадка</title></programme>
+<programme start="20261130000000 +0300" stop="20261130013000 +0300" channel="MuzTV.ru"><title>Плейлист. Осень</title></programme>
+<programme start="20261130013000 +0300" stop="20261130030000 +0300" channel="MuzTV.ru"><title>Лайкер</title></programme>
+<programme start="20261130030000 +0300" stop="20261130050000 +0300" channel="MuzTV.ru"><title>Караокинг</title></programme>
+<programme start="20261130050000 +0300" stop="20261130060000 +0300" channel="MuzTV.ru"><title>Музитив</title></programme>
+<programme start="20261130060000 +0300" stop="20261130070000 +0300" channel="MuzTV.ru"><title>Коpоли Чaртов</title></programme>
+<programme start="20261130070000 +0300" stop="20261130073000 +0300" channel="MuzTV.ru"><title>10 самых (Примерные папочки)</title></programme>
+<programme start="20261130073000 +0300" stop="20261130080000 +0300" channel="MuzTV.ru"><title>10 самых (Звездные ограбления)</title></programme>
+<programme start="20261130080000 +0300" stop="20261130082500 +0300" channel="MuzTV.ru"><title>Музэнерго</title></programme>
+<programme start="20261130082500 +0300" stop="20261130090000 +0300" channel="MuzTV.ru"><title>PRO-Новости (Лучшее)</title></programme>
+<programme start="20261130090000 +0300" stop="20261130100000 +0300" channel="MuzTV.ru"><title>Звезды о звездах</title></programme>
+<programme start="20261130100000 +0300" stop="20261130111000 +0300" channel="MuzTV.ru"><title>Плейлист. Осень</title></programme>
+<programme start="20261130111000 +0300" stop="20261130113000 +0300" channel="MuzTV.ru"><title>Без кутюр</title></programme>
+<programme start="20261130113000 +0300" stop="20261130120000 +0300" channel="MuzTV.ru"><title>Лига свежих клипов</title></programme>
 <programme start="20261128021000 +0300" stop="20261128030000 +0300" channel="NTV.ru"><title>Квартирный вопрос</title></programme>
 <programme start="20261128030000 +0300" stop="20261128060000 +0300" channel="NTV.ru"><title>х/ф Испанец</title></programme>
 <programme start="20261128060000 +0300" stop="20261128065500 +0300" channel="NTV.ru"><title>Жди меня</title></programme>
@@ -641,43 +518,18 @@
 <programme start="20261129170000 +0300" stop="20261129180000 +0300" channel="NTV.ru"><title>Скандалы. Интриги. Расследования</title></programme>
 <programme start="20261129180000 +0300" stop="20261129190000 +0300" channel="NTV.ru"><title>Новые русские сенсации</title></programme>
 <programme start="20261129190000 +0300" stop="20261129202000 +0300" channel="NTV.ru"><title>Итоги недели (С Владимиром Чернышевым)</title></programme>
-<programme start="20261129202000 +0300" stop="20261129232500 +0300" channel="NTV.ru"><title>Шоу Аватар</title></programme>
-<programme start="20261129232500 +0300" stop="20261130002500 +0300" channel="NTV.ru"><title>Звезды сошлись</title></programme>
-<programme start="20261127023000 +0300" stop="20261127033000 +0300" channel="OTR.ru"><title>Большая страна</title></programme>
-<programme start="20261127033000 +0300" stop="20261127045500 +0300" channel="OTR.ru"><title>х/ф Ундина</title></programme>
-<programme start="20261127045500 +0300" stop="20261127051000 +0300" channel="OTR.ru"><title>Песня остается с человеком</title></programme>
-<programme start="20261127051000 +0300" stop="20261127060000 +0300" channel="OTR.ru"><title>Первый император Китая</title></programme>
-<programme start="20261127060000 +0300" stop="20261127065000 +0300" channel="OTR.ru"><title>На приеме у главного врача с Марьяной Лысенко</title></programme>
-<programme start="20261127065000 +0300" stop="20261127073000 +0300" channel="OTR.ru"><title>Моя история (Виктор Раков)</title></programme>
-<programme start="20261127073000 +0300" stop="20261127080000 +0300" channel="OTR.ru"><title>Календарь</title></programme>
-<programme start="20261127080000 +0300" stop="20261127080500 +0300" channel="OTR.ru"><title>Новости</title></programme>
-<programme start="20261127080500 +0300" stop="20261127083000 +0300" channel="OTR.ru"><title>⋗ Пестрый мир</title></programme>
-<programme start="20261127083000 +0300" stop="20261127083500 +0300" channel="OTR.ru"><title>Новости</title></programme>
-<programme start="20261127083500 +0300" stop="20261127090000 +0300" channel="OTR.ru"><title>⋗ Пестрый мир</title></programme>
-<programme start="20261127090000 +0300" stop="20261127090500 +0300" channel="OTR.ru"><title>Новости</title></programme>
-<programme start="20261127090500 +0300" stop="20261127093000 +0300" channel="OTR.ru"><title>⋗ ОТРажение</title></programme>
-<programme start="20261127093000 +0300" stop="20261127093500 +0300" channel="OTR.ru"><title>Новости</title></programme>
-<programme start="20261127093500 +0300" stop="20261127100000 +0300" channel="OTR.ru"><title>⋗ ОТРажение</title></programme>
-<programme start="20261127100000 +0300" stop="20261127100500 +0300" channel="OTR.ru"><title>Новости</title></programme>
-<programme start="20261127100500 +0300" stop="20261127105000 +0300" channel="OTR.ru"><title>⋗ ОТРажение</title></programme>
-<programme start="20261127105000 +0300" stop="20261127110000 +0300" channel="OTR.ru"><title>Новости</title></programme>
-<programme start="20261127110000 +0300" stop="20261127113000 +0300" channel="OTR.ru"><title>д/с Человек и судьба</title></programme>
-<programme start="20261127113000 +0300" stop="20261127114500 +0300" channel="OTR.ru"><title>Почитаем!</title></programme>
-<programme start="20261127114500 +0300" stop="20261127120000 +0300" channel="OTR.ru"><title>Нескучное дело с Сергеем Ломакиным</title></programme>
-<programme start="20261127120000 +0300" stop="20261127121000 +0300" channel="OTR.ru"><title>Новости</title></programme>
-<programme start="20261127121000 +0300" stop="20261127130000 +0300" channel="OTR.ru"><title>⋗ ОТРажение</title></programme>
-<programme start="20261127130000 +0300" stop="20261127131000 +0300" channel="OTR.ru"><title>Новости</title></programme>
-<programme start="20261127131000 +0300" stop="20261127150000 +0300" channel="OTR.ru"><title>⋗ ОТРажение</title></programme>
-<programme start="20261127150000 +0300" stop="20261127151500 +0300" channel="OTR.ru"><title>Новости</title></programme>
-<programme start="20261127151500 +0300" stop="20261127170000 +0300" channel="OTR.ru"><title>х/ф Игры мотыльков</title></programme>
-<programme start="20261127170000 +0300" stop="20261127180000 +0300" channel="OTR.ru"><title>На приеме у главного врача с Марьяной Лысенко</title></programme>
-<programme start="20261127180000 +0300" stop="20261127182000 +0300" channel="OTR.ru"><title>Новости</title></programme>
-<programme start="20261127182000 +0300" stop="20261127200000 +0300" channel="OTR.ru"><title>⋗ ОТРажение</title></programme>
-<programme start="20261127200000 +0300" stop="20261127201500 +0300" channel="OTR.ru"><title>Новости</title></programme>
-<programme start="20261127201500 +0300" stop="20261127204500 +0300" channel="OTR.ru"><title>Календарь</title></programme>
-<programme start="20261127204500 +0300" stop="20261127212500 +0300" channel="OTR.ru"><title>Ректорат с Анатолием Торкуновым</title></programme>
-<programme start="20261127212500 +0300" stop="20261127230000 +0300" channel="OTR.ru"><title>х/ф Механическая сюита</title></programme>
-<programme start="20261127230000 +0300" stop="20261128010000 +0300" channel="OTR.ru"><title>х/ф Игра королевы</title></programme>
+<programme start="20261129202000 +0300" stop="20261129234500 +0300" channel="NTV.ru"><title>Шоу Аватар</title></programme>
+<programme start="20261129234500 +0300" stop="20261130010000 +0300" channel="NTV.ru"><title>Звезды сошлись</title></programme>
+<programme start="20261130010000 +0300" stop="20261130013000 +0300" channel="NTV.ru"><title>д/с Основано на реальных событиях (Англичанка гадит)</title></programme>
+<programme start="20261130013000 +0300" stop="20261130043000 +0300" channel="NTV.ru"><title>д/с Основано на реальных событиях (Англичанка гадит)</title></programme>
+<programme start="20261130043000 +0300" stop="20261130044000 +0300" channel="NTV.ru"><title>Сатья</title></programme>
+<programme start="20261130044000 +0300" stop="20261130051500 +0300" channel="NTV.ru"><title>Фобия</title></programme>
+<programme start="20261130051500 +0300" stop="20261130062500 +0300" channel="NTV.ru"><title>Скандалы. Интриги. Расследования</title></programme>
+<programme start="20261130062500 +0300" stop="20261130080000 +0300" channel="NTV.ru"><title>Утро. Самое лучшее</title></programme>
+<programme start="20261130080000 +0300" stop="20261130082500 +0300" channel="NTV.ru"><title>Сегодня</title></programme>
+<programme start="20261130082500 +0300" stop="20261130100000 +0300" channel="NTV.ru"><title>т/с Морские дьяволы. Вектор атаки</title></programme>
+<programme start="20261130100000 +0300" stop="20261130103500 +0300" channel="NTV.ru"><title>Сегодня</title></programme>
+<programme start="20261130103500 +0300" stop="20261130130000 +0300" channel="NTV.ru"><title>т/с Морские дьяволы. Вектор атаки</title></programme>
 <programme start="20261128010000 +0300" stop="20261128024500 +0300" channel="OTR.ru"><title>х/ф Про любовь. Только для взрослых</title></programme>
 <programme start="20261128024500 +0300" stop="20261128044000 +0300" channel="OTR.ru"><title>х/ф Сумасшедшая помощь</title></programme>
 <programme start="20261128044000 +0300" stop="20261128050500 +0300" channel="OTR.ru"><title>д/с Город с историей</title></programme>
@@ -751,32 +603,6 @@
 <programme start="20261130100500 +0300" stop="20261130105000 +0300" channel="OTR.ru"><title>⋗ ОТРажение</title></programme>
 <programme start="20261130105000 +0300" stop="20261130110000 +0300" channel="OTR.ru"><title>Новости</title></programme>
 <programme start="20261130110000 +0300" stop="20261130120000 +0300" channel="OTR.ru"><title>Музейный остров. Душа Берлина ┊ 1</title></programme>
-<programme start="20261127022000 +0300" stop="20261127030000 +0300" channel="ChannelOne.ru"><title>Подкаст.Лаб. Пусть не говорят, пусть читают</title></programme>
-<programme start="20261127030000 +0300" stop="20261127030500 +0300" channel="ChannelOne.ru"><title>Новости</title></programme>
-<programme start="20261127030500 +0300" stop="20261127034000 +0300" channel="ChannelOne.ru"><title>Подкаст.Лаб. Культура быта</title></programme>
-<programme start="20261127034000 +0300" stop="20261127042000 +0300" channel="ChannelOne.ru"><title>Подкаст.Лаб. Все хотят летать</title></programme>
-<programme start="20261127042000 +0300" stop="20261127045700 +0300" channel="ChannelOne.ru"><title>Подкаст.Лаб. Россия и Запад на качелях истории</title></programme>
-<programme start="20261127045700 +0300" stop="20261127050000 +0300" channel="ChannelOne.ru"><title>Перерыв</title></programme>
-<programme start="20261127050000 +0300" stop="20261127090000 +0300" channel="ChannelOne.ru"><title>Телеканал Доброе утро</title></programme>
-<programme start="20261127090000 +0300" stop="20261127092500 +0300" channel="ChannelOne.ru"><title>Новости</title></programme>
-<programme start="20261127092500 +0300" stop="20261127101500 +0300" channel="ChannelOne.ru"><title>Модный приговор</title></programme>
-<programme start="20261127101500 +0300" stop="20261127110000 +0300" channel="ChannelOne.ru"><title>Жить здорово!</title></programme>
-<programme start="20261127110000 +0300" stop="20261127120000 +0300" channel="ChannelOne.ru"><title>Время покажет</title></programme>
-<programme start="20261127120000 +0300" stop="20261127121500 +0300" channel="ChannelOne.ru"><title>Новости</title></programme>
-<programme start="20261127121500 +0300" stop="20261127140000 +0300" channel="ChannelOne.ru"><title>Время покажет</title></programme>
-<programme start="20261127140000 +0300" stop="20261127150000 +0300" channel="ChannelOne.ru"><title>Большая игра</title></programme>
-<programme start="20261127150000 +0300" stop="20261127151500 +0300" channel="ChannelOne.ru"><title>Новости</title></programme>
-<programme start="20261127151500 +0300" stop="20261127160500 +0300" channel="ChannelOne.ru"><title>Давай поженимся!</title></programme>
-<programme start="20261127160500 +0300" stop="20261127170000 +0300" channel="ChannelOne.ru"><title>Мужское / Женское</title></programme>
-<programme start="20261127170000 +0300" stop="20261127180000 +0300" channel="ChannelOne.ru"><title>Большая игра</title></programme>
-<programme start="20261127180000 +0300" stop="20261127184000 +0300" channel="ChannelOne.ru"><title>Вечерние новости</title></programme>
-<programme start="20261127184000 +0300" stop="20261127194500 +0300" channel="ChannelOne.ru"><title>Время покажет</title></programme>
-<programme start="20261127194500 +0300" stop="20261127210000 +0300" channel="ChannelOne.ru"><title>Поле чудес</title></programme>
-<programme start="20261127210000 +0300" stop="20261127214500 +0300" channel="ChannelOne.ru"><title>Время</title></programme>
-<programme start="20261127214500 +0300" stop="20261127235000 +0300" channel="ChannelOne.ru"><title>«Голос. Дети». Новый сезон</title></programme>
-<programme start="20261127235000 +0300" stop="20261128004500 +0300" channel="ChannelOne.ru"><title>Любови и смерти Лили Брик ┊ 2</title></programme>
-<programme start="20261128004500 +0300" stop="20261128012000 +0300" channel="ChannelOne.ru"><title>Подкаст.Лаб. Культура быта</title></programme>
-<programme start="20261128012000 +0300" stop="20261128020000 +0300" channel="ChannelOne.ru"><title>Подкаст.Лаб. Не лыком шиты</title></programme>
 <programme start="20261128020000 +0300" stop="20261128023500 +0300" channel="ChannelOne.ru"><title>Подкаст.Лаб. Психика</title></programme>
 <programme start="20261128023500 +0300" stop="20261128031000 +0300" channel="ChannelOne.ru"><title>Подкаст.Лаб. Кот Шрёдингера</title></programme>
 <programme start="20261128031000 +0300" stop="20261128034500 +0300" channel="ChannelOne.ru"><title>Подкаст.Лаб. Анекдоты</title></programme>
@@ -788,13 +614,13 @@
 <programme start="20261128094500 +0300" stop="20261128100000 +0300" channel="ChannelOne.ru"><title>Слово пастыря</title></programme>
 <programme start="20261128100000 +0300" stop="20261128101500 +0300" channel="ChannelOne.ru"><title>Новости</title></programme>
 <programme start="20261128101500 +0300" stop="20261128111000 +0300" channel="ChannelOne.ru"><title>«Он так и остался молодым…» К 85-летию со дня рождения Александра Маслякова</title></programme>
-<programme start="20261128111000 +0300" stop="20261128120000 +0300" channel="ChannelOne.ru"><title>Вспомнить всё</title></programme>
+<programme start="20261128111000 +0300" stop="20261128120000 +0300" channel="ChannelOne.ru"><title>Вспомнить всё. Владимир Шахрин</title></programme>
 <programme start="20261128120000 +0300" stop="20261128121500 +0300" channel="ChannelOne.ru"><title>Новости</title></programme>
-<programme start="20261128121500 +0300" stop="20261128131000 +0300" channel="ChannelOne.ru"><title>Поехали!</title></programme>
+<programme start="20261128121500 +0300" stop="20261128131000 +0300" channel="ChannelOne.ru"><title>Поехали! «Курильские острова», 2 часть</title></programme>
 <programme start="20261128131000 +0300" stop="20261128140500 +0300" channel="ChannelOne.ru"><title>Любовь Полищук. «Последнее танго»</title></programme>
 <programme start="20261128140500 +0300" stop="20261128180000 +0300" channel="ChannelOne.ru"><title>т/с Враг у ворот ┊ 1 – 4</title></programme>
 <programme start="20261128180000 +0300" stop="20261128182000 +0300" channel="ChannelOne.ru"><title>Вечерние новости</title></programme>
-<programme start="20261128182000 +0300" stop="20261128210000 +0300" channel="ChannelOne.ru"><title>Сегодня вечером</title></programme>
+<programme start="20261128182000 +0300" stop="20261128210000 +0300" channel="ChannelOne.ru"><title>Сегодня вечером. КВН-65</title></programme>
 <programme start="20261128210000 +0300" stop="20261128213500 +0300" channel="ChannelOne.ru"><title>Время</title></programme>
 <programme start="20261128213500 +0300" stop="20261128224500 +0300" channel="ChannelOne.ru"><title>⋗ Что? Где? Когда? Выпуск от 28 ноября</title></programme>
 <programme start="20261128224500 +0300" stop="20261128235000 +0300" channel="ChannelOne.ru"><title>Команды</title></programme>
@@ -818,8 +644,8 @@
 <programme start="20261129120000 +0300" stop="20261129121500 +0300" channel="ChannelOne.ru"><title>Новости</title></programme>
 <programme start="20261129121500 +0300" stop="20261129131000 +0300" channel="ChannelOne.ru"><title>Будем жить!</title></programme>
 <programme start="20261129131000 +0300" stop="20261129170000 +0300" channel="ChannelOne.ru"><title>т/с Враг у ворот ┊ 5 – 8</title></programme>
-<programme start="20261129170000 +0300" stop="20261129180000 +0300" channel="ChannelOne.ru"><title>Вечерние новости</title></programme>
-<programme start="20261129180000 +0300" stop="20261129210000 +0300" channel="ChannelOne.ru"><title>День рождения КВН-65</title></programme>
+<programme start="20261129170000 +0300" stop="20261129175000 +0300" channel="ChannelOne.ru"><title>Вечерние новости</title></programme>
+<programme start="20261129175000 +0300" stop="20261129210000 +0300" channel="ChannelOne.ru"><title>День рождения КВН-65</title></programme>
 <programme start="20261129210000 +0300" stop="20261129230000 +0300" channel="ChannelOne.ru"><title>Время</title></programme>
 <programme start="20261129230000 +0300" stop="20261130001000 +0300" channel="ChannelOne.ru"><title>Большая игра</title></programme>
 <programme start="20261130001000 +0300" stop="20261130005500 +0300" channel="ChannelOne.ru"><title>Подкаст.Лаб. 20 лет спустя</title></programme>
@@ -830,93 +656,73 @@
 <programme start="20261130032500 +0300" stop="20261130042000 +0300" channel="ChannelOne.ru"><title>Подкаст.Лаб. Анекдоты</title></programme>
 <programme start="20261130042000 +0300" stop="20261130045700 +0300" channel="ChannelOne.ru"><title>Подкаст.Лаб. Легкие деньги</title></programme>
 <programme start="20261130045700 +0300" stop="20261130050000 +0300" channel="ChannelOne.ru"><title>Перерыв</title></programme>
-<programme start="20261127021000 +0300" stop="20261127030000 +0300" channel="Pyatnitsa.ru"><title>т/с Комиссар Рекс ┊ 5</title></programme>
-<programme start="20261127030000 +0300" stop="20261127035000 +0300" channel="Pyatnitsa.ru"><title>Черный список (Тату и фаер-шоу)</title></programme>
-<programme start="20261127035000 +0300" stop="20261127043000 +0300" channel="Pyatnitsa.ru"><title>Секреты на кухне (Закуски)</title></programme>
-<programme start="20261127043000 +0300" stop="20261127050500 +0300" channel="Pyatnitsa.ru"><title>Пятница News ┊ 212</title></programme>
-<programme start="20261127050500 +0300" stop="20261127055000 +0300" channel="Pyatnitsa.ru"><title>Секреты на кухне (Тыква)</title></programme>
-<programme start="20261127055000 +0300" stop="20261127062000 +0300" channel="Pyatnitsa.ru"><title>Пятница News ┊ 213</title></programme>
-<programme start="20261127062000 +0300" stop="20261127073000 +0300" channel="Pyatnitsa.ru"><title>Кондитер (Куба. Торт для Клавы Коки)</title></programme>
-<programme start="20261127073000 +0300" stop="20261127084000 +0300" channel="Pyatnitsa.ru"><title>На ножах (Калязин. Усадьба)</title></programme>
-<programme start="20261127084000 +0300" stop="20261127094000 +0300" channel="Pyatnitsa.ru"><title>Гастротур (Сахалин)</title></programme>
-<programme start="20261127094000 +0300" stop="20261127110000 +0300" channel="Pyatnitsa.ru"><title>На ножах (Адлер. Тамада)</title></programme>
-<programme start="20261127110000 +0300" stop="20261127140000 +0300" channel="Pyatnitsa.ru"><title>Адский шеф ┊ 10</title></programme>
-<programme start="20261127140000 +0300" stop="20261127151000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Miya. Подольск)</title></programme>
-<programme start="20261127151000 +0300" stop="20261127161000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Москва. Территория)</title></programme>
-<programme start="20261127161000 +0300" stop="20261127190000 +0300" channel="Pyatnitsa.ru"><title>Выживaлити. Легенда Aльфа ┊ 9</title></programme>
-<programme start="20261127190000 +0300" stop="20261128010000 +0300" channel="Pyatnitsa.ru"><title>Ставка на любовь ┊ 7</title></programme>
-<programme start="20261128010000 +0300" stop="20261128013000 +0300" channel="Pyatnitsa.ru"><title>Пятница News ┊ 215</title></programme>
-<programme start="20261128013000 +0300" stop="20261128021000 +0300" channel="Pyatnitsa.ru"><title>т/с Комиссар Рекс ┊ 6</title></programme>
-<programme start="20261128021000 +0300" stop="20261128030000 +0300" channel="Pyatnitsa.ru"><title>т/с Комиссар Рекс ┊ 7</title></programme>
-<programme start="20261128030000 +0300" stop="20261128035000 +0300" channel="Pyatnitsa.ru"><title>Черный список (Спецуборка+автосервис)</title></programme>
+<programme start="20261130050000 +0300" stop="20261130090000 +0300" channel="ChannelOne.ru"><title>Телеканал Доброе утро</title></programme>
+<programme start="20261130090000 +0300" stop="20261130092500 +0300" channel="ChannelOne.ru"><title>Новости</title></programme>
+<programme start="20261130092500 +0300" stop="20261130101500 +0300" channel="ChannelOne.ru"><title>Модный приговор</title></programme>
+<programme start="20261130101500 +0300" stop="20261130110000 +0300" channel="ChannelOne.ru"><title>Жить здорово!</title></programme>
+<programme start="20261130110000 +0300" stop="20261130120000 +0300" channel="ChannelOne.ru"><title>Время покажет</title></programme>
+<programme start="20261128021000 +0300" stop="20261128030000 +0300" channel="Pyatnitsa.ru"><title>т/с Комиссар Рекс ┊ 8</title></programme>
+<programme start="20261128030000 +0300" stop="20261128035000 +0300" channel="Pyatnitsa.ru"><title>Чeрный спиcок (Спецуборка+автосервис)</title></programme>
 <programme start="20261128035000 +0300" stop="20261128043000 +0300" channel="Pyatnitsa.ru"><title>Секреты на кухне (Фуршет)</title></programme>
 <programme start="20261128043000 +0300" stop="20261128050000 +0300" channel="Pyatnitsa.ru"><title>Пятница News ┊ 213</title></programme>
 <programme start="20261128050000 +0300" stop="20261128055000 +0300" channel="Pyatnitsa.ru"><title>Секреты на кухне (Рис)</title></programme>
-<programme start="20261128055000 +0300" stop="20261128061000 +0300" channel="Pyatnitsa.ru"><title>Пятница News ┊ 214</title></programme>
-<programme start="20261128061000 +0300" stop="20261128074000 +0300" channel="Pyatnitsa.ru"><title>Горная симфония</title></programme>
-<programme start="20261128074000 +0300" stop="20261128085000 +0300" channel="Pyatnitsa.ru"><title>Экспедиция с Алексеем Столяровым (Байкал. Самое глубокое озеро в мире)</title></programme>
+<programme start="20261128055000 +0300" stop="20261128061500 +0300" channel="Pyatnitsa.ru"><title>Пятница News ┊ 214</title></programme>
+<programme start="20261128061500 +0300" stop="20261128074000 +0300" channel="Pyatnitsa.ru"><title>Горная симфония</title></programme>
+<programme start="20261128074000 +0300" stop="20261128085000 +0300" channel="Pyatnitsa.ru"><title>Экспедиция c Алексеем Столяpовым (Байкал. Самое глубокое озеро в мире)</title></programme>
 <programme start="20261128085000 +0300" stop="20261128100000 +0300" channel="Pyatnitsa.ru"><title>Сладкий мир с Ренатом Агзамовым (Стамбул. Турция)</title></programme>
 <programme start="20261128100000 +0300" stop="20261128110000 +0300" channel="Pyatnitsa.ru"><title>Гастротур (Камчатка)</title></programme>
-<programme start="20261128110000 +0300" stop="20261128120000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Нижний Новгород. Навигация)</title></programme>
+<programme start="20261128110000 +0300" stop="20261128120000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Владивосток. Осама суши)</title></programme>
 <programme start="20261128120000 +0300" stop="20261128130000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Москва. Heavy Haze)</title></programme>
-<programme start="20261128130000 +0300" stop="20261128140000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Владивосток. Sibumi)</title></programme>
-<programme start="20261128140000 +0300" stop="20261128150000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Сочи. Plants &amp; Friends)</title></programme>
-<programme start="20261128150000 +0300" stop="20261128155000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Сочи. Secret)</title></programme>
-<programme start="20261128155000 +0300" stop="20261128165000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Москва. Золотой дракон)</title></programme>
-<programme start="20261128165000 +0300" stop="20261128175000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Краснодар. Баварус)</title></programme>
-<programme start="20261128175000 +0300" stop="20261128185000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Екатеринбург. Alibi)</title></programme>
-<programme start="20261128185000 +0300" stop="20261128195000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Воронеж. Мишка)</title></programme>
-<programme start="20261128195000 +0300" stop="20261128210000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Москва. Ossu)</title></programme>
-<programme start="20261128210000 +0300" stop="20261128215000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Сочи. Denart)</title></programme>
-<programme start="20261128215000 +0300" stop="20261128230000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Реутов. Сказка)</title></programme>
-<programme start="20261128230000 +0300" stop="20261129000000 +0300" channel="Pyatnitsa.ru"><title>Экспедиция с Алексеем Столяровым (Воттоваара)</title></programme>
+<programme start="20261128130000 +0300" stop="20261128140000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Москва. Дворик Гурмэ)</title></programme>
+<programme start="20261128140000 +0300" stop="20261128145000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Сочи. Plants &amp; Friends)</title></programme>
+<programme start="20261128145000 +0300" stop="20261128160000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Москва. Московское небо)</title></programme>
+<programme start="20261128160000 +0300" stop="20261128170000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Москва. Золотой дракон)</title></programme>
+<programme start="20261128170000 +0300" stop="20261128180000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Хабаровск. Гурман Сун)</title></programme>
+<programme start="20261128180000 +0300" stop="20261128190000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Екатеринбург. Alibi)</title></programme>
+<programme start="20261128190000 +0300" stop="20261128200000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Воронеж. Мишка)</title></programme>
+<programme start="20261128200000 +0300" stop="20261128210000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Москва. Ossu)</title></programme>
+<programme start="20261128210000 +0300" stop="20261128220000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Сочи. Denart)</title></programme>
+<programme start="20261128220000 +0300" stop="20261128230000 +0300" channel="Pyatnitsa.ru"><title>Черный список. На кухне (Реутов. Сказка)</title></programme>
+<programme start="20261128230000 +0300" stop="20261129000000 +0300" channel="Pyatnitsa.ru"><title>Умнее всех ┊ 9</title></programme>
 <programme start="20261129000000 +0300" stop="20261129010000 +0300" channel="Pyatnitsa.ru"><title>т/с Комиссар Рекс (Una Puñalada en el corazón)</title></programme>
 <programme start="20261129010000 +0300" stop="20261129015000 +0300" channel="Pyatnitsa.ru"><title>т/с Комиссар Рекс (El lado oscuro)</title></programme>
 <programme start="20261129015000 +0300" stop="20261129023000 +0300" channel="Pyatnitsa.ru"><title>т/с Комиссар Рекс (El Canoso)</title></programme>
 <programme start="20261129023000 +0300" stop="20261129030000 +0300" channel="Pyatnitsa.ru"><title>Пятница News ┊ 214</title></programme>
-<programme start="20261129030000 +0300" stop="20261129035000 +0300" channel="Pyatnitsa.ru"><title>Черный список (Клининг и аниматоры)</title></programme>
-<programme start="20261129035000 +0300" stop="20261129040000 +0300" channel="Pyatnitsa.ru"><title>Секреты на кухне (Индейка)</title></programme>
-<programme start="20261129040000 +0300" stop="20261129050000 +0300" channel="Pyatnitsa.ru"><title>Пятница News ┊ 213</title></programme>
+<programme start="20261129030000 +0300" stop="20261129035000 +0300" channel="Pyatnitsa.ru"><title>Чeрный спиcок (Клининг и аниматоры)</title></programme>
+<programme start="20261129035000 +0300" stop="20261129043000 +0300" channel="Pyatnitsa.ru"><title>Секреты на кухне (Индейка)</title></programme>
+<programme start="20261129043000 +0300" stop="20261129050000 +0300" channel="Pyatnitsa.ru"><title>Пятница News ┊ 213</title></programme>
 <programme start="20261129050000 +0300" stop="20261129055000 +0300" channel="Pyatnitsa.ru"><title>Секреты на кухне (Красные продукты)</title></programme>
-<programme start="20261129055000 +0300" stop="20261129061500 +0300" channel="Pyatnitsa.ru"><title>Пятница News ┊ 215</title></programme>
-<programme start="20261129061500 +0300" stop="20261129062000 +0300" channel="Pyatnitsa.ru"><title>Кондитер (Торт для Давы)</title></programme>
-<programme start="20261129062000 +0300" stop="20261129075000 +0300" channel="Pyatnitsa.ru"><title>Умнее всех ┊ 7</title></programme>
-<programme start="20261129075000 +0300" stop="20261129085000 +0300" channel="Pyatnitsa.ru"><title>Экспедиция с Алексеем Столяровым (Воттоваара)</title></programme>
-<programme start="20261129085000 +0300" stop="20261129100000 +0300" channel="Pyatnitsa.ru"><title>Погнали. Doc (Монголия)</title></programme>
-<programme start="20261129100000 +0300" stop="20261129110000 +0300" channel="Pyatnitsa.ru"><title>Как люди живут (Ханчжоу)</title></programme>
-<programme start="20261129110000 +0300" stop="20261129120000 +0300" channel="Pyatnitsa.ru"><title>Сладкий мир с Ренатом Агзамовым ┊ 7</title></programme>
-<programme start="20261129120000 +0300" stop="20261129134000 +0300" channel="Pyatnitsa.ru"><title>Экспедиция с Алексеем Столяровым (Австралия. Восхождение на вершину)</title></programme>
-<programme start="20261129134000 +0300" stop="20261129150000 +0300" channel="Pyatnitsa.ru"><title>Экспедиция с Алексеем Столяровым (Байкал. Самое глубокое озеро в мире)</title></programme>
-<programme start="20261129150000 +0300" stop="20261129152000 +0300" channel="Pyatnitsa.ru"><title>Во что верят люди (Технократы. Молоко)</title></programme>
-<programme start="20261129152000 +0300" stop="20261129163000 +0300" channel="Pyatnitsa.ru"><title>Во что верят люди (Тайна группы Дятлова. Продукты-убийцы)</title></programme>
-<programme start="20261129163000 +0300" stop="20261129180000 +0300" channel="Pyatnitsa.ru"><title>Как люди живут ┊ 39</title></programme>
-<programme start="20261129180000 +0300" stop="20261129192000 +0300" channel="Pyatnitsa.ru"><title>Как люди живут (Куба)</title></programme>
-<programme start="20261129192000 +0300" stop="20261129204000 +0300" channel="Pyatnitsa.ru"><title>Как люди живут (Куба. Че Гевара)</title></programme>
-<programme start="20261129204000 +0300" stop="20261129214000 +0300" channel="Pyatnitsa.ru"><title>Погнали. Doc (Другой Гонконг)</title></programme>
-<programme start="20261129214000 +0300" stop="20261129230000 +0300" channel="Pyatnitsa.ru"><title>Погнали! (В Малайзию. Страна подделок)</title></programme>
-<programme start="20261129230000 +0300" stop="20261129233000 +0300" channel="Pyatnitsa.ru"><title>Дикие Ягодки ┊ 2</title></programme>
-<programme start="20261129233000 +0300" stop="20261130003000 +0300" channel="Pyatnitsa.ru"><title>Дикие Ягодки ┊ 1</title></programme>
-<programme start="20261127021500 +0300" stop="20261127043000 +0300" channel="RENTV.ru"><title>Тайны Чапман</title></programme>
-<programme start="20261127043000 +0300" stop="20261127050000 +0300" channel="RENTV.ru"><title>Самые шокирующие гипотезы</title></programme>
-<programme start="20261127050000 +0300" stop="20261127060000 +0300" channel="RENTV.ru"><title>Самые шокирующие гипотезы</title></programme>
-<programme start="20261127060000 +0300" stop="20261127083000 +0300" channel="RENTV.ru"><title>С бодрым утром!</title></programme>
-<programme start="20261127083000 +0300" stop="20261127090000 +0300" channel="RENTV.ru"><title>Новости</title></programme>
-<programme start="20261127090000 +0300" stop="20261127100000 +0300" channel="RENTV.ru"><title>Документальный спецпроект</title></programme>
-<programme start="20261127100000 +0300" stop="20261127110000 +0300" channel="RENTV.ru"><title>Засекреченные списки</title></programme>
-<programme start="20261127110000 +0300" stop="20261127120000 +0300" channel="RENTV.ru"><title>Как устроен мир с Тимофеем Баженовым</title></programme>
-<programme start="20261127120000 +0300" stop="20261127123000 +0300" channel="RENTV.ru"><title>Инфопрограмма 112</title></programme>
-<programme start="20261127123000 +0300" stop="20261127130000 +0300" channel="RENTV.ru"><title>Новости</title></programme>
-<programme start="20261127130000 +0300" stop="20261127160000 +0300" channel="RENTV.ru"><title>Тайны Чапман</title></programme>
-<programme start="20261127160000 +0300" stop="20261127163000 +0300" channel="RENTV.ru"><title>Инфопрограмма 112</title></programme>
-<programme start="20261127163000 +0300" stop="20261127170000 +0300" channel="RENTV.ru"><title>Новости</title></programme>
-<programme start="20261127170000 +0300" stop="20261127180000 +0300" channel="RENTV.ru"><title>Тайны Чапман</title></programme>
-<programme start="20261127180000 +0300" stop="20261127190000 +0300" channel="RENTV.ru"><title>Главные тайны мира</title></programme>
-<programme start="20261127190000 +0300" stop="20261127193000 +0300" channel="RENTV.ru"><title>Инфопрограмма 112</title></programme>
-<programme start="20261127193000 +0300" stop="20261127200000 +0300" channel="RENTV.ru"><title>Новости</title></programme>
-<programme start="20261127200000 +0300" stop="20261127205000 +0300" channel="RENTV.ru"><title>Безумные факты</title></programme>
-<programme start="20261127205000 +0300" stop="20261127223500 +0300" channel="RENTV.ru"><title>х/ф Выжить любой ценой</title></programme>
-<programme start="20261127223500 +0300" stop="20261128002500 +0300" channel="RENTV.ru"><title>х/ф Обсуждению не подлежит</title></programme>
-<programme start="20261128002500 +0300" stop="20261128020500 +0300" channel="RENTV.ru"><title>х/ф Неоспоримый 2</title></programme>
+<programme start="20261129055000 +0300" stop="20261129061000 +0300" channel="Pyatnitsa.ru"><title>Пятница News ┊ 215</title></programme>
+<programme start="20261129061000 +0300" stop="20261129072000 +0300" channel="Pyatnitsa.ru"><title>Кондитер. Дети (Торт для Давы)</title></programme>
+<programme start="20261129072000 +0300" stop="20261129085000 +0300" channel="Pyatnitsa.ru"><title>Умнее всех ┊ 7</title></programme>
+<programme start="20261129085000 +0300" stop="20261129095000 +0300" channel="Pyatnitsa.ru"><title>Погнали. Doc (Монголия)</title></programme>
+<programme start="20261129095000 +0300" stop="20261129110000 +0300" channel="Pyatnitsa.ru"><title>Как люди живут (Ханчжоу)</title></programme>
+<programme start="20261129110000 +0300" stop="20261129120000 +0300" channel="Pyatnitsa.ru"><title>Сладкий мир с Ренатом Агзамовым (Душанбе. Таджикистан)</title></programme>
+<programme start="20261129120000 +0300" stop="20261129130000 +0300" channel="Pyatnitsa.ru"><title>Экспедиция c Алексеем Столяpовым (Могильный мыс)</title></programme>
+<programme start="20261129130000 +0300" stop="20261129140000 +0300" channel="Pyatnitsa.ru"><title>Экспедиция c Алексеем Столяpовым (Австралия. Восхождение на вершину)</title></programme>
+<programme start="20261129140000 +0300" stop="20261129152000 +0300" channel="Pyatnitsa.ru"><title>Экспедиция c Алексеем Столяpовым (Байкал. Самое глубокое озеро в мире)</title></programme>
+<programme start="20261129152000 +0300" stop="20261129164000 +0300" channel="Pyatnitsa.ru"><title>Как люди живут ┊ 39</title></programme>
+<programme start="20261129164000 +0300" stop="20261129174000 +0300" channel="Pyatnitsa.ru"><title>Как люди живут (Конго.: ч. 2)</title></programme>
+<programme start="20261129174000 +0300" stop="20261129185000 +0300" channel="Pyatnitsa.ru"><title>Как люди живут (Республика Нигер)</title></programme>
+<programme start="20261129185000 +0300" stop="20261129203000 +0300" channel="Pyatnitsa.ru"><title>Погнали! (В Индию. Варанаси)</title></programme>
+<programme start="20261129203000 +0300" stop="20261129213000 +0300" channel="Pyatnitsa.ru"><title>Погнали. Doc (Другой Гонконг)</title></programme>
+<programme start="20261129213000 +0300" stop="20261129230000 +0300" channel="Pyatnitsa.ru"><title>Погнали! (В Малайзию. Страна подделок)</title></programme>
+<programme start="20261129230000 +0300" stop="20261129233000 +0300" channel="Pyatnitsa.ru"><title>Дикие Ягодки ┊ 1</title></programme>
+<programme start="20261129233000 +0300" stop="20261130000000 +0300" channel="Pyatnitsa.ru"><title>т/с Хадсон и Рекс ┊ 14</title></programme>
+<programme start="20261130000000 +0300" stop="20261130003000 +0300" channel="Pyatnitsa.ru"><title>т/с Хадсон и Рекс ┊ 14</title></programme>
+<programme start="20261130003000 +0300" stop="20261130011000 +0300" channel="Pyatnitsa.ru"><title>т/с Хадсон и Рекс ┊ 15</title></programme>
+<programme start="20261130011000 +0300" stop="20261130020000 +0300" channel="Pyatnitsa.ru"><title>т/с Хадсон и Рекс ┊ 16</title></programme>
+<programme start="20261130020000 +0300" stop="20261130022000 +0300" channel="Pyatnitsa.ru"><title>Пятница News ┊ 215</title></programme>
+<programme start="20261130022000 +0300" stop="20261130043000 +0300" channel="Pyatnitsa.ru"><title>Черный список (Тату-мастера и детские аниматоры)</title></programme>
+<programme start="20261130043000 +0300" stop="20261130050000 +0300" channel="Pyatnitsa.ru"><title>Пятница News ┊ 214</title></programme>
+<programme start="20261130050000 +0300" stop="20261130052000 +0300" channel="Pyatnitsa.ru"><title>Секреты на кухне (Завтраки)</title></programme>
+<programme start="20261130052000 +0300" stop="20261130055000 +0300" channel="Pyatnitsa.ru"><title>Пятница News ┊ 214</title></programme>
+<programme start="20261130055000 +0300" stop="20261130065000 +0300" channel="Pyatnitsa.ru"><title>Кондитер (Китай. Торт для Владимира Селиванова)</title></programme>
+<programme start="20261130065000 +0300" stop="20261130080000 +0300" channel="Pyatnitsa.ru"><title>Нa ножаx (Самара. Ярга)</title></programme>
+<programme start="20261130080000 +0300" stop="20261130090000 +0300" channel="Pyatnitsa.ru"><title>Нa ножаx (Домодедово. Мед Плюс)</title></programme>
+<programme start="20261130090000 +0300" stop="20261130101000 +0300" channel="Pyatnitsa.ru"><title>Нa ножаx (Новороссийск. Карабас-Барабас)</title></programme>
+<programme start="20261130101000 +0300" stop="20261130111000 +0300" channel="Pyatnitsa.ru"><title>Гастротур (Камчатка)</title></programme>
+<programme start="20261130111000 +0300" stop="20261130140000 +0300" channel="Pyatnitsa.ru"><title>Адский шеф ┊ 11</title></programme>
 <programme start="20261128020500 +0300" stop="20261128025000 +0300" channel="RENTV.ru"><title>Главные тайны мира</title></programme>
 <programme start="20261128025000 +0300" stop="20261128050000 +0300" channel="RENTV.ru"><title>Тайны Чапман</title></programme>
 <programme start="20261128050000 +0300" stop="20261128060000 +0300" channel="RENTV.ru"><title>Самые шокирующие гипотезы</title></programme>
@@ -963,78 +769,6 @@
 <programme start="20261130083000 +0300" stop="20261130090000 +0300" channel="RENTV.ru"><title>Новости</title></programme>
 <programme start="20261130090000 +0300" stop="20261130110000 +0300" channel="RENTV.ru"><title>Военная тайна с Игорем Прокопенко</title></programme>
 <programme start="20261130110000 +0300" stop="20261130120000 +0300" channel="RENTV.ru"><title>Как устроен мир с Тимофеем Баженовым</title></programme>
-<programme start="20261127021000 +0300" stop="20261127060000 +0300" channel="Russia24.ru"><title>Вечер с Владимиром Соловьевым</title></programme>
-<programme start="20261127060000 +0300" stop="20261127060700 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127060700 +0300" stop="20261127061000 +0300" channel="Russia24.ru"><title>Экономика</title></programme>
-<programme start="20261127061000 +0300" stop="20261127063100 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127063100 +0300" stop="20261127063500 +0300" channel="Russia24.ru"><title>Спорт</title></programme>
-<programme start="20261127063500 +0300" stop="20261127063900 +0300" channel="Russia24.ru"><title>Погода 24</title></programme>
-<programme start="20261127063900 +0300" stop="20261127064000 +0300" channel="Russia24.ru"><title>Погода</title></programme>
-<programme start="20261127064000 +0300" stop="20261127064500 +0300" channel="Russia24.ru"><title>д/с Исторические хроники с Николаем Сванидзе</title></programme>
-<programme start="20261127064500 +0300" stop="20261127064800 +0300" channel="Russia24.ru"><title>Экономика</title></programme>
-<programme start="20261127064800 +0300" stop="20261127070800 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127070800 +0300" stop="20261127071100 +0300" channel="Russia24.ru"><title>Экономика</title></programme>
-<programme start="20261127071100 +0300" stop="20261127071800 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127071800 +0300" stop="20261127072300 +0300" channel="Russia24.ru"><title>Спорт</title></programme>
-<programme start="20261127072300 +0300" stop="20261127073200 +0300" channel="Russia24.ru"><title>Экономика</title></programme>
-<programme start="20261127073200 +0300" stop="20261127073600 +0300" channel="Russia24.ru"><title>Погода 24</title></programme>
-<programme start="20261127073600 +0300" stop="20261127074400 +0300" channel="Russia24.ru"><title>Погода</title></programme>
-<programme start="20261127074400 +0300" stop="20261127074700 +0300" channel="Russia24.ru"><title>Экономика</title></programme>
-<programme start="20261127074700 +0300" stop="20261127075100 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127075100 +0300" stop="20261127080000 +0300" channel="Russia24.ru"><title>Инфографика (Цена урожая)</title></programme>
-<programme start="20261127080000 +0300" stop="20261127082000 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127082000 +0300" stop="20261127082400 +0300" channel="Russia24.ru"><title>Экономика</title></programme>
-<programme start="20261127082400 +0300" stop="20261127084000 +0300" channel="Russia24.ru"><title>Спорт</title></programme>
-<programme start="20261127084000 +0300" stop="20261127085000 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127085000 +0300" stop="20261127085400 +0300" channel="Russia24.ru"><title>Погода 24</title></programme>
-<programme start="20261127085400 +0300" stop="20261127085700 +0300" channel="Russia24.ru"><title>Погода</title></programme>
-<programme start="20261127085700 +0300" stop="20261127092400 +0300" channel="Russia24.ru"><title>Вести в 9</title></programme>
-<programme start="20261127092400 +0300" stop="20261127092900 +0300" channel="Russia24.ru"><title>Экономика</title></programme>
-<programme start="20261127092900 +0300" stop="20261127094200 +0300" channel="Russia24.ru"><title>Спорт</title></programme>
-<programme start="20261127094200 +0300" stop="20261127094500 +0300" channel="Russia24.ru"><title>Погода</title></programme>
-<programme start="20261127094500 +0300" stop="20261127103000 +0300" channel="Russia24.ru"><title>Вести в 9</title></programme>
-<programme start="20261127103000 +0300" stop="20261127105600 +0300" channel="Russia24.ru"><title>Вопрос науки</title></programme>
-<programme start="20261127105600 +0300" stop="20261127113100 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127113100 +0300" stop="20261127113600 +0300" channel="Russia24.ru"><title>Инфографика (Цена урожая)</title></programme>
-<programme start="20261127113600 +0300" stop="20261127114100 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127114100 +0300" stop="20261127115600 +0300" channel="Russia24.ru"><title>Репортаж (Махалин – стадион Торпедо)</title></programme>
-<programme start="20261127115600 +0300" stop="20261127122100 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127122100 +0300" stop="20261127123300 +0300" channel="Russia24.ru"><title>Погода</title></programme>
-<programme start="20261127123300 +0300" stop="20261127124300 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127124300 +0300" stop="20261127125600 +0300" channel="Russia24.ru"><title>Специальный репортаж (Сладков – фронтовые инженеры)</title></programme>
-<programme start="20261127125600 +0300" stop="20261127131900 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127131900 +0300" stop="20261127133300 +0300" channel="Russia24.ru"><title>Инфографика (Цена урожая)</title></programme>
-<programme start="20261127133300 +0300" stop="20261127134200 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127134200 +0300" stop="20261127135600 +0300" channel="Russia24.ru"><title>Международка (Америка с Богдановым)</title></programme>
-<programme start="20261127135600 +0300" stop="20261127143400 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127143400 +0300" stop="20261127143900 +0300" channel="Russia24.ru"><title>Экономика</title></programme>
-<programme start="20261127143900 +0300" stop="20261127144600 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127144600 +0300" stop="20261127150000 +0300" channel="Russia24.ru"><title>Гриф снят (Абвер)</title></programme>
-<programme start="20261127150000 +0300" stop="20261127152300 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127152300 +0300" stop="20261127153800 +0300" channel="Russia24.ru"><title>Экономика</title></programme>
-<programme start="20261127153800 +0300" stop="20261127154400 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127154400 +0300" stop="20261127160000 +0300" channel="Russia24.ru"><title>Репортаж (Махалин – стадион Торпедо)</title></programme>
-<programme start="20261127160000 +0300" stop="20261127162300 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127162300 +0300" stop="20261127163500 +0300" channel="Russia24.ru"><title>Погода</title></programme>
-<programme start="20261127163500 +0300" stop="20261127164600 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127164600 +0300" stop="20261127170000 +0300" channel="Russia24.ru"><title>Специальный репортаж (Сладков – фронтовые инженеры)</title></programme>
-<programme start="20261127170000 +0300" stop="20261127173100 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127173100 +0300" stop="20261127173600 +0300" channel="Russia24.ru"><title>Экономика</title></programme>
-<programme start="20261127173600 +0300" stop="20261127183500 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127183500 +0300" stop="20261127190000 +0300" channel="Russia24.ru"><title>Дежурная часть</title></programme>
-<programme start="20261127190000 +0300" stop="20261127200000 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127200000 +0300" stop="20261127200200 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127200200 +0300" stop="20261127213200 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127213200 +0300" stop="20261127220000 +0300" channel="Russia24.ru"><title>Дежурная часть</title></programme>
-<programme start="20261127220000 +0300" stop="20261127224600 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261127224600 +0300" stop="20261127230000 +0300" channel="Russia24.ru"><title>Международка (Америка с Богдановым)</title></programme>
-<programme start="20261127230000 +0300" stop="20261128000000 +0300" channel="Russia24.ru"><title>Международное обозрение</title></programme>
-<programme start="20261128000000 +0300" stop="20261128003200 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261128003200 +0300" stop="20261128010000 +0300" channel="Russia24.ru"><title>Вопрос науки</title></programme>
-<programme start="20261128010000 +0300" stop="20261128012400 +0300" channel="Russia24.ru"><title>Вести</title></programme>
-<programme start="20261128012400 +0300" stop="20261128013700 +0300" channel="Russia24.ru"><title>Экономика</title></programme>
-<programme start="20261128013700 +0300" stop="20261128020000 +0300" channel="Russia24.ru"><title>Индустрия кино</title></programme>
-<programme start="20261128020000 +0300" stop="20261128020500 +0300" channel="Russia24.ru"><title>Вести</title></programme>
 <programme start="20261128020500 +0300" stop="20261128060000 +0300" channel="Russia24.ru"><title>Международное обозрение</title></programme>
 <programme start="20261128060000 +0300" stop="20261128060600 +0300" channel="Russia24.ru"><title>Вести</title></programme>
 <programme start="20261128060600 +0300" stop="20261128062800 +0300" channel="Russia24.ru"><title>д/с Расследование Эдуарда Петрова (Шкурный интерес)</title></programme>
@@ -1149,25 +883,45 @@
 <programme start="20261129220000 +0300" stop="20261129221600 +0300" channel="Russia24.ru"><title>Вести</title></programme>
 <programme start="20261129221600 +0300" stop="20261129222800 +0300" channel="Russia24.ru"><title>Итоги правительства за неделю</title></programme>
 <programme start="20261129222800 +0300" stop="20261129230000 +0300" channel="Russia24.ru"><title>Репортаж</title></programme>
-<programme start="20261129230000 +0300" stop="20261130000000 +0300" channel="Russia24.ru"><title>Вести недели</title></programme>
-<programme start="20261127022000 +0300" stop="20261127030000 +0300" channel="Russia1.ru"><title>т/с Райский</title></programme>
-<programme start="20261127030000 +0300" stop="20261127033000 +0300" channel="Russia1.ru"><title>Вести</title></programme>
-<programme start="20261127033000 +0300" stop="20261127050000 +0300" channel="Russia1.ru"><title>т/с Райский</title></programme>
-<programme start="20261127050000 +0300" stop="20261127090000 +0300" channel="Russia1.ru"><title>Утро России</title></programme>
-<programme start="20261127090000 +0300" stop="20261127093000 +0300" channel="Russia1.ru"><title>Вести</title></programme>
-<programme start="20261127093000 +0300" stop="20261127095500 +0300" channel="Russia1.ru"><title>Местное время</title></programme>
-<programme start="20261127095500 +0300" stop="20261127110000 +0300" channel="Russia1.ru"><title>О самом главном</title></programme>
-<programme start="20261127110000 +0300" stop="20261127113000 +0300" channel="Russia1.ru"><title>Вести</title></programme>
-<programme start="20261127113000 +0300" stop="20261127120000 +0300" channel="Russia1.ru"><title>Вести. Местное время</title></programme>
-<programme start="20261127120000 +0300" stop="20261127140000 +0300" channel="Russia1.ru"><title>60 минут</title></programme>
-<programme start="20261127140000 +0300" stop="20261127143000 +0300" channel="Russia1.ru"><title>Вести</title></programme>
-<programme start="20261127143000 +0300" stop="20261127163000 +0300" channel="Russia1.ru"><title>т/с Райский</title></programme>
-<programme start="20261127163000 +0300" stop="20261127170000 +0300" channel="Russia1.ru"><title>Вести</title></programme>
-<programme start="20261127170000 +0300" stop="20261127180000 +0300" channel="Russia1.ru"><title>Малахов</title></programme>
-<programme start="20261127180000 +0300" stop="20261127200000 +0300" channel="Russia1.ru"><title>60 минут</title></programme>
-<programme start="20261127200000 +0300" stop="20261127211000 +0300" channel="Russia1.ru"><title>Вести в 20:00</title></programme>
-<programme start="20261127211000 +0300" stop="20261127213000 +0300" channel="Russia1.ru"><title>Вести. Местное время</title></programme>
-<programme start="20261127213000 +0300" stop="20261128004500 +0300" channel="Russia1.ru"><title>Ну-ка, все вместе!</title></programme>
+<programme start="20261129230000 +0300" stop="20261130010000 +0300" channel="Russia24.ru"><title>Вести недели</title></programme>
+<programme start="20261130010000 +0300" stop="20261130010200 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130010200 +0300" stop="20261130013700 +0300" channel="Russia24.ru"><title>Киселев</title></programme>
+<programme start="20261130013700 +0300" stop="20261130020000 +0300" channel="Russia24.ru"><title>Погода 24</title></programme>
+<programme start="20261130020000 +0300" stop="20261130021500 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130021500 +0300" stop="20261130060000 +0300" channel="Russia24.ru"><title>Москва. Кремль. Путин</title></programme>
+<programme start="20261130060000 +0300" stop="20261130060700 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130060700 +0300" stop="20261130061000 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130061000 +0300" stop="20261130063100 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130063100 +0300" stop="20261130063500 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130063500 +0300" stop="20261130063900 +0300" channel="Russia24.ru"><title>Погода 24</title></programme>
+<programme start="20261130063900 +0300" stop="20261130064000 +0300" channel="Russia24.ru"><title>Погода 24</title></programme>
+<programme start="20261130064000 +0300" stop="20261130064500 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130064500 +0300" stop="20261130070000 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130070000 +0300" stop="20261130070800 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130070800 +0300" stop="20261130071100 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130071100 +0300" stop="20261130071600 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130071600 +0300" stop="20261130073200 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130073200 +0300" stop="20261130073600 +0300" channel="Russia24.ru"><title>Погода 24</title></programme>
+<programme start="20261130073600 +0300" stop="20261130074400 +0300" channel="Russia24.ru"><title>Погода 24</title></programme>
+<programme start="20261130074400 +0300" stop="20261130074700 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130074700 +0300" stop="20261130075100 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130075100 +0300" stop="20261130080000 +0300" channel="Russia24.ru"><title>д/с Исторические хроники с Николаем Сванидзе</title></programme>
+<programme start="20261130080000 +0300" stop="20261130082000 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130082000 +0300" stop="20261130082400 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130082400 +0300" stop="20261130084700 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130084700 +0300" stop="20261130085100 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130085100 +0300" stop="20261130085500 +0300" channel="Russia24.ru"><title>Погода 24</title></programme>
+<programme start="20261130085500 +0300" stop="20261130085700 +0300" channel="Russia24.ru"><title>Погода 24</title></programme>
+<programme start="20261130085700 +0300" stop="20261130092400 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130092400 +0300" stop="20261130092900 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130092900 +0300" stop="20261130094200 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130094200 +0300" stop="20261130094500 +0300" channel="Russia24.ru"><title>Погода 24</title></programme>
+<programme start="20261130094500 +0300" stop="20261130102100 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130102100 +0300" stop="20261130103500 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130103500 +0300" stop="20261130105600 +0300" channel="Russia24.ru"><title>5 студия</title></programme>
+<programme start="20261130105600 +0300" stop="20261130110700 +0300" channel="Russia24.ru"><title>Вести</title></programme>
+<programme start="20261130110700 +0300" stop="20261130115600 +0300" channel="Russia24.ru"><title>Москва. Кремль. Путин</title></programme>
+<programme start="20261130115600 +0300" stop="20261130122100 +0300" channel="Russia24.ru"><title>Вести</title></programme>
 <programme start="20261128004500 +0300" stop="20261128050000 +0300" channel="Russia1.ru"><title>х/ф Сила обстоятельств</title></programme>
 <programme start="20261128050000 +0300" stop="20261128080000 +0300" channel="Russia1.ru"><title>Утро России. Суббота</title></programme>
 <programme start="20261128080000 +0300" stop="20261128083500 +0300" channel="Russia1.ru"><title>Местное время. Суббота</title></programme>
@@ -1175,15 +929,15 @@
 <programme start="20261128090000 +0300" stop="20261128092500 +0300" channel="Russia1.ru"><title>Формула еды</title></programme>
 <programme start="20261128092500 +0300" stop="20261128101000 +0300" channel="Russia1.ru"><title>Пятеро на одного</title></programme>
 <programme start="20261128101000 +0300" stop="20261128110000 +0300" channel="Russia1.ru"><title>Сто к одному</title></programme>
-<programme start="20261128110000 +0300" stop="20261128113000 +0300" channel="Russia1.ru"><title>Вести</title></programme>
+<programme start="20261128110000 +0300" stop="20261128113000 +0300" channel="Russia1.ru"><title>Вести. Местное время</title></programme>
 <programme start="20261128113000 +0300" stop="20261128120000 +0300" channel="Russia1.ru"><title>Наши. Военкоры</title></programme>
 <programme start="20261128120000 +0300" stop="20261128130000 +0300" channel="Russia1.ru"><title>Доктор Мясников</title></programme>
 <programme start="20261128130000 +0300" stop="20261128140000 +0300" channel="Russia1.ru"><title>Большие перемены</title></programme>
-<programme start="20261128140000 +0300" stop="20261128143000 +0300" channel="Russia1.ru"><title>Вести</title></programme>
+<programme start="20261128140000 +0300" stop="20261128143000 +0300" channel="Russia1.ru"><title>Вести. Местное время</title></programme>
 <programme start="20261128143000 +0300" stop="20261128145000 +0300" channel="Russia1.ru"><title>Вести. Местное время</title></programme>
 <programme start="20261128145000 +0300" stop="20261128170000 +0300" channel="Russia1.ru"><title>Парад юмора</title></programme>
-<programme start="20261128170000 +0300" stop="20261128175000 +0300" channel="Russia1.ru"><title>Вести</title></programme>
-<programme start="20261128175000 +0300" stop="20261128200000 +0300" channel="Russia1.ru"><title>Привет, Андрей! (Рождественское шоу Андрея Малахова)</title></programme>
+<programme start="20261128170000 +0300" stop="20261128175000 +0300" channel="Russia1.ru"><title>Вести. Местное время</title></programme>
+<programme start="20261128175000 +0300" stop="20261128200000 +0300" channel="Russia1.ru"><title>Привет, Андрей! (Песни Виктора Чайки)</title></programme>
 <programme start="20261128200000 +0300" stop="20261128205000 +0300" channel="Russia1.ru"><title>Вести в 20:00</title></programme>
 <programme start="20261128205000 +0300" stop="20261128210000 +0300" channel="Russia1.ru"><title>Вести. Местное время</title></programme>
 <programme start="20261128210000 +0300" stop="20261129004000 +0300" channel="Russia1.ru"><title>х/ф Милая Тома</title></programme>
@@ -1194,10 +948,10 @@
 <programme start="20261129083500 +0300" stop="20261129092500 +0300" channel="Russia1.ru"><title>Когда все дома с Тимуром Кизяковым</title></programme>
 <programme start="20261129092500 +0300" stop="20261129101000 +0300" channel="Russia1.ru"><title>Утренняя почта с Николаем Басковым</title></programme>
 <programme start="20261129101000 +0300" stop="20261129110000 +0300" channel="Russia1.ru"><title>Сто к одному</title></programme>
-<programme start="20261129110000 +0300" stop="20261129115000 +0300" channel="Russia1.ru"><title>Вести</title></programme>
+<programme start="20261129110000 +0300" stop="20261129115000 +0300" channel="Russia1.ru"><title>Вести. Местное время</title></programme>
 <programme start="20261129115000 +0300" stop="20261129125500 +0300" channel="Russia1.ru"><title>Рассказы из русской истории</title></programme>
 <programme start="20261129125500 +0300" stop="20261129140000 +0300" channel="Russia1.ru"><title>Судьба человека с Борисом Корчевниковым</title></programme>
-<programme start="20261129140000 +0300" stop="20261129143000 +0300" channel="Russia1.ru"><title>Вести</title></programme>
+<programme start="20261129140000 +0300" stop="20261129143000 +0300" channel="Russia1.ru"><title>Вести. Местное время</title></programme>
 <programme start="20261129143000 +0300" stop="20261129150000 +0300" channel="Russia1.ru"><title>Вести. Местное время</title></programme>
 <programme start="20261129150000 +0300" stop="20261129170000 +0300" channel="Russia1.ru"><title>Веселые ребята</title></programme>
 <programme start="20261129170000 +0300" stop="20261129180000 +0300" channel="Russia1.ru"><title>Песни от всей души (Новогоднее шоу Андрея Малахова)</title></programme>
@@ -1206,152 +960,98 @@
 <programme start="20261129200000 +0300" stop="20261129220000 +0300" channel="Russia1.ru"><title>Вести недели</title></programme>
 <programme start="20261129220000 +0300" stop="20261129223000 +0300" channel="Russia1.ru"><title>Киселев</title></programme>
 <programme start="20261129223000 +0300" stop="20261129230000 +0300" channel="Russia1.ru"><title>Москва. Кремль. Путин</title></programme>
-<programme start="20261129230000 +0300" stop="20261130000000 +0300" channel="Russia1.ru"><title>Воскресный вечер с Владимиром Соловьевым</title></programme>
-<programme start="20261127014500 +0300" stop="20261127031000 +0300" channel="STS.ru"><title>х/ф Всемирный потоп</title></programme>
-<programme start="20261127031000 +0300" stop="20261127044000 +0300" channel="STS.ru"><title>х/ф К черту любовь!</title></programme>
-<programme start="20261127044000 +0300" stop="20261127050000 +0300" channel="STS.ru"><title>100 мест, где поесть</title></programme>
-<programme start="20261127050000 +0300" stop="20261127063000 +0300" channel="STS.ru"><title>100 мест, где поесть</title></programme>
-<programme start="20261127063000 +0300" stop="20261127074500 +0300" channel="STS.ru"><title>м/ф Маша и Медведь</title></programme>
-<programme start="20261127074500 +0300" stop="20261127090000 +0300" channel="STS.ru"><title>Просто Кухня</title></programme>
-<programme start="20261127090000 +0300" stop="20261127193000 +0300" channel="STS.ru"><title>Шоу Уральских пельменей</title></programme>
-<programme start="20261127193000 +0300" stop="20261127210000 +0300" channel="STS.ru"><title>Шоу Уральских пельменей (Служебный карман)</title></programme>
+<programme start="20261129230000 +0300" stop="20261130014000 +0300" channel="Russia1.ru"><title>Воскресный вечер с Владимиром Соловьевым</title></programme>
+<programme start="20261130014000 +0300" stop="20261130024000 +0300" channel="Russia1.ru"><title>Рассказы из русской истории</title></programme>
+<programme start="20261130024000 +0300" stop="20261130050000 +0300" channel="Russia1.ru"><title>х/ф Поздняя любовь</title></programme>
+<programme start="20261130050000 +0300" stop="20261130090000 +0300" channel="Russia1.ru"><title>Утро России</title></programme>
+<programme start="20261130090000 +0300" stop="20261130093000 +0300" channel="Russia1.ru"><title>Вести</title></programme>
+<programme start="20261130093000 +0300" stop="20261130095500 +0300" channel="Russia1.ru"><title>Вести-Москва</title></programme>
+<programme start="20261130095500 +0300" stop="20261130110000 +0300" channel="Russia1.ru"><title>О самом главном</title></programme>
+<programme start="20261130110000 +0300" stop="20261130113000 +0300" channel="Russia1.ru"><title>Вести</title></programme>
+<programme start="20261130113000 +0300" stop="20261130120000 +0300" channel="Russia1.ru"><title>Вести-Москва</title></programme>
 <programme start="20261127210000 +0300" stop="20261128050000 +0300" channel="STS.ru"><title>Шоу Уральских пельменей</title></programme>
 <programme start="20261128050000 +0300" stop="20261128085000 +0300" channel="STS.ru"><title>Шоу Уральских пельменей</title></programme>
 <programme start="20261128085000 +0300" stop="20261128093000 +0300" channel="STS.ru"><title>Просто Кухня</title></programme>
-<programme start="20261128093000 +0300" stop="20261128100000 +0300" channel="STS.ru"><title>Просто Кухня ┊ 16</title></programme>
-<programme start="20261128100000 +0300" stop="20261128110000 +0300" channel="STS.ru"><title>100 мест, где поесть ┊ 20</title></programme>
-<programme start="20261128110000 +0300" stop="20261128120000 +0300" channel="STS.ru"><title>Две стороны одной страны ┊ 17</title></programme>
-<programme start="20261128120000 +0300" stop="20261128130000 +0300" channel="STS.ru"><title>Мне туда надо ┊ 14</title></programme>
-<programme start="20261128130000 +0300" stop="20261128133000 +0300" channel="STS.ru"><title>Чем заняться в выходные ┊ 10</title></programme>
-<programme start="20261128133000 +0300" stop="20261128163000 +0300" channel="STS.ru"><title>Три острова</title></programme>
-<programme start="20261128163000 +0300" stop="20261128184000 +0300" channel="STS.ru"><title>х/ф Последний богатырь: Посланник тьмы</title></programme>
-<programme start="20261128184000 +0300" stop="20261128210500 +0300" channel="STS.ru"><title>х/ф Финист. Первый богатырь</title></programme>
-<programme start="20261128210500 +0300" stop="20261128233500 +0300" channel="STS.ru"><title>х/ф Холоп 2</title></programme>
-<programme start="20261128233500 +0300" stop="20261129012500 +0300" channel="STS.ru"><title>т/с О чем говорят мужчины. Простые удовольствия</title></programme>
+<programme start="20261128093000 +0300" stop="20261128100000 +0300" channel="STS.ru"><title>Просто Кухня</title></programme>
+<programme start="20261128100000 +0300" stop="20261128110000 +0300" channel="STS.ru"><title>100 мест, где поесть</title></programme>
+<programme start="20261128110000 +0300" stop="20261128120000 +0300" channel="STS.ru"><title>Две стороны одной страны</title></programme>
+<programme start="20261128120000 +0300" stop="20261128130000 +0300" channel="STS.ru"><title>Мне туда надо</title></programme>
+<programme start="20261128130000 +0300" stop="20261128133000 +0300" channel="STS.ru"><title>Чем заняться в выходные</title></programme>
+<programme start="20261128133000 +0300" stop="20261128164000 +0300" channel="STS.ru"><title>Три острова</title></programme>
+<programme start="20261128164000 +0300" stop="20261128184500 +0300" channel="STS.ru"><title>х/ф Последний богатырь: Посланник тьмы</title></programme>
+<programme start="20261128184500 +0300" stop="20261128210500 +0300" channel="STS.ru"><title>х/ф Финист. Первый богатырь</title></programme>
+<programme start="20261128210500 +0300" stop="20261128234500 +0300" channel="STS.ru"><title>х/ф Холоп 2</title></programme>
+<programme start="20261128234500 +0300" stop="20261129012500 +0300" channel="STS.ru"><title>х/ф Нейробатя</title></programme>
 <programme start="20261129012500 +0300" stop="20261129031500 +0300" channel="STS.ru"><title>х/ф Профессионал</title></programme>
 <programme start="20261129031500 +0300" stop="20261129050000 +0300" channel="STS.ru"><title>х/ф Петля времени</title></programme>
-<programme start="20261129050000 +0300" stop="20261129052500 +0300" channel="STS.ru"><title>т/с Понаехавшие ┊ 9</title></programme>
-<programme start="20261129052500 +0300" stop="20261129055000 +0300" channel="STS.ru"><title>т/с Понаехавшие ┊ 10</title></programme>
-<programme start="20261129055000 +0300" stop="20261129061500 +0300" channel="STS.ru"><title>т/с Понаехавшие ┊ 11</title></programme>
-<programme start="20261129061500 +0300" stop="20261129064500 +0300" channel="STS.ru"><title>т/с Понаехавшие ┊ 12</title></programme>
-<programme start="20261129064500 +0300" stop="20261129070500 +0300" channel="STS.ru"><title>т/с Понаехавшие ┊ 13</title></programme>
-<programme start="20261129070500 +0300" stop="20261129073000 +0300" channel="STS.ru"><title>т/с Понаехавшие ┊ 14</title></programme>
-<programme start="20261129073000 +0300" stop="20261129075500 +0300" channel="STS.ru"><title>т/с Понаехавшие ┊ 15</title></programme>
-<programme start="20261129075500 +0300" stop="20261129082000 +0300" channel="STS.ru"><title>т/с Понаехавшие ┊ 16</title></programme>
+<programme start="20261129050000 +0300" stop="20261129082000 +0300" channel="STS.ru"><title>т/с Понаехавшие</title></programme>
 <programme start="20261129082000 +0300" stop="20261129093000 +0300" channel="STS.ru"><title>Две стороны одной страны</title></programme>
-<programme start="20261129093000 +0300" stop="20261129103000 +0300" channel="STS.ru"><title>Химия жизни ┊ 7</title></programme>
-<programme start="20261129103000 +0300" stop="20261129110000 +0300" channel="STS.ru"><title>Давай пpовеpим ┊ 3</title></programme>
-<programme start="20261129110000 +0300" stop="20261129112500 +0300" channel="STS.ru"><title>Бери и делай ┊ 16</title></programme>
+<programme start="20261129093000 +0300" stop="20261129103000 +0300" channel="STS.ru"><title>Химия жизни</title></programme>
+<programme start="20261129103000 +0300" stop="20261129110000 +0300" channel="STS.ru"><title>Давай пpовеpим</title></programme>
+<programme start="20261129110000 +0300" stop="20261129112500 +0300" channel="STS.ru"><title>Бери и делай</title></programme>
 <programme start="20261129112500 +0300" stop="20261129135000 +0300" channel="STS.ru"><title>х/ф Кунг-фу жеребец</title></programme>
 <programme start="20261129135000 +0300" stop="20261129160000 +0300" channel="STS.ru"><title>х/ф Последний богатырь: Посланник тьмы</title></programme>
-<programme start="20261129160000 +0300" stop="20261129180000 +0300" channel="STS.ru"><title>Коллекционер ┊ 4</title></programme>
-<programme start="20261129180000 +0300" stop="20261129210000 +0300" channel="STS.ru"><title>Три острова ┊ 4</title></programme>
-<programme start="20261129210000 +0300" stop="20261129223000 +0300" channel="STS.ru"><title>Форт. Возвращение легенды ┊ 12</title></programme>
-<programme start="20261129223000 +0300" stop="20261129233000 +0300" channel="STS.ru"><title>Форт. Возвращение легенды</title></programme>
-<programme start="20261127021500 +0300" stop="20261127042000 +0300" channel="TNT.ru"><title>х/ф Апокалипсис</title></programme>
-<programme start="20261127042000 +0300" stop="20261127050000 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
-<programme start="20261127050000 +0300" stop="20261127055000 +0300" channel="TNT.ru"><title>Утро. ТНТ ┊ 26</title></programme>
-<programme start="20261127055000 +0300" stop="20261127062000 +0300" channel="TNT.ru"><title>т/с СашаТаня ┊ 5</title></programme>
-<programme start="20261127062000 +0300" stop="20261127064000 +0300" channel="TNT.ru"><title>т/с СашаТаня ┊ 6</title></programme>
-<programme start="20261127064000 +0300" stop="20261127070000 +0300" channel="TNT.ru"><title>т/с СашаТаня ┊ 8</title></programme>
-<programme start="20261127070000 +0300" stop="20261127073000 +0300" channel="TNT.ru"><title>т/с СашаТаня ┊ 9</title></programme>
-<programme start="20261127073000 +0300" stop="20261127080000 +0300" channel="TNT.ru"><title>т/с СашаТаня ┊ 10</title></programme>
-<programme start="20261127080000 +0300" stop="20261127083000 +0300" channel="TNT.ru"><title>т/с СашаТаня ┊ 11</title></programme>
-<programme start="20261127083000 +0300" stop="20261127090000 +0300" channel="TNT.ru"><title>т/с СашаТаня ┊ 12</title></programme>
-<programme start="20261127090000 +0300" stop="20261127093000 +0300" channel="TNT.ru"><title>т/с СашаТаня ┊ 13</title></programme>
-<programme start="20261127093000 +0300" stop="20261127100000 +0300" channel="TNT.ru"><title>т/с СашаТаня ┊ 14</title></programme>
-<programme start="20261127100000 +0300" stop="20261127103000 +0300" channel="TNT.ru"><title>т/с СашаТаня ┊ 15</title></programme>
-<programme start="20261127103000 +0300" stop="20261127110000 +0300" channel="TNT.ru"><title>т/с СашаТаня ┊ 16</title></programme>
-<programme start="20261127110000 +0300" stop="20261127113000 +0300" channel="TNT.ru"><title>т/с СашаТаня ┊ 17</title></programme>
-<programme start="20261127113000 +0300" stop="20261127120000 +0300" channel="TNT.ru"><title>т/с СашаТаня ┊ 18</title></programme>
-<programme start="20261127120000 +0300" stop="20261127123000 +0300" channel="TNT.ru"><title>т/с Телохранители ┊ 1</title></programme>
-<programme start="20261127123000 +0300" stop="20261127130000 +0300" channel="TNT.ru"><title>т/с Телохранители ┊ 2</title></programme>
-<programme start="20261127130000 +0300" stop="20261127133000 +0300" channel="TNT.ru"><title>т/с Телохранители ┊ 3</title></programme>
-<programme start="20261127133000 +0300" stop="20261127140000 +0300" channel="TNT.ru"><title>т/с Телохранители ┊ 4</title></programme>
-<programme start="20261127140000 +0300" stop="20261127143000 +0300" channel="TNT.ru"><title>т/с Телохранители ┊ 5</title></programme>
-<programme start="20261127143000 +0300" stop="20261127150000 +0300" channel="TNT.ru"><title>т/с Телохранители ┊ 6</title></programme>
-<programme start="20261127150000 +0300" stop="20261127153000 +0300" channel="TNT.ru"><title>т/с Телохранители ┊ 7</title></programme>
-<programme start="20261127153000 +0300" stop="20261127160000 +0300" channel="TNT.ru"><title>т/с Телохранители ┊ 8</title></programme>
-<programme start="20261127160000 +0300" stop="20261127163000 +0300" channel="TNT.ru"><title>т/с Телохранители ┊ 9</title></programme>
-<programme start="20261127163000 +0300" stop="20261127170000 +0300" channel="TNT.ru"><title>т/с Телохранители ┊ 10</title></programme>
-<programme start="20261127170000 +0300" stop="20261127173000 +0300" channel="TNT.ru"><title>т/с Телохранители ┊ 11</title></programme>
-<programme start="20261127173000 +0300" stop="20261127180000 +0300" channel="TNT.ru"><title>т/с Телохранители ┊ 12</title></programme>
-<programme start="20261127180000 +0300" stop="20261127183000 +0300" channel="TNT.ru"><title>т/с Телохранители ┊ 13</title></programme>
-<programme start="20261127183000 +0300" stop="20261127190000 +0300" channel="TNT.ru"><title>т/с Телохранители ┊ 14</title></programme>
-<programme start="20261127190000 +0300" stop="20261127193000 +0300" channel="TNT.ru"><title>т/с Телохранители ┊ 15</title></programme>
-<programme start="20261127193000 +0300" stop="20261127200000 +0300" channel="TNT.ru"><title>т/с Телохранители ┊ 16</title></programme>
-<programme start="20261127200000 +0300" stop="20261127210000 +0300" channel="TNT.ru"><title>Камеди Клаб ┊ 874</title></programme>
-<programme start="20261127210000 +0300" stop="20261127220000 +0300" channel="TNT.ru"><title>Камеди Клаб ┊ 876</title></programme>
-<programme start="20261127220000 +0300" stop="20261127230000 +0300" channel="TNT.ru"><title>Однажды в России ┊ 56</title></programme>
-<programme start="20261127230000 +0300" stop="20261128004000 +0300" channel="TNT.ru"><title>Идеальное ограбление ┊ 9</title></programme>
-<programme start="20261128004000 +0300" stop="20261128022000 +0300" channel="TNT.ru"><title>Хочу на ТНТ ┊ 10</title></programme>
+<programme start="20261129160000 +0300" stop="20261129180000 +0300" channel="STS.ru"><title>Коллекционер</title></programme>
+<programme start="20261129180000 +0300" stop="20261129210000 +0300" channel="STS.ru"><title>Три острова</title></programme>
+<programme start="20261129210000 +0300" stop="20261129223000 +0300" channel="STS.ru"><title>Форт. Возвращение легенды</title></programme>
+<programme start="20261129223000 +0300" stop="20261130014500 +0300" channel="STS.ru"><title>Форт. Возвращение легенды</title></programme>
+<programme start="20261130014500 +0300" stop="20261130031500 +0300" channel="STS.ru"><title>Коллекционер</title></programme>
+<programme start="20261130031500 +0300" stop="20261130044000 +0300" channel="STS.ru"><title>х/ф 30 свиданий</title></programme>
+<programme start="20261130044000 +0300" stop="20261130050000 +0300" channel="STS.ru"><title>100 мест, где поесть</title></programme>
+<programme start="20261130050000 +0300" stop="20261130063000 +0300" channel="STS.ru"><title>100 мест, где поесть</title></programme>
+<programme start="20261130063000 +0300" stop="20261130082000 +0300" channel="STS.ru"><title>м/ф Маша и Медведь</title></programme>
+<programme start="20261130082000 +0300" stop="20261130092000 +0300" channel="STS.ru"><title>100 мест, где поесть</title></programme>
+<programme start="20261130092000 +0300" stop="20261130111000 +0300" channel="STS.ru"><title>х/ф Лена и справедливость</title></programme>
+<programme start="20261130111000 +0300" stop="20261130130000 +0300" channel="STS.ru"><title>х/ф Нейробатя</title></programme>
 <programme start="20261128022000 +0300" stop="20261128030500 +0300" channel="TNT.ru"><title>Женский Стендап</title></programme>
 <programme start="20261128030500 +0300" stop="20261128034500 +0300" channel="TNT.ru"><title>Женский Стендап</title></programme>
-<programme start="20261128034500 +0300" stop="20261128043000 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
-<programme start="20261128043000 +0300" stop="20261128051500 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
-<programme start="20261128051500 +0300" stop="20261128055000 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
-<programme start="20261128055000 +0300" stop="20261128061500 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
-<programme start="20261128061500 +0300" stop="20261128070000 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
+<programme start="20261128034500 +0300" stop="20261128043000 +0300" channel="TNT.ru"><title>Однажды в России (Спецдайджесты)</title></programme>
+<programme start="20261128043000 +0300" stop="20261128051500 +0300" channel="TNT.ru"><title>Однажды в России (Спецдайджесты 2023)</title></programme>
+<programme start="20261128051500 +0300" stop="20261128055000 +0300" channel="TNT.ru"><title>Однажды в России (Спецдайджесты 2023)</title></programme>
+<programme start="20261128055000 +0300" stop="20261128061500 +0300" channel="TNT.ru"><title>Однажды в России (Спецдайджесты 2023)</title></programme>
+<programme start="20261128061500 +0300" stop="20261128070000 +0300" channel="TNT.ru"><title>Однажды в России (Спецдайджесты)</title></programme>
 <programme start="20261128070000 +0300" stop="20261128072000 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
-<programme start="20261128072000 +0300" stop="20261128090000 +0300" channel="TNT.ru"><title>Идеальное ограбление ┊ 9</title></programme>
-<programme start="20261128090000 +0300" stop="20261128093000 +0300" channel="TNT.ru"><title>Время завтрака ┊ 6</title></programme>
+<programme start="20261128072000 +0300" stop="20261128090000 +0300" channel="TNT.ru"><title>Идеальное ограбление</title></programme>
+<programme start="20261128090000 +0300" stop="20261128093000 +0300" channel="TNT.ru"><title>Время завтрака</title></programme>
 <programme start="20261128093000 +0300" stop="20261128100000 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
-<programme start="20261128100000 +0300" stop="20261128110000 +0300" channel="TNT.ru"><title>Однажды в России ┊ 56</title></programme>
-<programme start="20261128110000 +0300" stop="20261128133000 +0300" channel="TNT.ru"><title>Экстрасенсы. Битва сильнейших ┊ 9</title></programme>
-<programme start="20261128133000 +0300" stop="20261128160000 +0300" channel="TNT.ru"><title>Экстрасенсы. Битва сильнейших ┊ 9</title></programme>
-<programme start="20261128160000 +0300" stop="20261128183000 +0300" channel="TNT.ru"><title>Экстрасенсы. Битва сильнейших ┊ 9</title></programme>
-<programme start="20261128183000 +0300" stop="20261128210000 +0300" channel="TNT.ru"><title>Экстрасенсы. Реванш ┊ 8</title></programme>
-<programme start="20261128210000 +0300" stop="20261128230000 +0300" channel="TNT.ru"><title>Хочу на ТНТ ┊ 11</title></programme>
-<programme start="20261128230000 +0300" stop="20261129000000 +0300" channel="TNT.ru"><title>Женский Стендап ┊ 12</title></programme>
-<programme start="20261129000000 +0300" stop="20261129025000 +0300" channel="TNT.ru"><title>Титаны ┊ 7</title></programme>
+<programme start="20261128100000 +0300" stop="20261128110000 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
+<programme start="20261128110000 +0300" stop="20261128133000 +0300" channel="TNT.ru"><title>Экстрасенсы. Битва сильнейших</title></programme>
+<programme start="20261128133000 +0300" stop="20261128160000 +0300" channel="TNT.ru"><title>Экстрасенсы. Битва сильнейших</title></programme>
+<programme start="20261128160000 +0300" stop="20261128183000 +0300" channel="TNT.ru"><title>Экстрасенсы. Битва сильнейших</title></programme>
+<programme start="20261128183000 +0300" stop="20261128210000 +0300" channel="TNT.ru"><title>Экстрасенсы. Реванш</title></programme>
+<programme start="20261128210000 +0300" stop="20261128230000 +0300" channel="TNT.ru"><title>Хочу на ТНТ ┊ 1</title></programme>
+<programme start="20261128230000 +0300" stop="20261129000000 +0300" channel="TNT.ru"><title>Женский Стендап</title></programme>
+<programme start="20261129000000 +0300" stop="20261129025000 +0300" channel="TNT.ru"><title>Титаны</title></programme>
 <programme start="20261129025000 +0300" stop="20261129034000 +0300" channel="TNT.ru"><title>Женский Стендап</title></programme>
-<programme start="20261129034000 +0300" stop="20261129043000 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
-<programme start="20261129043000 +0300" stop="20261129051500 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
-<programme start="20261129051500 +0300" stop="20261129055000 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
-<programme start="20261129055000 +0300" stop="20261129063000 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
-<programme start="20261129063000 +0300" stop="20261129070000 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
-<programme start="20261129070000 +0300" stop="20261129080000 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
+<programme start="20261129034000 +0300" stop="20261129043000 +0300" channel="TNT.ru"><title>Однажды в России (Спецдайджесты)</title></programme>
+<programme start="20261129043000 +0300" stop="20261129051500 +0300" channel="TNT.ru"><title>Однажды в России (Спецдайджесты 2023)</title></programme>
+<programme start="20261129051500 +0300" stop="20261129055000 +0300" channel="TNT.ru"><title>Однажды в России (Спецдайджесты 2025)</title></programme>
+<programme start="20261129055000 +0300" stop="20261129063000 +0300" channel="TNT.ru"><title>Однажды в России (Спецдайджесты 2025)</title></programme>
+<programme start="20261129063000 +0300" stop="20261129070000 +0300" channel="TNT.ru"><title>Однажды в России (Спецдайджесты)</title></programme>
+<programme start="20261129070000 +0300" stop="20261129080000 +0300" channel="TNT.ru"><title>Однажды в России (Спецвыпуск с резидентами Комеди Клаб: Харламов, Батрутдинов, Кравец, Бутусов)</title></programme>
 <programme start="20261129080000 +0300" stop="20261129090000 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
-<programme start="20261129090000 +0300" stop="20261129093000 +0300" channel="TNT.ru"><title>На высоте ┊ 9</title></programme>
-<programme start="20261129093000 +0300" stop="20261129103000 +0300" channel="TNT.ru"><title>Однажды в России ┊ 35</title></programme>
+<programme start="20261129090000 +0300" stop="20261129093000 +0300" channel="TNT.ru"><title>На высоте</title></programme>
+<programme start="20261129093000 +0300" stop="20261129103000 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
 <programme start="20261129103000 +0300" stop="20261129113000 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
-<programme start="20261129113000 +0300" stop="20261129120000 +0300" channel="TNT.ru"><title>Предпринималити ┊ 6</title></programme>
+<programme start="20261129113000 +0300" stop="20261129120000 +0300" channel="TNT.ru"><title>Предпринималити</title></programme>
 <programme start="20261129120000 +0300" stop="20261129130000 +0300" channel="TNT.ru"><title>Однажды в России</title></programme>
-<programme start="20261129130000 +0300" stop="20261129152500 +0300" channel="TNT.ru"><title>Экстрасенсы. Битва сильнейших ┊ 9</title></programme>
-<programme start="20261129152500 +0300" stop="20261129180000 +0300" channel="TNT.ru"><title>Экстрасенсы. Реванш ┊ 8</title></programme>
-<programme start="20261129180000 +0300" stop="20261129210000 +0300" channel="TNT.ru"><title>Звезды в джунглях ┊ 8</title></programme>
-<programme start="20261129210000 +0300" stop="20261129234500 +0300" channel="TNT.ru"><title>Титаны ┊ 8</title></programme>
-<programme start="20261129234500 +0300" stop="20261130004500 +0300" channel="TNT.ru"><title>Шоу Воли ┊ 184</title></programme>
-<programme start="20261127024500 +0300" stop="20261127033000 +0300" channel="TV3.ru"><title>д/с Мистические истории. Начало (Ундина / Грешный ангел)</title></programme>
-<programme start="20261127033000 +0300" stop="20261127041500 +0300" channel="TV3.ru"><title>д/с Мистические истории. Начало (Удар током / Женский круг)</title></programme>
-<programme start="20261127041500 +0300" stop="20261127050000 +0300" channel="TV3.ru"><title>д/с Мистические истории. Начало (Чужими руками / Старая липа)</title></programme>
-<programme start="20261127050000 +0300" stop="20261127054500 +0300" channel="TV3.ru"><title>д/с Мистические истории. Начало (Слабый / Я всегда буду рядом)</title></programme>
-<programme start="20261127054500 +0300" stop="20261127060000 +0300" channel="TV3.ru"><title>Мультфильмы</title></programme>
-<programme start="20261127060000 +0300" stop="20261127083000 +0300" channel="TV3.ru"><title>Мультфильмы</title></programme>
-<programme start="20261127083000 +0300" stop="20261127090000 +0300" channel="TV3.ru"><title>Новый день</title></programme>
-<programme start="20261127090000 +0300" stop="20261127093000 +0300" channel="TV3.ru"><title>Новый день</title></programme>
-<programme start="20261127093000 +0300" stop="20261127100000 +0300" channel="TV3.ru"><title>Слепая (Машина с ребенком)</title></programme>
-<programme start="20261127100000 +0300" stop="20261127103000 +0300" channel="TV3.ru"><title>д/с Порча (Отражение)</title></programme>
-<programme start="20261127103000 +0300" stop="20261127110000 +0300" channel="TV3.ru"><title>д/с Порча (За деньгами)</title></programme>
-<programme start="20261127110000 +0300" stop="20261127113000 +0300" channel="TV3.ru"><title>д/с Гадалка (Поцелуй Иштар)</title></programme>
-<programme start="20261127113000 +0300" stop="20261127120000 +0300" channel="TV3.ru"><title>д/с Гадалка (Жених из прошлого)</title></programme>
-<programme start="20261127120000 +0300" stop="20261127124500 +0300" channel="TV3.ru"><title>д/с Гадалка (Родные стены)</title></programme>
-<programme start="20261127124500 +0300" stop="20261127131500 +0300" channel="TV3.ru"><title>д/с Гадалка (Заметая следы)</title></programme>
-<programme start="20261127131500 +0300" stop="20261127134500 +0300" channel="TV3.ru"><title>д/с Гадалка (Мертвая чайка)</title></programme>
-<programme start="20261127134500 +0300" stop="20261127141500 +0300" channel="TV3.ru"><title>д/с Гадалка (Загладить все)</title></programme>
-<programme start="20261127141500 +0300" stop="20261127150000 +0300" channel="TV3.ru"><title>д/с Гадалка (На связи)</title></programme>
-<programme start="20261127150000 +0300" stop="20261127153000 +0300" channel="TV3.ru"><title>д/с Гадалка (Белые тапочки)</title></programme>
-<programme start="20261127153000 +0300" stop="20261127160000 +0300" channel="TV3.ru"><title>д/с Порча (Алтарь)</title></programme>
-<programme start="20261127160000 +0300" stop="20261127163000 +0300" channel="TV3.ru"><title>Слепая (Я виноват)</title></programme>
-<programme start="20261127163000 +0300" stop="20261127170000 +0300" channel="TV3.ru"><title>Слепая (Нина)</title></programme>
-<programme start="20261127170000 +0300" stop="20261127173000 +0300" channel="TV3.ru"><title>Слепая (Роза Азора)</title></programme>
-<programme start="20261127173000 +0300" stop="20261127180000 +0300" channel="TV3.ru"><title>Слепая (Через дорогу)</title></programme>
-<programme start="20261127180000 +0300" stop="20261127183000 +0300" channel="TV3.ru"><title>Слепая (Ложечка варенья)</title></programme>
-<programme start="20261127183000 +0300" stop="20261127190000 +0300" channel="TV3.ru"><title>Слепая (В тренде)</title></programme>
-<programme start="20261127190000 +0300" stop="20261127211500 +0300" channel="TV3.ru"><title>х/ф Ледяной драйв</title></programme>
-<programme start="20261127211500 +0300" stop="20261127231500 +0300" channel="TV3.ru"><title>х/ф Ветреная река</title></programme>
-<programme start="20261127231500 +0300" stop="20261128013000 +0300" channel="TV3.ru"><title>х/ф Логово Монстра</title></programme>
-<programme start="20261128013000 +0300" stop="20261128021500 +0300" channel="TV3.ru"><title>д/с Мистические истории. Начало (Ундина / Грешный ангел)</title></programme>
+<programme start="20261129130000 +0300" stop="20261129152500 +0300" channel="TNT.ru"><title>Экстрасенсы. Битва сильнейших</title></programme>
+<programme start="20261129152500 +0300" stop="20261129180000 +0300" channel="TNT.ru"><title>Экстрасенсы. Реванш</title></programme>
+<programme start="20261129180000 +0300" stop="20261129210000 +0300" channel="TNT.ru"><title>Звезды в джунглях</title></programme>
+<programme start="20261129210000 +0300" stop="20261129234500 +0300" channel="TNT.ru"><title>Титаны</title></programme>
+<programme start="20261129234500 +0300" stop="20261130010500 +0300" channel="TNT.ru"><title>Шоу Воли</title></programme>
+<programme start="20261130010500 +0300" stop="20261130023000 +0300" channel="TNT.ru"><title>Идеальное ограбление</title></programme>
+<programme start="20261130023000 +0300" stop="20261130031500 +0300" channel="TNT.ru"><title>Однажды в России (Спецдайджесты)</title></programme>
+<programme start="20261130031500 +0300" stop="20261130040500 +0300" channel="TNT.ru"><title>Однажды в России (Спецдайджесты)</title></programme>
+<programme start="20261130040500 +0300" stop="20261130050000 +0300" channel="TNT.ru"><title>Однажды в России (Спецдайджесты)</title></programme>
+<programme start="20261130050000 +0300" stop="20261130055000 +0300" channel="TNT.ru"><title>Утро. ТНТ ┊ 225</title></programme>
+<programme start="20261130055000 +0300" stop="20261130062000 +0300" channel="TNT.ru"><title>т/с СашаТаня</title></programme>
+<programme start="20261130062000 +0300" stop="20261130070000 +0300" channel="TNT.ru"><title>т/с СашаТаня</title></programme>
+<programme start="20261130070000 +0300" stop="20261130073000 +0300" channel="TNT.ru"><title>т/с СашаТаня</title></programme>
+<programme start="20261130073000 +0300" stop="20261130080000 +0300" channel="TNT.ru"><title>т/с СашаТаня</title></programme>
+<programme start="20261130080000 +0300" stop="20261130083000 +0300" channel="TNT.ru"><title>т/с СашаТаня</title></programme>
+<programme start="20261130083000 +0300" stop="20261130090000 +0300" channel="TNT.ru"><title>т/с СашаТаня</title></programme>
+<programme start="20261130090000 +0300" stop="20261130120000 +0300" channel="TNT.ru"><title>Звезды в джунглях</title></programme>
 <programme start="20261128021500 +0300" stop="20261128030000 +0300" channel="TV3.ru"><title>д/с Мистические истории. Начало (Удар током / Женский круг)</title></programme>
 <programme start="20261128030000 +0300" stop="20261128034500 +0300" channel="TV3.ru"><title>д/с Мистические истории. Начало (Чужими руками / Старая липа)</title></programme>
 <programme start="20261128034500 +0300" stop="20261128043000 +0300" channel="TV3.ru"><title>д/с Мистические истории. Начало (Слабый / Я всегда буду рядом)</title></programme>
@@ -1410,33 +1110,6 @@
 <programme start="20261130103000 +0300" stop="20261130110000 +0300" channel="TV3.ru"><title>д/с Порча (Девочка)</title></programme>
 <programme start="20261130110000 +0300" stop="20261130113000 +0300" channel="TV3.ru"><title>д/с Гадалка (Любовь без радости)</title></programme>
 <programme start="20261130113000 +0300" stop="20261130120000 +0300" channel="TV3.ru"><title>д/с Гадалка (Квартира с обманом)</title></programme>
-<programme start="20261127021000 +0300" stop="20261127025500 +0300" channel="TVCentr.ru"><title>д/с Легенды эстрады (Зажечь звезду)</title></programme>
-<programme start="20261127025500 +0300" stop="20261127033500 +0300" channel="TVCentr.ru"><title>х/ф Темная сторона света 3 ┊ 3</title></programme>
-<programme start="20261127033500 +0300" stop="20261127043500 +0300" channel="TVCentr.ru"><title>х/ф Темная сторона света 3 ┊ 4</title></programme>
-<programme start="20261127043500 +0300" stop="20261127052000 +0300" channel="TVCentr.ru"><title>д/с Назад в СССР (Из жизни отдыхающих)</title></programme>
-<programme start="20261127052000 +0300" stop="20261127060000 +0300" channel="TVCentr.ru"><title>Татьяна Доронина. Одиночество королевы</title></programme>
-<programme start="20261127060000 +0300" stop="20261127082000 +0300" channel="TVCentr.ru"><title>Настроение</title></programme>
-<programme start="20261127082000 +0300" stop="20261127091500 +0300" channel="TVCentr.ru"><title>т/с Не пара (Найди того, не знаю кого: ч. 1)</title></programme>
-<programme start="20261127091500 +0300" stop="20261127101000 +0300" channel="TVCentr.ru"><title>т/с Не пара (Найди того, не знаю кого: ч. 2)</title></programme>
-<programme start="20261127101000 +0300" stop="20261127113000 +0300" channel="TVCentr.ru"><title>т/с Не пара (Исчезающий Рафаэль: ч. 1)</title></programme>
-<programme start="20261127113000 +0300" stop="20261127115000 +0300" channel="TVCentr.ru"><title>События</title></programme>
-<programme start="20261127115000 +0300" stop="20261127123000 +0300" channel="TVCentr.ru"><title>т/с Не пара (Исчезающий Рафаэль: ч. 2)</title></programme>
-<programme start="20261127123000 +0300" stop="20261127133000 +0300" channel="TVCentr.ru"><title>х/ф Погоня за трефовым валетом ┊ 1</title></programme>
-<programme start="20261127133000 +0300" stop="20261127143000 +0300" channel="TVCentr.ru"><title>х/ф Погоня за трефовым валетом ┊ 2</title></programme>
-<programme start="20261127143000 +0300" stop="20261127145000 +0300" channel="TVCentr.ru"><title>События</title></programme>
-<programme start="20261127145000 +0300" stop="20261127150500 +0300" channel="TVCentr.ru"><title>Город новостей</title></programme>
-<programme start="20261127150500 +0300" stop="20261127160000 +0300" channel="TVCentr.ru"><title>х/ф Погоня за трефовым валетом ┊ 3</title></programme>
-<programme start="20261127160000 +0300" stop="20261127170000 +0300" channel="TVCentr.ru"><title>х/ф Погоня за трефовым валетом ┊ 4</title></programme>
-<programme start="20261127170000 +0300" stop="20261127175000 +0300" channel="TVCentr.ru"><title>д/с Актерские драмы (Кто в доме хозяин?)</title></programme>
-<programme start="20261127175000 +0300" stop="20261127181000 +0300" channel="TVCentr.ru"><title>События</title></programme>
-<programme start="20261127181000 +0300" stop="20261127190500 +0300" channel="TVCentr.ru"><title>х/ф На семи ветрах ┊ 1</title></programme>
-<programme start="20261127190500 +0300" stop="20261127200500 +0300" channel="TVCentr.ru"><title>х/ф На семи ветрах ┊ 2</title></programme>
-<programme start="20261127200500 +0300" stop="20261127210000 +0300" channel="TVCentr.ru"><title>х/ф Шестиэтажка ┊ 1</title></programme>
-<programme start="20261127210000 +0300" stop="20261127220000 +0300" channel="TVCentr.ru"><title>х/ф Шестиэтажка ┊ 2</title></programme>
-<programme start="20261127220000 +0300" stop="20261127230500 +0300" channel="TVCentr.ru"><title>В центре событий с Анной Прохоровой</title></programme>
-<programme start="20261127230500 +0300" stop="20261128000000 +0300" channel="TVCentr.ru"><title>д/с Тайная комната (Неверные)</title></programme>
-<programme start="20261128000000 +0300" stop="20261128004000 +0300" channel="TVCentr.ru"><title>д/с Русские тайны (Привидения среди нас)</title></programme>
-<programme start="20261128004000 +0300" stop="20261128022000 +0300" channel="TVCentr.ru"><title>х/ф Молодая жена</title></programme>
 <programme start="20261128022000 +0300" stop="20261128023500 +0300" channel="TVCentr.ru"><title>Петровка, 38</title></programme>
 <programme start="20261128023500 +0300" stop="20261128031500 +0300" channel="TVCentr.ru"><title>х/ф На семи ветрах ┊ 1</title></programme>
 <programme start="20261128031500 +0300" stop="20261128042000 +0300" channel="TVCentr.ru"><title>х/ф На семи ветрах ┊ 2</title></programme>
@@ -1494,16 +1167,23 @@
 <programme start="20261129201500 +0300" stop="20261129212000 +0300" channel="TVCentr.ru"><title>х/ф В сентябре вода холодная ┊ 4</title></programme>
 <programme start="20261129212000 +0300" stop="20261129222000 +0300" channel="TVCentr.ru"><title>х/ф Тайна последней главы ┊ 1</title></programme>
 <programme start="20261129222000 +0300" stop="20261129232000 +0300" channel="TVCentr.ru"><title>х/ф Тайна последней главы ┊ 2</title></programme>
-<programme start="20261129232000 +0300" stop="20261130002000 +0300" channel="TVCentr.ru"><title>х/ф Тайна последней главы ┊ 3</title></programme>
-<programme start="20261127015000 +0300" stop="20261127034500 +0300" channel="U.ru"><title>Муж напрокат</title></programme>
-<programme start="20261127034500 +0300" stop="20261127050000 +0300" channel="U.ru"><title>Моя свекровь – монстр</title></programme>
-<programme start="20261127050000 +0300" stop="20261127062000 +0300" channel="U.ru"><title>Моя свекровь – монстр</title></programme>
-<programme start="20261127062000 +0300" stop="20261127080500 +0300" channel="U.ru"><title>Муж напрокат</title></programme>
-<programme start="20261127080500 +0300" stop="20261127120000 +0300" channel="U.ru"><title>Жизнь после шоу</title></programme>
-<programme start="20261127120000 +0300" stop="20261127153000 +0300" channel="U.ru"><title>Модель XL</title></programme>
-<programme start="20261127153000 +0300" stop="20261127210000 +0300" channel="U.ru"><title>Мама в 16</title></programme>
-<programme start="20261127210000 +0300" stop="20261128000500 +0300" channel="U.ru"><title>Дом-2. Новая жизнь</title></programme>
-<programme start="20261128000500 +0300" stop="20261128015000 +0300" channel="U.ru"><title>Измены</title></programme>
+<programme start="20261129232000 +0300" stop="20261130001500 +0300" channel="TVCentr.ru"><title>х/ф Тайна последней главы ┊ 3</title></programme>
+<programme start="20261130001500 +0300" stop="20261130003000 +0300" channel="TVCentr.ru"><title>События</title></programme>
+<programme start="20261130003000 +0300" stop="20261130012000 +0300" channel="TVCentr.ru"><title>х/ф Тайна последней главы ┊ 4</title></programme>
+<programme start="20261130012000 +0300" stop="20261130013000 +0300" channel="TVCentr.ru"><title>Петровка, 38 (Специальный субботний выпуск)</title></programme>
+<programme start="20261130013000 +0300" stop="20261130021000 +0300" channel="TVCentr.ru"><title>х/ф Охота ┊ 1</title></programme>
+<programme start="20261130021000 +0300" stop="20261130025000 +0300" channel="TVCentr.ru"><title>х/ф Охота ┊ 2</title></programme>
+<programme start="20261130025000 +0300" stop="20261130033000 +0300" channel="TVCentr.ru"><title>х/ф Охота ┊ 3</title></programme>
+<programme start="20261130033000 +0300" stop="20261130043000 +0300" channel="TVCentr.ru"><title>х/ф Охота ┊ 4</title></programme>
+<programme start="20261130043000 +0300" stop="20261130051500 +0300" channel="TVCentr.ru"><title>д/с Тайна песни (Когда простым и нежным взором…)</title></programme>
+<programme start="20261130051500 +0300" stop="20261130081000 +0300" channel="TVCentr.ru"><title>д/с Короли эпизода (Мария Скворцова)</title></programme>
+<programme start="20261130081000 +0300" stop="20261130085000 +0300" channel="TVCentr.ru"><title>Смех, дрожь и видео</title></programme>
+<programme start="20261130085000 +0300" stop="20261130094500 +0300" channel="TVCentr.ru"><title>х/ф Тайна за углом-3. Последний крик моды ┊ 1</title></programme>
+<programme start="20261130094500 +0300" stop="20261130104000 +0300" channel="TVCentr.ru"><title>х/ф Тайна за углом-3. Последний крик моды ┊ 2</title></programme>
+<programme start="20261130104000 +0300" stop="20261130105000 +0300" channel="TVCentr.ru"><title>Петровка, 38 (Специальный субботний выпуск)</title></programme>
+<programme start="20261130105000 +0300" stop="20261130113000 +0300" channel="TVCentr.ru"><title>Городское собрание (1. Культура добрых дел. 2. Четко и аргументированно. 3. Безотходное производство)</title></programme>
+<programme start="20261130113000 +0300" stop="20261130115000 +0300" channel="TVCentr.ru"><title>События</title></programme>
+<programme start="20261130115000 +0300" stop="20261130124500 +0300" channel="TVCentr.ru"><title>т/с Дела житейские ┊ 1</title></programme>
 <programme start="20261128015000 +0300" stop="20261128030000 +0300" channel="U.ru"><title>Обмен домами</title></programme>
 <programme start="20261128030000 +0300" stop="20261128050000 +0300" channel="U.ru"><title>Моя свекровь – монстр</title></programme>
 <programme start="20261128050000 +0300" stop="20261128080500 +0300" channel="U.ru"><title>Моя свекровь – монстр</title></programme>
@@ -1527,33 +1207,9 @@
 <programme start="20261129210000 +0300" stop="20261130000500 +0300" channel="U.ru"><title>Дом-2. Новая жизнь</title></programme>
 <programme start="20261130000500 +0300" stop="20261130015000 +0300" channel="U.ru"><title>Измены</title></programme>
 <programme start="20261130015000 +0300" stop="20261130050000 +0300" channel="U.ru"><title>Моя свекровь – монстр</title></programme>
-<programme start="20261130050000 +0300" stop="20261130065000 +0300" channel="U.ru"><title>Моя свекровь – монстр</title></programme>
-<programme start="20261130065000 +0300" stop="20261130083500 +0300" channel="U.ru"><title>Муж напрокат</title></programme>
-<programme start="20261130083500 +0300" stop="20261130102000 +0300" channel="U.ru"><title>Супермама</title></programme>
-<programme start="20261130102000 +0300" stop="20261130122000 +0300" channel="U.ru"><title>Жизнь после шоу</title></programme>
-<programme start="20261127020500 +0300" stop="20261127025500 +0300" channel="TelekanalZvezda.ru"><title>т/с Выжить любой ценой ┊ 7</title></programme>
-<programme start="20261127025500 +0300" stop="20261127035500 +0300" channel="TelekanalZvezda.ru"><title>т/с Выжить любой ценой ┊ 8</title></programme>
-<programme start="20261127035500 +0300" stop="20261127043500 +0300" channel="TelekanalZvezda.ru"><title>т/с Выжить любой ценой ┊ 9</title></programme>
-<programme start="20261127043500 +0300" stop="20261127053600 +0300" channel="TelekanalZvezda.ru"><title>т/с Выжить любой ценой ┊ 10</title></programme>
-<programme start="20261127053600 +0300" stop="20261127063700 +0300" channel="TelekanalZvezda.ru"><title>т/с Выжить любой ценой ┊ 11</title></programme>
-<programme start="20261127063700 +0300" stop="20261127074000 +0300" channel="TelekanalZvezda.ru"><title>т/с Выжить любой ценой ┊ 12</title></programme>
-<programme start="20261127074000 +0300" stop="20261127090000 +0300" channel="TelekanalZvezda.ru"><title>Мoлитва на передoвой</title></programme>
-<programme start="20261127090000 +0300" stop="20261127092500 +0300" channel="TelekanalZvezda.ru"><title>Новости дня</title></programme>
-<programme start="20261127092500 +0300" stop="20261127095500 +0300" channel="TelekanalZvezda.ru"><title>д/с Москва – фронту</title></programme>
-<programme start="20261127095500 +0300" stop="20261127105000 +0300" channel="TelekanalZvezda.ru"><title>Морпехи: три века побед</title></programme>
-<programme start="20261127105000 +0300" stop="20261127130000 +0300" channel="TelekanalZvezda.ru"><title>х/ф Морской характер</title></programme>
-<programme start="20261127130000 +0300" stop="20261127132500 +0300" channel="TelekanalZvezda.ru"><title>Новости дня</title></programme>
-<programme start="20261127132500 +0300" stop="20261127150000 +0300" channel="TelekanalZvezda.ru"><title>х/ф Без права на ошибку</title></programme>
-<programme start="20261127150000 +0300" stop="20261127150500 +0300" channel="TelekanalZvezda.ru"><title>Военные новости</title></programme>
-<programme start="20261127150500 +0300" stop="20261127153500 +0300" channel="TelekanalZvezda.ru"><title>х/ф Без права на ошибку</title></programme>
-<programme start="20261127153500 +0300" stop="20261127171000 +0300" channel="TelekanalZvezda.ru"><title>х/ф В зоне особого внимания</title></programme>
-<programme start="20261127171000 +0300" stop="20261127171500 +0300" channel="TelekanalZvezda.ru"><title>Новости дня</title></programme>
-<programme start="20261127171500 +0300" stop="20261127180000 +0300" channel="TelekanalZvezda.ru"><title>х/ф В зоне особого внимания</title></programme>
-<programme start="20261127180000 +0300" stop="20261127184000 +0300" channel="TelekanalZvezda.ru"><title>Новости дня</title></programme>
-<programme start="20261127184000 +0300" stop="20261127202500 +0300" channel="TelekanalZvezda.ru"><title>х/ф Ответный ход</title></programme>
-<programme start="20261127202500 +0300" stop="20261127220000 +0300" channel="TelekanalZvezda.ru"><title>х/ф Черные береты</title></programme>
-<programme start="20261127220000 +0300" stop="20261127233000 +0300" channel="TelekanalZvezda.ru"><title>Здравствуйте, товарищи!</title></programme>
-<programme start="20261127233000 +0300" stop="20261128011500 +0300" channel="TelekanalZvezda.ru"><title>х/ф Формула любви</title></programme>
+<programme start="20261130050000 +0300" stop="20261130062000 +0300" channel="U.ru"><title>Моя свекровь – монстр</title></programme>
+<programme start="20261130062000 +0300" stop="20261130080500 +0300" channel="U.ru"><title>Муж напрокат</title></programme>
+<programme start="20261130080500 +0300" stop="20261130120000 +0300" channel="U.ru"><title>Жизнь после шоу</title></programme>
 <programme start="20261128011500 +0300" stop="20261128024000 +0300" channel="TelekanalZvezda.ru"><title>х/ф Табaчный капитaн</title></programme>
 <programme start="20261128024000 +0300" stop="20261128040500 +0300" channel="TelekanalZvezda.ru"><title>х/ф Случай в тайге</title></programme>
 <programme start="20261128040500 +0300" stop="20261128053500 +0300" channel="TelekanalZvezda.ru"><title>х/ф Мы с вами где-то встречались</title></programme>
@@ -1607,12 +1263,12 @@
 <programme start="20261129170100 +0300" stop="20261129180000 +0300" channel="TelekanalZvezda.ru"><title>т/с Снайпер. Оружие возмездия ┊ 4</title></programme>
 <programme start="20261129180000 +0300" stop="20261129195500 +0300" channel="TelekanalZvezda.ru"><title>Главное с Ольгой Беловой</title></programme>
 <programme start="20261129195500 +0300" stop="20261129232500 +0300" channel="TelekanalZvezda.ru"><title>д/с Легенды советского сыска</title></programme>
-<programme start="20261129232500 +0300" stop="20261129232700 +0300" channel="TelekanalZvezda.ru"><title>т/с Дpyжина (Княжеский крест: ч. 1)</title></programme>
-<programme start="20261129232700 +0300" stop="20261129232900 +0300" channel="TelekanalZvezda.ru"><title>т/с Дpyжина (Княжеский крест: ч. 2)</title></programme>
-<programme start="20261129232900 +0300" stop="20261129233100 +0300" channel="TelekanalZvezda.ru"><title>т/с Дpyжина (Варяги: ч. 1)</title></programme>
-<programme start="20261129233100 +0300" stop="20261129233300 +0300" channel="TelekanalZvezda.ru"><title>т/с Дpyжина (Варяги: ч. 2)</title></programme>
-<programme start="20261129233300 +0300" stop="20261129233500 +0300" channel="TelekanalZvezda.ru"><title>т/с Дpyжина (Время жертвы: ч. 1)</title></programme>
-<programme start="20261129233500 +0300" stop="20261129233700 +0300" channel="TelekanalZvezda.ru"><title>т/с Дpyжина (Время жертвы: ч. 2)</title></programme>
-<programme start="20261129233700 +0300" stop="20261129233900 +0300" channel="TelekanalZvezda.ru"><title>т/с Дpyжина (Судьба престола: ч. 1)</title></programme>
-<programme start="20261129233900 +0300" stop="20261130003900 +0300" channel="TelekanalZvezda.ru"><title>т/с Дpyжина (Судьба престола: ч. 2)</title></programme>
+<programme start="20261129232500 +0300" stop="20261130001000 +0300" channel="TelekanalZvezda.ru"><title>т/с Дpyжина (Княжеский крест: ч. 1)</title></programme>
+<programme start="20261130001000 +0300" stop="20261130005500 +0300" channel="TelekanalZvezda.ru"><title>т/с Дpyжина (Княжеский крест: ч. 2)</title></programme>
+<programme start="20261130005500 +0300" stop="20261130014000 +0300" channel="TelekanalZvezda.ru"><title>т/с Дpyжина (Варяги: ч. 1)</title></programme>
+<programme start="20261130014000 +0300" stop="20261130022500 +0300" channel="TelekanalZvezda.ru"><title>т/с Дpyжина (Варяги: ч. 2)</title></programme>
+<programme start="20261130022500 +0300" stop="20261130031000 +0300" channel="TelekanalZvezda.ru"><title>т/с Дpyжина (Время жертвы: ч. 1)</title></programme>
+<programme start="20261130031000 +0300" stop="20261130035500 +0300" channel="TelekanalZvezda.ru"><title>т/с Дpyжина (Время жертвы: ч. 2)</title></programme>
+<programme start="20261130035500 +0300" stop="20261130044000 +0300" channel="TelekanalZvezda.ru"><title>т/с Дpyжина (Судьба престола: ч. 1)</title></programme>
+<programme start="20261130044000 +0300" stop="20261130054000 +0300" channel="TelekanalZvezda.ru"><title>т/с Дpyжина (Судьба престола: ч. 2)</title></programme>
 </tv>
